@@ -1185,6 +1185,117 @@
 }
 </style>
 
+
+<style id="financas-pro-cartoes-previsao-v7">
+  .cards-premium-page .card-future-values{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    margin-top:7px;
+  }
+  .cards-premium-page .card-future-box{
+    min-width:0;
+    padding:5px 7px;
+    border-radius:8px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.22);
+    backdrop-filter:blur(6px);
+  }
+  .cards-premium-page .card-future-box span{
+    display:block;
+    font-size:7px;
+    line-height:1.05;
+    font-weight:800;
+    opacity:.82;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .cards-premium-page .card-future-box strong{
+    display:block;
+    margin-top:2px;
+    font-size:10px;
+    line-height:1.05;
+    font-weight:900;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  @media (min-width:1200px){
+    .cards-premium-page .cards-premium-card{
+      min-height:222px!important;
+    }
+  }
+  @media (min-width:1280px) and (max-height:850px){
+    .cards-premium-page .cards-premium-card{
+      min-height:186px!important;
+    }
+    .cards-premium-page .card-future-values{margin-top:4px;gap:4px}
+    .cards-premium-page .card-future-box{padding:3px 5px}
+    .cards-premium-page .card-future-box span{font-size:6px}
+    .cards-premium-page .card-future-box strong{font-size:8px}
+  }
+  @media (max-width:560px){
+    .cards-premium-page .card-future-values{grid-template-columns:1fr}
+  }
+</style>
+
+
+<style id="financas-pro-cartoes-mes-referencia-v8">
+  .cards-premium-page .card-month-reference{
+    display:inline-flex;
+    align-items:center;
+    max-width:92px;
+    padding:2px 6px;
+    border-radius:999px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.28);
+    color:#fff;
+    font-size:7px;
+    line-height:1;
+    font-weight:900;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+</style>
+
+
+<style id="financas-pro-compra-direta-cartao-v9">
+  .cards-premium-page .card-inline-actions{
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  }
+  .cards-premium-page .card-direct-purchase{
+    background:rgba(255,255,255,.28)!important;
+    border-color:rgba(255,255,255,.48)!important;
+  }
+  .invoice-direct-purchase{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#fff;
+    color:#0b56be;
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:10px;
+    padding:7px 11px;
+    font-size:11px;
+    font-weight:900;
+    box-shadow:0 5px 14px rgba(0,0,0,.12);
+    white-space:nowrap;
+  }
+  .invoice-direct-purchase:hover{background:#eff6ff}
+  @media(max-width:900px){
+    .cards-premium-page .card-inline-actions{
+      grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    }
+  }
+  @media(max-width:560px){
+    .cards-premium-page .card-inline-actions{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -1263,7 +1374,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '6';
+    const APP_VERSION = '9';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -3268,6 +3379,46 @@
         const lastDay = new Date(year, month, 0).getDate();
         const safeDay = Math.min(parseInt(dueDay) || 1, lastDay);
         return `${year}-${String(month).padStart(2, '0')}-${String(safeDay).padStart(2, '0')}`;
+      };
+
+      const handleNewPurchaseForCard = (cardOrName, monthKey = '') => {
+        const card = typeof cardOrName === 'string'
+          ? myCards.find(c => normalizeCardName(c.name) === normalizeCardName(cardOrName))
+          : cardOrName;
+
+        if (!card) {
+          showToast('Cartão não encontrado.', 'error');
+          return;
+        }
+
+        const todayIso = new Date().toISOString().split('T')[0];
+        const today = new Date();
+        const currentMonthKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+        const targetMonthKey = monthKey && monthKey !== 'all' ? monthKey : currentMonthKey;
+        const invoiceDueDate = getInvoiceDueDate(targetMonthKey, card.vencimento) || todayIso;
+
+        const titular = String(card.titular || '').toLowerCase();
+        let comprador = 'Claudinei';
+        if (titular.includes('mara')) comprador = 'Mara';
+        else if (titular.includes('dependente')) comprador = 'Dependente';
+        else if (titular.includes('claudinei')) comprador = 'Claudinei';
+
+        setEditingPmExpense(null);
+        setPmSelectedCard(card.name);
+        setPmSelectedMonth(targetMonthKey);
+        setPmFormData({
+          local: '',
+          produto: '',
+          comprador,
+          pagamento: card.name,
+          data: todayIso,
+          vencimento: invoiceDueDate,
+          valorTotal: '',
+          parcelas: '1',
+          valorParcela: '',
+          tipoLancamento: 'cartao'
+        });
+        setIsPmModalOpen(true);
       };
 
       const getMonthNameDisplay = (yyyy_mm) => {
@@ -5486,35 +5637,53 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
 
                     <div className="cards-premium-grid">
                       {myCards.map(card => {
-                        let limiteTotal = parseFloat(card.limite) || 0;
-                        let limiteUsado = 0;
-                        
-                        const startIndex = timeRangeInfo.findIndex(m => m.key === pmSelectedMonth);
-                        const validMonthsKeys = timeRangeInfo.slice(Math.max(0, startIndex)).map(m => m.key).filter(k => k !== 'all');
+                        const limiteTotal = parseFloat(card.limite) || 0;
 
-                        pmExpenses.forEach(exp => {
-                          if (exp.pagamento === card.name) {
-                            validMonthsKeys.forEach(mKey => {
-                              const info = getInstallmentInfo(exp, mKey, myCards);
-                              if (info) limiteUsado += info.value;
-                            });
-                          }
-                        });
-                        
-                        let limiteDisponivel = limiteTotal - limiteUsado;
-                        let pctUsado = limiteTotal > 0 ? (limiteUsado / limiteTotal) * 100 : 0;
-                        const currentInvoiceMonth = timeRangeInfo.find(m => m.key !== 'all')?.key || '';
-                        const currentInvoiceLabel = timeRangeInfo.find(m => m.key === currentInvoiceMonth)?.label || 'Fatura atual';
-                        const currentInvoiceItems = pmExpenses.filter(exp => {
-                          if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return false;
-                          return currentInvoiceMonth ? !!getInstallmentInfo(exp, currentInvoiceMonth, myCards) : false;
-                        });
-                        const currentInvoiceValue = currentInvoiceItems.reduce((sum, exp) => {
-                          const info = getInstallmentInfo(exp, currentInvoiceMonth, myCards);
+                        // O cartão acompanha o mês escolhido em "Projeções e Faturas".
+                        // Se "Todas as Compras" estiver selecionado, usa o primeiro mês real do período.
+                        const selectedCardMonth = pmSelectedMonth !== 'all'
+                          ? pmSelectedMonth
+                          : (timeRangeInfo.find(m => m.key !== 'all')?.key || '');
+
+                        const selectedCardMonthLabel =
+                          timeRangeInfo.find(m => m.key === selectedCardMonth)?.label ||
+                          (selectedCardMonth || 'Mês atual');
+
+                        const getProjectedCardValue = (monthKey) => pmExpenses.reduce((sum, exp) => {
+                          if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return sum;
+                          const info = getInstallmentInfo(exp, monthKey, myCards);
                           return sum + (parseFloat(info?.value) || 0);
                         }, 0);
-                        const currentInvoiceDueDate = getInvoiceDueDate(currentInvoiceMonth, card.vencimento);
-                        const currentInvoiceDueLabel = currentInvoiceDueDate ? formatDateBRFull(currentInvoiceDueDate) : '-';
+
+                        const selectedInvoiceItems = pmExpenses.filter(exp => {
+                          if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return false;
+                          return selectedCardMonth ? !!getInstallmentInfo(exp, selectedCardMonth, myCards) : false;
+                        });
+
+                        const selectedInvoiceValue = getProjectedCardValue(selectedCardMonth);
+                        const selectedInvoiceDueDate = getInvoiceDueDate(selectedCardMonth, card.vencimento);
+                        const selectedInvoiceDueLabel = selectedInvoiceDueDate ? formatDateBRFull(selectedInvoiceDueDate) : '-';
+
+                        // Limite do cartão referente ao mês escolhido.
+                        const limiteUsado = selectedInvoiceValue;
+                        const limiteDisponivel = limiteTotal - limiteUsado;
+                        const pctUsado = limiteTotal > 0 ? (limiteUsado / limiteTotal) * 100 : 0;
+
+                        // Soma dos três meses seguintes ao mês selecionado.
+                        const addMonthsToKey = (monthKey, offset) => {
+                          const [year, month] = String(monthKey || '').split('-').map(Number);
+                          if (!year || !month) return '';
+                          const d = new Date(year, month - 1 + offset, 1);
+                          return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                        };
+                        const followingThreeKeys = [1, 2, 3]
+                          .map(offset => addMonthsToKey(selectedCardMonth, offset))
+                          .filter(Boolean);
+
+                        const followingThreeValue = followingThreeKeys.reduce(
+                          (sum, monthKey) => sum + getProjectedCardValue(monthKey),
+                          0
+                        );
 
                         return (
                           <div
@@ -5529,7 +5698,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 <div className="card-brand-row">
                                   <div className="card-brand-icon">{String(card.name || '?').slice(0,2).toUpperCase()}</div>
                                   <div>
-                                    <h3 className="font-extrabold tracking-wide">{card.name}</h3>
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <h3 className="font-extrabold tracking-wide">{card.name}</h3>
+                                      <span className="card-month-reference">{selectedCardMonthLabel}</span>
+                                    </div>
                                     <p className="text-[10px] opacity-85 mt-0.5">{card.titular || 'Titular'} {card.last4 ? `•••• ${card.last4}` : ''}</p>
                                   </div>
                                 </div>
@@ -5549,18 +5721,29 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               <div className="card-progress"><i style={{width:`${Math.min(pctUsado,100)}%`}}></i></div>
                               <div className="flex justify-end items-center mt-1 text-[9px] font-black"><span>{Math.round(pctUsado)}%</span></div>
                               <div className="card-usage-line">
-                                <span className="card-purchase-count"><ShoppingBag className="w-3 h-3"/> {currentInvoiceItems.length} compra(s)</span>
-                                <span className="card-due-date"><Calendar className="w-3 h-3"/> Vence em {currentInvoiceDueLabel}</span>
+                                <span className="card-purchase-count"><ShoppingBag className="w-3 h-3"/> {selectedInvoiceItems.length} compra(s)</span>
+                                <span className="card-due-date"><Calendar className="w-3 h-3"/> Vence em {selectedInvoiceDueLabel}</span>
+                              </div>
+                              <div className="card-future-values">
+                                <div className="card-future-box">
+                                  <span>{selectedCardMonthLabel}</span>
+                                  <strong>R$ {selectedInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                                </div>
+                                <div className="card-future-box">
+                                  <span>3 meses seguintes</span>
+                                  <strong>R$ {followingThreeValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                                </div>
                               </div>
                               <div className="card-inline-info">
                                 <div className="card-inline-invoice" aria-hidden="true"></div>
                                 <div className="card-inline-actions" onClick={(e)=>e.stopPropagation()}>
+                                  <button className="card-direct-purchase" onClick={() => handleNewPurchaseForCard(card, selectedCardMonth)} title={`Lançar compra diretamente no cartão ${card.name}`}><Plus className="w-3 h-3"/> + Compra</button>
                                   <button className={pmSelectedCard===card.name && showInvoiceSummary && pmSelectedMonth!=='all' ? 'active':''} onClick={() => {
-                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(currentInvoiceMonth); setShowInvoiceSummary(true); setShowInvoiceDetails(false); setShowCardPurchaseHistory(false);
+                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(selectedCardMonth); setShowInvoiceSummary(true); setShowInvoiceDetails(false); setShowCardPurchaseHistory(false);
                                     setTimeout(()=>document.getElementById('selected-invoice-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
                                   }} title="Ver resumo da fatura"><FileText className="w-3 h-3"/> Resumo</button>
                                   <button className={pmSelectedCard===card.name && showInvoiceDetails && pmSelectedMonth!=='all' ? 'active':''} onClick={() => {
-                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(currentInvoiceMonth); setShowInvoiceSummary(false); setShowInvoiceDetails(true); setShowCardPurchaseHistory(false);
+                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(selectedCardMonth); setShowInvoiceSummary(false); setShowInvoiceDetails(true); setShowCardPurchaseHistory(false);
                                     setTimeout(()=>document.getElementById('selected-invoice-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
                                   }} title="Ver detalhes da fatura"><ShoppingBag className="w-3 h-3"/> Fatura</button>
                                   <button className={pmSelectedCard===card.name && showCardPurchaseHistory ? 'active':''} onClick={() => {
@@ -5873,7 +6056,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                        <div className="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm text-center">
                          <CreditCard className="w-12 h-12 text-slate-300 mx-auto mb-3" />
                          <p className="text-slate-500 font-medium text-lg">Nenhuma fatura encontrada para {timeRangeInfo.find(m => m.key === pmSelectedMonth)?.label}.</p>
-                         <p className="text-slate-400 text-sm mt-2">Clique noutro mês no gráfico acima ou adicione novas compras.</p>
+                         <p className="text-slate-400 text-sm mt-2">Clique em outro mês no gráfico acima ou lance a compra diretamente neste cartão.</p>
+                         <button type="button" onClick={() => handleNewPurchaseForCard(pmSelectedCard, pmSelectedMonth)} className="mt-4 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-black text-sm shadow-md">
+                           <Plus className="w-4 h-4"/> Nova compra neste cartão
+                         </button>
                        </div>
                     ) : (
                        <div className="space-y-8">
@@ -5915,14 +6101,19 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               <div key={`detalhe-${bankName}`} id={pmSelectedCard===bankName ? 'selected-invoice-panel' : undefined} className="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
                                 
                                 {/* Header do Cartão */}
-                                <div style={headerStyle} className="text-white p-5 flex justify-between items-center">
+                                <div style={headerStyle} className="text-white p-5 flex justify-between items-center gap-3">
                                   <div className="flex items-center gap-3">
                                     <CreditCard className="w-6 h-6" />
                                     <span className="font-extrabold text-xl tracking-wide">{bankName}</span>
                                   </div>
-                                  <span className="font-bold text-sm bg-black/20 px-4 py-1.5 rounded-full">
-                                    {cardInfo.items.filter(i => i.tipoLancamento !== 'prazo').length} compras • {cardInfo.items.filter(i => i.tipoLancamento === 'prazo').length} a prazo
-                                  </span>
+                                  <div className="flex items-center gap-2 flex-wrap justify-end">
+                                    <span className="font-bold text-sm bg-black/20 px-4 py-1.5 rounded-full">
+                                      {cardInfo.items.filter(i => i.tipoLancamento !== 'prazo').length} compras • {cardInfo.items.filter(i => i.tipoLancamento === 'prazo').length} a prazo
+                                    </span>
+                                    <button type="button" onClick={() => handleNewPurchaseForCard(bankName, pmSelectedMonth)} className="invoice-direct-purchase">
+                                      <Plus className="w-4 h-4" /> Nova compra
+                                    </button>
+                                  </div>
                                 </div>
 
                                 {/* Resumo principal da fatura */}
@@ -7024,7 +7215,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
             <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
               <div className="bg-white border border-slate-200 rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh]">
                 <div className="p-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
-                  <h3 className="font-extrabold text-slate-900 text-lg">{editingPmExpense ? 'Editar Compra PayManager' : 'Nova Compra PayManager'}</h3>
+                  <h3 className="font-extrabold text-slate-900 text-lg">{editingPmExpense ? 'Editar Compra' : `Nova Compra no Cartão${pmFormData.pagamento ? ` — ${pmFormData.pagamento}` : ''}`}</h3>
                   <button onClick={() => setIsPmModalOpen(false)} className="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 p-1.5 rounded-lg shadow-sm"><X className="h-5 w-5" /></button>
                 </div>
                 <form onSubmit={handleSavePmExpense} className="p-6 overflow-y-auto space-y-5 text-sm">
@@ -7039,7 +7230,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div>
                       <label className="block font-bold text-slate-700 mb-1.5">Cartão de Crédito</label>
                       <select value={pmFormData.pagamento} onChange={(e) => setPmFormData(p => ({ ...p, pagamento: e.target.value }))} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
-                        {banks.map(b => <option key={b} value={b}>{b}</option>)}
+                        {Array.from(new Set([
+                          ...myCards.map(c => c.name),
+                          ...banks
+                        ])).map(b => <option key={b} value={b}>{b}</option>)}
                       </select>
                     </div>
                   </div>
