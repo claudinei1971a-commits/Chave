@@ -1223,7 +1223,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '3';
+    const APP_VERSION = '4';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -3952,15 +3952,16 @@
       const handleSaveFutureExpense = async (e) => {
         e?.preventDefault();
         const amount = parseFloat(String(futureForm.amount).replace(',', '.')) || 0;
-        if (!futureForm.description.trim() || amount <= 0 || !futureForm.date) {
-          showToast('Informe descrição, valor e data prevista.', 'error');
+        const futureDateIso = parseDateBRFull(futureForm.date);
+        if (!futureForm.description.trim() || amount <= 0 || !futureDateIso) {
+          showToast('Informe descrição, valor e data no formato DD/MM/AAAA.', 'error');
           return;
         }
         const item = {
           id: futureEditingId || `future_${Date.now()}_${Math.random().toString(36).slice(2,7)}`,
           description: futureForm.description.trim(),
           amount,
-          date: futureForm.date,
+          date: futureDateIso,
           category: futureForm.category || 'outros',
           priority: futureForm.priority || 'media',
           notes: futureForm.notes?.trim() || '',
@@ -3988,7 +3989,7 @@
       const handleEditFutureExpense = (item) => {
         setFutureEditingId(item.id);
         setFutureForm({
-          description: item.description || '', amount: String(item.amount ?? ''), date: item.date || '',
+          description: item.description || '', amount: String(item.amount ?? ''), date: formatDateBRFull(item.date || ''),
           category: item.category || 'outros', priority: item.priority || 'media', notes: item.notes || ''
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -6926,7 +6927,7 @@
                     <form id="future-expense-form" onSubmit={handleSaveFutureExpense} className="p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-3 border-b border-slate-200">
                       <div className="xl:col-span-2"><label className="text-[10px] font-black uppercase text-slate-500">Despesa prevista</label><input value={futureForm.description} onChange={e=>setFutureForm(p=>({...p,description:e.target.value}))} placeholder="Ex.: IPVA, botijão de gás, manutenção" className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" /></div>
                       <div><label className="text-[10px] font-black uppercase text-slate-500">Valor estimado</label><input type="number" step="0.01" min="0" value={futureForm.amount} onChange={e=>setFutureForm(p=>({...p,amount:e.target.value}))} placeholder="0,00" className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" /></div>
-                      <div><label className="text-[10px] font-black uppercase text-slate-500">Data prevista</label><input type="date" value={futureForm.date} onChange={e=>setFutureForm(p=>({...p,date:e.target.value}))} className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" /></div>
+                      <div><label className="text-[10px] font-black uppercase text-slate-500">Data prevista</label><input type="text" inputMode="numeric" maxLength="10" placeholder="DD/MM/AAAA" value={futureForm.date} onChange={e=>setFutureForm(p=>({...p,date:maskDateBRFull(e.target.value)}))} className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-mono" /></div>
                       <div><label className="text-[10px] font-black uppercase text-slate-500">Categoria</label><select value={futureForm.category} onChange={e=>setFutureForm(p=>({...p,category:e.target.value}))} className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white">{categories.filter(c=>c.type!=='receita').map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></div>
                       <div><label className="text-[10px] font-black uppercase text-slate-500">Prioridade</label><select value={futureForm.priority} onChange={e=>setFutureForm(p=>({...p,priority:e.target.value}))} className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white"><option value="alta">Alta</option><option value="media">Média</option><option value="baixa">Baixa</option></select></div>
                       <div className="md:col-span-2 xl:col-span-5"><label className="text-[10px] font-black uppercase text-slate-500">Observação</label><input value={futureForm.notes} onChange={e=>setFutureForm(p=>({...p,notes:e.target.value}))} placeholder="Opcional" className="mt-1 w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" /></div>
