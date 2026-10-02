@@ -1296,6 +1296,53 @@
   }
 </style>
 
+
+<style id="financas-pro-pagamento-painel-v10">
+  .dashboard-pay-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:24px!important;
+    padding:4px 9px!important;
+    border:1px solid #bbf7d0!important;
+    border-radius:999px!important;
+    background:#dcfce7!important;
+    color:#15803d!important;
+    font-size:9px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    cursor:pointer!important;
+    box-shadow:none!important;
+    white-space:nowrap!important;
+  }
+  .dashboard-pay-btn:hover{
+    background:#bbf7d0!important;
+    border-color:#86efac!important;
+  }
+  .dashboard-pay-invoice{
+    min-width:48px!important;
+  }
+</style>
+
+
+<style id="financas-pro-pendente-clicavel-v12">
+  .dashboard-pending-click{
+    cursor:pointer!important;
+    border:0!important;
+    min-height:auto!important;
+    box-shadow:none!important;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease!important;
+  }
+  .dashboard-pending-click:hover{
+    transform:translateY(-1px);
+    box-shadow:0 3px 8px rgba(180,83,9,.16)!important;
+    background:#fde68a!important;
+  }
+  .dashboard-pending-click:active{
+    transform:translateY(0);
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -1374,7 +1421,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '9';
+    const APP_VERSION = '12';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -1692,7 +1739,7 @@
         destinationBank: '',
         isFixed: false,
         dueDate: new Date().toISOString().split('T')[0],
-        paid: false,
+        paid: false, // novo lançamento começa como Pendente
         paymentMethod: 'pix', 
         installments: 1,
         ruleType: 'necessidade',
@@ -5166,7 +5213,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div className="neo-white-panel">
                       <div className="neo-white-title"><span><CreditCard className="w-4 h-4"/> Minhas Faturas</span><button onClick={()=>setActiveTab('cardConference')}>Ver todas</button></div>
                       <div className="overflow-x-auto"><table className="w-full text-[10px]"><thead><tr><th>Cartão</th><th>Venc.</th><th>Fatura</th><th>Pago</th><th>Diferença</th><th>Status</th></tr></thead><tbody>
-                        {[...resumoData.pmList].sort((a,b)=>(a.vencimentoDia||99)-(b.vencimentoDia||99)).slice(0,5).map((item,i)=>{const due=getInvoiceDueDate(item.monthKey,item.vencimentoDia); const dif=Math.max(0,(item.paidAmount||0)-(item.invoiceTarget||item.totalValue||0)); return <tr key={i}><td className="font-bold">{item.cardName}</td><td>{due?formatToDDMMAAAA(due):'-'}</td><td>R$ {(item.invoiceTarget||item.totalValue||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>R$ {(item.paidAmount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td className={dif>0?'text-rose-600 font-bold':'text-slate-600'}>R$ {dif.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td><span className={item.isPaid?'neo-status neo-paid':'neo-status neo-pending'}>{item.isPaid?'Pago':'Pendente'}</span></td></tr>})}
+                        {[...resumoData.pmList].sort((a,b)=>(a.vencimentoDia||99)-(b.vencimentoDia||99)).slice(0,5).map((item,i)=>{const due=getInvoiceDueDate(item.monthKey,item.vencimentoDia); const dif=Math.max(0,(item.paidAmount||0)-(item.invoiceTarget||item.totalValue||0)); return <tr key={i}><td className="font-bold">{item.cardName}</td><td>{due?formatToDDMMAAAA(due):'-'}</td><td>R$ {(item.invoiceTarget||item.totalValue||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>R$ {(item.paidAmount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td className={dif>0?'text-rose-600 font-bold':'text-slate-600'}>R$ {dif.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>{item.isPaid ? <span className="neo-status neo-paid">Pago</span> : <button type="button" onClick={()=>handleToggleFaturaPaid(item.cardName,item.monthKey,false)} className="neo-status neo-pending dashboard-pending-click" title="Clique para registrar o pagamento">Pendente</button>}</td></tr>})}
                       </tbody></table></div>
                     </div>
 
@@ -5180,7 +5227,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div className="neo-white-panel">
                       <div className="neo-white-title"><span><Calendar className="w-4 h-4"/> Próximos Vencimentos</span><button onClick={()=>setActiveTab('transactions')}>Ver todos</button></div>
                       <div className="divide-y divide-slate-100">
-                        {dashboardUpcomingExpenses.length===0?<div className="text-xs text-slate-400 py-8 text-center">Nenhuma conta pendente.</div>:dashboardUpcomingExpenses.map((t,i)=>{const p=String(t.dueDate||'').split('-'); return <div key={i} className="flex items-center justify-between gap-3 py-2"><div className="flex items-center gap-2 min-w-0"><div className="neo-date-badge"><b>{p[2]||'--'}</b><span>{p[1]||'--'}</span></div><div className="font-bold text-xs text-slate-800 truncate">{t.description}</div></div><div className="text-right"><div className="font-black text-xs text-rose-600">R$ {Number(t.amount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</div><span className="neo-status neo-pending">Pendente</span></div></div>})}
+                        {dashboardUpcomingExpenses.length===0?<div className="text-xs text-slate-400 py-8 text-center">Nenhuma conta pendente.</div>:dashboardUpcomingExpenses.map((t,i)=>{const p=String(t.dueDate||'').split('-'); return <div key={i} className="flex items-center justify-between gap-3 py-2"><div className="flex items-center gap-2 min-w-0"><div className="neo-date-badge"><b>{p[2]||'--'}</b><span>{p[1]||'--'}</span></div><div className="font-bold text-xs text-slate-800 truncate">{t.description}</div></div><div className="text-right flex flex-col items-end gap-1"><div className="font-black text-xs text-rose-600">R$ {Number(t.amount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</div><button type="button" onClick={()=>handleTogglePaid(t)} className="neo-status neo-pending dashboard-pending-click" title="Clique para registrar o pagamento">Pendente</button></div></div>})}
                       </div>
                     </div>
                   </div>
