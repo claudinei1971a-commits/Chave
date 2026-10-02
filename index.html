@@ -1355,6 +1355,128 @@
   }
 </style>
 
+
+<style id="financas-pro-total-pendente-v15">
+  .dashboard-pending-kpi{
+    width:100%;
+    border:0!important;
+    cursor:pointer!important;
+    appearance:none;
+    font-family:inherit;
+  }
+  .dashboard-pending-kpi:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(245,158,11,.20)!important;
+  }
+  .dashboard-pending-kpi:focus-visible{
+    outline:3px solid rgba(245,158,11,.35);
+    outline-offset:2px;
+  }
+</style>
+
+
+<style id="financas-pro-resumo-pendencias-v16">
+  .pending-summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    padding:14px 16px;
+    background:#f8fafc;
+    border-bottom:1px solid #e2e8f0;
+  }
+  .pending-summary-card{
+    border-radius:14px;
+    padding:12px 13px;
+    border:1px solid #e2e8f0;
+    background:#fff;
+    box-shadow:0 4px 12px rgba(15,23,42,.05);
+  }
+  .pending-summary-card span{
+    display:block;
+    font-size:9px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.035em;
+    color:#64748b;
+  }
+  .pending-summary-card strong{
+    display:block;
+    margin-top:4px;
+    font-size:17px;
+    line-height:1.1;
+    color:#0f172a;
+  }
+  .pending-summary-card small{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+    color:#94a3b8;
+    font-weight:700;
+  }
+  .pending-summary-accounts{border-left:4px solid #f59e0b}
+  .pending-summary-invoices{border-left:4px solid #6366f1}
+  .pending-summary-total{
+    border-left:4px solid #10b981;
+    background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+  }
+  .pending-summary-total strong{color:#047857}
+  @media(max-width:700px){
+    .pending-summary-grid{grid-template-columns:1fr}
+  }
+</style>
+
+
+<style id="financas-pro-indicadores-clicaveis-v17">
+  .dashboard-detail-kpi{
+    width:100%;
+    border:0!important;
+    cursor:pointer!important;
+    appearance:none;
+    font-family:inherit;
+  }
+  .dashboard-detail-kpi:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(3,37,89,.26)!important;
+  }
+  .dashboard-detail-kpi:focus-visible{
+    outline:3px solid rgba(59,130,246,.30);
+    outline-offset:2px;
+  }
+  .dashboard-detail-summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    padding:14px 16px;
+    background:#f8fafc;
+    border-bottom:1px solid #e2e8f0;
+  }
+  .dashboard-detail-summary-card{
+    border-radius:14px;
+    padding:12px 13px;
+    border:1px solid #e2e8f0;
+    background:#fff;
+    box-shadow:0 4px 12px rgba(15,23,42,.05);
+  }
+  .dashboard-detail-summary-card span{
+    display:block;
+    font-size:9px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.035em;
+    color:#64748b;
+  }
+  .dashboard-detail-summary-card strong{
+    display:block;
+    margin-top:4px;
+    font-size:17px;
+    line-height:1.15;
+    color:#0f172a;
+  }
+  @media(max-width:700px){
+    .dashboard-detail-summary-grid{grid-template-columns:1fr}
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -1433,7 +1555,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '14';
+    const APP_VERSION = '17';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -1613,6 +1735,8 @@
       const [futureEditsModal, setFutureEditsModal] = useState({ isOpen: false, pendingFormData: null, futureTxs: [], selectedIds: [] });
       const [extratoModal, setExtratoModal] = useState({ isOpen: false, bankName: null });
       const [differenceLaunchModal, setDifferenceLaunchModal] = useState({ isOpen: false, rows: [] });
+      const [showPendingDetails, setShowPendingDetails] = useState(false);
+      const [dashboardDetailModal, setDashboardDetailModal] = useState(null);
 
       // 50/30/20 TRANSACTIONS
       const [transactions, setTransactions] = useState(() => {
@@ -2534,19 +2658,36 @@
           return;
         }
         if (!bank) {
-          showToast('Selecione o banco pagador.', 'error');
+          showToast(transaction?.type === 'income' ? 'Selecione o banco do recebimento.' : 'Selecione o banco pagador.', 'error');
           return;
         }
         const finalAmount = parseFloat(amount) || parseFloat(transaction.amount);
-        const updated = transactions.map(t => t.id === transaction.id ? { ...t, paid: true, paymentDate, payerBank: bank, amount: finalAmount } : t);
+        const isIncomeReceipt = transaction?.type === 'income';
+        const updated = transactions.map(t => t.id === transaction.id
+          ? {
+              ...t,
+              paid: true,
+              paymentDate,
+              payerBank: bank,
+              ...(isIncomeReceipt ? { bank } : {}),
+              amount: finalAmount
+            }
+          : t
+        );
         setTransactions(updated);
         setPaymentModal({ isOpen: false, transaction: null, paymentDate: '', paymentDateDisplay: '', bank: '', amount: '' });
-        showToast("Pagamento confirmado com sucesso!");
+        showToast(isIncomeReceipt ? "Recebimento confirmado com sucesso!" : "Pagamento confirmado com sucesso!");
 
         if (db && user && syncKey) {
           try {
             const docRef = doc(db, 'artifacts', appId, 'public', 'data', `wallet_${syncKey}_transactions`, transaction.id);
-            await setDoc(docRef, { paid: true, paymentDate, payerBank: bank, amount: finalAmount }, { merge: true });
+            await setDoc(docRef, {
+              paid: true,
+              paymentDate,
+              payerBank: bank,
+              ...(isIncomeReceipt ? { bank } : {}),
+              amount: finalAmount
+            }, { merge: true });
           } catch (err) {
             console.error(err);
           }
@@ -3354,7 +3495,9 @@
           };
         });
 
-        const pmTotalPendente = pmList.filter(f => !f.isPaid).reduce((acc, f) => acc + f.totalValue, 0);
+        const pmTotalPendente = pmList
+          .filter(f => !f.isPaid)
+          .reduce((acc, f) => acc + (parseFloat(f.invoiceTarget || f.totalValue || 0) || 0), 0);
 
         // Pagamento de fatura de cartão não é uma nova conta: ele liquida uma fatura já mostrada
         // no painel de Faturas. Por isso, no Dashboard, escondemos esses lançamentos da lista "Contas"
@@ -3696,6 +3839,205 @@
           .sort((a,b) => String(a.dueDate || '').localeCompare(String(b.dueDate || '')))
           .slice(0, 5);
       }, [transactions, filterMonth, customStartDate, customEndDate]);
+
+      const dashboardCardDetails = useMemo(() => {
+        const periodTransactions = transactions.filter(t => isTransactionInPeriod(t));
+
+        const normalizeText = (value) => String(value || '')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase().trim();
+
+        const isCreditCardPaymentTx = (t) => {
+          if (!t || t.type !== 'expense') return false;
+          const categoryObj = categories.find(c => c.id === t.category);
+          const categoryText = normalizeText(categoryObj?.name || t.category || t.categoryName);
+          const descriptionText = normalizeText(t.description || '');
+          const explicitCard = normalizeText(t.associatedCard || t.cardName || t.cartao);
+          return Boolean(explicitCard) ||
+            categoryText.includes('cartao de credito') ||
+            categoryText.includes('cartao credito') ||
+            (categoryText.includes('cartao') && categoryText.includes('credito')) ||
+            descriptionText.includes('cartao de credito') ||
+            descriptionText.includes('cartao credito') ||
+            descriptionText.startsWith('fatura ');
+        };
+
+        const incomeItems = periodTransactions
+          .filter(t => t.type === 'income')
+          .map(t => ({
+            kind: 'transaction',
+            type: 'income',
+            id: t.id,
+            description: t.description || 'Receita',
+            date: t.dueDate || '',
+            amount: parseFloat(t.amount) || 0,
+            bank: t.bank || '',
+            paid: isPaidTransaction(t),
+            transaction: t
+          }))
+          .sort((a,b) => String(a.date).localeCompare(String(b.date)));
+
+        const expenseItems = periodTransactions
+          .filter(t => t.type === 'expense' && !isCreditCardPaymentTx(t))
+          .map(t => ({
+            kind: 'transaction',
+            type: 'expense',
+            id: t.id,
+            description: t.description || 'Despesa',
+            date: t.dueDate || '',
+            amount: parseFloat(t.amount) || 0,
+            bank: t.bank || '',
+            paid: isPaidTransaction(t),
+            transaction: t
+          }))
+          .sort((a,b) => String(a.date).localeCompare(String(b.date)));
+
+        const invoiceItems = (resumoData.pmList || [])
+          .filter(f => Number(f.totalValue || 0) > 0)
+          .map(f => ({
+            kind: 'fatura',
+            type: 'expense',
+            id: `dashboard_invoice_${f.cardName}_${f.monthKey}`,
+            description: `Fatura ${f.cardName}`,
+            date: getInvoiceDueDate(f.monthKey, f.vencimentoDia) || '',
+            amount: parseFloat(f.totalValue) || 0,
+            cardName: f.cardName,
+            monthKey: f.monthKey,
+            paid: !!f.isPaid
+          }))
+          .sort((a,b) => String(a.date).localeCompare(String(b.date)));
+
+        const confirmedBalanceItems = periodTransactions
+          .filter(t => isPaidTransaction(t) && (t.type === 'income' || t.type === 'expense'))
+          .map(t => ({
+            kind: 'transaction',
+            type: t.type,
+            id: t.id,
+            description: t.description || (t.type === 'income' ? 'Receita' : 'Despesa'),
+            date: t.paymentDate || t.dueDate || '',
+            amount: parseFloat(t.amount) || 0,
+            bank: t.bank || '',
+            paid: true,
+            transaction: t
+          }))
+          .sort((a,b) => String(a.date).localeCompare(String(b.date)));
+
+        const confirmedIn = confirmedBalanceItems
+          .filter(i => i.type === 'income')
+          .reduce((sum,i) => sum + i.amount, 0);
+
+        const confirmedOut = confirmedBalanceItems
+          .filter(i => i.type === 'expense')
+          .reduce((sum,i) => sum + i.amount, 0);
+
+        const receivedIncome = incomeItems
+          .filter(i => i.paid)
+          .reduce((sum,i) => sum + i.amount, 0);
+
+        const pendingIncome = incomeItems
+          .filter(i => !i.paid)
+          .reduce((sum,i) => sum + i.amount, 0);
+
+        return {
+          saldo: {
+            title: 'Saldo Atual',
+            subtitle: 'Movimentações confirmadas que formam o saldo do período',
+            total: balances.currentRealBalance,
+            tone: 'green',
+            summaries: [
+              { label: 'Entradas confirmadas', value: confirmedIn },
+              { label: 'Saídas confirmadas', value: confirmedOut },
+              { label: 'Saldo atual', value: balances.currentRealBalance }
+            ],
+            items: confirmedBalanceItems
+          },
+          receitas: {
+            title: 'Receitas',
+            subtitle: 'Todas as receitas previstas e recebidas no período',
+            total: resumoData.dashTotalIn,
+            tone: 'green',
+            summaries: [
+              { label: 'Recebidas', value: receivedIncome },
+              { label: 'A receber', value: pendingIncome },
+              { label: 'Total de receitas', value: resumoData.dashTotalIn }
+            ],
+            items: incomeItems
+          },
+          despesas: {
+            title: 'Despesas',
+            subtitle: 'Contas e faturas que formam o total de despesas do período',
+            total: resumoData.totalContasFaturas,
+            tone: 'red',
+            summaries: [
+              { label: 'Contas e despesas', value: resumoData.dashTotalExp },
+              { label: 'Faturas de cartões', value: resumoData.pmTotal },
+              { label: 'Total de despesas', value: resumoData.totalContasFaturas }
+            ],
+            items: [...expenseItems, ...invoiceItems]
+              .sort((a,b) => String(a.date).localeCompare(String(b.date)))
+          },
+          receber: {
+            title: 'A Receber',
+            subtitle: 'Receitas que ainda estão pendentes no período',
+            total: pendingIncome,
+            tone: 'blue',
+            summaries: [
+              { label: 'Receitas pendentes', value: pendingIncome },
+              { label: 'Quantidade', value: incomeItems.filter(i => !i.paid).length, isCount: true },
+              { label: 'Total a receber', value: pendingIncome }
+            ],
+            items: incomeItems.filter(i => !i.paid)
+          }
+        };
+      }, [
+        transactions, categories, filterMonth, customStartDate, customEndDate,
+        resumoData, balances.currentRealBalance
+      ]);
+
+      const dashboardPendingDetails = useMemo(() => {
+        const contas = (resumoData.dashMonthExpenses || [])
+          .filter(t => !isPaidTransaction(t))
+          .map(t => ({
+            kind: 'conta',
+            id: t.id,
+            description: t.description || 'Despesa',
+            date: t.dueDate || '',
+            amount: parseFloat(t.amount) || 0,
+            bank: t.bank || '',
+            transaction: t
+          }));
+
+        const faturas = (resumoData.pmList || [])
+          .filter(f => !f.isPaid && Number(f.invoiceTarget || f.totalValue || 0) > 0)
+          .map(f => ({
+            kind: 'fatura',
+            id: `fatura_${f.cardName}_${f.monthKey}`,
+            description: `Fatura ${f.cardName}`,
+            date: getInvoiceDueDate(f.monthKey, f.vencimentoDia) || '',
+            amount: parseFloat(f.invoiceTarget || f.totalValue || 0) || 0,
+            cardName: f.cardName,
+            monthKey: f.monthKey
+          }));
+
+        return [...contas, ...faturas]
+          .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+      }, [resumoData]);
+
+      const dashboardPendingTotals = useMemo(() => {
+        const pendingAccounts = dashboardPendingDetails
+          .filter(item => item.kind === 'conta')
+          .reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
+
+        const pendingInvoices = dashboardPendingDetails
+          .filter(item => item.kind === 'fatura')
+          .reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
+
+        return {
+          pendingAccounts,
+          pendingInvoices,
+          grandTotal: pendingAccounts + pendingInvoices
+        };
+      }, [dashboardPendingDetails]);
 
       const faturasPorCartao = useMemo(() => {
         const grouped = {};
@@ -5147,36 +5489,40 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
-                    <div className="neo-kpi neo-kpi-green">
+                    <button type="button" onClick={()=>setDashboardDetailModal('saldo')} className="neo-kpi neo-kpi-green text-left dashboard-detail-kpi" title="Clique para ver o que forma este saldo">
                       <div className="neo-icon"><Wallet className="w-5 h-5"/></div>
                       <span>Saldo Atual</span>
                       <strong className={balances.currentRealBalance >= 0 ? 'text-emerald-600' : 'text-rose-600'}>R$ {balances.currentRealBalance.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
-                      <small>Saldo confirmado no período</small>
-                    </div>
-                    <div className="neo-kpi neo-kpi-green">
+                      <small>Saldo confirmado • clique para ver</small>
+                    </button>
+                    <button type="button" onClick={()=>setDashboardDetailModal('receitas')} className="neo-kpi neo-kpi-green text-left dashboard-detail-kpi" title="Clique para ver todas as receitas">
                       <div className="neo-icon"><TrendingUp className="w-5 h-5"/></div>
                       <span>Receitas</span>
                       <strong className="text-emerald-600">R$ {resumoData.dashTotalIn.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
-                      <small>Entradas previstas e recebidas</small>
-                    </div>
-                    <div className="neo-kpi neo-kpi-red">
+                      <small>Previstas e recebidas • clique para ver</small>
+                    </button>
+                    <button type="button" onClick={()=>setDashboardDetailModal('despesas')} className="neo-kpi neo-kpi-red text-left dashboard-detail-kpi" title="Clique para ver todas as despesas">
                       <div className="neo-icon"><TrendingDown className="w-5 h-5"/></div>
                       <span>Despesas</span>
                       <strong className="text-rose-600">R$ {resumoData.totalContasFaturas.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
-                      <small>Contas + faturas do período</small>
-                    </div>
-                    <div className="neo-kpi neo-kpi-blue">
+                      <small>Contas + faturas • clique para ver</small>
+                    </button>
+                    <button type="button" onClick={()=>setDashboardDetailModal('receber')} className="neo-kpi neo-kpi-blue text-left dashboard-detail-kpi" title="Clique para ver os valores a receber">
                       <div className="neo-icon"><PiggyBank className="w-5 h-5"/></div>
                       <span>A Receber</span>
                       <strong className="text-blue-600">R$ {stats.pendingIncome.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
-                      <small>{stats.pendingIncome > 0 ? 'Receitas ainda pendentes' : 'Sem valores pendentes'}</small>
-                    </div>
-                    <div className="neo-kpi neo-kpi-orange">
+                      <small>{stats.pendingIncome > 0 ? 'Receitas pendentes • clique para ver' : 'Sem valores pendentes'}</small>
+                    </button>
+                    <button type="button" onClick={()=>setShowPendingDetails(true)} className="neo-kpi neo-kpi-orange text-left dashboard-pending-kpi" title="Clique para ver todas as despesas que formam este total">
                       <div className="neo-icon"><Calendar className="w-5 h-5"/></div>
-                      <span>A Pagar</span>
-                      <strong className="text-orange-500">R$ {resumoData.restantePendente.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
-                      <small>{dashboardUpcomingExpenses.length} contas em aberto</small>
-                    </div>
+                      <span>Total geral pendente</span>
+                      <strong className="text-orange-500">R$ {dashboardPendingTotals.grandTotal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                      <small>
+                        Contas: R$ {dashboardPendingTotals.pendingAccounts.toLocaleString('pt-BR',{minimumFractionDigits:2})}
+                        {' • '}
+                        Faturas: R$ {dashboardPendingTotals.pendingInvoices.toLocaleString('pt-BR',{minimumFractionDigits:2})}
+                      </small>
+                    </button>
                   </div>
 
                   <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
@@ -7532,6 +7878,248 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
             </div>
           )}
 
+          {/* MODAL DETALHES DOS INDICADORES DO PAINEL */}
+          {dashboardDetailModal && dashboardCardDetails[dashboardDetailModal] && (() => {
+            const detail = dashboardCardDetails[dashboardDetailModal];
+            const periodLabel = filterMonth === 'all'
+              ? 'Todo o período'
+              : filterMonth === 'custom'
+                ? 'Período personalizado'
+                : getMonthNameDisplay(filterMonth);
+
+            const headerClass = detail.tone === 'red'
+              ? 'from-rose-500 to-red-600'
+              : detail.tone === 'blue'
+                ? 'from-blue-500 to-indigo-600'
+                : 'from-emerald-500 to-teal-600';
+
+            return (
+              <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+                <div className="bg-white border border-slate-200 rounded-3xl shadow-2xl max-w-4xl w-full overflow-hidden">
+                  <div className={`px-5 py-4 bg-gradient-to-r ${headerClass} text-white flex items-center justify-between gap-3`}>
+                    <div>
+                      <div className="text-xs font-bold uppercase tracking-wide opacity-90">{detail.title}</div>
+                      <div className="text-2xl font-black mt-1">
+                        R$ {Number(detail.total || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+                      </div>
+                      <div className="text-[11px] mt-1 opacity-90">{periodLabel} • {detail.items.length} item(ns)</div>
+                    </div>
+                    <button type="button" onClick={()=>setDashboardDetailModal(null)} className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center">
+                      <X className="w-5 h-5"/>
+                    </button>
+                  </div>
+
+                  <div className="dashboard-detail-summary-grid">
+                    {detail.summaries.map((summary, idx) => (
+                      <div key={idx} className="dashboard-detail-summary-card">
+                        <span>{summary.label}</span>
+                        <strong>
+                          {summary.isCount
+                            ? Number(summary.value || 0).toLocaleString('pt-BR')
+                            : `R$ ${Number(summary.value || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="px-5 py-3 border-b border-slate-100 bg-white">
+                    <div className="font-bold text-xs text-slate-600">{detail.subtitle}</div>
+                  </div>
+
+                  <div className="max-h-[58vh] overflow-y-auto custom-scrollbar divide-y divide-slate-100">
+                    {detail.items.length === 0 ? (
+                      <div className="p-10 text-center text-slate-500">
+                        <CheckCircle className="w-10 h-10 mx-auto mb-3 text-emerald-500"/>
+                        <div className="font-black text-slate-700">Nenhum lançamento neste período.</div>
+                      </div>
+                    ) : detail.items.map((item, i) => {
+                      const isSaldo = dashboardDetailModal === 'saldo';
+                      const isIncome = item.type === 'income';
+                      const amountPrefix = isSaldo ? (isIncome ? '+ ' : '- ') : '';
+                      const amountClass = isIncome ? 'text-emerald-600' : 'text-rose-600';
+
+                      return (
+                        <div key={item.id || i} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50">
+                          <div className="flex items-start gap-3 min-w-0">
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                              item.kind === 'fatura'
+                                ? 'bg-indigo-100 text-indigo-600'
+                                : isIncome
+                                  ? 'bg-emerald-100 text-emerald-600'
+                                  : 'bg-rose-100 text-rose-600'
+                            }`}>
+                              {item.kind === 'fatura'
+                                ? <CreditCard className="w-5 h-5"/>
+                                : isIncome
+                                  ? <TrendingUp className="w-5 h-5"/>
+                                  : <TrendingDown className="w-5 h-5"/>}
+                            </div>
+
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className={`text-[9px] font-black uppercase px-2 py-1 rounded-full ${
+                                  item.kind === 'fatura'
+                                    ? 'bg-indigo-50 text-indigo-700'
+                                    : isIncome
+                                      ? 'bg-emerald-50 text-emerald-700'
+                                      : 'bg-rose-50 text-rose-700'
+                                }`}>
+                                  {item.kind === 'fatura' ? 'Fatura' : isIncome ? 'Receita' : 'Despesa'}
+                                </span>
+                                <span className="text-[10px] text-slate-400">{item.date ? formatToDDMMAAAA(item.date) : 'Sem data'}</span>
+                              </div>
+                              <div className="font-black text-sm text-slate-800 mt-1 truncate">{item.description}</div>
+                              <div className="text-[10px] text-slate-500 mt-0.5">
+                                {item.kind === 'fatura' ? `Cartão ${item.cardName}` : (item.bank || 'Sem banco informado')}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
+                            <div className="text-right">
+                              <div className={`font-black ${amountClass}`}>
+                                {amountPrefix}R$ {Number(item.amount || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+                              </div>
+                            </div>
+
+                            {item.kind === 'fatura' ? (
+                              item.paid
+                                ? <span className="neo-status neo-paid">Pago</span>
+                                : <button
+                                    type="button"
+                                    onClick={()=>{
+                                      setDashboardDetailModal(null);
+                                      handleToggleFaturaPaid(item.cardName, item.monthKey, false);
+                                    }}
+                                    className="neo-status neo-pending dashboard-pending-click"
+                                    title="Clique para registrar o pagamento"
+                                  >
+                                    Pendente
+                                  </button>
+                            ) : item.paid ? (
+                              <span className="neo-status neo-paid">{isIncome ? 'Recebido' : 'Pago'}</span>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={()=>{
+                                  setDashboardDetailModal(null);
+                                  handleTogglePaid(item.transaction);
+                                }}
+                                className="neo-status neo-pending dashboard-pending-click"
+                                title={isIncome ? 'Clique para registrar o recebimento' : 'Clique para registrar o pagamento'}
+                              >
+                                Pendente
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="px-5 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+                    <div className="text-xs text-slate-500">
+                      Os itens <b>Pendentes</b> podem ser confirmados diretamente nesta lista.
+                    </div>
+                    <button type="button" onClick={()=>setDashboardDetailModal(null)} className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-xs">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* MODAL TOTAL PENDENTE DO PERÍODO */}
+          {showPendingDetails && (
+            <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-white border border-slate-200 rounded-3xl shadow-2xl max-w-3xl w-full overflow-hidden">
+                <div className="px-5 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wide opacity-90">Resumo das pendências do período</div>
+                    <div className="text-2xl font-black mt-1">R$ {dashboardPendingTotals.grandTotal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>
+                    <div className="text-[11px] mt-1 opacity-90">{getMonthNameDisplay(filterMonth)} • {dashboardPendingDetails.length} item(ns)</div>
+                  </div>
+                  <button type="button" onClick={()=>setShowPendingDetails(false)} className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center">
+                    <X className="w-5 h-5"/>
+                  </button>
+                </div>
+
+                <div className="pending-summary-grid">
+                  <div className="pending-summary-card pending-summary-accounts">
+                    <span>Contas pendentes</span>
+                    <strong>R$ {dashboardPendingTotals.pendingAccounts.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                    <small>{dashboardPendingDetails.filter(i=>i.kind==='conta').length} conta(s)</small>
+                  </div>
+                  <div className="pending-summary-card pending-summary-invoices">
+                    <span>Faturas pendentes</span>
+                    <strong>R$ {dashboardPendingTotals.pendingInvoices.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                    <small>{dashboardPendingDetails.filter(i=>i.kind==='fatura').length} fatura(s)</small>
+                  </div>
+                  <div className="pending-summary-card pending-summary-total">
+                    <span>Total geral</span>
+                    <strong>R$ {dashboardPendingTotals.grandTotal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                    <small>Contas + faturas</small>
+                  </div>
+                </div>
+
+                <div className="max-h-[60vh] overflow-y-auto custom-scrollbar divide-y divide-slate-100">
+                  {dashboardPendingDetails.length === 0 ? (
+                    <div className="p-8 text-center text-slate-500">
+                      <CheckCircle className="w-10 h-10 mx-auto mb-3 text-emerald-500"/>
+                      <div className="font-black text-slate-700">Nenhuma despesa pendente neste período.</div>
+                    </div>
+                  ) : dashboardPendingDetails.map((item, i) => (
+                    <div key={item.id || i} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50">
+                      <div className="flex items-start gap-3 min-w-0">
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${item.kind === 'fatura' ? 'bg-indigo-100 text-indigo-600' : 'bg-orange-100 text-orange-600'}`}>
+                          {item.kind === 'fatura' ? <CreditCard className="w-5 h-5"/> : <FileText className="w-5 h-5"/>}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className={`text-[9px] font-black uppercase px-2 py-1 rounded-full ${item.kind === 'fatura' ? 'bg-indigo-50 text-indigo-700' : 'bg-orange-50 text-orange-700'}`}>
+                              {item.kind === 'fatura' ? 'Fatura' : 'Conta'}
+                            </span>
+                            <span className="text-[10px] text-slate-400">{item.date ? formatToDDMMAAAA(item.date) : 'Sem data'}</span>
+                          </div>
+                          <div className="font-black text-sm text-slate-800 mt-1 truncate">{item.description}</div>
+                          <div className="text-[10px] text-slate-500 mt-0.5">
+                            {item.kind === 'fatura' ? `Cartão ${item.cardName}` : (item.bank || 'Sem banco informado')}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
+                        <div className="text-right">
+                          <div className="font-black text-rose-600">R$ {Number(item.amount || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+                          <div className="text-[9px] text-slate-400">valor pendente</div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={()=>{
+                            setShowPendingDetails(false);
+                            if (item.kind === 'fatura') {
+                              handleToggleFaturaPaid(item.cardName, item.monthKey, false);
+                            } else if (item.transaction) {
+                              handleTogglePaid(item.transaction);
+                            }
+                          }}
+                          className="neo-status neo-pending dashboard-pending-click"
+                          title="Clique para registrar o pagamento"
+                        >
+                          Pendente
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="px-5 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+                  <div className="text-xs text-slate-500">Clique em <b>Pendente</b> para registrar o pagamento de uma conta ou fatura.</div>
+                  <button type="button" onClick={()=>setShowPendingDetails(false)} className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-xs">Fechar</button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* MODAL CONFIRMAR PAGAMENTO */}
           {paymentModal.isOpen && (
             <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
@@ -7540,12 +8128,16 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                   <div className="bg-emerald-100 text-emerald-600 p-2 rounded-full">
                     <CheckCircle className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-black text-slate-900">Confirmar Pagamento</h3>
+                  <h3 className="text-lg font-black text-slate-900">
+                    {paymentModal.transaction?.type === 'income' ? 'Confirmar Recebimento' : 'Confirmar Pagamento'}
+                  </h3>
                 </div>
                 
                 <form onSubmit={confirmPaymentModal} className="space-y-4">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">Valor Pago (R$)</label>
+                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">
+                      {paymentModal.transaction?.type === 'income' ? 'Valor Recebido (R$)' : 'Valor Pago (R$)'}
+                    </label>
                     <input 
                       type="number" 
                       step="0.01" 
@@ -7556,7 +8148,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">Data do Pagamento (DD/MM/AA)</label>
+                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">
+                      {paymentModal.transaction?.type === 'income' ? 'Data do Recebimento (DD/MM/AA)' : 'Data do Pagamento (DD/MM/AA)'}
+                    </label>
                     <input 
                       type="text"
                       inputMode="numeric"
@@ -7577,14 +8171,18 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     </div>
                   )}
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">Banco pagador</label>
+                    <label className="block font-bold text-slate-700 mb-1.5 text-sm">
+                      {paymentModal.transaction?.type === 'income' ? 'Banco do recebimento' : 'Banco pagador'}
+                    </label>
                     <select 
                       required
                       value={paymentModal.bank} 
                       onChange={(e) => setPaymentModal(p => ({ ...p, bank: e.target.value }))} 
                       className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:border-emerald-500 text-sm"
                     >
-                      <option value="">Selecione o banco pagador</option>
+                      <option value="">
+                        {paymentModal.transaction?.type === 'income' ? 'Selecione o banco do recebimento' : 'Selecione o banco pagador'}
+                      </option>
                       {banks.map(b => <option key={b} value={b}>{b}</option>)}
                     </select>
                   </div>
