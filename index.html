@@ -1343,6 +1343,18 @@
   }
 </style>
 
+
+<style id="financas-pro-minhas-faturas-todas-v13">
+  .neo-white-panel:has(table){
+    overflow:visible!important;
+  }
+  @media(max-width:900px){
+    .neo-white-panel:has(table){
+      overflow-x:auto!important;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -1421,7 +1433,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '12';
+    const APP_VERSION = '14';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -5213,7 +5225,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div className="neo-white-panel">
                       <div className="neo-white-title"><span><CreditCard className="w-4 h-4"/> Minhas Faturas</span><button onClick={()=>setActiveTab('cardConference')}>Ver todas</button></div>
                       <div className="overflow-x-auto"><table className="w-full text-[10px]"><thead><tr><th>Cartão</th><th>Venc.</th><th>Fatura</th><th>Pago</th><th>Diferença</th><th>Status</th></tr></thead><tbody>
-                        {[...resumoData.pmList].sort((a,b)=>(a.vencimentoDia||99)-(b.vencimentoDia||99)).slice(0,5).map((item,i)=>{const due=getInvoiceDueDate(item.monthKey,item.vencimentoDia); const dif=Math.max(0,(item.paidAmount||0)-(item.invoiceTarget||item.totalValue||0)); return <tr key={i}><td className="font-bold">{item.cardName}</td><td>{due?formatToDDMMAAAA(due):'-'}</td><td>R$ {(item.invoiceTarget||item.totalValue||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>R$ {(item.paidAmount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td className={dif>0?'text-rose-600 font-bold':'text-slate-600'}>R$ {dif.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>{item.isPaid ? <span className="neo-status neo-paid">Pago</span> : <button type="button" onClick={()=>handleToggleFaturaPaid(item.cardName,item.monthKey,false)} className="neo-status neo-pending dashboard-pending-click" title="Clique para registrar o pagamento">Pendente</button>}</td></tr>})}
+                        {[...resumoData.pmList]
+                          .filter(item => Number(item.invoiceTarget || item.totalValue || 0) > 0)
+                          .sort((a,b)=>(a.vencimentoDia||99)-(b.vencimentoDia||99))
+                          .map((item,i)=>{const due=getInvoiceDueDate(item.monthKey,item.vencimentoDia); const dif=Math.max(0,(item.paidAmount||0)-(item.invoiceTarget||item.totalValue||0)); return <tr key={i}><td className="font-bold">{item.cardName}</td><td>{due?formatToDDMMAAAA(due):'-'}</td><td>R$ {(item.invoiceTarget||item.totalValue||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>R$ {(item.paidAmount||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td className={dif>0?'text-rose-600 font-bold':'text-slate-600'}>R$ {dif.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td><td>{item.isPaid ? <span className="neo-status neo-paid">Pago</span> : <button type="button" onClick={()=>handleToggleFaturaPaid(item.cardName,item.monthKey,false)} className="neo-status neo-pending dashboard-pending-click" title="Clique para registrar o pagamento">Pendente</button>}</td></tr>})}
                       </tbody></table></div>
                     </div>
 
