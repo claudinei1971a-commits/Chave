@@ -1477,6 +1477,2892 @@
   }
 </style>
 
+
+<style id="financas-pro-metas-visao-geral-v18">
+  .goalview-page{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    color:#102a43;
+  }
+  .goalview-topline{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:2px 2px 0;
+  }
+  .goalview-topline h2{
+    margin:0!important;
+    color:#0e2d4e!important;
+    font-size:28px!important;
+    line-height:1.05!important;
+    font-weight:950!important;
+    letter-spacing:-.035em!important;
+  }
+  .goalview-topline p{
+    margin:5px 0 0;
+    font-size:11px;
+    color:#607a94;
+    font-weight:600;
+  }
+  .goalview-structure-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    border:0;
+    border-radius:9px;
+    padding:10px 14px;
+    background:linear-gradient(135deg,#29688f,#1c557b);
+    color:#fff;
+    font-size:11px;
+    font-weight:900;
+    box-shadow:0 7px 16px rgba(16,66,103,.22);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .goalview-structure-btn.active{
+    background:linear-gradient(135deg,#0f9f72,#08795d);
+  }
+  .goalview-overview-grid{
+    display:grid;
+    grid-template-columns:1.18fr 1.15fr 1.15fr 1.15fr;
+    gap:14px;
+  }
+  .goalview-period-card,
+  .goalview-stat-card{
+    min-height:88px;
+    background:rgba(255,255,255,.94);
+    border:1px solid #c7d8e6;
+    border-radius:12px;
+    padding:13px 14px;
+    box-shadow:0 4px 12px rgba(14,55,91,.10);
+  }
+  .goalview-period-card label,
+  .goalview-stat-card>span{
+    display:block;
+    color:#101820;
+    font-size:12px;
+    line-height:1.1;
+    font-weight:950;
+    margin-bottom:7px;
+  }
+  .goalview-period-card select{
+    width:100%!important;
+    min-height:39px!important;
+    border:1px solid #b9c8d6!important;
+    border-radius:8px!important;
+    padding:7px 10px!important;
+    background:#fff!important;
+    color:#18212b!important;
+    font-size:11px!important;
+    font-weight:800!important;
+    box-shadow:none!important;
+  }
+  .goalview-stat-card strong{
+    display:block;
+    color:#15202b;
+    font-size:18px;
+    line-height:1.05;
+    font-weight:950;
+    letter-spacing:-.02em;
+  }
+  .goalview-stat-card small{
+    display:block;
+    margin-top:5px;
+    color:#344b60;
+    font-size:9px;
+    font-weight:650;
+    line-height:1.25;
+  }
+  .goalview-green{color:#278b54!important}
+  .goalview-red-text{color:#dc3d55!important}
+  .goalview-focus-strip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .goalview-focus-strip>div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid #c9dbe7;
+    background:linear-gradient(135deg,#f5fbff,#eef9f7);
+    border-radius:10px;
+    padding:9px 12px;
+  }
+  .goalview-focus-strip span{
+    color:#31516d;
+    font-size:10px;
+    font-weight:900;
+  }
+  .goalview-focus-strip b{
+    margin-left:auto;
+    color:#16835e;
+    font-size:13px;
+    font-weight:950;
+  }
+  .goalview-focus-strip small{
+    color:#7990a4;
+    font-size:8px;
+    font-weight:700;
+  }
+  .goalview-table-card{
+    overflow:hidden;
+    border:1px solid #aec6d8;
+    border-radius:12px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 6px 16px rgba(15,54,87,.12);
+  }
+  .goalview-table-scroll{
+    overflow-x:auto;
+  }
+  .goalview-table{
+    width:100%;
+    min-width:1040px;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  .goalview-table thead th{
+    background:linear-gradient(180deg,#eaf4fc,#dfedf7);
+    color:#111820;
+    font-size:11px;
+    font-weight:950;
+    text-align:center;
+    padding:10px 9px;
+    border-bottom:1px solid #b9cedd;
+  }
+  .goalview-table thead th:first-child{
+    width:34%;
+    text-align:left;
+  }
+  .goalview-table thead th:nth-child(2){width:15%}
+  .goalview-table thead th:nth-child(3){width:15%}
+  .goalview-table thead th:nth-child(4){width:25%}
+  .goalview-table thead th:nth-child(5){width:11%}
+  .goalview-table tbody td{
+    padding:8px 9px;
+    border-bottom:1px solid #cfdae3;
+    vertical-align:middle;
+    text-align:center;
+    background:#fff;
+  }
+  .goalview-table tbody tr.goalview-row:nth-child(4n+3) td{
+    background:#fbfdff;
+  }
+  .goalview-row{
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .goalview-row:hover td{
+    background:#f1f8fd!important;
+  }
+  .goalview-row.expanded td{
+    background:#eef7fd!important;
+  }
+  .goalview-category{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    text-align:left;
+  }
+  .goalview-category-icon{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    background:#edf4f9;
+    border:1px solid #d5e2eb;
+    font-size:17px;
+  }
+  .goalview-category b{
+    display:block;
+    color:#17212b;
+    font-size:11px;
+    font-weight:950;
+    line-height:1.1;
+  }
+  .goalview-category small,
+  .goalview-table td>small{
+    display:block;
+    margin-top:2px;
+    color:#526c82;
+    font-size:8px;
+    font-weight:650;
+  }
+  .goalview-category em{
+    display:block;
+    margin-top:3px;
+    color:#3973a0;
+    font-size:7px;
+    font-style:normal;
+    font-weight:850;
+  }
+  .goalview-money{
+    color:#101a24;
+    font-size:13px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+  .goalview-goal-editor{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+  }
+  .goalview-goal-editor span{
+    color:#526c82;
+    font-size:9px;
+    font-weight:900;
+  }
+  .goalview-goal-editor input{
+    width:95px!important;
+    min-height:31px!important;
+    border:1px solid #86acd0!important;
+    border-radius:7px!important;
+    padding:5px 7px!important;
+    text-align:right!important;
+    color:#0f2c49!important;
+    background:#fafdff!important;
+    font-size:10px!important;
+    font-weight:900!important;
+    box-shadow:none!important;
+  }
+  .goalview-status-wrap{
+    width:100%;
+  }
+  .goalview-progress{
+    position:relative;
+    height:22px;
+    overflow:hidden;
+    border-radius:999px;
+    background:#d9dee4;
+    box-shadow:inset 0 1px 2px rgba(15,23,42,.10);
+  }
+  .goalview-progress i{
+    position:absolute;
+    inset:0 auto 0 0;
+    width:0;
+    border-radius:999px;
+    transition:width .25s ease;
+  }
+  .goalview-progress span{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:9px;
+    line-height:1;
+    font-weight:950;
+    text-shadow:0 1px 2px rgba(0,0,0,.25);
+    z-index:2;
+  }
+  .goalview-status-wrap>small{
+    display:block;
+    margin-top:3px;
+    font-size:7px;
+    line-height:1.1;
+    font-weight:950;
+    letter-spacing:.02em;
+  }
+  .goalview-status-green .goalview-progress i{background:linear-gradient(90deg,#29955b,#45aa70)}
+  .goalview-status-green>small{color:#1f8650}
+  .goalview-status-amber .goalview-progress i{background:linear-gradient(90deg,#a7bd20,#d1bf27)}
+  .goalview-status-amber>small{color:#9a7c00}
+  .goalview-status-red .goalview-progress i{background:linear-gradient(90deg,#e0525e,#c93249)}
+  .goalview-status-red>small{color:#c33448}
+  .goalview-status-blue .goalview-progress i{background:linear-gradient(90deg,#2b91a8,#238c9e)}
+  .goalview-status-blue>small{color:#2a7e92}
+  .goalview-status-special .goalview-progress i{background:linear-gradient(90deg,#2b8ea0,#2aa4a0)}
+  .goalview-status-special>small{color:#207d82}
+  .goalview-status-neutral .goalview-progress i{background:#b5c0c9}
+  .goalview-status-neutral>small{color:#718391}
+  .goalview-variation b{
+    display:block;
+    color:#17212b;
+    font-size:12px;
+    font-weight:950;
+  }
+  .goalview-variation small{
+    display:block;
+    margin-top:2px;
+    color:#3f5160;
+    font-size:7px;
+    font-weight:700;
+    line-height:1.15;
+  }
+  .goalview-variation.positive b{color:#1d8953}
+  .goalview-variation.negative b{color:#d43c4d}
+  .goalview-detail-row td{
+    padding:0!important;
+    background:#f5f9fc!important;
+  }
+  .goalview-detail-box{
+    padding:12px 14px;
+    border-top:1px solid #c4d7e5;
+    border-bottom:1px solid #c4d7e5;
+    background:#f5f9fc;
+  }
+  .goalview-detail-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:9px;
+  }
+  .goalview-detail-head h4{
+    margin:0;
+    color:#143b5d;
+    font-size:12px;
+    font-weight:950;
+  }
+  .goalview-detail-head p{
+    margin:2px 0 0;
+    color:#71879a;
+    font-size:8px;
+    font-weight:700;
+  }
+  .goalview-detail-head button{
+    border:1px solid #bad0df;
+    border-radius:7px;
+    background:#fff;
+    color:#245b83;
+    padding:5px 9px;
+    font-size:8px;
+    font-weight:900;
+  }
+  .goalview-detail-list{
+    display:grid;
+    gap:6px;
+  }
+  .goalview-detail-item{
+    display:grid;
+    grid-template-columns:84px 1fr 120px 72px;
+    gap:10px;
+    align-items:center;
+    border:1px solid #d9e5ed;
+    border-radius:8px;
+    background:#fff;
+    padding:7px 9px;
+    text-align:left;
+  }
+  .goalview-detail-item>span{
+    color:#6a7f91;
+    font-size:8px;
+    font-weight:750;
+  }
+  .goalview-detail-item div b{
+    display:block;
+    color:#21384c;
+    font-size:9px;
+    font-weight:900;
+  }
+  .goalview-detail-item div small{
+    display:block;
+    margin-top:1px;
+    color:#8a9aa7;
+    font-size:7px;
+    font-weight:650;
+  }
+  .goalview-detail-item strong{
+    text-align:right;
+    color:#d84253;
+    font-size:10px;
+    font-weight:950;
+  }
+  .goalview-detail-item button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    border:1px solid #bdd5e6;
+    border-radius:7px;
+    background:#eef7fd;
+    color:#28658f;
+    padding:5px 7px;
+    font-size:8px;
+    font-weight:900;
+  }
+  .goalview-empty{
+    padding:18px;
+    text-align:center;
+    color:#72889a;
+    font-size:10px;
+    font-weight:700;
+  }
+  .goalview-footer-note{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid #cbdce8;
+    border-radius:10px;
+    background:#f7fbfe;
+    padding:9px 12px;
+    color:#536f86;
+    font-size:9px;
+    font-weight:650;
+  }
+  .goalview-footer-note svg{
+    color:#2a749f;
+    flex:0 0 auto;
+  }
+  @media(max-width:1050px){
+    .goalview-overview-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:700px){
+    .goalview-topline{align-items:flex-start;flex-direction:column}
+    .goalview-overview-grid{grid-template-columns:1fr}
+    .goalview-focus-strip{grid-template-columns:1fr}
+    .goalview-detail-item{grid-template-columns:72px 1fr}
+    .goalview-detail-item strong{text-align:left}
+    .goalview-topline h2{font-size:22px!important}
+  }
+</style>
+
+
+<style id="financas-pro-acompanhamento-integral-v19">
+  .advanced-finance-page{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    color:#102a43;
+  }
+  .advanced-finance-titlebar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:2px 2px 0;
+  }
+  .advanced-finance-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .advanced-finance-title-icon{
+    width:30px;
+    height:30px;
+    border:2px solid #3e779c;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#265e85;
+    background:#f4fbff;
+  }
+  .advanced-finance-title h2{
+    margin:0!important;
+    color:#0f2f4d!important;
+    font-size:25px!important;
+    line-height:1.05!important;
+    font-weight:950!important;
+    letter-spacing:-.025em!important;
+  }
+  .advanced-finance-title p{
+    margin:4px 0 0;
+    color:#688198;
+    font-size:9px;
+    font-weight:650;
+  }
+  .advanced-period-tabs{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(88px,1fr));
+    gap:7px;
+  }
+  .advanced-period-tabs button{
+    border:1px solid #c6d2dd;
+    border-radius:8px;
+    background:#f8fafc;
+    color:#253a4d;
+    min-height:38px;
+    padding:7px 13px;
+    font-size:11px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 2px 5px rgba(15,23,42,.05);
+  }
+  .advanced-period-tabs button.active{
+    border-color:#3172a2;
+    background:#e4f0fa;
+    color:#163f61;
+    box-shadow:inset 0 0 0 1px #6b99bb;
+  }
+  .advanced-main-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:14px;
+    align-items:stretch;
+  }
+  .advanced-main-content{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .advanced-summary-row{
+    display:grid;
+    grid-template-columns:1.15fr 1.15fr .82fr;
+    gap:10px;
+  }
+  .advanced-summary-card{
+    position:relative;
+    min-height:132px;
+    overflow:hidden;
+    border-radius:9px;
+    color:#fff;
+    box-shadow:0 5px 13px rgba(15,23,42,.14);
+  }
+  .advanced-income-card{
+    display:grid;
+    grid-template-columns:82px 1fr;
+    background:linear-gradient(135deg,#219a59,#17a36a);
+  }
+  .advanced-balance-card{
+    background:linear-gradient(135deg,#245dbb,#1459b8);
+  }
+  .advanced-summary-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid rgba(255,255,255,.14);
+    font-size:25px;
+    font-weight:950;
+    background:rgba(255,255,255,.04);
+  }
+  .advanced-summary-content{
+    position:relative;
+    z-index:2;
+    padding:14px 16px;
+  }
+  .advanced-summary-content>span{
+    display:block;
+    font-size:11px;
+    font-weight:900;
+    opacity:.95;
+  }
+  .advanced-summary-content>strong{
+    display:block;
+    margin-top:3px;
+    font-size:24px;
+    line-height:1.05;
+    font-weight:950;
+    letter-spacing:-.025em;
+  }
+  .advanced-summary-content>small{
+    display:block;
+    margin-top:4px;
+    font-size:8px;
+    opacity:.84;
+    font-weight:650;
+  }
+  .advanced-mini-chart{
+    position:absolute;
+    left:8px;
+    right:8px;
+    bottom:3px;
+    height:54px;
+    opacity:.9;
+  }
+  .advanced-debt-card{
+    border:1px solid #d5dde5;
+    border-radius:9px;
+    background:#fff;
+    padding:14px;
+    box-shadow:0 5px 13px rgba(15,23,42,.09);
+  }
+  .advanced-debt-card>span{
+    display:block;
+    color:#19242e;
+    font-size:11px;
+    font-weight:950;
+  }
+  .advanced-debt-content{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:10px;
+  }
+  .advanced-debt-ring{
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+  }
+  .advanced-debt-ring>div{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#fff;
+    display:grid;
+    place-items:center;
+  }
+  .advanced-debt-ring b{
+    font-size:13px;
+    color:#162536;
+  }
+  .advanced-debt-content>div:last-child strong{
+    display:block;
+    color:#111827;
+    font-size:23px;
+    line-height:1;
+    font-weight:950;
+  }
+  .advanced-debt-content>div:last-child small{
+    display:block;
+    margin-top:4px;
+    color:#4b5563;
+    font-size:9px;
+    font-weight:750;
+  }
+  .advanced-table-card{
+    overflow:hidden;
+    border:1px solid #c7d3dd;
+    border-radius:9px;
+    background:#fff;
+    box-shadow:0 5px 13px rgba(15,23,42,.08);
+  }
+  .advanced-table-scroll{overflow-x:auto}
+  .advanced-finance-table{
+    width:100%;
+    min-width:900px;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  .advanced-finance-table thead th{
+    background:linear-gradient(180deg,#edf4f8,#e7eef3);
+    color:#141e27;
+    border-bottom:1px solid #bac9d4;
+    border-right:1px solid #d2dce4;
+    padding:10px 8px;
+    font-size:9px;
+    font-weight:950;
+    text-align:center;
+  }
+  .advanced-finance-table thead th:first-child{
+    width:30%;
+    text-align:left;
+  }
+  .advanced-finance-table tbody td{
+    border-bottom:1px solid #d5dee5;
+    border-right:1px solid #e0e7ec;
+    padding:8px;
+    text-align:center;
+    color:#17212b;
+    font-size:9px;
+    font-weight:800;
+    background:#fff;
+  }
+  .advanced-finance-table tbody tr:nth-child(even) td{
+    background:#fbfdff;
+  }
+  .advanced-category-name{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-align:left;
+  }
+  .advanced-category-name span{
+    width:25px;
+    height:25px;
+    border-radius:8px;
+    opacity:.18;
+    border:1px solid currentColor;
+  }
+  .advanced-category-name b{
+    color:#162536;
+    font-size:10px;
+    font-weight:950;
+  }
+  .advanced-finance-table .positive-value{color:#15803d!important}
+  .advanced-finance-table .negative-value{color:#dc2626!important}
+  .advanced-progress{
+    position:relative;
+    height:20px;
+    overflow:hidden;
+    border-radius:6px;
+    background:#e0e5e9;
+  }
+  .advanced-progress i{
+    position:absolute;
+    inset:0 auto 0 0;
+    border-radius:6px;
+  }
+  .advanced-progress.good i{background:linear-gradient(90deg,#138d4d,#22a75f)}
+  .advanced-progress.warning i{background:linear-gradient(90deg,#9fbf2a,#c9c72f)}
+  .advanced-progress.danger i{background:linear-gradient(90deg,#e34b55,#c8223c)}
+  .advanced-progress span{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:8px;
+    font-weight:950;
+    text-shadow:0 1px 2px rgba(0,0,0,.26);
+  }
+  .advanced-future-link{
+    border:0;
+    background:#eaf3ff;
+    color:#185fa9;
+    border-radius:6px;
+    padding:5px 7px;
+    font-size:9px;
+    font-weight:950;
+    cursor:pointer;
+  }
+  .advanced-future-link:hover{background:#dbeafe}
+  .advanced-empty{
+    padding:24px;
+    text-align:center;
+    color:#718096;
+    font-size:10px;
+    font-weight:700;
+  }
+  .advanced-insights{
+    overflow:hidden;
+    border:1px solid #d5dde5;
+    border-radius:9px;
+    background:#fff;
+    box-shadow:0 5px 13px rgba(15,23,42,.08);
+  }
+  .advanced-insights-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:13px 14px 9px;
+    border-bottom:1px solid #edf0f3;
+  }
+  .advanced-insights-heading h3{
+    margin:0;
+    color:#18222c;
+    font-size:12px;
+    font-weight:950;
+  }
+  .advanced-insights-heading small{
+    color:#64748b;
+    font-size:8px;
+    font-weight:800;
+  }
+  .advanced-insight-block{
+    padding:12px 13px;
+    border-bottom:1px solid #edf0f3;
+  }
+  .advanced-insight-block:last-child{border-bottom:0}
+  .advanced-insight-block h4{
+    margin:0 0 7px;
+    color:#162536;
+    font-size:10px;
+    font-weight:950;
+  }
+  .advanced-pie-wrap{
+    position:relative;
+    min-height:190px;
+  }
+  .advanced-legend{
+    display:grid;
+    gap:5px;
+    margin-top:-6px;
+  }
+  .advanced-legend>div{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#334155;
+    font-size:8px;
+  }
+  .advanced-legend span{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+  }
+  .advanced-legend b{font-weight:850}
+  .advanced-future-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .advanced-future-title h4{margin:0}
+  .advanced-future-title button,
+  .advanced-link-note button{
+    border:1px solid #bfd3e4;
+    border-radius:7px;
+    background:#f3f9fd;
+    color:#24628f;
+    padding:5px 8px;
+    font-size:7px;
+    font-weight:900;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .advanced-future-total{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    margin-top:9px;
+    border-radius:8px;
+    padding:8px 9px;
+    background:#f5f9fd;
+  }
+  .advanced-future-total span{
+    color:#60778b;
+    font-size:8px;
+    font-weight:800;
+  }
+  .advanced-future-total strong{
+    color:#174f83;
+    font-size:13px;
+    font-weight:950;
+  }
+  .advanced-bar-wrap{margin-top:7px}
+  .advanced-chart-empty{
+    display:flex;
+    min-height:100px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#8293a3;
+    font-size:9px;
+    font-weight:700;
+  }
+  .advanced-link-note{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid #bed5e5;
+    border-radius:9px;
+    background:#eff8fd;
+    padding:9px 11px;
+    color:#48677e;
+    font-size:9px;
+    font-weight:650;
+  }
+  .advanced-link-note svg{
+    color:#22739e;
+    flex:0 0 auto;
+  }
+  .advanced-link-note span{flex:1}
+  @media(max-width:1150px){
+    .advanced-main-grid{grid-template-columns:1fr}
+    .advanced-insights{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+    .advanced-insights-heading{grid-column:1/-1}
+  }
+  @media(max-width:850px){
+    .advanced-finance-titlebar{
+      align-items:flex-start;
+      flex-direction:column;
+    }
+    .advanced-period-tabs{
+      width:100%;
+    }
+    .advanced-summary-row{
+      grid-template-columns:1fr;
+    }
+  }
+  @media(max-width:650px){
+    .advanced-period-tabs{
+      grid-template-columns:repeat(2,1fr);
+    }
+    .advanced-insights{
+      grid-template-columns:1fr;
+    }
+    .advanced-insights-heading{grid-column:auto}
+    .advanced-finance-title h2{font-size:20px!important}
+    .advanced-link-note{
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-acompanhamento-meses-metas-v20">
+  .monthgoals-page{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    color:#102a43;
+  }
+  .monthgoals-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .monthgoals-header h2{
+    margin:0!important;
+    color:#0e2d4e!important;
+    font-size:26px!important;
+    font-weight:950!important;
+    letter-spacing:-.03em!important;
+  }
+  .monthgoals-header p{
+    margin:4px 0 0;
+    color:#6b8195;
+    font-size:10px;
+    font-weight:650;
+  }
+  .monthgoals-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .monthgoals-year{
+    display:flex;
+    align-items:center;
+    border:1px solid #c5d5e2;
+    border-radius:9px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 3px 8px rgba(15,23,42,.06);
+  }
+  .monthgoals-year button{
+    width:34px;
+    height:36px;
+    border:0;
+    background:#edf5fa;
+    color:#275d82;
+    font-size:20px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .monthgoals-year strong{
+    min-width:62px;
+    text-align:center;
+    color:#173b5b;
+    font-size:12px;
+    font-weight:950;
+  }
+  .monthgoals-edit-btn,
+  .monthgoals-section-head>button,
+  .monthgoals-list-head>button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    border:1px solid #b9d0e1;
+    border-radius:9px;
+    background:#eef7fd;
+    color:#245f89;
+    padding:9px 12px;
+    font-size:9px;
+    font-weight:950;
+    cursor:pointer;
+  }
+  .monthgoals-edit-btn.active{
+    background:#0b8f69;
+    border-color:#0b8f69;
+    color:#fff;
+  }
+  .monthgoals-months{
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:8px;
+  }
+  .monthgoals-month-card{
+    border:1px solid #cbd8e3;
+    border-radius:10px;
+    background:#fff;
+    padding:9px 10px;
+    text-align:left;
+    cursor:pointer;
+    min-width:0;
+    box-shadow:0 3px 9px rgba(15,23,42,.06);
+    transition:.15s ease;
+  }
+  .monthgoals-month-card:hover{
+    transform:translateY(-1px);
+    border-color:#8eb4d1;
+  }
+  .monthgoals-month-card.active{
+    border-color:#2674a6;
+    box-shadow:0 0 0 2px rgba(38,116,166,.14),0 5px 12px rgba(15,23,42,.08);
+    background:#f2f9fe;
+  }
+  .monthgoals-month-name{
+    color:#173b5b;
+    font-size:10px;
+    font-weight:950;
+    text-transform:capitalize;
+  }
+  .monthgoals-month-money{
+    margin-top:4px;
+    color:#d83b50;
+    font-size:13px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+  .monthgoals-month-card>small{
+    display:block;
+    color:#8494a2;
+    font-size:7px;
+    font-weight:700;
+    margin-bottom:5px;
+  }
+  .monthgoals-month-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:4px;
+    font-size:7px;
+    color:#6b7f91;
+    margin-top:2px;
+  }
+  .monthgoals-month-row b{
+    color:#27465f;
+    font-size:8px;
+    font-weight:900;
+    white-space:nowrap;
+  }
+  .monthgoals-mini-progress{
+    height:4px;
+    margin-top:6px;
+    overflow:hidden;
+    border-radius:999px;
+    background:#e1e7ec;
+  }
+  .monthgoals-mini-progress i{
+    display:block;
+    height:100%;
+    border-radius:999px;
+  }
+  .monthgoals-mini-progress.good i{background:#24a267}
+  .monthgoals-mini-progress.warning i{background:#d0ad24}
+  .monthgoals-mini-progress.danger i{background:#dc4053}
+  .monthgoals-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+  .monthgoals-summary-card{
+    border:1px solid #cbd8e3;
+    border-radius:11px;
+    background:#fff;
+    padding:12px 13px;
+    box-shadow:0 4px 10px rgba(15,23,42,.06);
+  }
+  .monthgoals-summary-card span{
+    display:block;
+    color:#526c82;
+    font-size:9px;
+    font-weight:900;
+    text-transform:uppercase;
+  }
+  .monthgoals-summary-card strong{
+    display:block;
+    margin-top:3px;
+    color:#163d5e;
+    font-size:18px;
+    font-weight:950;
+  }
+  .monthgoals-summary-card strong.rose{color:#d63b4f}
+  .monthgoals-summary-card strong.blue{color:#2563ae}
+  .monthgoals-summary-card strong.green{color:#16835d}
+  .monthgoals-summary-card small{
+    display:block;
+    margin-top:3px;
+    color:#8a9aa7;
+    font-size:7px;
+    font-weight:700;
+  }
+  .monthgoals-section-card,
+  .monthgoals-list-card,
+  .monthgoals-year-table-card{
+    border:1px solid #c8d6e1;
+    border-radius:11px;
+    background:#fff;
+    box-shadow:0 4px 11px rgba(15,23,42,.06);
+    overflow:hidden;
+  }
+  .monthgoals-section-head,
+  .monthgoals-list-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 14px;
+    border-bottom:1px solid #e0e7ed;
+    background:#f8fbfd;
+  }
+  .monthgoals-section-head h3,
+  .monthgoals-list-head h3{
+    margin:0;
+    color:#173b5b;
+    font-size:12px;
+    font-weight:950;
+  }
+  .monthgoals-section-head p,
+  .monthgoals-list-head p{
+    margin:2px 0 0;
+    color:#7b8fa0;
+    font-size:7px;
+    font-weight:700;
+  }
+  .monthgoals-category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:9px;
+    padding:11px;
+  }
+  .monthgoals-category-card{
+    border:1px solid #d5e0e8;
+    border-radius:10px;
+    padding:10px;
+    background:#fff;
+  }
+  .monthgoals-category-title{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-bottom:8px;
+  }
+  .monthgoals-category-title>span{
+    width:8px;
+    height:26px;
+    border-radius:999px;
+    flex:0 0 auto;
+  }
+  .monthgoals-category-title b{
+    color:#21394e;
+    font-size:9px;
+    font-weight:950;
+    line-height:1.1;
+  }
+  .monthgoals-category-values{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+  .monthgoals-category-values>div{
+    border-radius:7px;
+    background:#f7fafc;
+    padding:6px 7px;
+  }
+  .monthgoals-category-values span,
+  .monthgoals-category-meta label{
+    display:block;
+    color:#8393a0;
+    font-size:7px;
+    font-weight:800;
+  }
+  .monthgoals-category-values strong,
+  .monthgoals-category-meta>strong{
+    display:block;
+    margin-top:2px;
+    color:#1c3448;
+    font-size:10px;
+    font-weight:950;
+  }
+  .monthgoals-category-meta{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:7px;
+    padding-top:7px;
+    border-top:1px dashed #d5e0e8;
+  }
+  .monthgoals-meta-input{
+    display:flex;
+    align-items:center;
+    gap:3px;
+  }
+  .monthgoals-meta-input span{
+    color:#628096;
+    font-size:8px;
+    font-weight:900;
+  }
+  .monthgoals-meta-input input{
+    width:90px!important;
+    min-height:28px!important;
+    border:1px solid #8fb7d4!important;
+    border-radius:7px!important;
+    padding:4px 6px!important;
+    text-align:right!important;
+    color:#17476b!important;
+    font-size:9px!important;
+    font-weight:950!important;
+    background:#fafeff!important;
+    box-shadow:none!important;
+  }
+  .monthgoals-category-progress{
+    position:relative;
+    height:19px;
+    margin-top:8px;
+    overflow:hidden;
+    border-radius:999px;
+    background:#e2e7eb;
+  }
+  .monthgoals-category-progress i{
+    position:absolute;
+    inset:0 auto 0 0;
+    border-radius:999px;
+  }
+  .monthgoals-category-progress.good i{background:#2ca467}
+  .monthgoals-category-progress.warning i{background:#c7b52d}
+  .monthgoals-category-progress.danger i{background:#dc4053}
+  .monthgoals-category-progress span{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:7px;
+    font-weight:950;
+    text-shadow:0 1px 1px rgba(0,0,0,.22);
+  }
+  .monthgoals-category-rest{
+    margin-top:5px;
+    color:#23845e;
+    font-size:7px;
+    font-weight:850;
+  }
+  .monthgoals-category-rest.negative{color:#d33c50}
+  .monthgoals-bottom-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .monthgoals-list-body{
+    max-height:290px;
+    overflow:auto;
+  }
+  .monthgoals-list-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    border:0;
+    border-bottom:1px solid #eef2f5;
+    background:#fff;
+    padding:9px 12px;
+    text-align:left;
+    cursor:pointer;
+  }
+  .monthgoals-list-item.static{cursor:default}
+  .monthgoals-list-item:hover{background:#f8fbfd}
+  .monthgoals-list-item b{
+    display:block;
+    color:#243c51;
+    font-size:8px;
+    font-weight:900;
+  }
+  .monthgoals-list-item small{
+    display:block;
+    margin-top:2px;
+    color:#8797a4;
+    font-size:7px;
+    font-weight:700;
+  }
+  .monthgoals-list-item strong{
+    color:#d53b4d;
+    font-size:9px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+  .monthgoals-empty{
+    padding:22px;
+    text-align:center;
+    color:#8798a7;
+    font-size:8px;
+    font-weight:700;
+  }
+  .monthgoals-year-table-scroll{overflow-x:auto}
+  .monthgoals-year-table{
+    width:100%;
+    min-width:1450px;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  .monthgoals-year-table th{
+    background:#edf4f8;
+    color:#29455d;
+    padding:8px 5px;
+    border-bottom:1px solid #c8d6e1;
+    border-right:1px solid #dce5eb;
+    font-size:8px;
+    font-weight:950;
+    text-transform:capitalize;
+  }
+  .monthgoals-year-table th:first-child{width:190px;text-align:left}
+  .monthgoals-year-table td{
+    padding:6px 5px;
+    border-bottom:1px solid #e1e8ed;
+    border-right:1px solid #edf1f4;
+    text-align:center;
+    cursor:pointer;
+    background:#fff;
+  }
+  .monthgoals-year-table td:first-child{
+    text-align:left;
+    cursor:default;
+  }
+  .monthgoals-year-table td:first-child span{
+    display:inline-block;
+    width:7px;
+    height:18px;
+    border-radius:999px;
+    vertical-align:middle;
+    margin-right:6px;
+  }
+  .monthgoals-year-table td:first-child b{
+    color:#2b4052;
+    font-size:8px;
+    font-weight:900;
+  }
+  .monthgoals-year-table td b{
+    display:block;
+    color:#d13d50;
+    font-size:8px;
+    font-weight:950;
+  }
+  .monthgoals-year-table td small{
+    display:block;
+    margin-top:2px;
+    color:#587286;
+    font-size:6px;
+    font-weight:700;
+  }
+  .monthgoals-year-table td em{
+    display:block;
+    margin-top:2px;
+    color:#286c9c;
+    font-size:6px;
+    font-style:normal;
+    font-weight:800;
+  }
+  .monthgoals-year-table td.selected-month{
+    background:#eef8ff;
+    box-shadow:inset 0 0 0 1px #9bc4df;
+  }
+  @media(max-width:1100px){
+    .monthgoals-months{grid-template-columns:repeat(4,1fr)}
+    .monthgoals-category-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:800px){
+    .monthgoals-header{align-items:flex-start;flex-direction:column}
+    .monthgoals-summary{grid-template-columns:1fr 1fr}
+    .monthgoals-bottom-grid{grid-template-columns:1fr}
+    .monthgoals-months{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:560px){
+    .monthgoals-actions{width:100%;justify-content:space-between}
+    .monthgoals-months{grid-template-columns:repeat(2,1fr)}
+    .monthgoals-summary{grid-template-columns:1fr}
+    .monthgoals-category-grid{grid-template-columns:1fr}
+    .monthgoals-header h2{font-size:21px!important}
+  }
+</style>
+
+
+<style id="financas-pro-acompanhamento-v21">
+  .monthgoals-v21 .monthgoals-months{
+    grid-template-columns:repeat(6,minmax(145px,1fr));
+    overflow-x:auto;
+    padding-bottom:4px;
+  }
+  .monthgoals-v21 .monthgoals-month-card{
+    min-height:128px;
+    padding:12px 13px;
+  }
+  .monthgoals-v21 .monthgoals-month-name{
+    font-size:12px;
+  }
+  .monthgoals-v21 .monthgoals-month-money{
+    font-size:16px;
+  }
+  .monthgoals-v21 .monthgoals-month-card>small{
+    font-size:8px;
+  }
+  .monthgoals-v21 .monthgoals-month-row{
+    font-size:8px;
+  }
+  .monthgoals-v21 .monthgoals-month-row b{
+    font-size:9px;
+  }
+  .monthgoals-summary-v21{
+    grid-template-columns:repeat(5,1fr);
+  }
+  .monthgoals-category-grid-v21{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    padding:14px;
+  }
+  .monthgoals-category-card-v21{
+    padding:14px;
+    border-radius:12px;
+  }
+  .monthgoals-category-card-v21 .monthgoals-category-title b{
+    font-size:11px;
+  }
+  .monthgoals-category-card-v21 .monthgoals-category-title small{
+    display:block;
+    margin-top:3px;
+    color:#6e8799;
+    font-size:8px;
+    font-weight:750;
+  }
+  .monthgoals-category-values-v21{
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+  }
+  .monthgoals-category-values-v21>div{
+    padding:8px 9px;
+  }
+  .monthgoals-category-values-v21 span{
+    font-size:8px;
+  }
+  .monthgoals-category-values-v21 strong{
+    font-size:11px;
+  }
+  .monthgoals-category-meta-v21{
+    align-items:center;
+    padding-top:9px;
+  }
+  .monthgoals-category-meta-v21 label{
+    font-size:8px;
+  }
+  .monthgoals-category-meta-v21 small{
+    display:block;
+    margin-top:2px;
+    color:#95a2ad;
+    font-size:7px;
+    font-weight:700;
+  }
+  .monthgoals-category-meta-v21>strong{
+    font-size:13px;
+  }
+  .monthgoals-category-card-v21 .monthgoals-category-progress{
+    height:22px;
+  }
+  .monthgoals-category-card-v21 .monthgoals-category-progress span{
+    font-size:8px;
+  }
+  .monthgoals-category-card-v21 .monthgoals-category-rest{
+    font-size:8px;
+  }
+  .monthgoals-future-goal{
+    margin-top:9px;
+    padding-top:9px;
+    border-top:1px dashed #d7e1e8;
+  }
+  .monthgoals-future-goal>button{
+    width:100%;
+    border:1px solid #bad2e2;
+    border-radius:8px;
+    background:#f3f9fd;
+    color:#286489;
+    padding:7px 9px;
+    font-size:8px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .monthgoals-future-goal-editor{
+    border:1px solid #c7dbe8;
+    border-radius:9px;
+    background:#f6fbfe;
+    padding:9px;
+  }
+  .monthgoals-future-goal-editor b{
+    display:block;
+    color:#244d69;
+    font-size:9px;
+    font-weight:950;
+  }
+  .monthgoals-future-goal-editor small{
+    display:block;
+    margin-top:2px;
+    color:#72899a;
+    font-size:7px;
+    font-weight:700;
+  }
+  .monthgoals-future-goal-controls{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:7px;
+  }
+  .monthgoals-future-goal-controls span{
+    color:#59768b;
+    font-size:8px;
+    font-weight:900;
+  }
+  .monthgoals-future-goal-controls input{
+    width:100px!important;
+    min-height:29px!important;
+    border:1px solid #8db3cf!important;
+    border-radius:7px!important;
+    padding:4px 6px!important;
+    background:#fff!important;
+    color:#174363!important;
+    text-align:right!important;
+    font-size:9px!important;
+    font-weight:900!important;
+  }
+  .monthgoals-future-goal-controls button{
+    border:1px solid #c2d2de;
+    border-radius:7px;
+    background:#fff;
+    color:#506b7e;
+    padding:6px 8px;
+    font-size:7px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .monthgoals-future-goal-controls button.apply{
+    border-color:#1b8d69;
+    background:#16835f;
+    color:#fff;
+  }
+  .monthgoals-chart-card{
+    overflow:hidden;
+    border:1px solid #c8d6e1;
+    border-radius:12px;
+    background:#fff;
+    box-shadow:0 5px 14px rgba(15,23,42,.08);
+  }
+  .monthgoals-chart-wrap{
+    height:330px;
+    padding:10px 12px 10px 2px;
+    background:linear-gradient(180deg,#ffffff,#f8fbfd);
+  }
+  .monthgoals-view-tabs{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    flex-wrap:wrap;
+  }
+  .monthgoals-view-tabs button{
+    border:1px solid #c5d6e2;
+    border-radius:8px;
+    background:#fff;
+    color:#41617a;
+    padding:7px 10px;
+    font-size:8px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .monthgoals-view-tabs button.active{
+    border-color:#2876a6;
+    background:#e8f4fc;
+    color:#18597f;
+    box-shadow:inset 0 0 0 1px #78a9c9;
+  }
+  .monthgoals-empty-wide{
+    grid-column:1/-1;
+  }
+  .monthgoals-period-table-card .monthgoals-section-head{
+    padding:14px 16px;
+  }
+  .monthgoals-table-v21{
+    table-layout:auto;
+    min-width:0;
+  }
+  .monthgoals-table-v21 th{
+    font-size:10px;
+    padding:10px 8px;
+    min-width:108px;
+  }
+  .monthgoals-table-v21 th:first-child{
+    width:230px;
+    min-width:230px;
+  }
+  .monthgoals-table-v21 td{
+    padding:10px 8px;
+    min-width:108px;
+  }
+  .monthgoals-table-v21 td:first-child{
+    min-width:230px;
+  }
+  .monthgoals-table-v21 td b{
+    font-size:10px;
+  }
+  .monthgoals-table-v21 td small,
+  .monthgoals-table-v21 td em{
+    font-size:7px;
+    margin-top:3px;
+  }
+  .monthgoals-table-category{
+    display:inline-block;
+    vertical-align:middle;
+  }
+  .monthgoals-table-category b{
+    display:block!important;
+    color:#294154!important;
+  }
+  .monthgoals-table-category small{
+    display:block!important;
+    margin-top:3px!important;
+    color:#71879a!important;
+  }
+  .monthgoals-table-v21.view-3,
+  .monthgoals-table-v21.view-6{
+    min-width:760px;
+  }
+  @media(max-width:1200px){
+    .monthgoals-summary-v21{grid-template-columns:repeat(3,1fr)}
+    .monthgoals-category-grid-v21{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:850px){
+    .monthgoals-summary-v21{grid-template-columns:1fr 1fr}
+    .monthgoals-category-grid-v21{grid-template-columns:1fr}
+    .monthgoals-chart-wrap{height:290px}
+  }
+  @media(max-width:560px){
+    .monthgoals-summary-v21{grid-template-columns:1fr}
+    .monthgoals-category-values-v21{grid-template-columns:1fr}
+    .monthgoals-future-goal-controls{flex-wrap:wrap}
+  }
+</style>
+
+
+<style id="financas-pro-correcao-ano-gastos-futuros-v22">
+  .monthgoals-chart-year-note{
+    margin:0 14px 12px;
+    padding:9px 11px;
+    border:1px solid #c8dceb;
+    border-radius:9px;
+    background:#f2f9fd;
+    color:#486980;
+    font-size:8px;
+    font-weight:700;
+  }
+  .monthgoals-chart-year-note b{
+    color:#1e5f89;
+    font-weight:950;
+  }
+</style>
+
+
+<style id="financas-pro-acompanhamento-v23">
+  .monthgoals-v23 .monthgoals-actions{gap:8px;flex-wrap:wrap}
+  .monthgoals-v23 .monthgoals-print-btn{
+    display:inline-flex;align-items:center;gap:6px;border:1px solid #c7d8e5;border-radius:10px;
+    background:#fff;color:#244e6d;padding:10px 14px;font-size:12px;font-weight:900;cursor:pointer;
+    box-shadow:0 2px 6px rgba(15,23,42,.05);
+  }
+  .monthgoals-v23 .monthgoals-print-btn:hover{background:#f4f9fd}
+  .monthgoals-v23 .monthgoals-summary-v21{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}
+  .monthgoals-v23 .monthgoals-summary-card span{font-size:10px}
+  .monthgoals-v23 .monthgoals-summary-card strong{font-size:22px}
+  .monthgoals-v23 .monthgoals-summary-card small{font-size:9px}
+  .monthgoals-v23 .monthgoals-category-values-v21{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .monthgoals-v23 .monthgoals-category-values-v21 span{font-size:9px}
+  .monthgoals-v23 .monthgoals-category-values-v21 strong{font-size:13px}
+  .monthgoals-v23 .monthgoals-bottom-grid.single{grid-template-columns:1fr}
+  .monthgoals-v23 .monthgoals-list-head h3,
+  .monthgoals-v23 .monthgoals-section-head h3{font-size:14px}
+  .monthgoals-v23 .monthgoals-list-head p,
+  .monthgoals-v23 .monthgoals-section-head p{font-size:9px}
+  .monthgoals-v23 .monthgoals-list-body{max-height:420px}
+  .monthgoals-v23 .monthgoals-list-item{padding:12px 14px}
+  .monthgoals-v23 .monthgoals-list-item b{font-size:11px}
+  .monthgoals-v23 .monthgoals-list-item small{font-size:9px}
+  .monthgoals-v23 .monthgoals-list-item strong{font-size:12px}
+  .monthgoals-v23 .monthgoals-empty{font-size:10px;padding:28px}
+  .monthgoals-v23 .monthgoals-chart-wrap{height:380px}
+  .monthgoals-v23 .monthgoals-chart-year-note{font-size:9px}
+  .monthgoals-v23 .monthgoals-list-head button{
+    border:1px solid #c6d8e5;border-radius:9px;background:#fff;color:#245674;padding:8px 12px;
+    font-size:11px;font-weight:900;cursor:pointer;
+  }
+  .monthgoals-v23 .monthgoals-table-v21 th{font-size:11px}
+  .monthgoals-v23 .monthgoals-table-v21 td b{font-size:11px}
+  .monthgoals-v23 .monthgoals-table-v21 td small,
+  .monthgoals-v23 .monthgoals-table-v21 td em{font-size:8px}
+  @media(max-width:1024px){
+    .monthgoals-v23 .monthgoals-chart-wrap{height:340px}
+    .monthgoals-v23 .monthgoals-list-body{max-height:none}
+  }
+  @media(max-width:800px){
+    .monthgoals-v23 .monthgoals-section-head,
+    .monthgoals-v23 .monthgoals-list-head{flex-direction:column;align-items:flex-start}
+    .monthgoals-v23 .monthgoals-list-head button,
+    .monthgoals-v23 .monthgoals-print-btn,
+    .monthgoals-v23 .monthgoals-edit-btn{width:100%;justify-content:center}
+    .monthgoals-v23 .monthgoals-months{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .monthgoals-v23 .monthgoals-month-card{min-height:142px}
+    .monthgoals-v23 .monthgoals-chart-wrap{height:310px;padding:10px 8px 10px 0}
+  }
+  @media(max-width:560px){
+    .monthgoals-v23 .monthgoals-header h2{font-size:23px!important;line-height:1.15}
+    .monthgoals-v23 .monthgoals-header p{font-size:10px}
+    .monthgoals-v23 .monthgoals-months{grid-template-columns:1fr}
+    .monthgoals-v23 .monthgoals-summary-card strong{font-size:20px}
+    .monthgoals-v23 .monthgoals-category-title b{font-size:12px}
+    .monthgoals-v23 .monthgoals-category-title small{font-size:9px}
+    .monthgoals-v23 .monthgoals-chart-wrap{height:280px}
+  }
+  @media print{
+    body{background:#fff!important}
+    .no-print,.sidebar,nav,aside,header.app-header,.app-header,.topbar,.tabs-bar,.tab-navigation,.bottom-nav{display:none!important}
+    .monthgoals-page{margin:0!important;padding:0!important;background:#fff!important;box-shadow:none!important}
+    .monthgoals-chart-wrap{height:260px!important}
+    .monthgoals-list-body{max-height:none!important;overflow:visible!important}
+    .monthgoals-year-table-scroll{overflow:visible!important}
+    .monthgoals-year-table{min-width:0!important}
+    button{box-shadow:none!important}
+  }
+</style>
+
+
+<style id="financas-pro-acompanhamento-v24">
+  .monthgoals-v24 .monthgoals-chart-future-trace{margin:0 14px 12px;padding:10px 12px;border:1px solid #c7dceb;border-radius:10px;background:#f2f9fd;color:#46667d;font-size:9px;font-weight:700}
+  .monthgoals-v24 .monthgoals-chart-future-trace>b{display:block;color:#1d5c86;margin-bottom:6px;font-weight:950}
+  .monthgoals-v24 .monthgoals-chart-future-trace>div{display:flex;flex-wrap:wrap;gap:6px}
+  .monthgoals-v24 .monthgoals-chart-future-trace span{display:inline-flex;padding:5px 8px;border-radius:999px;background:#fff;border:1px solid #d3e2ec;color:#31566f;font-size:8px;font-weight:850}
+  @media(max-width:900px){.monthgoals-v24 .monthgoals-actions{width:100%}.monthgoals-v24 .monthgoals-year{flex:1;justify-content:space-between}.monthgoals-v24 .monthgoals-year strong{flex:1}.monthgoals-v24 .monthgoals-summary-v21{grid-template-columns:repeat(2,minmax(0,1fr))}.monthgoals-v24 .monthgoals-category-grid-v21{grid-template-columns:1fr}.monthgoals-v24 .monthgoals-table-v21{min-width:900px}}
+  @media(max-width:600px){.monthgoals-v24 .monthgoals-summary-v21{grid-template-columns:1fr}.monthgoals-v24 .monthgoals-chart-future-trace>div{display:grid;grid-template-columns:1fr;width:100%}.monthgoals-v24 .monthgoals-chart-future-trace span{border-radius:8px}}
+  @media print{
+    @page{size:A4 landscape;margin:7mm}
+    html,body{width:100%!important;background:#fff!important;font-size:9pt!important}
+    .monthgoals-v24 .monthgoals-actions,.monthgoals-v24 .monthgoals-months,.monthgoals-v24 .monthgoals-section-card,.monthgoals-v24 .monthgoals-bottom-grid,.monthgoals-v24 .monthgoals-chart-future-trace,.monthgoals-v24 .monthgoals-view-tabs,.monthgoals-v24 .no-print{display:none!important}
+    .monthgoals-v24{display:block!important;width:100%!important;gap:0!important}
+    .monthgoals-v24 .monthgoals-header{margin:0 0 4mm!important;padding:0!important}.monthgoals-v24 .monthgoals-header h2{font-size:16pt!important}.monthgoals-v24 .monthgoals-header p{font-size:8pt!important}
+    .monthgoals-v24 .monthgoals-summary-v21{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:3mm!important;margin-bottom:4mm!important}
+    .monthgoals-v24 .monthgoals-summary-card{padding:3mm!important;min-height:auto!important;box-shadow:none!important;break-inside:avoid!important}.monthgoals-v24 .monthgoals-summary-card span{font-size:7pt!important}.monthgoals-v24 .monthgoals-summary-card strong{font-size:13pt!important}.monthgoals-v24 .monthgoals-summary-card small{font-size:6.5pt!important}
+    .monthgoals-v24 .monthgoals-chart-card{break-inside:avoid!important;box-shadow:none!important;margin:0!important}.monthgoals-v24 .monthgoals-chart-card .monthgoals-section-head{padding:2.5mm 3mm!important}.monthgoals-v24 .monthgoals-chart-card .monthgoals-section-head h3{font-size:10pt!important}.monthgoals-v24 .monthgoals-chart-card .monthgoals-section-head p{font-size:6.5pt!important}.monthgoals-v24 .monthgoals-chart-wrap{height:92mm!important;padding:1mm!important}
+    .monthgoals-v24 .monthgoals-period-table-card{break-before:page!important;box-shadow:none!important;margin:0!important}.monthgoals-v24 .monthgoals-period-table-card .monthgoals-section-head{padding:2.5mm 3mm!important}.monthgoals-v24 .monthgoals-year-table-scroll{overflow:visible!important}.monthgoals-v24 .monthgoals-table-v21{width:100%!important;min-width:0!important;table-layout:fixed!important}
+    .monthgoals-v24 .monthgoals-table-v21 th,.monthgoals-v24 .monthgoals-table-v21 td{min-width:0!important;padding:1.5mm 1mm!important;font-size:6.5pt!important}.monthgoals-v24 .monthgoals-table-v21 th:first-child,.monthgoals-v24 .monthgoals-table-v21 td:first-child{width:35mm!important;min-width:35mm!important}.monthgoals-v24 .monthgoals-table-v21 td b{font-size:6.5pt!important}.monthgoals-v24 .monthgoals-table-v21 td small,.monthgoals-v24 .monthgoals-table-v21 td em{font-size:5.5pt!important}
+  }
+</style>
+
+
+<style id="financas-pro-totais-listas-v26">
+  .monthgoals-list-head-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .monthgoals-list-total{
+    min-width:120px;
+    padding:7px 10px;
+    border:1px solid #fecdd3;
+    border-radius:9px;
+    background:#fff1f2;
+    text-align:right;
+  }
+  .monthgoals-list-total.future{
+    border-color:#bfdbfe;
+    background:#eff6ff;
+  }
+  .monthgoals-list-total span{
+    display:block;
+    color:#7b8fa0;
+    font-size:8px;
+    font-weight:900;
+    text-transform:uppercase;
+  }
+  .monthgoals-list-total strong{
+    display:block;
+    margin-top:2px;
+    color:#e11d48;
+    font-size:14px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+  .monthgoals-list-total.future strong{
+    color:#2563eb;
+  }
+  @media(max-width:800px){
+    .monthgoals-list-head-actions{
+      width:100%;
+      align-items:stretch;
+      flex-direction:column;
+    }
+    .monthgoals-list-total{
+      width:100%;
+      text-align:left;
+    }
+    .monthgoals-list-head-actions button{
+      width:100%;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-metas-compactas-v27">
+  .monthgoals-v23 .monthgoals-category-grid-v21{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:10px!important;
+    padding:10px!important;
+  }
+
+  .monthgoals-v23 .monthgoals-category-card-v21{
+    padding:10px 11px!important;
+    border-radius:11px!important;
+    min-height:0!important;
+    box-shadow:0 2px 8px rgba(15,23,42,.05);
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .monthgoals-v23 .monthgoals-category-card-v21:hover{
+    transform:translateY(-1px);
+    border-color:#a9c6da;
+    box-shadow:0 5px 12px rgba(15,23,42,.08);
+  }
+
+  .monthgoals-category-title-v27{
+    display:grid!important;
+    grid-template-columns:7px minmax(0,1fr) auto!important;
+    align-items:center!important;
+    gap:8px!important;
+    margin-bottom:7px!important;
+  }
+  .monthgoals-category-title-v27>span{
+    width:7px!important;
+    height:30px!important;
+  }
+  .monthgoals-category-name-v27{
+    min-width:0;
+  }
+  .monthgoals-category-name-v27 b{
+    display:block;
+    color:#1d3850!important;
+    font-size:10px!important;
+    line-height:1.15!important;
+    font-weight:950!important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .monthgoals-category-average-v27{
+    min-width:92px;
+    padding:5px 7px;
+    border-radius:8px;
+    background:#f3f7fa;
+    text-align:right;
+  }
+  .monthgoals-category-average-v27 span{
+    display:block;
+    color:#8395a4;
+    font-size:6.5px;
+    line-height:1;
+    font-weight:850;
+    text-transform:uppercase;
+  }
+  .monthgoals-category-average-v27 strong{
+    display:block;
+    margin-top:2px;
+    color:#27455d;
+    font-size:9px;
+    line-height:1.05;
+    font-weight:950;
+    white-space:nowrap;
+  }
+
+  .monthgoals-category-values-v27{
+    grid-template-columns:repeat(auto-fit,minmax(100px,1fr))!important;
+    gap:6px!important;
+  }
+  .monthgoals-category-values-v27>div{
+    padding:6px 8px!important;
+    border:1px solid #edf2f6;
+    border-radius:8px!important;
+    background:#f8fafc!important;
+  }
+  .monthgoals-category-values-v27>div.future{
+    background:#f2f7ff!important;
+    border-color:#dbeafe;
+  }
+  .monthgoals-category-values-v27 span{
+    font-size:7px!important;
+    line-height:1!important;
+  }
+  .monthgoals-category-values-v27 strong{
+    margin-top:3px!important;
+    font-size:10.5px!important;
+  }
+
+  .monthgoals-v23 .monthgoals-category-meta-v21{
+    margin-top:6px!important;
+    padding-top:6px!important;
+    min-height:28px;
+  }
+  .monthgoals-v23 .monthgoals-category-meta-v21 label{
+    font-size:7px!important;
+    font-weight:900!important;
+  }
+  .monthgoals-v23 .monthgoals-category-meta-v21>strong{
+    font-size:11px!important;
+  }
+
+  .monthgoals-v23 .monthgoals-category-progress{
+    height:16px!important;
+    margin-top:6px!important;
+  }
+  .monthgoals-v23 .monthgoals-category-progress span{
+    font-size:6.5px!important;
+  }
+
+  .monthgoals-v23 .monthgoals-category-rest{
+    margin-top:4px!important;
+    min-height:10px;
+    font-size:6.7px!important;
+    line-height:1.15;
+  }
+
+  .monthgoals-v23 .monthgoals-future-goal{
+    margin-top:6px!important;
+    padding-top:6px!important;
+  }
+  .monthgoals-v23 .monthgoals-future-goal>button{
+    padding:6px 7px!important;
+    font-size:7px!important;
+  }
+
+  .monthgoals-v23 .monthgoals-section-head{
+    padding:10px 12px!important;
+  }
+  .monthgoals-v23 .monthgoals-section-head h3{
+    font-size:13px!important;
+  }
+  .monthgoals-v23 .monthgoals-section-head p{
+    margin-top:2px!important;
+    font-size:8px!important;
+  }
+
+  @media(max-width:1180px){
+    .monthgoals-v23 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+
+  @media(max-width:760px){
+    .monthgoals-v23 .monthgoals-category-grid-v21{
+      grid-template-columns:1fr!important;
+      padding:8px!important;
+    }
+    .monthgoals-v23 .monthgoals-category-card-v21{
+      padding:11px!important;
+    }
+    .monthgoals-category-name-v27 b{
+      font-size:11px!important;
+    }
+    .monthgoals-category-average-v27{
+      min-width:102px;
+    }
+    .monthgoals-category-average-v27 span{
+      font-size:7px;
+    }
+    .monthgoals-category-average-v27 strong{
+      font-size:10px;
+    }
+    .monthgoals-category-values-v27 strong{
+      font-size:11px!important;
+    }
+    .monthgoals-v23 .monthgoals-category-meta-v21>strong{
+      font-size:12px!important;
+    }
+  }
+
+  @media(max-width:430px){
+    .monthgoals-category-title-v27{
+      grid-template-columns:7px minmax(0,1fr)!important;
+    }
+    .monthgoals-category-average-v27{
+      grid-column:2;
+      justify-self:start;
+      text-align:left;
+      min-width:0;
+      padding:4px 6px;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-visual-v28">
+  .monthgoals-v28 .monthgoals-chart-card{
+    overflow:hidden;
+  }
+  .monthgoals-v28 .monthgoals-chart-wrap-v28{
+    height:430px!important;
+    padding:8px 10px 2px!important;
+    background:linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%);
+    border-top:1px solid #edf3f7;
+  }
+  .monthgoals-v28 .monthgoals-chart-year-note{
+    margin:0 14px 10px;
+    padding:8px 10px;
+    font-size:9px;
+    border-radius:10px;
+    background:#f7fbfe;
+    border:1px solid #dce9f1;
+  }
+
+  .monthgoals-v28 .monthgoals-category-grid-v21{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:9px!important;
+    padding:8px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-card-v21{
+    padding:9px 10px!important;
+    border-radius:10px!important;
+  }
+  .monthgoals-v28 .monthgoals-section-card .monthgoals-section-head{
+    padding:10px 12px!important;
+  }
+  .monthgoals-v28 .monthgoals-section-card .monthgoals-section-head h3{
+    font-size:15px!important;
+    line-height:1.15;
+  }
+  .monthgoals-v28 .monthgoals-section-card .monthgoals-section-head p{
+    font-size:9px!important;
+  }
+
+  .monthgoals-v28 .monthgoals-category-title-v27{
+    margin-bottom:6px!important;
+    gap:7px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-name-v27 b{
+    font-size:11px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-average-v27{
+    min-width:98px;
+    padding:5px 7px;
+  }
+  .monthgoals-v28 .monthgoals-category-average-v27 span{
+    font-size:6.7px;
+  }
+  .monthgoals-v28 .monthgoals-category-average-v27 strong{
+    font-size:10px;
+  }
+
+  .monthgoals-v28 .monthgoals-category-values-v27{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-values-v27 > div{
+    padding:6px 8px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-values-v27 > div.empty{
+    opacity:.86;
+  }
+  .monthgoals-v28 .monthgoals-category-values-v27 span{
+    font-size:7px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-values-v27 strong{
+    font-size:11px!important;
+  }
+
+  .monthgoals-v28 .monthgoals-category-meta-v21{
+    margin-top:5px!important;
+    padding-top:5px!important;
+    min-height:24px;
+  }
+  .monthgoals-v28 .monthgoals-category-meta-v21 label{
+    font-size:7px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-meta-v21 > strong{
+    font-size:11px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-progress{
+    margin-top:5px!important;
+    height:15px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-progress span{
+    font-size:6.5px!important;
+  }
+  .monthgoals-v28 .monthgoals-category-rest{
+    margin-top:4px!important;
+    font-size:6.8px!important;
+    min-height:9px;
+  }
+
+  .monthgoals-v28 .monthgoals-bottom-grid-v28{
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-card{
+    min-height:335px;
+  }
+  .monthgoals-v28 .monthgoals-list-head{
+    padding:12px 14px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-head h3{
+    font-size:14px!important;
+    line-height:1.15;
+  }
+  .monthgoals-v28 .monthgoals-list-head p{
+    font-size:9px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-total{
+    min-width:132px;
+  }
+  .monthgoals-v28 .monthgoals-list-total strong{
+    font-size:13px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-item{
+    padding:11px 14px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-item b{
+    font-size:9px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-item small{
+    font-size:7.6px!important;
+  }
+  .monthgoals-v28 .monthgoals-list-item strong{
+    font-size:10px!important;
+  }
+  .monthgoals-v28 .monthgoals-empty{
+    padding:30px 16px!important;
+    font-size:9px!important;
+  }
+
+  .monthgoals-v28 .monthgoals-year-table th{
+    font-size:9px!important;
+  }
+  .monthgoals-v28 .monthgoals-year-table td b,
+  .monthgoals-v28 .monthgoals-year-table td:first-child b{
+    font-size:8.5px!important;
+  }
+
+  @media (min-width:1450px){
+    .monthgoals-v28 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    }
+  }
+
+  @media(max-width:1180px){
+    .monthgoals-v28 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+    .monthgoals-v28 .monthgoals-chart-wrap-v28{
+      height:390px!important;
+    }
+  }
+
+  @media(max-width:800px){
+    .monthgoals-v28 .monthgoals-bottom-grid-v28{
+      grid-template-columns:1fr!important;
+    }
+    .monthgoals-v28 .monthgoals-list-card{
+      min-height:280px;
+    }
+    .monthgoals-v28 .monthgoals-chart-wrap-v28{
+      height:340px!important;
+      padding:8px 2px 2px!important;
+    }
+  }
+
+  @media(max-width:620px){
+    .monthgoals-v28 .monthgoals-category-grid-v21{
+      grid-template-columns:1fr!important;
+    }
+    .monthgoals-v28 .monthgoals-section-card .monthgoals-section-head h3{
+      font-size:13px!important;
+    }
+    .monthgoals-v28 .monthgoals-chart-wrap-v28{
+      height:300px!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-visual-metas-v29">
+  /* Letras maiores na lista de gastos realizados/futuros */
+  .monthgoals-v29 .monthgoals-list-head h3{
+    font-size:16px!important;
+  }
+  .monthgoals-v29 .monthgoals-list-head p{
+    font-size:10px!important;
+  }
+  .monthgoals-v29 .monthgoals-list-item{
+    padding:13px 15px!important;
+  }
+  .monthgoals-v29 .monthgoals-list-item b{
+    font-size:12px!important;
+    line-height:1.2!important;
+  }
+  .monthgoals-v29 .monthgoals-list-item small{
+    font-size:9.5px!important;
+    line-height:1.25!important;
+  }
+  .monthgoals-v29 .monthgoals-list-item strong{
+    font-size:12px!important;
+  }
+  .monthgoals-v29 .monthgoals-list-total span{
+    font-size:9px!important;
+  }
+  .monthgoals-v29 .monthgoals-list-total strong{
+    font-size:15px!important;
+  }
+
+  /* Título da área de metas */
+  .monthgoals-v29 .monthgoals-section-card .monthgoals-section-head h3{
+    font-size:16px!important;
+  }
+  .monthgoals-v29 .monthgoals-section-card .monthgoals-section-head p{
+    font-size:10px!important;
+  }
+  .monthgoals-v29 .monthgoals-section-card .monthgoals-section-head button{
+    font-size:10px!important;
+    padding:9px 12px!important;
+  }
+
+  /* Cartões no mesmo estilo visual dos meses */
+  .monthgoals-v29 .monthgoals-category-grid-v21{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:10px!important;
+    padding:10px!important;
+  }
+
+  .monthgoals-v29 .monthgoals-category-card-v29{
+    min-height:185px!important;
+    padding:12px 13px!important;
+    border:1px solid #c9d8e4!important;
+    border-radius:12px!important;
+    background:#fff!important;
+    box-shadow:0 4px 10px rgba(15,23,42,.06)!important;
+    transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease!important;
+  }
+  .monthgoals-v29 .monthgoals-category-card-v29:hover{
+    transform:translateY(-2px);
+    border-color:#8fb6d1!important;
+    box-shadow:0 8px 18px rgba(15,23,42,.09)!important;
+  }
+
+  .monthgoals-category-title-v29{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    min-height:36px;
+  }
+  .monthgoals-category-name-v29{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+  .monthgoals-category-name-v29>span{
+    width:7px;
+    height:30px;
+    border-radius:999px;
+    flex:0 0 auto;
+  }
+  .monthgoals-category-name-v29 b{
+    color:#173b5b;
+    font-size:11px;
+    font-weight:950;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .monthgoals-category-average-v29{
+    flex:0 0 auto;
+    padding:5px 7px;
+    border-radius:8px;
+    background:#f3f7fa;
+    text-align:right;
+  }
+  .monthgoals-category-average-v29 span{
+    display:block;
+    color:#8294a3;
+    font-size:7px;
+    line-height:1;
+    font-weight:900;
+    text-transform:uppercase;
+  }
+  .monthgoals-category-average-v29 strong{
+    display:block;
+    margin-top:2px;
+    color:#24445d;
+    font-size:10px;
+    line-height:1;
+    font-weight:950;
+    white-space:nowrap;
+  }
+
+  .monthgoals-category-realized-v29{
+    margin-top:8px;
+  }
+  .monthgoals-category-realized-v29 strong{
+    display:block;
+    color:#e33d54;
+    font-size:18px;
+    line-height:1.05;
+    font-weight:950;
+    letter-spacing:-.02em;
+  }
+  .monthgoals-category-realized-v29 small{
+    display:block;
+    margin-top:3px;
+    color:#758a9a;
+    font-size:8px;
+    font-weight:800;
+  }
+
+  .monthgoals-category-rows-v29{
+    display:grid;
+    gap:4px;
+    margin-top:9px;
+  }
+  .monthgoals-category-rows-v29>div{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    min-height:20px;
+  }
+  .monthgoals-category-rows-v29 span{
+    color:#647b8e;
+    font-size:8px;
+    font-weight:800;
+  }
+  .monthgoals-category-rows-v29 b{
+    color:#173b5b;
+    font-size:9px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+
+  .monthgoals-meta-input-v29{
+    gap:3px!important;
+  }
+  .monthgoals-meta-input-v29 span{
+    font-size:8px!important;
+  }
+  .monthgoals-meta-input-v29 input{
+    width:78px!important;
+    min-height:26px!important;
+    font-size:9px!important;
+  }
+
+  .monthgoals-category-progress-v29{
+    height:7px!important;
+    margin-top:9px!important;
+    background:#dfe5ea!important;
+  }
+  .monthgoals-category-progress-v29 span{
+    display:none!important;
+  }
+
+  .monthgoals-category-rest-v29{
+    margin-top:5px!important;
+    font-size:7.5px!important;
+    font-weight:850!important;
+    min-height:9px!important;
+  }
+
+  .monthgoals-v29 .monthgoals-future-goal{
+    margin-top:7px!important;
+    padding-top:7px!important;
+  }
+
+  @media(max-width:1450px){
+    .monthgoals-v29 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    }
+  }
+
+  @media(max-width:1050px){
+    .monthgoals-v29 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+
+  @media(max-width:700px){
+    .monthgoals-v29 .monthgoals-category-grid-v21{
+      grid-template-columns:1fr!important;
+    }
+    .monthgoals-v29 .monthgoals-category-card-v29{
+      min-height:175px!important;
+    }
+    .monthgoals-category-name-v29 b{
+      font-size:12px;
+    }
+    .monthgoals-category-realized-v29 strong{
+      font-size:20px;
+    }
+    .monthgoals-category-rows-v29 span{
+      font-size:9px;
+    }
+    .monthgoals-category-rows-v29 b{
+      font-size:10px;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-metas-br-4-colunas-v30">
+  /* Campos de dinheiro no padrão brasileiro */
+  .monthgoals-v30 .monthgoals-meta-input-v29 input,
+  .monthgoals-v30 .monthgoals-future-goal-controls input{
+    font-family:inherit!important;
+    letter-spacing:.01em;
+  }
+
+  /* 4 cartões por linha no computador */
+  .monthgoals-v30 .monthgoals-category-grid-v21{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:9px!important;
+  }
+
+  .monthgoals-v30 .monthgoals-category-card-v29{
+    min-width:0!important;
+  }
+
+  .monthgoals-v30 .monthgoals-category-name-v29 b{
+    font-size:10.5px!important;
+  }
+
+  .monthgoals-v30 .monthgoals-category-average-v29{
+    min-width:88px!important;
+  }
+
+  @media(max-width:1050px){
+    .monthgoals-v30 .monthgoals-category-grid-v21{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+
+  @media(max-width:650px){
+    .monthgoals-v30 .monthgoals-category-grid-v21{
+      grid-template-columns:1fr!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-detalhes-categoria-v31">
+  .monthgoals-v31 .monthgoals-category-card-v31{
+    cursor:pointer!important;
+  }
+  .monthgoals-v31 .monthgoals-category-card-v31:hover{
+    transform:translateY(-2px) scale(1.004);
+  }
+  .monthgoals-card-click-hint{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    margin-top:6px;
+    padding-top:6px;
+    border-top:1px dashed #d7e2e9;
+    color:#39759d;
+    font-size:7px;
+    font-weight:900;
+  }
+
+  .category-expense-modal{
+    width:min(820px,96vw);
+    max-height:88vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border:1px solid #c9d9e6;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 25px 70px rgba(15,23,42,.28);
+  }
+  .category-expense-modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:16px 18px;
+    border-bottom:1px solid #e1e8ee;
+    background:linear-gradient(135deg,#f8fbfd,#edf6fb);
+  }
+  .category-expense-modal-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .category-expense-modal-title>span{
+    width:8px;
+    height:42px;
+    border-radius:999px;
+  }
+  .category-expense-modal-title h3{
+    margin:0;
+    color:#123a5b;
+    font-size:18px;
+    font-weight:950;
+  }
+  .category-expense-modal-title p{
+    margin:3px 0 0;
+    color:#71879a;
+    font-size:10px;
+    font-weight:700;
+  }
+  .category-expense-close{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #d3dfe7;
+    border-radius:10px;
+    background:#fff;
+    color:#65798b;
+    cursor:pointer;
+  }
+
+  .category-expense-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    padding:12px 16px;
+    background:#f8fafc;
+    border-bottom:1px solid #e6edf2;
+  }
+  .category-expense-summary>div{
+    padding:10px 12px;
+    border:1px solid #dce6ed;
+    border-radius:10px;
+    background:#fff;
+  }
+  .category-expense-summary span{
+    display:block;
+    color:#71879a;
+    font-size:8px;
+    font-weight:900;
+    text-transform:uppercase;
+  }
+  .category-expense-summary strong{
+    display:block;
+    margin-top:4px;
+    color:#173b5b;
+    font-size:16px;
+    font-weight:950;
+  }
+  .category-expense-summary strong.realized{color:#dc3f53}
+  .category-expense-summary strong.future{color:#2878c7}
+  .category-expense-summary small{
+    display:block;
+    margin-top:3px;
+    color:#8a9aa7;
+    font-size:8px;
+    font-weight:700;
+  }
+
+  .category-expense-modal-body{
+    overflow:auto;
+    padding:12px 14px;
+  }
+  .category-expense-group{
+    border:1px solid #dbe5ec;
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:12px;
+  }
+  .category-expense-group:last-child{margin-bottom:0}
+  .category-expense-group h4{
+    margin:0;
+    padding:9px 12px;
+    background:#fff5f6;
+    color:#a72c3d;
+    font-size:11px;
+    font-weight:950;
+    border-bottom:1px solid #f0d8dc;
+  }
+  .category-expense-group.future h4{
+    background:#f1f7ff;
+    color:#2465a4;
+    border-bottom-color:#d9e8f7;
+  }
+  .category-expense-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 120px 82px;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-bottom:1px solid #edf1f4;
+  }
+  .category-expense-row:last-child{border-bottom:0}
+  .category-expense-row b{
+    display:block;
+    color:#233d52;
+    font-size:10px;
+    font-weight:900;
+  }
+  .category-expense-row small{
+    display:block;
+    margin-top:2px;
+    color:#8394a2;
+    font-size:8px;
+    font-weight:700;
+  }
+  .category-expense-row>strong{
+    text-align:right;
+    color:#dc3f53;
+    font-size:11px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+  .category-expense-group.future .category-expense-row>strong{
+    color:#2878c7;
+  }
+  .category-expense-row>button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    border:1px solid #bfd5e5;
+    border-radius:8px;
+    background:#f4f9fd;
+    color:#28698f;
+    padding:7px 8px;
+    font-size:8px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .category-expense-row>button:hover{background:#e9f4fb}
+  .category-expense-empty{
+    padding:18px;
+    text-align:center;
+    color:#8698a6;
+    font-size:9px;
+    font-weight:700;
+  }
+
+  .category-expense-modal-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 16px;
+    border-top:1px solid #e1e8ee;
+    background:#f8fafc;
+  }
+  .category-expense-modal-footer span{
+    color:#687d8f;
+    font-size:9px;
+    font-weight:700;
+  }
+  .category-expense-modal-footer>button{
+    border:0;
+    border-radius:9px;
+    background:#dfe8ee;
+    color:#38566c;
+    padding:8px 12px;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+  }
+
+  @media(max-width:650px){
+    .category-expense-summary{
+      grid-template-columns:1fr;
+    }
+    .category-expense-row{
+      grid-template-columns:1fr auto;
+    }
+    .category-expense-row>button{
+      grid-column:1/-1;
+      width:100%;
+    }
+    .category-expense-modal-title h3{
+      font-size:15px;
+    }
+    .category-expense-modal{
+      width:98vw;
+      max-height:92vh;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-editar-categorias-v32">
+  .category-manager-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:9px 10px;
+    border:1px solid #d8e2e9;
+    border-radius:10px;
+    background:#f8fafc;
+    transition:.15s ease;
+  }
+  .category-manager-row:hover{
+    border-color:#b8cedd;
+    background:#f4f9fc;
+  }
+  .category-manager-row.editing{
+    display:block;
+    padding:11px;
+    border-color:#8fb8d3;
+    background:#f5fbff;
+    box-shadow:0 3px 10px rgba(15,23,42,.06);
+  }
+
+  .category-manager-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+  .category-manager-dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    flex:0 0 auto;
+  }
+  .category-manager-name{
+    color:#334155;
+    font-size:11px;
+    font-weight:800;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .category-manager-type{
+    flex:0 0 auto;
+    padding:3px 6px;
+    border-radius:5px;
+    background:#e8eef3;
+    color:#7a8da0;
+    font-size:7px;
+    font-weight:900;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+
+  .category-manager-actions{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    flex:0 0 auto;
+  }
+  .category-manager-actions button{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .category-edit-btn{
+    color:#2563eb;
+    background:#eff6ff;
+    border-color:#dbeafe!important;
+  }
+  .category-edit-btn:hover{background:#dbeafe}
+  .category-delete-btn{
+    color:#e11d48;
+    background:#fff1f2;
+    border-color:#ffe4e6!important;
+  }
+  .category-delete-btn:hover{background:#ffe4e6}
+
+  .category-edit-panel{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .category-edit-fields{
+    display:grid;
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 90px;
+    gap:8px;
+    align-items:center;
+  }
+  .category-edit-name,
+  .category-edit-type{
+    width:100%;
+    min-height:36px;
+    border:1px solid #c8d8e4;
+    border-radius:8px;
+    background:#fff;
+    color:#334155;
+    padding:7px 9px;
+    font-size:10px;
+    font-weight:750;
+    outline:none;
+  }
+  .category-edit-name:focus,
+  .category-edit-type:focus{
+    border-color:#4f9bc8;
+    box-shadow:0 0 0 2px rgba(79,155,200,.12);
+  }
+  .category-edit-color-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    min-height:36px;
+    border:1px solid #c8d8e4;
+    border-radius:8px;
+    background:#fff;
+    padding:5px 7px;
+  }
+  .category-edit-color-wrap span{
+    color:#64748b;
+    font-size:8px;
+    font-weight:900;
+  }
+  .category-edit-color{
+    width:32px;
+    height:26px;
+    border:0;
+    padding:0;
+    background:transparent;
+    cursor:pointer;
+  }
+
+  .category-edit-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:7px;
+  }
+  .category-edit-actions button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-height:32px;
+    padding:6px 10px;
+    border-radius:8px;
+    font-size:8px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .category-save-btn{
+    border:1px solid #a7e7cf;
+    background:#ecfdf5;
+    color:#047857;
+  }
+  .category-save-btn:hover{background:#d1fae5}
+  .category-cancel-btn{
+    border:1px solid #d6dee5;
+    background:#fff;
+    color:#64748b;
+  }
+  .category-cancel-btn:hover{background:#f1f5f9}
+
+  @media(max-width:680px){
+    .category-edit-fields{
+      grid-template-columns:1fr;
+    }
+    .category-edit-color-wrap{
+      justify-content:flex-start;
+    }
+    .category-manager-type{
+      display:none;
+    }
+    .category-manager-name{
+      font-size:10px;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -1489,10 +4375,10 @@
       TrendingUp, TrendingDown, Wallet, Calendar, CreditCard, Sliders, Plus, Trash2, Edit3, 
       Download, Upload, Smartphone, CheckCircle, AlertCircle, PiggyBank, PieChart as PieIcon, 
       Filter, Search, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, X, Printer, User, Database, 
-      Copy, ShoppingBag, ShieldCheck, HardDrive, CloudLightning, Clock, Calculator, Layers, FileText, Target
+      Copy, ShoppingBag, ShieldCheck, HardDrive, CloudLightning, Clock, Calculator, Layers, FileText, Target, Settings
     } from 'lucide-react';
     import { 
-      ResponsiveContainer, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend 
+      ResponsiveContainer, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend, CartesianGrid 
     } from 'recharts';
     import { initializeApp } from 'firebase/app';
     import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
@@ -1555,7 +4441,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '17';
+    const APP_VERSION = '32';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -1563,13 +4449,13 @@
       { id: 'transporte', name: 'Transporte & Combustível', type: 'necessidade', color: '#F59E0B' },
       { id: 'educacao', name: 'Educação & Cursos', type: 'necessidade', color: '#8B5CF6' },
       { id: 'lazer', name: 'Lazer & Viagens', type: 'desejo', color: '#EC4899' },
-      { id: 'restaurantes', name: 'Restaurantes & Delivery', type: 'desejo', color: '#F43F5E' },
-      { id: 'assinaturas', name: 'Assinaturas & Streaming', type: 'desejo', color: '#06B6D4' },
+      { id: 'restaurantes', name: 'Restaurantes & Entregas', type: 'desejo', color: '#F43F5E' },
+      { id: 'assinaturas', name: 'Assinaturas & Serviços de Vídeo', type: 'desejo', color: '#06B6D4' },
       { id: 'compras', name: 'Compras & Vestuário', type: 'desejo', color: '#D946EF' },
       { id: 'investimentos', name: 'Poupança & Investimentos', type: 'poupanca', color: '#10B981' },
       { id: 'dividas', name: 'Pagamento de Dívidas/Empréstimos', type: 'poupanca', color: '#64748B' },
       { id: 'receita_salario', name: 'Salário & Proventos', type: 'receita', color: '#22C55E' },
-      { id: 'receita_freelance', name: 'Freelance & Extra', type: 'receita', color: '#84CC16' },
+      { id: 'receita_freelance', name: 'Trabalho Extra & Renda Extra', type: 'receita', color: '#84CC16' },
       { id: 'outros', name: 'Outros lançamentos', type: 'desejo', color: '#94A3B8' }
     ];
 
@@ -1718,6 +4604,10 @@
       const [newBankName, setNewBankName] = useState('');
       const [editingBankName, setEditingBankName] = useState(null);
       const [editingBankValue, setEditingBankValue] = useState('');
+      const [editingCategoryId, setEditingCategoryId] = useState(null);
+      const [editingCategoryName, setEditingCategoryName] = useState('');
+      const [editingCategoryType, setEditingCategoryType] = useState('necessidade');
+      const [editingCategoryColor, setEditingCategoryColor] = useState('#3B82F6');
 
       const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
       const [lastBackupAt, setLastBackupAt] = useState(() => localStorage.getItem('financial_last_backup_at') || '');
@@ -1792,7 +4682,19 @@
       });
 
       const [activeTab, setActiveTab] = useState('dashboard');
+      const [advancedPeriodMonths, setAdvancedPeriodMonths] = useState(12);
+      const [advancedSelectedMonth, setAdvancedSelectedMonth] = useState(() => {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+      });
+      const [advancedViewMonths, setAdvancedViewMonths] = useState(12);
+      const [futureGoalEdit, setFutureGoalEdit] = useState({ categoryId: null, value: '' });
+      const [categoryExpenseDetail, setCategoryExpenseDetail] = useState(null);
       const [goalYear, setGoalYear] = useState(() => new Date().getFullYear());
+      const [goalPeriod, setGoalPeriod] = useState(() => {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+      });
       const [showGoalEditors, setShowGoalEditors] = useState(false);
       const [goalMonthView, setGoalMonthView] = useState('6');
       const [goalExpandedCategoryId, setGoalExpandedCategoryId] = useState(null);
@@ -2286,11 +5188,73 @@
         }
       };
 
+      const handleSaveFutureFromAccountForm = async (dataToSave) => {
+        const value = parseFloat(String(dataToSave.amount || '').replace(',', '.')) || 0;
+        if (!dataToSave.description || value <= 0 || !dataToSave.dueDate) {
+          showToast('Informe descrição, valor e data do gasto futuro.', 'error');
+          return;
+        }
+
+        const futureId = editingTransaction
+          ? `future_from_${editingTransaction.id}`
+          : `future_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+
+        const futureItem = {
+          id: futureId,
+          description: String(dataToSave.description || '').trim(),
+          amount: value,
+          date: dataToSave.dueDate,
+          category: dataToSave.category || 'outros',
+          priority: 'media',
+          notes: editingTransaction ? 'Convertido de lançamento para Gasto Futuro.' : 'Criado pela tela de lançamentos.',
+          sourceTransactionId: editingTransaction?.id || null,
+          sourceBank: dataToSave.bank || '',
+          createdAt: editingTransaction?.createdAt || new Date().toISOString()
+        };
+
+        const updatedFutureExpenses = [
+          futureItem,
+          ...futureExpenses.filter(item => item.id !== futureId && item.sourceTransactionId !== editingTransaction?.id)
+        ];
+        setFutureExpenses(updatedFutureExpenses);
+        localStorage.setItem('local_future_expenses', JSON.stringify(updatedFutureExpenses));
+
+        if (editingTransaction) {
+          const updatedTransactions = transactions.filter(t => t.id !== editingTransaction.id);
+          setTransactions(updatedTransactions);
+          localStorage.setItem('local_transactions', JSON.stringify(updatedTransactions));
+        }
+
+        if (db && user && syncKey) {
+          try {
+            const futureRef = doc(db, 'artifacts', appId, 'public', 'data', `future_${syncKey}_expenses`, futureItem.id);
+            await setDoc(futureRef, futureItem, { merge: true });
+
+            if (editingTransaction) {
+              const txRef = doc(db, 'artifacts', appId, 'public', 'data', `wallet_${syncKey}_transactions`, editingTransaction.id);
+              await deleteDoc(txRef);
+            }
+          } catch (err) {
+            console.error('Erro ao salvar Gasto Futuro:', err);
+            showToast('Gasto futuro salvo neste aparelho, mas houve erro na sincronização.', 'error');
+          }
+        }
+
+        setIsModalOpen(false);
+        resetForm();
+        showToast(editingTransaction ? 'Lançamento convertido em Gasto Futuro.' : 'Gasto Futuro adicionado.');
+      };
+
       const handleSaveTransaction = async (e, mode = null) => {
         if (e) e.preventDefault();
         
         const dataToSave = mode ? futureEditsModal.pendingFormData : formData;
         if (!dataToSave.description || !dataToSave.amount || parseFloat(dataToSave.amount) <= 0) return;
+
+        if (!mode && dataToSave.type === 'future') {
+          await handleSaveFutureFromAccountForm(dataToSave);
+          return;
+        }
 
         const isEdit = !!editingTransaction;
         
@@ -2768,6 +5732,7 @@
           type: newType, 
           category: defaultCategory, 
           ruleType: defaultRuleType,
+          paid: newType === 'future' ? false : prev.paid,
           destinationBank: newType === 'transfer' ? (banks[1] || banks[0] || '') : ''
         }));
       };
@@ -2908,6 +5873,52 @@
         setNewCatName('');
         showToast("Nova categoria registrada!");
         saveSettingsToCloud(banks, updatedCategories, budgets, myCards);
+      };
+
+      const handleEditCategory = (category) => {
+        setEditingCategoryId(category.id);
+        setEditingCategoryName(category.name || '');
+        setEditingCategoryType(category.type || 'necessidade');
+        setEditingCategoryColor(category.color || '#3B82F6');
+      };
+
+      const handleCancelEditCategory = () => {
+        setEditingCategoryId(null);
+        setEditingCategoryName('');
+        setEditingCategoryType('necessidade');
+        setEditingCategoryColor('#3B82F6');
+      };
+
+      const handleSaveCategoryEdit = async (catId) => {
+        const newName = editingCategoryName.trim();
+        if (!newName) {
+          showToast("Digite um nome para a categoria.", "error");
+          return;
+        }
+
+        if (categories.some(c =>
+          c.id !== catId &&
+          String(c.name || '').trim().toLowerCase() === newName.toLowerCase()
+        )) {
+          showToast("Já existe uma categoria com este nome.", "error");
+          return;
+        }
+
+        const updatedCategories = categories.map(c =>
+          c.id === catId
+            ? {
+                ...c,
+                name: newName,
+                type: editingCategoryType,
+                color: editingCategoryColor
+              }
+            : c
+        );
+
+        setCategories(updatedCategories);
+        handleCancelEditCategory();
+        showToast("Categoria atualizada com sucesso!");
+        await saveSettingsToCloud(banks, updatedCategories, budgets, myCards, monthlyGoals);
       };
 
       const handleDeleteCategory = (catId) => {
@@ -4476,17 +7487,58 @@
       ];
 
       const goalKey = (segment, monthNum, year = goalYear) => `${year}-${String(monthNum).padStart(2, '0')}__${segment}`;
-      const getGoalValue = (segment, monthNum) => parseFloat(monthlyGoals[goalKey(segment, monthNum)] || 0) || 0;
-      const setGoalValue = (segment, monthNum, value) => {
+      const getGoalValue = (segment, monthNum, year = goalYear) => parseFloat(monthlyGoals[goalKey(segment, monthNum, year)] || 0) || 0;
+      const setGoalValue = (segment, monthNum, value, year = goalYear) => {
         const clean = String(value ?? '').replace(/\./g, '').replace(',', '.');
         const parsed = clean === '' ? '' : parseFloat(clean);
         const next = { ...monthlyGoals };
-        const key = goalKey(segment, monthNum);
+        const key = goalKey(segment, monthNum, year);
         if (clean === '' || !Number.isFinite(parsed)) delete next[key];
         else next[key] = Math.round(parsed * 100) / 100;
         setMonthlyGoals(next);
         localStorage.setItem('local_monthly_goals', JSON.stringify(next));
         saveSettingsToCloud(banks, categories, budgets, myCards, next);
+      };
+
+      const setGoalForWholeYear = (segment, year, value) => {
+        const clean = String(value ?? '').replace(/\./g, '').replace(',', '.');
+        const parsed = clean === '' ? null : parseFloat(clean);
+        const next = { ...monthlyGoals };
+
+        for (let month = 1; month <= 12; month++) {
+          const key = goalKey(segment, month, year);
+          if (parsed === null || !Number.isFinite(parsed)) delete next[key];
+          else next[key] = Math.round(parsed * 100) / 100;
+        }
+
+        setMonthlyGoals(next);
+        localStorage.setItem('local_monthly_goals', JSON.stringify(next));
+        saveSettingsToCloud(banks, categories, budgets, myCards, next);
+      };
+
+      const setGoalForNextMonths = (segment, startYear, startMonth, value, totalMonths = 12) => {
+        const clean = String(value ?? '').replace(/\./g, '').replace(',', '.');
+        const parsed = clean === '' ? null : parseFloat(clean);
+        const next = { ...monthlyGoals };
+
+        for (let offset = 0; offset < totalMonths; offset++) {
+          const d = new Date(startYear, startMonth - 1 + offset, 1);
+          const key = goalKey(segment, d.getMonth() + 1, d.getFullYear());
+          if (parsed === null || !Number.isFinite(parsed)) delete next[key];
+          else next[key] = Math.round(parsed * 100) / 100;
+        }
+
+        setMonthlyGoals(next);
+        localStorage.setItem('local_monthly_goals', JSON.stringify(next));
+        saveSettingsToCloud(banks, categories, budgets, myCards, next);
+      };
+
+      const getYearGoalBase = (segment, year) => {
+        for (let month = 1; month <= 12; month++) {
+          const value = parseFloat(monthlyGoals[goalKey(segment, month, year)] || 0) || 0;
+          if (value > 0) return value;
+        }
+        return 0;
       };
 
       const getRealizedForMonth = (monthNum, segment, categoryId = null) => {
@@ -5316,6 +8368,14 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                   }`}
                 >
                   <Clock className="h-3.5 w-3.5" /> Futuras
+                </button>
+                <button
+                  onClick={() => setActiveTab('advanced')}
+                  className={`flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+                    activeTab === 'advanced' ? 'bg-cyan-600 text-white font-bold shadow-md' : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                >
+                  <TrendingUp className="h-3.5 w-3.5" /> Acompanhamento
                 </button>
                 <button
                   onClick={() => setActiveTab('goals')}
@@ -7053,163 +10113,1324 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 </div>
               )}
 
-              {/* ABA OBJETIVO X REALIZADO - VISUAL MODERNO */}
-              {activeTab === 'goals' && (() => {
-                const expenseGoalSegments = goalSegments.filter(s => s.categoryId);
-                const now = new Date();
-                const currentMonthNum = goalYear === now.getFullYear() ? now.getMonth() + 1 : 12;
-                const sixMonthStart = Math.max(1, currentMonthNum - 5);
-                const visibleGoalMonths = goalMonthView === 'all' ? goalMonths : goalMonths.filter(m => m.num >= sixMonthStart && m.num <= currentMonthNum);
-                const activeGoalRows = expenseGoalSegments.filter(seg => goalMonths.some(m => getGoalValue(seg.id, m.num) > 0));
-                const referenceRows = (activeGoalRows.length ? activeGoalRows : expenseGoalSegments).map(seg => {
-                  const objective = getGoalValue(seg.id, currentMonthNum);
-                  const realized = getGoalRealized(seg, currentMonthNum);
-                  const pct = objective > 0 ? (realized / objective) * 100 : 0;
-                  return { seg, objective, realized, pct };
+
+              {/* ABA ACOMPANHAMENTO — MESES, GASTOS E METAS */}
+              {activeTab === 'advanced' && (() => {
+                const hoje = new Date();
+                const [anoSelRaw, mesSelRaw] = String(advancedSelectedMonth || '').split('-');
+                const anoSelecionado = parseInt(anoSelRaw, 10) || hoje.getFullYear();
+                const mesSelecionado = parseInt(mesSelRaw, 10) || (hoje.getMonth() + 1);
+
+                const moeda = valor => (parseFloat(valor) || 0).toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
                 });
-                const within = referenceRows.filter(r => r.objective > 0 && r.pct < 80).length;
-                const attention = referenceRows.filter(r => r.objective > 0 && r.pct >= 80 && r.pct <= 100).length;
-                const over = referenceRows.filter(r => r.objective > 0 && r.pct > 100).length;
-                const totalActive = activeGoalRows.length;
-                const monthLabel = goalMonths[currentMonthNum - 1]?.label || '';
-                const money = v => (parseFloat(v) || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-                const shortMoney = v => (parseFloat(v) || 0).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
-                const pctClass = pct => pct > 100 ? 'meta-red' : pct >= 80 ? 'meta-amber' : 'meta-green';
-                const goalExpenseRowsFor = (segment) => {
-                  if (!segment?.categoryId) return [];
-                  const visibleMonthNums = new Set(visibleGoalMonths.map(m => m.num));
-                  return transactions.filter(t => {
+
+                const capitalizar = txt => {
+                  const value = String(txt || '');
+                  return value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+                };
+
+                const referenciaTransacao = t => String(t.paymentDate || t.dueDate || t.date || t.data || '');
+                const mesDaTransacao = t => referenciaTransacao(t).slice(0,7);
+
+                // Lê a data de Gastos Futuros e compara ANO e MÊS numericamente.
+                // Ex.: 01/04/2027 nunca pode entrar em Abr/2026.
+                const partesDataGastoFuturo = item => {
+                  const raw = String(item?.date || '').trim();
+                  if (!raw) return null;
+
+                  let day, month, year;
+                  let match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+                  if (match) {
+                    year = Number(match[1]);
+                    month = Number(match[2]);
+                    day = Number(match[3]);
+                  } else {
+                    match = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+                    if (!match) return null;
+                    day = Number(match[1]);
+                    month = Number(match[2]);
+                    year = Number(match[3]);
+                  }
+
+                  const valid = new Date(year, month - 1, day);
+                  if (valid.getFullYear() !== year || valid.getMonth() !== month - 1 || valid.getDate() !== day) return null;
+                  return { day, month, year };
+                };
+
+                const gastoFuturoPertenceAoMes = (item, year, month) => {
+                  const parts = partesDataGastoFuturo(item);
+                  if (!parts) return false;
+
+                  const hoje = new Date();
+                  const hojeNumero = (hoje.getFullYear() * 10000) + ((hoje.getMonth() + 1) * 100) + hoje.getDate();
+                  const itemNumero = (parts.year * 10000) + (parts.month * 100) + parts.day;
+
+                  // Um gasto só continua sendo "futuro" enquanto a data ainda não passou.
+                  if (itemNumero < hojeNumero) return false;
+
+                  return parts.year === Number(year) && parts.month === Number(month);
+                };
+
+                const criarMes = (year, month) => {
+                  const d = new Date(year, month - 1, 1);
+                  return {
+                    numero: d.getMonth() + 1,
+                    ano: d.getFullYear(),
+                    key: `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`,
+                    curto: capitalizar(d.toLocaleDateString('pt-BR',{month:'short'}).replace('.','')),
+                    nome: capitalizar(d.toLocaleDateString('pt-BR',{month:'long'}))
+                  };
+                };
+
+                const mesesAno = Array.from({length:12}, (_,i) => criarMes(anoSelecionado, i+1));
+
+                const categoriasDespesa = categories.filter(c => c.type !== 'receita');
+
+                const valorRealizadoCategoriaMes = (categoryId, year, month) => {
+                  const key = `${year}-${String(month).padStart(2,'0')}`;
+                  return transactions
+                    .filter(t =>
+                      t.type === 'expense' &&
+                      t.category === categoryId &&
+                      mesDaTransacao(t) === key
+                    )
+                    .reduce((s,t) => s + (parseFloat(t.amount) || 0), 0);
+                };
+
+                const valorFuturoCategoriaMes = (categoryId, year, month) => {
+                  const key = `${year}-${String(month).padStart(2,'0')}`;
+                  return futureExpenses
+                    .filter(item =>
+                      item.category === categoryId &&
+                      gastoFuturoPertenceAoMes(item, year, month)
+                    )
+                    .reduce((s,item) => s + (parseFloat(item.amount) || 0), 0);
+                };
+
+                const mediaUltimos3Meses = (categoryId, year, month) => {
+                  let total = 0;
+                  for (let back = 0; back < 3; back++) {
+                    const d = new Date(year, month - 1 - back, 1);
+                    total += valorRealizadoCategoriaMes(categoryId, d.getFullYear(), d.getMonth()+1);
+                  }
+                  return total / 3;
+                };
+
+                const resumoMes = mesesAno.map(m => {
+                  const realizados = transactions
+                    .filter(t => t.type === 'expense' && mesDaTransacao(t) === m.key)
+                    .reduce((s,t) => s + (parseFloat(t.amount) || 0), 0);
+
+                  const futuros = futureExpenses
+                    .filter(item => gastoFuturoPertenceAoMes(item, m.ano, m.numero))
+                    .reduce((s,item) => s + (parseFloat(item.amount) || 0), 0);
+
+                  const meta = categoriasDespesa.reduce((s,c) =>
+                    s + (parseFloat(monthlyGoals[goalKey(c.id, m.numero, m.ano)] || 0) || 0), 0);
+
+                  return {
+                    ...m,
+                    realizados,
+                    futuros,
+                    meta,
+                    previsto: realizados + futuros,
+                    saldoMeta: meta - realizados - futuros
+                  };
+                });
+
+                const resumoSelecionado = resumoMes.find(m => m.numero === mesSelecionado) || resumoMes[0];
+
+                const linhasCategorias = categoriasDespesa.map(cat => {
+                  const mesesCategoria = mesesAno.map(m => {
+                    const realizado = valorRealizadoCategoriaMes(cat.id, m.ano, m.numero);
+                    const futuro = valorFuturoCategoriaMes(cat.id, m.ano, m.numero);
+                    const meta = parseFloat(monthlyGoals[goalKey(cat.id, m.numero, m.ano)] || 0) || 0;
+
+                    return {
+                      ...m,
+                      realizado,
+                      futuro,
+                      meta,
+                      previsto: realizado + futuro,
+                      restante: meta - realizado - futuro
+                    };
+                  });
+
+                  const temGastoAno = mesesCategoria.some(v => v.realizado > 0 || v.futuro > 0);
+                  return {cat, meses: mesesCategoria, temGastoAno};
+                });
+
+                const categoriaMesSelecionado = catId => {
+                  const row = linhasCategorias.find(r => r.cat.id === catId);
+                  return row?.meses.find(v => v.numero === mesSelecionado) || null;
+                };
+
+                const categoriasVisiveisMes = categoriasDespesa.filter(cat => {
+                  const dado = categoriaMesSelecionado(cat.id);
+                  return showGoalEditors || (dado && (dado.realizado > 0 || dado.futuro > 0));
+                });
+
+                const lancamentosMes = transactions
+                  .filter(t => t.type === 'expense' && mesDaTransacao(t) === resumoSelecionado.key)
+                  .sort((a,b) => referenciaTransacao(b).localeCompare(referenciaTransacao(a)));
+
+                const futurosMes = futureExpenses
+                  .filter(item => gastoFuturoPertenceAoMes(item, anoSelecionado, mesSelecionado))
+                  .sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
+                const hasFutureMonth = futurosMes.length > 0;
+                const totalGastosRealizadosMes = lancamentosMes.reduce(
+                  (sum, item) => sum + (parseFloat(item.amount) || 0), 0
+                );
+                const totalGastosFuturosMes = futurosMes.reduce(
+                  (sum, item) => sum + (parseFloat(item.amount) || 0), 0
+                );
+
+                const totalMedia3Meses = (() => {
+                  let soma = 0;
+                  for (let back = 0; back < 3; back++) {
+                    const d = new Date(anoSelecionado, mesSelecionado - 1 - back, 1);
+                    const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+                    soma += transactions
+                      .filter(t => t.type === 'expense' && mesDaTransacao(t) === key)
+                      .reduce((s,t) => s + (parseFloat(t.amount) || 0), 0);
+                  }
+                  return soma / 3;
+                })();
+
+                const mudarAno = delta => {
+                  const novoAno = anoSelecionado + delta;
+                  setAdvancedSelectedMonth(`${novoAno}-${String(mesSelecionado).padStart(2,'0')}`);
+                };
+
+                const mesesVisao = (() => {
+                  if (advancedViewMonths === 12) return mesesAno;
+
+                  const list = [];
+                  for (let offset = 0; offset < advancedViewMonths; offset++) {
+                    const d = new Date(anoSelecionado, mesSelecionado - 1 + offset, 1);
+                    list.push(criarMes(d.getFullYear(), d.getMonth()+1));
+                  }
+                  return list;
+                })();
+
+                const linhasVisao = linhasCategorias
+                  .map(row => {
+                    const valores = mesesVisao.map(m => {
+                      const realizado = valorRealizadoCategoriaMes(row.cat.id, m.ano, m.numero);
+                      const futuro = valorFuturoCategoriaMes(row.cat.id, m.ano, m.numero);
+                      const meta = parseFloat(monthlyGoals[goalKey(row.cat.id, m.numero, m.ano)] || 0) || 0;
+                      return {...m, realizado, futuro, meta};
+                    });
+                    return {
+                      cat: row.cat,
+                      valores,
+                      temGasto: valores.some(v => v.realizado > 0 || v.futuro > 0)
+                    };
+                  })
+                  .filter(row => showGoalEditors || row.temGasto);
+
+                const dadosGrafico = mesesVisao.map(m => {
+                  const realizado = transactions
+                    .filter(t => t.type === 'expense' && mesDaTransacao(t) === m.key)
+                    .reduce((s,t) => s + (parseFloat(t.amount) || 0), 0);
+
+                  const futuro = futureExpenses
+                    .filter(item => gastoFuturoPertenceAoMes(item, m.ano, m.numero))
+                    .reduce((s,item) => s + (parseFloat(item.amount) || 0), 0);
+
+                  const meta = categoriasDespesa.reduce((s,c) =>
+                    s + (parseFloat(monthlyGoals[goalKey(c.id, m.numero, m.ano)] || 0) || 0), 0);
+
+                  return {
+                    mes: `${m.curto}/${String(m.ano).slice(-2)}`,
+                    realizado,
+                    futuro,
+                    meta
+                  };
+                });
+
+                const futurosConsideradosNoGrafico = futureExpenses
+                  .filter(item => mesesVisao.some(m => gastoFuturoPertenceAoMes(item, m.ano, m.numero)))
+                  .sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
+                const graficoTemGastosFuturos = futurosConsideradosNoGrafico.length > 0;
+
+                const nomeVisao = advancedViewMonths === 12
+                  ? `Ano inteiro — ${anoSelecionado}`
+                  : `${advancedViewMonths} meses a partir de ${resumoSelecionado.nome}/${anoSelecionado}`;
+
+                return (
+                  <div className="monthgoals-page monthgoals-v21 monthgoals-v23 monthgoals-v24 monthgoals-v28 monthgoals-v29 monthgoals-v30 monthgoals-v31 animate-fade-in">
+                    <div className="monthgoals-header">
+                      <div>
+                        <h2>Acompanhamento Mensal de Gastos e Metas</h2>
+                        <p>Veja os meses, seus gastos, a média dos últimos 3 meses e defina suas metas.</p>
+                      </div>
+
+                      <div className="monthgoals-actions">
+                        <div className="monthgoals-year">
+                          <button type="button" onClick={()=>mudarAno(-1)}>‹</button>
+                          <strong>{anoSelecionado}</strong>
+                          <button type="button" onClick={()=>mudarAno(1)}>›</button>
+                        </div>
+
+                        <button
+                          type="button"
+                          className={`monthgoals-edit-btn ${showGoalEditors ? 'active' : ''}`}
+                          onClick={()=>setShowGoalEditors(v=>!v)}
+                        >
+                          <Target className="w-4 h-4"/>
+                          {showGoalEditors ? 'Concluir Metas' : 'Definir Metas'}
+                        </button>
+
+
+                        <button
+                          type="button"
+                          className="monthgoals-print-btn no-print"
+                          onClick={()=>window.print()}
+                        >
+                          <Printer className="w-4 h-4"/>
+                          Imprimir resumo
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="monthgoals-months">
+                      {resumoMes.map(m => {
+                        const ativo = m.numero === mesSelecionado;
+                        const pct = m.meta > 0 ? ((m.realizados + m.futuros) / m.meta) * 100 : 0;
+                        return (
+                          <button
+                            type="button"
+                            key={m.key}
+                            className={`monthgoals-month-card ${ativo ? 'active' : ''}`}
+                            onClick={()=>setAdvancedSelectedMonth(m.key)}
+                          >
+                            <div className="monthgoals-month-name">{m.nome}</div>
+                            <div className="monthgoals-month-money">R$ {moeda(m.realizados)}</div>
+                            <small>Gastos realizados</small>
+
+                            <div className="monthgoals-month-row">
+                              <span>Futuros</span>
+                              <b>R$ {moeda(m.futuros)}</b>
+                            </div>
+                            <div className="monthgoals-month-row">
+                              <span>Meta</span>
+                              <b>R$ {moeda(m.meta)}</b>
+                            </div>
+
+                            <div className={`monthgoals-mini-progress ${pct > 100 ? 'danger' : pct >= 80 ? 'warning' : 'good'}`}>
+                              <i style={{width:`${Math.min(Math.max(pct,0),100)}%`}}></i>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    <div className="monthgoals-summary monthgoals-summary-v21">
+                      <div className="monthgoals-summary-card">
+                        <span>Gastos realizados</span>
+                        <strong className="rose">R$ {moeda(resumoSelecionado.realizados)}</strong>
+                        <small>{resumoSelecionado.nome} de {anoSelecionado}</small>
+                      </div>
+
+                      {resumoSelecionado.futuros > 0 && (
+                        <div className="monthgoals-summary-card">
+                          <span>Gastos futuros</span>
+                          <strong className="blue">R$ {moeda(resumoSelecionado.futuros)}</strong>
+                          <small>Mesma base da aba Futuras</small>
+                        </div>
+                      )}
+
+                      <div className="monthgoals-summary-card">
+                        <span>Meta do mês</span>
+                        <strong className="green">R$ {moeda(resumoSelecionado.meta)}</strong>
+                        <small>Soma das metas das categorias</small>
+                      </div>
+
+                      <div className="monthgoals-summary-card">
+                        <span>Média últimos 3 meses</span>
+                        <strong>R$ {moeda(totalMedia3Meses)}</strong>
+                        <small>Média dos gastos realizados</small>
+                      </div>
+
+                      <div className="monthgoals-summary-card">
+                        <span>Disponível na meta</span>
+                        <strong className={resumoSelecionado.saldoMeta >= 0 ? 'green' : 'rose'}>
+                          R$ {moeda(resumoSelecionado.saldoMeta)}
+                        </strong>
+                        <small>Meta − realizados − futuros</small>
+                      </div>
+                    </div>
+
+                    <div className="monthgoals-section-card">
+                      <div className="monthgoals-section-head">
+                        <div>
+                          <h3>Metas por Categoria — {resumoSelecionado.nome} de {anoSelecionado}</h3>
+                          <p>A meta padrão é única para todos os meses. Se quiser, você pode alterá-la somente para os próximos meses.</p>
+                        </div>
+                        {!showGoalEditors && (
+                          <button type="button" onClick={()=>setShowGoalEditors(true)}>
+                            <Target className="w-4 h-4"/> Definir metas
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="monthgoals-category-grid monthgoals-category-grid-v21">
+                        {categoriasVisiveisMes.length === 0 && !showGoalEditors ? (
+                          <div className="monthgoals-empty monthgoals-empty-wide">
+                            Nenhuma categoria com gasto neste mês.
+                          </div>
+                        ) : categoriasVisiveisMes.map(cat => {
+                          const dados = categoriaMesSelecionado(cat.id) || {
+                            realizado:0,
+                            futuro:0,
+                            meta:parseFloat(monthlyGoals[goalKey(cat.id,mesSelecionado,anoSelecionado)]||0)||0
+                          };
+
+                          const previsto = (dados.realizado || 0) + (dados.futuro || 0);
+                          const restante = (dados.meta || 0) - previsto;
+                          const pct = dados.meta > 0 ? (previsto / dados.meta) * 100 : 0;
+                          const media3 = mediaUltimos3Meses(cat.id, anoSelecionado, mesSelecionado);
+                          const metaPadrao = getYearGoalBase(cat.id, anoSelecionado);
+                          const editingFuture = futureGoalEdit.categoryId === cat.id;
+
+                          return (
+                            <div
+                              className="monthgoals-category-card monthgoals-category-card-v21 monthgoals-category-card-v29 monthgoals-category-card-v31"
+                              key={cat.id}
+                              onClick={() => setCategoryExpenseDetail({
+                                categoryId: cat.id,
+                                categoryName: cat.name,
+                                color: cat.color || '#64748b',
+                                monthKey: resumoSelecionado.key,
+                                monthName: resumoSelecionado.nome,
+                                year: anoSelecionado
+                              })}
+                              title="Clique para ver todos os gastos desta categoria"
+                            >
+                              <div className="monthgoals-category-title-v29">
+                                <div className="monthgoals-category-name-v29">
+                                  <span style={{background:cat.color || '#64748b'}}></span>
+                                  <b>{cat.name}</b>
+                                </div>
+                                <div className="monthgoals-category-average-v29">
+                                  <span>Média 3 meses</span>
+                                  <strong>R$ {moeda(media3)}</strong>
+                                </div>
+                              </div>
+
+                              <div className="monthgoals-category-realized-v29">
+                                <strong>R$ {moeda(dados.realizado)}</strong>
+                                <small>Gasto realizado</small>
+                              </div>
+
+                              <div className="monthgoals-category-rows-v29">
+                                <div>
+                                  <span>Gasto futuro</span>
+                                  <b>R$ {moeda(dados.futuro)}</b>
+                                </div>
+                                <div>
+                                  <span>Meta mensal</span>
+                                  {showGoalEditors ? (
+                                    <div className="monthgoals-meta-input monthgoals-meta-input-v29" onClick={e=>e.stopPropagation()}>
+                                      <span>R$</span>
+                                      <input
+                                        type="text"
+                                        inputMode="decimal"
+                                        defaultValue={metaPadrao > 0 ? Number(metaPadrao).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) : ''}
+                                        key={`${cat.id}-${anoSelecionado}-${metaPadrao}`}
+                                        onFocus={e=>e.currentTarget.select()}
+                                        onBlur={e=>setGoalForWholeYear(cat.id,anoSelecionado,e.target.value)}
+                                        placeholder="0,00"
+                                        aria-label={`Meta mensal de ${cat.name}`}
+                                      />
+                                    </div>
+                                  ) : (
+                                    <b>R$ {moeda(dados.meta)}</b>
+                                  )}
+                                </div>
+                              </div>
+
+                              <div className={`monthgoals-category-progress monthgoals-category-progress-v29 ${pct > 100 ? 'danger' : pct >= 80 ? 'warning' : 'good'}`}>
+                                <i style={{width:`${Math.min(Math.max(pct,0),100)}%`}}></i>
+                                <span>{dados.meta > 0 ? `${Math.round(pct)}% da meta` : 'Sem meta'}</span>
+                              </div>
+
+                              <div className={`monthgoals-category-rest monthgoals-category-rest-v29 ${restante < 0 ? 'negative' : ''}`}>
+                                {dados.meta > 0
+                                  ? restante >= 0
+                                    ? `Disponível: R$ ${moeda(restante)}`
+                                    : `Meta ultrapassada: R$ ${moeda(Math.abs(restante))}`
+                                  : 'Defina uma meta para esta categoria'}
+                              </div>
+                              <div className="monthgoals-card-click-hint">
+                                <Search className="w-3 h-3"/> Clique para ver todos os gastos
+                              </div>
+
+                              {showGoalEditors && (
+                                <div className="monthgoals-future-goal" onClick={e=>e.stopPropagation()}>
+                                  {!editingFuture ? (
+                                    <button
+                                      type="button"
+                                      onClick={() => setFutureGoalEdit({
+                                        categoryId: cat.id,
+                                        value: dados.meta ? Number(dados.meta).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) : ''
+                                      })}
+                                    >
+                                      Deseja mudar a meta para os próximos meses?
+                                    </button>
+                                  ) : (
+                                    <div className="monthgoals-future-goal-editor">
+                                      <div>
+                                        <b>Nova meta para os próximos meses</b>
+                                        <small>
+                                          A partir de {resumoSelecionado.nome} de {anoSelecionado}, durante os próximos 12 meses.
+                                        </small>
+                                      </div>
+
+                                      <div className="monthgoals-future-goal-controls">
+                                        <span>R$</span>
+                                        <input
+                                          type="text"
+                                          inputMode="decimal"
+                                          value={futureGoalEdit.value}
+                                          onFocus={e=>e.currentTarget.select()}
+                                          onChange={e=>setFutureGoalEdit(v=>({...v,value:e.target.value}))}
+                                          placeholder="0,00"
+                                          aria-label="Nova meta para os próximos meses"
+                                        />
+                                        <button
+                                          type="button"
+                                          className="apply"
+                                          onClick={() => {
+                                            setGoalForNextMonths(
+                                              cat.id,
+                                              anoSelecionado,
+                                              mesSelecionado,
+                                              futureGoalEdit.value,
+                                              12
+                                            );
+                                            setFutureGoalEdit({categoryId:null,value:''});
+                                            showToast('Meta dos próximos meses atualizada.');
+                                          }}
+                                        >
+                                          Aplicar
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={()=>setFutureGoalEdit({categoryId:null,value:''})}
+                                        >
+                                          Cancelar
+                                        </button>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="monthgoals-chart-card">
+                      <div className="monthgoals-section-head">
+                        <div>
+                          <h3>Gastos, Gastos Futuros e Metas — {nomeVisao}</h3>
+                          <p>Compare o que já foi gasto, o que está previsto e a meta definida.</p>
+                        </div>
+
+                        <div className="monthgoals-view-tabs">
+                          <button
+                            type="button"
+                            className={advancedViewMonths===3?'active':''}
+                            onClick={()=>setAdvancedViewMonths(3)}
+                          >
+                            3 meses
+                          </button>
+                          <button
+                            type="button"
+                            className={advancedViewMonths===6?'active':''}
+                            onClick={()=>setAdvancedViewMonths(6)}
+                          >
+                            6 meses
+                          </button>
+                          <button
+                            type="button"
+                            className={advancedViewMonths===12?'active':''}
+                            onClick={()=>setAdvancedViewMonths(12)}
+                          >
+                            Ano inteiro
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="monthgoals-chart-wrap monthgoals-chart-wrap-v28">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={dadosGrafico} margin={{top:12,right:10,left:0,bottom:14}} barCategoryGap="18%">
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#d9e4ec" />
+                            <XAxis
+                              dataKey="mes"
+                              tick={{fontSize:13,fontWeight:900,fill:'#365168'}}
+                              axisLine={{stroke:'#9fb5c7'}}
+                              tickLine={{stroke:'#9fb5c7'}}
+                              interval={0}
+                            />
+                            <YAxis
+                              tick={{fontSize:11,fontWeight:800,fill:'#5b7388'}}
+                              axisLine={{stroke:'#9fb5c7'}}
+                              tickLine={{stroke:'#9fb5c7'}}
+                              width={58}
+                            />
+                            <Tooltip
+                              contentStyle={{
+                                borderRadius:'12px',
+                                border:'1px solid #c9d9e6',
+                                boxShadow:'0 10px 24px rgba(15,23,42,.10)',
+                                background:'#ffffff'
+                              }}
+                              cursor={{fill:'rgba(49,130,206,.08)'}}
+                              formatter={(value, name) => [`R$ ${moeda(value)}`, name]}
+                              labelStyle={{fontWeight:900,color:'#1f3b53'}}
+                            />
+                            <Legend wrapperStyle={{fontSize:'12px',fontWeight:900,paddingTop:'6px'}} />
+                            <Bar dataKey="realizado" name="Gastos realizados" fill="#e4485b" radius={[8,8,0,0]} maxBarSize={44} />
+                            {graficoTemGastosFuturos && (
+                              <Bar dataKey="futuro" name="Gastos futuros" fill="#3182ce" radius={[8,8,0,0]} maxBarSize={44} />
+                            )}
+                            <Bar dataKey="meta" name="Meta" fill="#2fa36b" radius={[8,8,0,0]} maxBarSize={44} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                      <div className="monthgoals-chart-year-note">
+                        <b>Regra do gráfico:</b> entram somente registros classificados como Gasto Futuro, com data ainda futura e com o mês/ano correto.
+                      </div>
+                      {graficoTemGastosFuturos && (
+                        <div className="monthgoals-chart-future-trace">
+                          <b>Gastos futuros incluídos neste gráfico:</b>
+                          <div>
+                            {futurosConsideradosNoGrafico.map(item => (
+                              <span key={item.id || `${item.description}-${item.date}`}>
+                                {formatToDDMMAAAA(item.date)} • {item.description || 'Gasto futuro'} • R$ {moeda(item.amount)}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="monthgoals-bottom-grid monthgoals-bottom-grid-v28">
+                      <div className="monthgoals-list-card">
+                        <div className="monthgoals-list-head">
+                          <div>
+                            <h3>Gastos realizados em {resumoSelecionado.nome}</h3>
+                            <p>{lancamentosMes.length} lançamento(s)</p>
+                          </div>
+                          <div className="monthgoals-list-head-actions">
+                            <div className="monthgoals-list-total">
+                              <span>Total</span>
+                              <strong>R$ {moeda(totalGastosRealizadosMes)}</strong>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={()=>{
+                                setFilterMonth(resumoSelecionado.key);
+                                setActiveTab('transactions');
+                              }}
+                            >
+                              Abrir Lançamentos
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="monthgoals-list-body">
+                          {lancamentosMes.length === 0 ? (
+                            <div className="monthgoals-empty">Nenhum gasto realizado neste mês.</div>
+                          ) : lancamentosMes.map(t => (
+                            <button
+                              type="button"
+                              key={t.id}
+                              className="monthgoals-list-item"
+                              onClick={()=>handleEditClick(t)}
+                              title="Clique para editar o lançamento"
+                            >
+                              <div>
+                                <b>{t.description || 'Despesa'}</b>
+                                <small>{formatToDDMMAAAA(referenciaTransacao(t))} • {t.bank || 'Sem banco'}</small>
+                              </div>
+                              <strong>R$ {moeda(t.amount)}</strong>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="monthgoals-list-card monthgoals-future-list-card">
+                        <div className="monthgoals-list-head">
+                          <div>
+                            <h3>Gastos futuros em {resumoSelecionado.nome}</h3>
+                            <p>
+                              {futurosMes.length > 0
+                                ? `${futurosMes.length} registro(s) • ligados à aba Futuras`
+                                : 'Nenhum gasto futuro neste mês'}
+                            </p>
+                          </div>
+                          <div className="monthgoals-list-head-actions">
+                            <div className="monthgoals-list-total future">
+                              <span>Total</span>
+                              <strong>R$ {moeda(totalGastosFuturosMes)}</strong>
+                            </div>
+                            <button type="button" onClick={()=>setActiveTab('future')}>Abrir Futuras</button>
+                          </div>
+                        </div>
+
+                        <div className="monthgoals-list-body">
+                          {futurosMes.length === 0 ? (
+                            <div className="monthgoals-empty">Nenhum gasto futuro neste mês.</div>
+                          ) : futurosMes.map(item => (
+                            <div key={item.id} className="monthgoals-list-item static">
+                              <div>
+                                <b>{item.description || 'Gasto futuro'}</b>
+                                <small>{formatToDDMMAAAA(item.date)}</small>
+                              </div>
+                              <strong>R$ {moeda(item.amount)}</strong>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {categoryExpenseDetail && (() => {
+                      const categoriaId = categoryExpenseDetail.categoryId;
+                      const mesKey = categoryExpenseDetail.monthKey;
+
+                      const gastosRealizadosCategoria = transactions
+                        .filter(t =>
+                          t.type === 'expense' &&
+                          t.category === categoriaId &&
+                          mesDaTransacao(t) === mesKey
+                        )
+                        .sort((a,b) => referenciaTransacao(b).localeCompare(referenciaTransacao(a)));
+
+                      const gastosFuturosCategoria = futureExpenses
+                        .filter(item =>
+                          item.category === categoriaId &&
+                          gastoFuturoPertenceAoMes(item, categoryExpenseDetail.year, Number(mesKey.slice(5,7)))
+                        )
+                        .sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
+
+                      const totalRealizadoCategoria = gastosRealizadosCategoria.reduce(
+                        (sum,item) => sum + (parseFloat(item.amount) || 0), 0
+                      );
+                      const totalFuturoCategoria = gastosFuturosCategoria.reduce(
+                        (sum,item) => sum + (parseFloat(item.amount) || 0), 0
+                      );
+
+                      return (
+                        <div className="fixed inset-0 z-[80] bg-slate-900/55 backdrop-blur-sm flex items-center justify-center p-4">
+                          <div className="category-expense-modal">
+                            <div className="category-expense-modal-head">
+                              <div className="category-expense-modal-title">
+                                <span style={{background:categoryExpenseDetail.color}}></span>
+                                <div>
+                                  <h3>{categoryExpenseDetail.categoryName}</h3>
+                                  <p>Todos os gastos de {categoryExpenseDetail.monthName} de {categoryExpenseDetail.year}</p>
+                                </div>
+                              </div>
+                              <button type="button" onClick={()=>setCategoryExpenseDetail(null)} className="category-expense-close">
+                                <X className="w-5 h-5"/>
+                              </button>
+                            </div>
+
+                            <div className="category-expense-summary">
+                              <div>
+                                <span>Gastos realizados</span>
+                                <strong className="realized">R$ {moeda(totalRealizadoCategoria)}</strong>
+                                <small>{gastosRealizadosCategoria.length} lançamento(s)</small>
+                              </div>
+                              <div>
+                                <span>Gastos futuros</span>
+                                <strong className="future">R$ {moeda(totalFuturoCategoria)}</strong>
+                                <small>{gastosFuturosCategoria.length} registro(s)</small>
+                              </div>
+                              <div>
+                                <span>Total</span>
+                                <strong>R$ {moeda(totalRealizadoCategoria + totalFuturoCategoria)}</strong>
+                                <small>Realizados + futuros</small>
+                              </div>
+                            </div>
+
+                            <div className="category-expense-modal-body">
+                              <div className="category-expense-group">
+                                <h4>Gastos realizados</h4>
+                                {gastosRealizadosCategoria.length === 0 ? (
+                                  <div className="category-expense-empty">Nenhum gasto realizado nesta categoria.</div>
+                                ) : gastosRealizadosCategoria.map(t => (
+                                  <div key={t.id} className="category-expense-row">
+                                    <div>
+                                      <b>{t.description || 'Despesa'}</b>
+                                      <small>{formatToDDMMAAAA(referenciaTransacao(t))} • {t.bank || 'Sem banco informado'}</small>
+                                    </div>
+                                    <strong>R$ {moeda(t.amount)}</strong>
+                                    <button
+                                      type="button"
+                                      onClick={()=>{
+                                        setCategoryExpenseDetail(null);
+                                        handleEditClick(t);
+                                      }}
+                                    >
+                                      <Edit3 className="w-4 h-4"/> Editar
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {gastosFuturosCategoria.length > 0 && (
+                                <div className="category-expense-group future">
+                                  <h4>Gastos futuros</h4>
+                                  {gastosFuturosCategoria.map(item => (
+                                    <div key={item.id} className="category-expense-row">
+                                      <div>
+                                        <b>{item.description || 'Gasto futuro'}</b>
+                                        <small>{formatToDDMMAAAA(item.date)}</small>
+                                      </div>
+                                      <strong>R$ {moeda(item.amount)}</strong>
+                                      <button
+                                        type="button"
+                                        onClick={()=>{
+                                          setCategoryExpenseDetail(null);
+                                          handleEditFutureExpense(item);
+                                        }}
+                                      >
+                                        <Edit3 className="w-4 h-4"/> Editar
+                                      </button>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="category-expense-modal-footer">
+                              <span>Clique em <b>Editar</b> para alterar qualquer lançamento.</span>
+                              <button type="button" onClick={()=>setCategoryExpenseDetail(null)}>Fechar</button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    <div className="monthgoals-year-table-card monthgoals-period-table-card">
+                      <div className="monthgoals-section-head">
+                        <div>
+                          <h3>
+                            {advancedViewMonths === 12
+                              ? `Visão do Ano Inteiro — ${anoSelecionado}`
+                              : `Visão dos Próximos ${advancedViewMonths} Meses`}
+                          </h3>
+                          <p>As categorias sem gastos não aparecem. A média dos últimos 3 meses é exibida ao lado da categoria.</p>
+                        </div>
+
+                        <div className="monthgoals-view-tabs">
+                          <button
+                            type="button"
+                            className={advancedViewMonths===3?'active':''}
+                            onClick={()=>setAdvancedViewMonths(3)}
+                          >
+                            3 meses
+                          </button>
+                          <button
+                            type="button"
+                            className={advancedViewMonths===6?'active':''}
+                            onClick={()=>setAdvancedViewMonths(6)}
+                          >
+                            6 meses
+                          </button>
+                          <button
+                            type="button"
+                            className={advancedViewMonths===12?'active':''}
+                            onClick={()=>setAdvancedViewMonths(12)}
+                          >
+                            Ano inteiro
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="monthgoals-year-table-scroll">
+                        <table className={`monthgoals-year-table monthgoals-table-v21 view-${advancedViewMonths}`}>
+                          <thead>
+                            <tr>
+                              <th>Categoria</th>
+                              {mesesVisao.map(m => <th key={m.key}>{m.curto} {advancedViewMonths!==12 ? String(m.ano).slice(-2) : ''}</th>)}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {linhasVisao.length === 0 ? (
+                              <tr>
+                                <td colSpan={mesesVisao.length+1}>
+                                  <div className="monthgoals-empty">Nenhuma categoria com gasto neste período.</div>
+                                </td>
+                              </tr>
+                            ) : linhasVisao.map(row => {
+                              const media3 = mediaUltimos3Meses(row.cat.id, anoSelecionado, mesSelecionado);
+                              return (
+                                <tr key={row.cat.id}>
+                                  <td>
+                                    <span style={{background:row.cat.color || '#64748b'}}></span>
+                                    <div className="monthgoals-table-category">
+                                      <b>{row.cat.name}</b>
+                                      <small>Média 3 meses: R$ {moeda(media3)}</small>
+                                    </div>
+                                  </td>
+
+                                  {row.valores.map(v => (
+                                    <td
+                                      key={v.key}
+                                      className={v.key === advancedSelectedMonth ? 'selected-month' : ''}
+                                      onClick={()=>setAdvancedSelectedMonth(v.key)}
+                                    >
+                                      <b>R$ {moeda(v.realizado)}</b>
+                                      {v.meta > 0 && <small>Meta: R$ {moeda(v.meta)}</small>}
+                                      {v.futuro > 0 && <em>Futuro: R$ {moeda(v.futuro)}</em>}
+                                    </td>
+                                  ))}
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* ABA METAS — VISÃO GERAL FUNCIONAL */}
+              {activeTab === 'goals' && (() => {
+                const [selectedYearRaw, selectedMonthRaw] = String(goalPeriod || '').split('-');
+                const selectedYear = parseInt(selectedYearRaw, 10) || new Date().getFullYear();
+                const selectedMonthNum = parseInt(selectedMonthRaw, 10) || (new Date().getMonth() + 1);
+                const selectedMonthKey = `${selectedYear}-${String(selectedMonthNum).padStart(2, '0')}`;
+                const selectedMonthStart = `${selectedMonthKey}-01`;
+
+                const money = v => (parseFloat(v) || 0).toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                });
+
+                const normalizeGoalText = value => String(value || '')
+                  .normalize('NFD')
+                  .replace(/[\u0300-\u036f]/g, '')
+                  .toLowerCase();
+
+                const rowIcon = label => {
+                  const t = normalizeGoalText(label);
+                  if (t.includes('moradia') || t.includes('renda') || t.includes('luz') || t.includes('agua')) return '🏠';
+                  if (t.includes('aliment') || t.includes('supermerc')) return '🍴';
+                  if (t.includes('saude') || t.includes('medic')) return '❤️';
+                  if (t.includes('transporte') || t.includes('combust')) return '🚙';
+                  if (t.includes('lazer') || t.includes('viagem')) return '🎮';
+                  if (t.includes('assinatura') || t.includes('stream')) return '▶️';
+                  if (t.includes('invest') || t.includes('poupanca')) return '🐷';
+                  if (t.includes('divida') || t.includes('emprest')) return '💳';
+                  if (t.includes('educa') || t.includes('curso')) return '📚';
+                  if (t.includes('restaurante') || t.includes('delivery')) return '🍽️';
+                  if (t.includes('compra') || t.includes('vest')) return '🛍️';
+                  return '📌';
+                };
+
+                const periodOptions = (() => {
+                  const now = new Date();
+                  const rows = [];
+                  for (let offset = -18; offset <= 12; offset++) {
+                    const d = new Date(now.getFullYear(), now.getMonth() + offset, 1);
+                    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                    const labelMonth = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+                    rows.push({
+                      key,
+                      label: offset === 0
+                        ? `Este mês — ${labelMonth.charAt(0).toUpperCase() + labelMonth.slice(1)}`
+                        : labelMonth.charAt(0).toUpperCase() + labelMonth.slice(1)
+                    });
+                  }
+                  return rows.reverse();
+                })();
+
+                const expenseGoalSegments = goalSegments.filter(s => s.categoryId);
+
+                const getRealizedForSpecificMonth = (segment, year, month) => {
+                  const monthKey = `${year}-${String(month).padStart(2, '0')}`;
+                  return transactions
+                    .filter(t => {
+                      if (t.type !== 'expense' || !isPaidTransaction(t) || t.category !== segment.categoryId) return false;
+                      const refDate = t.paymentDate || t.dueDate || t.date || t.data || '';
+                      return String(refDate).slice(0, 7) === monthKey;
+                    })
+                    .reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+                };
+
+                const getThreeMonthAverage = segment => {
+                  let total = 0;
+                  for (let back = 0; back < 3; back++) {
+                    const d = new Date(selectedYear, selectedMonthNum - 1 - back, 1);
+                    total += getRealizedForSpecificMonth(segment, d.getFullYear(), d.getMonth() + 1);
+                  }
+                  return total / 3;
+                };
+
+                const detailRowsFor = segment => transactions
+                  .filter(t => {
                     if (t.type !== 'expense' || !isPaidTransaction(t) || t.category !== segment.categoryId) return false;
                     const refDate = t.paymentDate || t.dueDate || t.date || t.data || '';
-                    const match = String(refDate).match(/^(\d{4})-(\d{2})/);
-                    if (!match || parseInt(match[1],10) !== goalYear) return false;
-                    const txMonth = parseInt(match[2],10);
-                    if (goalDetailMonth !== 'all') return txMonth === parseInt(goalDetailMonth,10);
-                    return visibleMonthNums.has(txMonth);
-                  }).sort((a,b)=>String(b.paymentDate||b.dueDate||b.date||'').localeCompare(String(a.paymentDate||a.dueDate||a.date||'')));
-                };
-                const rowIcon = label => {
-                  const t = String(label || '').toLowerCase();
-                  if (t.includes('aliment')) return '🍴';
-                  if (t.includes('transporte') || t.includes('combust')) return '🚙';
-                  if (t.includes('moradia') || t.includes('renda') || t.includes('luz')) return '🏠';
-                  if (t.includes('saúde') || t.includes('medic')) return '❤';
-                  if (t.includes('lazer') || t.includes('viagem')) return '🎮';
-                  if (t.includes('educa')) return '🎓';
-                  if (t.includes('restaurante') || t.includes('delivery')) return '🍽';
-                  if (t.includes('assinatura') || t.includes('stream')) return '▶';
-                  if (t.includes('compra') || t.includes('vest')) return '🛍';
-                  if (t.includes('invest')) return '📈';
-                  if (t.includes('dívida') || t.includes('emprest')) return '💳';
-                  return '•••';
-                };
+                    return String(refDate).slice(0, 7) === selectedMonthKey;
+                  })
+                  .sort((a, b) =>
+                    String(b.paymentDate || b.dueDate || b.date || '')
+                      .localeCompare(String(a.paymentDate || a.dueDate || a.date || ''))
+                  );
+
+                const selectedRows = expenseGoalSegments.map(segment => {
+                  const realized = getRealizedForSpecificMonth(segment, selectedYear, selectedMonthNum);
+                  const objective = getGoalValue(segment.id, selectedMonthNum, selectedYear);
+                  const average3 = getThreeMonthAverage(segment);
+                  const pct = objective > 0 ? (realized / objective) * 100 : 0;
+                  const variation = objective > 0 ? ((realized - objective) / objective) * 100 : null;
+                  const normalized = normalizeGoalText(segment.label);
+                  const isReserve = normalized.includes('poupanca') || normalized.includes('invest');
+                  const isDebt = normalized.includes('divida') || normalized.includes('emprest');
+
+                  let statusText = 'Defina uma meta';
+                  let statusClass = 'goalview-status-neutral';
+
+                  if (objective > 0) {
+                    if (isReserve) {
+                      statusText = pct >= 100 ? 'META ATINGIDA' : 'RESERVA EM ANDAMENTO';
+                      statusClass = pct >= 100 ? 'goalview-status-special' : 'goalview-status-blue';
+                    } else if (isDebt) {
+                      statusText = realized > 0 ? 'AMORTIZAÇÃO ATIVA' : 'SEM PAGAMENTO NO MÊS';
+                      statusClass = realized > 0 ? 'goalview-status-special' : 'goalview-status-neutral';
+                    } else if (pct > 100) {
+                      statusText = 'ACIMA DA META';
+                      statusClass = 'goalview-status-red';
+                    } else if (pct >= 80) {
+                      statusText = 'PRÓXIMO DO LIMITE';
+                      statusClass = 'goalview-status-amber';
+                    } else {
+                      statusText = 'DENTRO DA META';
+                      statusClass = 'goalview-status-green';
+                    }
+                  }
+
+                  return {
+                    segment,
+                    realized,
+                    objective,
+                    average3,
+                    pct,
+                    variation,
+                    isReserve,
+                    isDebt,
+                    statusText,
+                    statusClass
+                  };
+                });
+
+                const totalMonthlySpent = selectedRows.reduce((sum, row) => sum + row.realized, 0);
+
+                const confirmedIncomeMonth = transactions
+                  .filter(t => {
+                    if (t.type !== 'income' || !isPaidTransaction(t)) return false;
+                    const refDate = t.paymentDate || t.dueDate || t.date || '';
+                    return String(refDate).slice(0, 7) === selectedMonthKey;
+                  })
+                  .reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+
+                const availableForReserve = Math.max(0, confirmedIncomeMonth - totalMonthlySpent);
+
+                const debtCategoryIds = new Set(
+                  categories
+                    .filter(c => {
+                      const txt = normalizeGoalText(c.name);
+                      return txt.includes('divida') || txt.includes('emprest') || c.id === 'dividas';
+                    })
+                    .map(c => c.id)
+                );
+
+                const nextDebt = transactions
+                  .filter(t => {
+                    if (t.type !== 'expense' || isPaidTransaction(t)) return false;
+                    const txt = normalizeGoalText(`${t.description || ''} ${t.category || ''}`);
+                    const isDebt = debtCategoryIds.has(t.category) || txt.includes('divida') || txt.includes('emprest');
+                    if (!isDebt) return false;
+                    const due = String(t.dueDate || '');
+                    return due && due >= selectedMonthStart;
+                  })
+                  .sort((a, b) => String(a.dueDate || '').localeCompare(String(b.dueDate || '')))[0];
+
+                const reserveRow = selectedRows.find(r => r.isReserve);
+                const debtRow = selectedRows.find(r => r.isDebt);
+
+                const totalGoals = selectedRows.filter(r => r.objective > 0).reduce((sum, r) => sum + r.objective, 0);
+                const totalRealized = selectedRows.reduce((sum, r) => sum + r.realized, 0);
+                const overallPct = totalGoals > 0 ? (totalRealized / totalGoals) * 100 : 0;
+
                 return (
-                <div className="meta-modern-page space-y-4 animate-fade-in">
-                  <div className="meta-hero">
-                    <div className="flex items-center gap-4 min-w-0">
-                      <div className="meta-hero-icon"><Target className="w-7 h-7"/></div>
-                      <div className="min-w-0">
-                        <h2>Metas</h2>
-                        <p>Defina seus limites de gastos por categoria e acompanhe seu progresso mês a mês.</p>
+                  <div className="goalview-page animate-fade-in">
+                    <div className="goalview-topline">
+                      <div>
+                        <h2>Visão Geral das Minhas Metas</h2>
+                        <p>Acompanhe seus gastos, metas mensais, reserva e pagamento de dívidas.</p>
                       </div>
+                      <button
+                        type="button"
+                        className={`goalview-structure-btn ${showGoalEditors ? 'active' : ''}`}
+                        onClick={() => setShowGoalEditors(v => !v)}
+                      >
+                        <Settings className="w-4 h-4"/>
+                        {showGoalEditors ? 'Concluir Edição' : 'Editar Estrutura'}
+                      </button>
                     </div>
-                    <div className="meta-year-picker">
-                      <button onClick={() => setGoalYear(y => y - 1)} title="Ano anterior"><ChevronLeft className="w-5 h-5"/></button>
-                      <strong>{goalYear}</strong>
-                      <button onClick={() => setGoalYear(y => y + 1)} title="Próximo ano"><ChevronRight className="w-5 h-5"/></button>
-                    </div>
-                  </div>
 
-                  <div className="meta-summary-grid">
-                    <div className="meta-summary-card meta-summary-blue"><div className="meta-summary-icon"><Target className="w-6 h-6"/></div><div><span>Total de Metas</span><strong>{totalActive}</strong><small>categorias ativas</small></div></div>
-                    <div className="meta-summary-card meta-summary-green"><div className="meta-summary-icon"><CheckCircle className="w-6 h-6"/></div><div><span>Dentro do Limite</span><strong>{within}</strong><small>{totalActive ? Math.round(within/totalActive*100) : 0}% das categorias</small></div></div>
-                    <div className="meta-summary-card meta-summary-amber"><div className="meta-summary-icon"><AlertCircle className="w-6 h-6"/></div><div><span>Atenção</span><strong>{attention}</strong><small>entre 80% e 100%</small></div></div>
-                    <div className="meta-summary-card meta-summary-red"><div className="meta-summary-icon"><X className="w-6 h-6"/></div><div><span>Acima do Limite</span><strong>{over}</strong><small>precisam de ajuste</small></div></div>
-                  </div>
-
-                  <div className="meta-main-card">
-                    <div className="meta-main-head">
-                      <div className="flex items-center gap-3"><div className="meta-head-icon"><Target className="w-5 h-5"/></div><div><h3>Acompanhamento das Metas</h3><p>Valores realizados em reais (R$) • clique na categoria para ver os gastos</p></div></div>
-                      <div className="meta-head-actions">
-                        <select value={goalMonthView} onChange={e=>setGoalMonthView(e.target.value)}>
-                          <option value="6">Últimos 6 meses</option>
-                          <option value="all">Todos os meses</option>
+                    <div className="goalview-overview-grid">
+                      <div className="goalview-period-card">
+                        <label>Período</label>
+                        <select
+                          value={goalPeriod}
+                          onChange={e => {
+                            const value = e.target.value;
+                            setGoalPeriod(value);
+                            setGoalYear(parseInt(value.slice(0, 4), 10));
+                            setGoalExpandedCategoryId(null);
+                          }}
+                        >
+                          {periodOptions.map(option => (
+                            <option key={option.key} value={option.key}>{option.label}</option>
+                          ))}
                         </select>
-                        <button onClick={() => setShowGoalEditors(v => !v)}><Edit3 className="w-4 h-4"/> {showGoalEditors ? 'Ocultar Metas' : 'Editar Metas'}</button>
                       </div>
-                    </div>
-                    <div id="meta-table-scroll" className="meta-table-wrap overflow-x-auto">
-                      <table className={`meta-table ${goalMonthView === 'all' ? 'meta-all-months' : 'meta-six-months'}`}>
-                        <thead><tr><th className="meta-cat-col">Categoria</th>{visibleGoalMonths.map(m=><th key={m.num}>{m.label.charAt(0)+m.label.slice(1).toLowerCase()}</th>)}<th>Total</th></tr></thead>
-                        <tbody>
-                          {expenseGoalSegments.map((segment) => {
-                            const periodRealized = visibleGoalMonths.reduce((sum,m)=>sum+getGoalRealized(segment,m.num),0);
-                            const periodObjective = visibleGoalMonths.reduce((sum,m)=>sum+getGoalValue(segment.id,m.num),0);
-                            const periodPct = periodObjective > 0 ? periodRealized/periodObjective*100 : 0;
-                            const currentGoal = getGoalValue(segment.id,currentMonthNum);
-                            const detailRows = goalExpandedCategoryId === segment.id ? goalExpenseRowsFor(segment) : [];
-                            return <React.Fragment key={segment.id}>
-                              <tr>
-                                <td className="meta-cat-col">
-                                  <button className="meta-cat-button" onClick={() => { setGoalExpandedCategoryId(id => id === segment.id ? null : segment.id); setGoalDetailMonth('all'); }}>
-                                    <div className="meta-cat-cell"><span className="meta-cat-icon">{rowIcon(segment.label)}</span><div><b>{segment.label}</b>{showGoalEditors && <span>Meta {monthLabel}: R$ {money(currentGoal)}</span>}</div><span className="meta-cat-toggle">{goalExpandedCategoryId === segment.id ? 'Fechar ▲' : 'Ver gastos ›'}</span></div>
-                                  </button>
-                                </td>
-                                {visibleGoalMonths.map(m=>{
-                                  const objective=getGoalValue(segment.id,m.num);
-                                  const realized=getGoalRealized(segment,m.num);
-                                  const pct=objective>0?realized/objective*100:0;
-                                  const cls=pctClass(pct);
-                                  return <td key={m.num}>
-                                    <div className="meta-cell-value" title="Realizado">{realized>0?shortMoney(realized):'—'}</div>
-                                    {objective>0 && <div className={`meta-cell-pct ${cls}`}>{Math.round(pct)}%</div>}
-                                    {objective>0 && <div className="meta-mini-bar"><i className={cls} style={{width:`${Math.min(Math.max(pct,0),100)}%`}}></i></div>}
-                                    {showGoalEditors && <div className="meta-edit-row"><span>Meta</span><input type="number" step="0.01" min="0" value={monthlyGoals[goalKey(segment.id,m.num)] ?? ''} onChange={e=>setGoalValue(segment.id,m.num,e.target.value)} placeholder="0"/></div>}
-                                  </td>
-                                })}
-                                <td className="meta-total-cell"><b>{shortMoney(periodRealized)}</b>{periodObjective>0 && <span className={pctClass(periodPct)}>{Math.round(periodPct)}%</span>}</td>
-                              </tr>
-                              {goalExpandedCategoryId === segment.id && <tr><td colSpan={visibleGoalMonths.length + 2} className="!p-0 !bg-white"><div className="meta-expanded-card">
-                                <div className="meta-expanded-head">
-                                  <div><h4>Gastos de {segment.label}</h4><p>{goalDetailMonth === 'all' ? (goalMonthView === 'all' ? `Todos os meses de ${goalYear}` : `Últimos ${visibleGoalMonths.length} meses`) : `${goalMonths[parseInt(goalDetailMonth,10)-1]?.label || ''} de ${goalYear}`} • {detailRows.length} lançamento(s)</p></div>
-                                  <div className="meta-expanded-actions">
-                                    <select value={goalDetailMonth} onChange={e=>setGoalDetailMonth(e.target.value)} title="Filtrar gastos por mês">
-                                      <option value="all">Todos os meses</option>
-                                      {goalMonths.map(m=><option key={m.num} value={String(m.num)}>{m.label}</option>)}
-                                    </select>
-                                    <button className="meta-expanded-close" onClick={()=>setGoalExpandedCategoryId(null)}>Fechar</button>
-                                  </div>
-                                </div>
-                                {detailRows.length===0 ? <div className="py-4 text-center text-xs text-slate-400">Nenhum gasto confirmado neste período.</div> : <div className="meta-expense-list">{detailRows.map(t=>{const refDate=t.paymentDate||t.dueDate||t.date||t.data||'';return <div key={t.id} className="meta-expense-item"><span>{formatToDDMMAAAA(refDate)}</span><div><b>{t.description||t.local||t.produto||'Lançamento'}</b><span>{categories.find(c=>c.id===t.category)?.name||segment.label}</span></div><span>{t.bank||t.payerBank||'—'}</span><span className="meta-expense-amount">R$ {(parseFloat(t.amount)||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</span><button type="button" className="meta-expense-edit" onClick={()=>handleEditClick(t)} title="Editar este lançamento"><Edit3 className="w-3.5 h-3.5"/> Editar</button></div>})}</div>}
-                              </div></td></tr>}
-                            </React.Fragment>
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
 
-                  <div className="meta-bottom-grid">
-                    <div className="meta-bottom-card">
-                      <div className="meta-bottom-title"><Target className="w-5 h-5"/> Progresso por Categoria</div>
-                      <div className="space-y-3">
-                        {referenceRows.filter(r=>r.objective>0).sort((a,b)=>b.pct-a.pct).slice(0,8).map(({seg,pct})=><div key={seg.id} className="meta-progress-row"><span className="meta-progress-icon">{rowIcon(seg.label)}</span><b title={seg.label}>{seg.label}</b><div className="meta-progress-track"><i className={pctClass(pct)} style={{width:`${Math.min(pct,100)}%`}}></i></div><strong>{Math.round(pct)}%</strong></div>)}
-                        {referenceRows.filter(r=>r.objective>0).length===0 && <p className="text-sm text-slate-400 py-5 text-center">Cadastre uma meta para começar o acompanhamento.</p>}
+                      <div className="goalview-stat-card">
+                        <span>Gasto Total Mensal</span>
+                        <strong className="goalview-green">R$ {money(totalMonthlySpent)}</strong>
+                        <small>{totalGoals > 0 ? `${Math.round(overallPct)}% das metas definidas` : 'Defina metas para comparar'}</small>
+                      </div>
+
+                      <div className="goalview-stat-card">
+                        <span>Disponível para Reserva</span>
+                        <strong className={availableForReserve > 0 ? 'goalview-green' : 'goalview-red-text'}>
+                          R$ {money(availableForReserve)}
+                        </strong>
+                        <small>
+                          {availableForReserve > 0
+                            ? 'Saldo após receitas e gastos confirmados'
+                            : 'Sem margem disponível neste período'}
+                        </small>
+                      </div>
+
+                      <div className="goalview-stat-card">
+                        <span>Próxima Quitação de Dívida</span>
+                        <strong className={nextDebt ? 'goalview-green' : ''}>
+                          {nextDebt?.dueDate ? formatToDDMMAAAA(nextDebt.dueDate).slice(0, 5) : 'Nenhuma'}
+                        </strong>
+                        <small>
+                          {nextDebt
+                            ? `${nextDebt.description || 'Pagamento de dívida'} • R$ ${money(nextDebt.amount)}`
+                            : 'Nenhuma dívida pendente localizada'}
+                        </small>
                       </div>
                     </div>
-                    <div className="meta-bottom-card">
-                      <div className="meta-bottom-title"><AlertCircle className="w-5 h-5"/> Dicas e Informações</div>
-                      <div className="meta-tips">
-                        <p className="tip-ok"><CheckCircle/> Você está dentro da meta em <b>{within}</b> categoria(s).</p>
-                        {attention>0 && <p className="tip-warn"><AlertCircle/> {attention} categoria(s) estão próximas do limite.</p>}
-                        {over>0 && <p className="tip-bad"><X/> {over} categoria(s) ultrapassaram a meta de {monthLabel}.</p>}
-                        <p className="tip-info"><TrendingDown/> Compare os meses para identificar onde é possível economizar.</p>
-                        <p className="tip-info"><Sliders/> Ajuste suas metas sempre que sua realidade financeira mudar.</p>
+
+                    {(reserveRow || debtRow) && (
+                      <div className="goalview-focus-strip">
+                        {reserveRow && (
+                          <div>
+                            <span>Reserva de Emergência</span>
+                            <b>R$ {money(reserveRow.realized)}</b>
+                            <small>Meta: R$ {money(reserveRow.objective)}</small>
+                          </div>
+                        )}
+                        {debtRow && (
+                          <div>
+                            <span>Pagamento de Dívidas</span>
+                            <b>R$ {money(debtRow.realized)}</b>
+                            <small>Meta: R$ {money(debtRow.objective)}</small>
+                          </div>
+                        )}
                       </div>
-                      <div className="meta-quote">“Metas transformam sonhos em planos e planos em resultados.”</div>
+                    )}
+
+                    <div className="goalview-table-card">
+                      <div className="goalview-table-scroll">
+                        <table className="goalview-table">
+                          <thead>
+                            <tr>
+                              <th>Categoria</th>
+                              <th>Realizado Mês</th>
+                              <th>Meta do Mês</th>
+                              <th>Status</th>
+                              <th>Variação (%)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {selectedRows.map(row => {
+                              const detailRows = goalExpandedCategoryId === row.segment.id
+                                ? detailRowsFor(row.segment)
+                                : [];
+                              const barWidth = row.objective > 0
+                                ? Math.min(Math.max(row.pct, 0), 100)
+                                : 0;
+                              const variationText = row.variation === null
+                                ? '—'
+                                : `${row.variation >= 0 ? '+' : ''}${Math.round(row.variation)}%`;
+
+                              return (
+                                <React.Fragment key={row.segment.id}>
+                                  <tr
+                                    className={`goalview-row ${goalExpandedCategoryId === row.segment.id ? 'expanded' : ''}`}
+                                    onClick={() => setGoalExpandedCategoryId(id => id === row.segment.id ? null : row.segment.id)}
+                                  >
+                                    <td>
+                                      <div className="goalview-category">
+                                        <span className="goalview-category-icon">{rowIcon(row.segment.label)}</span>
+                                        <div>
+                                          <b>
+                                            {row.isReserve
+                                              ? 'NOVA: Reserva de Emergência (Poupança)'
+                                              : row.segment.label}
+                                          </b>
+                                          <small>Média últimos 3 meses: R$ {money(row.average3)}</small>
+                                          <em>{goalExpandedCategoryId === row.segment.id ? 'Fechar detalhes ▲' : 'Clique para ver detalhes'}</em>
+                                        </div>
+                                      </div>
+                                    </td>
+
+                                    <td>
+                                      <div className="goalview-money">R$ {money(row.realized)}</div>
+                                      <small>Média: R$ {money(row.average3)}</small>
+                                    </td>
+
+                                    <td onClick={e => e.stopPropagation()}>
+                                      {showGoalEditors ? (
+                                        <div className="goalview-goal-editor">
+                                          <span>R$</span>
+                                          <input
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            value={monthlyGoals[goalKey(row.segment.id, selectedMonthNum, selectedYear)] ?? ''}
+                                            onChange={e => setGoalValue(row.segment.id, selectedMonthNum, e.target.value, selectedYear)}
+                                            placeholder="0,00"
+                                          />
+                                        </div>
+                                      ) : (
+                                        <>
+                                          <div className="goalview-money">R$ {money(row.objective)}</div>
+                                          <small>Meta mensal</small>
+                                        </>
+                                      )}
+                                    </td>
+
+                                    <td>
+                                      <div className={`goalview-status-wrap ${row.statusClass}`}>
+                                        <div className="goalview-progress">
+                                          <i style={{ width: `${barWidth}%` }}></i>
+                                          {row.objective > 0 && <span>{Math.round(row.pct)}%</span>}
+                                        </div>
+                                        <small>{row.statusText}</small>
+                                      </div>
+                                    </td>
+
+                                    <td>
+                                      <div className={`goalview-variation ${
+                                        row.variation === null
+                                          ? ''
+                                          : row.isReserve || row.isDebt
+                                            ? (row.variation >= 0 ? 'positive' : 'negative')
+                                            : (row.variation <= 0 ? 'positive' : 'negative')
+                                      }`}>
+                                        <b>{variationText}</b>
+                                        <small>
+                                          {row.objective <= 0
+                                            ? 'Sem meta definida'
+                                            : row.isReserve
+                                              ? (row.pct >= 100 ? 'Meta de reserva alcançada' : 'Reserva em formação')
+                                              : row.isDebt
+                                                ? 'Amortização acompanhada'
+                                                : row.variation <= 0
+                                                  ? 'Dentro do planejado'
+                                                  : 'Acima do planejado'}
+                                        </small>
+                                      </div>
+                                    </td>
+                                  </tr>
+
+                                  {goalExpandedCategoryId === row.segment.id && (
+                                    <tr className="goalview-detail-row">
+                                      <td colSpan="5">
+                                        <div className="goalview-detail-box">
+                                          <div className="goalview-detail-head">
+                                            <div>
+                                              <h4>Detalhes — {row.segment.label}</h4>
+                                              <p>{selectedMonthKey} • {detailRows.length} lançamento(s) confirmados</p>
+                                            </div>
+                                            <button
+                                              type="button"
+                                              onClick={() => setGoalExpandedCategoryId(null)}
+                                            >
+                                              Fechar
+                                            </button>
+                                          </div>
+
+                                          {detailRows.length === 0 ? (
+                                            <div className="goalview-empty">Nenhum gasto confirmado nesta categoria no período selecionado.</div>
+                                          ) : (
+                                            <div className="goalview-detail-list">
+                                              {detailRows.map(t => {
+                                                const refDate = t.paymentDate || t.dueDate || t.date || '';
+                                                return (
+                                                  <div key={t.id} className="goalview-detail-item">
+                                                    <span>{formatToDDMMAAAA(refDate)}</span>
+                                                    <div>
+                                                      <b>{t.description || 'Lançamento'}</b>
+                                                      <small>{t.bank || t.payerBank || 'Sem banco informado'}</small>
+                                                    </div>
+                                                    <strong>R$ {money(t.amount)}</strong>
+                                                    <button
+                                                      type="button"
+                                                      onClick={() => handleEditClick(t)}
+                                                      title="Editar este lançamento"
+                                                    >
+                                                      <Edit3 className="w-3.5 h-3.5"/> Editar
+                                                    </button>
+                                                  </div>
+                                                );
+                                              })}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  )}
+                                </React.Fragment>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      {selectedRows.length === 0 && (
+                        <div className="goalview-empty">Nenhuma categoria de despesa cadastrada.</div>
+                      )}
+                    </div>
+
+                    <div className="goalview-footer-note">
+                      <Target className="w-4 h-4"/>
+                      <span>
+                        Em <b>Editar Estrutura</b>, informe a meta mensal de cada categoria.
+                        Os valores realizados são calculados automaticamente pelos lançamentos confirmados.
+                      </span>
                     </div>
                   </div>
-                </div>
                 );
               })()}
 
@@ -7328,15 +11549,97 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                           </div>
                         </form>
 
-                        <div className="space-y-2 max-h-44 overflow-y-auto pr-1 custom-scrollbar">
+                        <div className="space-y-2 max-h-72 overflow-y-auto pr-1 custom-scrollbar">
                           {categories.map(c => (
-                            <div key={c.id} className="flex justify-between items-center text-xs bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-                              <div className="flex items-center gap-2">
-                                <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: c.color }}></span>
-                                <span className="font-semibold text-slate-700">{c.name}</span>
-                                <span className="text-[9px] uppercase font-bold text-slate-400 bg-slate-200 px-1.5 rounded whitespace-nowrap">{c.type}</span>
-                              </div>
-                              <button onClick={() => handleDeleteCategory(c.id)} className="text-rose-500 hover:text-rose-600"><Trash2 className="w-4 h-4" /></button>
+                            <div key={c.id} className={`category-manager-row ${editingCategoryId === c.id ? 'editing' : ''}`}>
+                              {editingCategoryId === c.id ? (
+                                <div className="category-edit-panel">
+                                  <div className="category-edit-fields">
+                                    <input
+                                      type="text"
+                                      value={editingCategoryName}
+                                      onChange={(e)=>setEditingCategoryName(e.target.value)}
+                                      placeholder="Nome da categoria"
+                                      className="category-edit-name"
+                                    />
+
+                                    <select
+                                      value={editingCategoryType}
+                                      onChange={(e)=>setEditingCategoryType(e.target.value)}
+                                      className="category-edit-type"
+                                    >
+                                      <option value="necessidade">Despesa: Necessidade</option>
+                                      <option value="desejo">Despesa: Desejo</option>
+                                      <option value="poupanca">Despesa: Poupança/Dívidas</option>
+                                      <option value="receita">Receita (Entrada)</option>
+                                    </select>
+
+                                    <div className="category-edit-color-wrap">
+                                      <span>Cor</span>
+                                      <input
+                                        type="color"
+                                        value={editingCategoryColor}
+                                        onChange={(e)=>setEditingCategoryColor(e.target.value)}
+                                        className="category-edit-color"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="category-edit-actions">
+                                    <button
+                                      type="button"
+                                      onClick={()=>handleSaveCategoryEdit(c.id)}
+                                      className="category-save-btn"
+                                      title="Salvar alterações"
+                                    >
+                                      <CheckCircle className="w-4 h-4"/> Salvar
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={handleCancelEditCategory}
+                                      className="category-cancel-btn"
+                                      title="Cancelar edição"
+                                    >
+                                      <X className="w-4 h-4"/> Cancelar
+                                    </button>
+                                  </div>
+                                </div>
+                              ) : (
+                                <>
+                                  <div className="category-manager-info">
+                                    <span className="category-manager-dot" style={{ backgroundColor: c.color }}></span>
+                                    <span className="category-manager-name">{c.name}</span>
+                                    <span className="category-manager-type">
+                                      {c.type === 'necessidade'
+                                        ? 'Necessidade'
+                                        : c.type === 'desejo'
+                                          ? 'Desejo'
+                                          : c.type === 'poupanca'
+                                            ? 'Poupança/Dívidas'
+                                            : 'Receita'}
+                                    </span>
+                                  </div>
+
+                                  <div className="category-manager-actions">
+                                    <button
+                                      type="button"
+                                      onClick={()=>handleEditCategory(c)}
+                                      className="category-edit-btn"
+                                      title="Editar categoria"
+                                    >
+                                      <Edit3 className="w-4 h-4"/>
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={()=>handleDeleteCategory(c.id)}
+                                      className="category-delete-btn"
+                                      title="Excluir categoria"
+                                    >
+                                      <Trash2 className="w-4 h-4"/>
+                                    </button>
+                                  </div>
+                                </>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -7466,11 +11769,19 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 </div>
                 <form onSubmit={handleSaveTransaction} className="p-6 overflow-y-auto space-y-5 text-sm">
                   
-                  <div className="grid grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
-                    <button type="button" onClick={() => handleTypeChange('expense')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'expense' ? 'bg-rose-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Despesa (Saída)</button>
-                    <button type="button" onClick={() => handleTypeChange('income')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'income' ? 'bg-emerald-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Receita (Entrada)</button>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+                    <button type="button" onClick={() => handleTypeChange('expense')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'expense' ? 'bg-rose-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Despesa</button>
+                    <button type="button" onClick={() => handleTypeChange('income')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'income' ? 'bg-emerald-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Receita</button>
                     <button type="button" onClick={() => handleTypeChange('transfer')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'transfer' ? 'bg-blue-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Transferência</button>
+                    <button type="button" onClick={() => handleTypeChange('future')} className={`py-2 rounded-lg font-bold text-xs transition-all shadow-sm ${formData.type === 'future' ? 'bg-amber-500 text-white' : 'bg-transparent text-slate-600 hover:bg-slate-200 shadow-none'}`}>Gasto Futuro</button>
                   </div>
+
+                  {formData.type === 'future' && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-amber-900">
+                      <div className="font-black text-xs">Gasto Futuro</div>
+                      <p className="text-[10px] mt-1 font-medium">Este valor vai para a aba Futuras e para o gráfico de Gastos Futuros. Ele não será contado como gasto realizado agora.</p>
+                    </div>
+                  )}
 
                   <div>
                     <label className="block font-bold text-slate-700 mb-1.5">Descrição</label>
@@ -7482,21 +11793,23 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <input type="number" step="0.01" min="0.01" required placeholder="0.00" value={formData.amount} onChange={(e) => setFormData(p => ({ ...p, amount: e.target.value }))} className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-emerald-600 font-black text-lg focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className={`grid ${formData.type === 'future' ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1.5">Data Vencimento</label>
+                      <label className="block font-bold text-slate-700 mb-1.5">{formData.type === 'future' ? 'Data Prevista' : 'Data Vencimento'}</label>
                       <input type="date" required value={formData.dueDate} onChange={(e) => setFormData(p => ({ ...p, dueDate: e.target.value }))} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition font-mono" />
                     </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1.5">{formData.type === 'transfer' ? 'Meio de Transferência' : 'Meio de Pagamento'}</label>
-                      <select value={formData.paymentMethod} onChange={(e) => setFormData(p => ({ ...p, paymentMethod: e.target.value }))} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
-                        <option value="pix">PIX</option>
-                        <option value="conta_bancaria">Conta Bancária</option>
-                        <option value="dinheiro">Dinheiro</option>
-                        {formData.type !== 'transfer' && <option value="credito">Cartão de Crédito</option>}
-                        {formData.type !== 'transfer' && <option value="debito">Cartão de Débito</option>}
-                      </select>
-                    </div>
+                    {formData.type !== 'future' && (
+                      <div>
+                        <label className="block font-bold text-slate-700 mb-1.5">{formData.type === 'transfer' ? 'Meio de Transferência' : 'Meio de Pagamento'}</label>
+                        <select value={formData.paymentMethod} onChange={(e) => setFormData(p => ({ ...p, paymentMethod: e.target.value }))} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                          <option value="pix">PIX</option>
+                          <option value="conta_bancaria">Conta Bancária</option>
+                          <option value="dinheiro">Dinheiro</option>
+                          {formData.type !== 'transfer' && <option value="credito">Cartão de Crédito</option>}
+                          {formData.type !== 'transfer' && <option value="debito">Cartão de Débito</option>}
+                        </select>
+                      </div>
+                    )}
                   </div>
 
                   {formData.type === 'transfer' ? (
@@ -7598,19 +11911,23 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     </>
                   )}
 
-                  <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-sm mt-4">
-                    <div>
-                      <span className="font-bold text-slate-800">Marcar como Pago/Recebido?</span>
-                      <p className="text-xs text-slate-500 font-medium mt-0.5">Irá refletir-se no Saldo Real.</p>
+                  {formData.type !== 'future' && (
+                    <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-sm mt-4">
+                      <div>
+                        <span className="font-bold text-slate-800">Marcar como Pago/Recebido?</span>
+                        <p className="text-xs text-slate-500 font-medium mt-0.5">Irá refletir-se no Saldo Real.</p>
+                      </div>
+                      <button type="button" onClick={() => setFormData(p => ({ ...p, paid: !p.paid }))} className={`px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-colors ${formData.paid ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-600 hover:bg-slate-100'}`}>
+                        {formData.paid ? 'Confirmado' : 'Pendente'}
+                      </button>
                     </div>
-                    <button type="button" onClick={() => setFormData(p => ({ ...p, paid: !p.paid }))} className={`px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-colors ${formData.paid ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-600 hover:bg-slate-100'}`}>
-                      {formData.paid ? 'Confirmado' : 'Pendente'}
-                    </button>
-                  </div>
+                  )}
 
                   <div className="flex gap-3 pt-6 border-t border-slate-200 mt-2">
                     <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 py-3 rounded-xl font-bold transition">Cancelar</button>
-                    <button type="submit" className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md transition">Confirmar Dados</button>
+                    <button type="submit" className={`flex-1 ${formData.type === 'future' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-500 hover:bg-emerald-600'} text-white font-bold py-3 rounded-xl shadow-md transition`}>
+                      {formData.type === 'future' ? 'Salvar como Gasto Futuro' : 'Confirmar Dados'}
+                    </button>
                   </div>
 
                 </form>
