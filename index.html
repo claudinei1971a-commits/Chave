@@ -1263,11 +1263,24 @@
 
 <style id="financas-pro-compra-direta-cartao-v9">
   .cards-premium-page .card-inline-actions{
-    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
   }
-  .cards-premium-page .card-direct-purchase{
-    background:rgba(255,255,255,.28)!important;
-    border-color:rgba(255,255,255,.48)!important;
+  .cards-premium-page .card-top-icon-btn{
+    width:26px;
+    height:26px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.26);
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    transition:transform .18s ease, background .18s ease, opacity .18s ease;
+  }
+  .cards-premium-page .card-top-icon-btn:hover{
+    background:rgba(255,255,255,.28);
+    transform:translateY(-1px);
   }
   .invoice-direct-purchase{
     display:inline-flex;
@@ -4443,6 +4456,189 @@
   }
 </style>
 
+
+<style id="financas-pro-cartoes-limpos-v35">
+  .cards-premium-page .cards-premium-grid{
+    gap:12px!important;
+  }
+
+  .cards-premium-page .cards-premium-card{
+    min-height:205px!important;
+    padding:12px!important;
+    border-radius:16px!important;
+    box-shadow:0 8px 20px rgba(3,37,84,.16)!important;
+  }
+
+  .cards-premium-page .card-brand-row{
+    gap:9px!important;
+  }
+  .cards-premium-page .card-brand-icon{
+    width:38px!important;
+    height:38px!important;
+    font-size:15px!important;
+    border-radius:12px!important;
+  }
+  .cards-premium-page .cards-premium-card h3{
+    font-size:14px!important;
+  }
+  .cards-premium-page .card-month-reference{
+    padding:3px 7px!important;
+    font-size:7px!important;
+  }
+  .cards-premium-page .card-pill{
+    padding:4px 7px!important;
+    font-size:7px!important;
+  }
+  .cards-premium-page .card-top-icon-btn{
+    width:27px!important;
+    height:27px!important;
+  }
+
+  .cards-premium-page .card-stats-row{
+    margin-top:10px!important;
+  }
+  .cards-premium-page .card-stat span{
+    font-size:8px!important;
+  }
+  .cards-premium-page .card-stat strong{
+    font-size:13px!important;
+  }
+  .cards-premium-page .card-stat:last-child strong{
+    color:#75f0a8!important;
+  }
+
+  .cards-premium-page .card-progress{
+    height:6px!important;
+    margin-top:8px!important;
+  }
+  .cards-premium-page .card-usage-line{
+    margin-top:5px!important;
+    font-size:8px!important;
+  }
+
+  .cards-premium-page .card-future-values{
+    margin-top:6px!important;
+    gap:5px!important;
+  }
+  .cards-premium-page .card-future-box{
+    padding:5px 7px!important;
+    border-radius:9px!important;
+    background:rgba(255,255,255,.10)!important;
+  }
+  .cards-premium-page .card-future-box span{
+    font-size:6.8px!important;
+  }
+  .cards-premium-page .card-future-box strong{
+    font-size:9.5px!important;
+  }
+
+  .cards-premium-page .card-inline-info{
+    margin-top:6px!important;
+    padding-top:6px!important;
+  }
+  .cards-premium-page .card-inline-actions-v35{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+  .cards-premium-page .card-inline-actions-v35 button{
+    min-height:30px!important;
+    padding:5px 4px!important;
+    border-radius:9px!important;
+    font-size:7.5px!important;
+  }
+  .cards-premium-page .card-inline-actions-v35 button svg{
+    width:12px!important;
+    height:12px!important;
+  }
+
+  .cards-premium-page .cards-add-tile{
+    min-height:205px!important;
+    border-radius:16px!important;
+  }
+
+  @media(max-width:850px){
+    .cards-premium-page .cards-premium-grid{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+    .cards-premium-page .cards-premium-card,
+    .cards-premium-page .cards-add-tile{
+      min-height:198px!important;
+    }
+  }
+
+  @media(max-width:560px){
+    .cards-premium-page .cards-premium-grid{
+      grid-template-columns:1fr!important;
+    }
+    .cards-premium-page .cards-premium-card{
+      min-height:0!important;
+      padding:13px!important;
+    }
+    .cards-premium-page .card-stat strong{
+      font-size:12px!important;
+    }
+    .cards-premium-page .card-inline-actions-v35{
+      grid-template-columns:repeat(3,1fr)!important;
+    }
+    .cards-premium-page .card-inline-actions-v35 button{
+      min-height:34px!important;
+      font-size:8px!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-cartoes-super-limpos-v36">
+  .cards-premium-page .cards-premium-card-v36{
+    cursor:pointer!important;
+  }
+  .cards-premium-page .cards-premium-card-v36:hover{
+    transform:translateY(-2px)!important;
+    box-shadow:0 14px 28px rgba(3,28,70,.24)!important;
+  }
+
+  .cards-premium-page .card-inline-actions-v36{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+  }
+  .cards-premium-page .card-inline-actions-v36 button{
+    width:100%!important;
+    min-height:32px!important;
+    flex-direction:row!important;
+    gap:6px!important;
+    font-size:8px!important;
+    border-radius:9px!important;
+  }
+
+  .cards-premium-page .card-click-details-v36{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    margin-top:6px;
+    color:rgba(255,255,255,.78);
+    font-size:6.8px;
+    font-weight:800;
+    text-align:center;
+  }
+
+  .cards-premium-page .card-inline-info{
+    margin-top:4px!important;
+    padding-top:5px!important;
+  }
+
+  @media(max-width:560px){
+    .cards-premium-page .card-click-details-v36{
+      font-size:7.5px;
+    }
+    .cards-premium-page .card-inline-actions-v36 button{
+      min-height:36px!important;
+      font-size:9px!important;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -4521,7 +4717,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '33';
+    const APP_VERSION = '36';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -9244,10 +9440,16 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         return (
                           <div
                             key={card.id}
-                            className={`cards-premium-card ${pmSelectedCard === card.name ? 'selected-card' : ''} text-white relative overflow-hidden flex flex-col justify-between`}
+                            className={`cards-premium-card cards-premium-card-v36 ${cardCompleteHistoryName === card.name ? 'selected-card' : ''} text-white relative overflow-hidden flex flex-col justify-between`}
                             style={{ background: card.gradient }}
-                            onClick={() => {}}
-                            title={`Cartão ${card.name} — use os botões para visualizar informações`}
+                            onClick={() => {
+                              setShowInvoiceSummary(false);
+                              setShowInvoiceDetails(false);
+                              setShowCardPurchaseHistory(false);
+                              setCardCompleteHistoryName(card.name);
+                              setTimeout(()=>document.getElementById('card-complete-history-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+                            }}
+                            title={`Clique para ver detalhes, compras e histórico do cartão ${card.name}`}
                           >
                             <div>
                               <div className="flex justify-between items-start">
@@ -9263,8 +9465,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <span className="card-pill">{pctUsado >= 80 ? 'Uso alto' : pctUsado >= 50 ? 'Uso médio' : 'Em dia'}</span>
-                                  <button onClick={(e) => { e.stopPropagation(); handleEditCardClick(card); }} className="hover:opacity-100 transition" title="Editar"><Edit3 className="w-4 h-4" /></button>
-                                  <button onClick={(e) => { e.stopPropagation(); setDeleteConfirmation({ isOpen: true, transactionId: card.id, isPaymanager: false, isCard: true }); }} className="hover:opacity-100 transition" title="Excluir"><Trash2 className="w-4 h-4" /></button>
+                                  <button onClick={(e) => { e.stopPropagation(); handleNewPurchaseForCard(card, selectedCardMonth); }} className="card-top-icon-btn" title="Nova compra neste cartão"><Plus className="w-4 h-4" /></button>
+                                  <button onClick={(e) => { e.stopPropagation(); handleEditCardClick(card); }} className="card-top-icon-btn" title="Editar cartão"><Edit3 className="w-4 h-4" /></button>
+                                  <button onClick={(e) => { e.stopPropagation(); setDeleteConfirmation({ isOpen: true, transactionId: card.id, isPaymanager: false, isCard: true }); }} className="card-top-icon-btn" title="Excluir cartão"><Trash2 className="w-4 h-4" /></button>
                                 </div>
                               </div>
                               <div className="card-stats-row">
@@ -9282,34 +9485,29 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               </div>
                               <div className="card-future-values">
                                 <div className="card-future-box">
-                                  <span>{selectedCardMonthLabel}</span>
+                                  <span>Fatura • {selectedCardMonthLabel}</span>
                                   <strong>R$ {selectedInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
                                 </div>
                                 <div className="card-future-box">
-                                  <span>3 meses seguintes</span>
+                                  <span>Próx. 3 meses</span>
                                   <strong>R$ {followingThreeValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
                                 </div>
                               </div>
+                              <div className="card-click-details-v36">
+                                <Layers className="w-3 h-3"/> Clique no cartão para ver compras e histórico
+                              </div>
                               <div className="card-inline-info">
                                 <div className="card-inline-invoice" aria-hidden="true"></div>
-                                <div className="card-inline-actions" onClick={(e)=>e.stopPropagation()}>
-                                  <button className="card-direct-purchase" onClick={() => handleNewPurchaseForCard(card, selectedCardMonth)} title={`Lançar compra diretamente no cartão ${card.name}`}><Plus className="w-3 h-3"/> + Compra</button>
-                                  <button className={pmSelectedCard===card.name && showInvoiceSummary && pmSelectedMonth!=='all' ? 'active':''} onClick={() => {
-                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(selectedCardMonth); setShowInvoiceSummary(true); setShowInvoiceDetails(false); setShowCardPurchaseHistory(false);
-                                    setTimeout(()=>document.getElementById('selected-invoice-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
-                                  }} title="Ver resumo da fatura"><FileText className="w-3 h-3"/> Resumo</button>
+                                <div className="card-inline-actions card-inline-actions-v36" onClick={(e)=>e.stopPropagation()}>
                                   <button className={pmSelectedCard===card.name && showInvoiceDetails && pmSelectedMonth!=='all' ? 'active':''} onClick={() => {
-                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth(selectedCardMonth); setShowInvoiceSummary(false); setShowInvoiceDetails(true); setShowCardPurchaseHistory(false);
+                                    setCardCompleteHistoryName(null);
+                                    setPmSelectedCard(card.name);
+                                    setPmSelectedMonth(selectedCardMonth);
+                                    setShowInvoiceSummary(false);
+                                    setShowInvoiceDetails(true);
+                                    setShowCardPurchaseHistory(false);
                                     setTimeout(()=>document.getElementById('selected-invoice-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
-                                  }} title="Ver detalhes da fatura"><ShoppingBag className="w-3 h-3"/> Fatura</button>
-                                  <button className={pmSelectedCard===card.name && showCardPurchaseHistory ? 'active':''} onClick={() => {
-                                    setCardCompleteHistoryName(null); setPmSelectedCard(card.name); setPmSelectedMonth('all'); setShowInvoiceSummary(false); setShowInvoiceDetails(false); setShowCardPurchaseHistory(true);
-                                    setTimeout(()=>document.getElementById('card-purchase-history')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
-                                  }} title="Ver compras"><ShoppingBag className="w-3 h-3"/> Compras</button>
-                                  <button className={cardCompleteHistoryName===card.name ? 'active':''} onClick={() => {
-                                    setShowInvoiceSummary(false); setShowInvoiceDetails(false); setShowCardPurchaseHistory(false); setCardCompleteHistoryName(card.name);
-                                    setTimeout(()=>document.getElementById('card-complete-history-panel')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
-                                  }} title="Ver registro completo de compras"><Layers className="w-3 h-3"/> Ver registro completo</button>
+                                  }} title="Abrir fatura do cartão"><FileText className="w-3 h-3"/> Fatura</button>
                                 </div>
                               </div>
                             </div>
