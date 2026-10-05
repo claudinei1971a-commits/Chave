@@ -4639,6 +4639,31 @@
   }
 </style>
 
+
+<style id="financas-pro-metas-fixas-v38">
+  .monthgoals-fixed-month-notice{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:10px 10px 0;
+    padding:9px 11px;
+    border:1px solid #bcd9ec;
+    border-radius:9px;
+    background:#f0f8fd;
+    color:#41677f;
+    font-size:9px;
+    font-weight:750;
+  }
+  .monthgoals-fixed-month-notice svg{
+    color:#2677a8;
+    flex:0 0 auto;
+  }
+  .monthgoals-fixed-month-notice b{
+    color:#174b6d;
+    font-weight:950;
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -4717,7 +4742,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '36';
+    const APP_VERSION = '38';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -4972,6 +4997,8 @@
         return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
       });
       const [showGoalEditors, setShowGoalEditors] = useState(false);
+      const [goalEditDraft, setGoalEditDraft] = useState({});
+      const [goalEditMonthKey, setGoalEditMonthKey] = useState('');
       const [goalMonthView, setGoalMonthView] = useState('6');
       const [goalExpandedCategoryId, setGoalExpandedCategoryId] = useState(null);
       const [goalDetailMonth, setGoalDetailMonth] = useState('all');
@@ -7784,6 +7811,61 @@
         saveSettingsToCloud(banks, categories, budgets, myCards, next);
       };
 
+      const parseGoalBR = (value) => {
+        const clean = String(value ?? '').trim().replace(/\./g, '').replace(',', '.');
+        if (clean === '') return null;
+        const parsed = parseFloat(clean);
+        return Number.isFinite(parsed) ? Math.round(parsed * 100) / 100 : null;
+      };
+
+      const beginMonthlyGoalEdit = (year, month) => {
+        const monthKey = `${year}-${String(month).padStart(2, '0')}`;
+        const draft = {};
+        categories
+          .filter(c => c.type !== 'receita')
+          .forEach(c => {
+            const value = getGoalValue(c.id, month, year);
+            draft[c.id] = value > 0
+              ? Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+              : '';
+          });
+
+        setGoalEditDraft(draft);
+        setGoalEditMonthKey(monthKey);
+        setShowGoalEditors(true);
+      };
+
+      const concludeMonthlyGoalEdit = async () => {
+        const [yearRaw, monthRaw] = String(goalEditMonthKey || '').split('-');
+        const year = parseInt(yearRaw, 10);
+        const month = parseInt(monthRaw, 10);
+
+        if (!year || !month) {
+          setShowGoalEditors(false);
+          return;
+        }
+
+        const next = { ...monthlyGoals };
+
+        categories
+          .filter(c => c.type !== 'receita')
+          .forEach(c => {
+            const key = goalKey(c.id, month, year);
+            const parsed = parseGoalBR(goalEditDraft[c.id]);
+            if (parsed === null) delete next[key];
+            else next[key] = parsed;
+          });
+
+        setMonthlyGoals(next);
+        localStorage.setItem('local_monthly_goals', JSON.stringify(next));
+        await saveSettingsToCloud(banks, categories, budgets, myCards, next);
+
+        setShowGoalEditors(false);
+        setGoalEditDraft({});
+        setGoalEditMonthKey('');
+        showToast(`Metas de ${String(month).padStart(2,'0')}/${year} concluídas e fixadas.`);
+      };
+
       const setGoalForWholeYear = (segment, year, value) => {
         const clean = String(value ?? '').replace(/\./g, '').replace(',', '.');
         const parsed = clean === '' ? null : parseFloat(clean);
@@ -9421,21 +9503,18 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         const limiteDisponivel = limiteTotal - limiteUsado;
                         const pctUsado = limiteTotal > 0 ? (limiteUsado / limiteTotal) * 100 : 0;
 
-                        // Soma dos três meses seguintes ao mês selecionado.
+                        // Próxima fatura: somente o mês imediatamente seguinte ao mês selecionado.
                         const addMonthsToKey = (monthKey, offset) => {
                           const [year, month] = String(monthKey || '').split('-').map(Number);
                           if (!year || !month) return '';
                           const d = new Date(year, month - 1 + offset, 1);
                           return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
                         };
-                        const followingThreeKeys = [1, 2, 3]
-                          .map(offset => addMonthsToKey(selectedCardMonth, offset))
-                          .filter(Boolean);
 
-                        const followingThreeValue = followingThreeKeys.reduce(
-                          (sum, monthKey) => sum + getProjectedCardValue(monthKey),
-                          0
-                        );
+                        const nextInvoiceMonth = addMonthsToKey(selectedCardMonth, 1);
+                        const nextInvoiceValue = nextInvoiceMonth
+                          ? getProjectedCardValue(nextInvoiceMonth)
+                          : 0;
 
                         return (
                           <div
@@ -9485,12 +9564,12 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               </div>
                               <div className="card-future-values">
                                 <div className="card-future-box">
-                                  <span>Fatura • {selectedCardMonthLabel}</span>
+                                  <span>Fatura atual</span>
                                   <strong>R$ {selectedInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
                                 </div>
                                 <div className="card-future-box">
-                                  <span>Próx. 3 meses</span>
-                                  <strong>R$ {followingThreeValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                                  <span>Próxima fatura</span>
+                                  <strong>R$ {nextInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
                                 </div>
                               </div>
                               <div className="card-click-details-v36">
@@ -10673,15 +10752,27 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
 
                       <div className="monthgoals-actions">
                         <div className="monthgoals-year">
-                          <button type="button" onClick={()=>mudarAno(-1)}>‹</button>
+                          <button type="button" onClick={()=>{
+                            if (showGoalEditors) { showToast('Conclua as metas antes de trocar de ano.'); return; }
+                            mudarAno(-1);
+                          }}>‹</button>
                           <strong>{anoSelecionado}</strong>
-                          <button type="button" onClick={()=>mudarAno(1)}>›</button>
+                          <button type="button" onClick={()=>{
+                            if (showGoalEditors) { showToast('Conclua as metas antes de trocar de ano.'); return; }
+                            mudarAno(1);
+                          }}>›</button>
                         </div>
 
                         <button
                           type="button"
                           className={`monthgoals-edit-btn ${showGoalEditors ? 'active' : ''}`}
-                          onClick={()=>setShowGoalEditors(v=>!v)}
+                          onClick={()=>{
+                            if (showGoalEditors) {
+                              concludeMonthlyGoalEdit();
+                            } else {
+                              beginMonthlyGoalEdit(anoSelecionado, mesSelecionado);
+                            }
+                          }}
                         >
                           <Target className="w-4 h-4"/>
                           {showGoalEditors ? 'Concluir Metas' : 'Definir Metas'}
@@ -10708,7 +10799,13 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                             type="button"
                             key={m.key}
                             className={`monthgoals-month-card ${ativo ? 'active' : ''}`}
-                            onClick={()=>setAdvancedSelectedMonth(m.key)}
+                            onClick={()=>{
+                              if (showGoalEditors) {
+                                showToast('Conclua as metas antes de trocar de mês.');
+                                return;
+                              }
+                              setAdvancedSelectedMonth(m.key);
+                            }}
                           >
                             <div className="monthgoals-month-name">{m.nome}</div>
                             <div className="monthgoals-month-money">R$ {moeda(m.realizados)}</div>
@@ -10771,14 +10868,24 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                       <div className="monthgoals-section-head">
                         <div>
                           <h3>Metas por Categoria — {resumoSelecionado.nome} de {anoSelecionado}</h3>
-                          <p>A meta padrão é única para todos os meses. Se quiser, você pode alterá-la somente para os próximos meses.</p>
+                          <p>A meta alterada fica fixa neste mês quando você clicar em Concluir Metas. Para mudar os meses seguintes, use a opção de próximos meses.</p>
                         </div>
                         {!showGoalEditors && (
-                          <button type="button" onClick={()=>setShowGoalEditors(true)}>
+                          <button type="button" onClick={()=>beginMonthlyGoalEdit(anoSelecionado, mesSelecionado)}>
                             <Target className="w-4 h-4"/> Definir metas
                           </button>
                         )}
                       </div>
+
+                      {showGoalEditors && (
+                        <div className="monthgoals-fixed-month-notice">
+                          <Target className="w-4 h-4"/>
+                          <span>
+                            Editando metas de <b>{resumoSelecionado.nome} de {anoSelecionado}</b>.
+                            Elas só serão gravadas quando você clicar em <b>Concluir Metas</b>.
+                          </span>
+                        </div>
+                      )}
 
                       <div className="monthgoals-category-grid monthgoals-category-grid-v21">
                         {categoriasVisiveisMes.length === 0 && !showGoalEditors ? (
@@ -10851,10 +10958,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                       <input
                                         type="text"
                                         inputMode="decimal"
-                                        defaultValue={metaPadrao > 0 ? Number(metaPadrao).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) : ''}
-                                        key={`${cat.id}-${anoSelecionado}-${metaPadrao}`}
+                                        value={goalEditDraft[cat.id] ?? ''}
                                         onFocus={e=>e.currentTarget.select()}
-                                        onBlur={e=>setGoalForWholeYear(cat.id,anoSelecionado,e.target.value)}
+                                        onChange={e=>setGoalEditDraft(prev=>({...prev,[cat.id]:e.target.value}))}
                                         placeholder="0,00"
                                         aria-label={`Meta mensal de ${cat.name}`}
                                       />
@@ -10898,7 +11004,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                       <div>
                                         <b>Nova meta para os próximos meses</b>
                                         <small>
-                                          A partir de {resumoSelecionado.nome} de {anoSelecionado}, durante os próximos 12 meses.
+                                          A partir do mês seguinte, durante os próximos 12 meses. A meta deste mês permanece fixa.
                                         </small>
                                       </div>
 
@@ -10917,10 +11023,11 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                           type="button"
                                           className="apply"
                                           onClick={() => {
+                                            const nextMonthStart = new Date(anoSelecionado, mesSelecionado, 1);
                                             setGoalForNextMonths(
                                               cat.id,
-                                              anoSelecionado,
-                                              mesSelecionado,
+                                              nextMonthStart.getFullYear(),
+                                              nextMonthStart.getMonth() + 1,
                                               futureGoalEdit.value,
                                               12
                                             );
