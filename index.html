@@ -4363,6 +4363,86 @@
   }
 </style>
 
+
+<style id="financas-pro-categorias-cartao-v33">
+  .card-category-info{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:-4px;
+    padding:9px 11px;
+    border:1px solid #cfe3f1;
+    border-radius:10px;
+    background:#f3f9fd;
+    color:#456980;
+    font-size:9px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .card-category-info svg{
+    color:#2874a6;
+    flex:0 0 auto;
+    margin-top:1px;
+  }
+  .card-category-info b{color:#1c5b85}
+
+  .category-total-v33 strong{
+    color:#e13e55!important;
+  }
+  .category-breakdown-v33{
+    gap:3px!important;
+  }
+  .category-breakdown-v33>div{
+    min-height:18px!important;
+  }
+  .category-breakdown-v33 .card-spend{
+    margin:1px -5px;
+    padding:3px 5px;
+    border-radius:6px;
+    background:#eef6ff;
+  }
+  .category-breakdown-v33 .card-spend span{
+    color:#3275a9!important;
+  }
+  .category-breakdown-v33 .card-spend b{
+    color:#2563a9!important;
+  }
+
+  .category-expense-summary-v33{
+    grid-template-columns:repeat(4,1fr)!important;
+  }
+  .category-expense-summary-v33 strong.card{
+    color:#2563b5!important;
+  }
+  .category-expense-summary-v33>div.total{
+    background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+    border-color:#b7e4cf;
+  }
+  .category-expense-summary-v33>div.total strong{
+    color:#08765a;
+  }
+
+  .category-expense-group.card h4{
+    background:#eef6ff!important;
+    color:#245f9e!important;
+    border-bottom-color:#d7e7f6!important;
+  }
+  .category-expense-group.card .category-expense-row>strong{
+    color:#2563b5!important;
+  }
+
+  @media(max-width:850px){
+    .category-expense-summary-v33{
+      grid-template-columns:repeat(2,1fr)!important;
+    }
+  }
+  @media(max-width:520px){
+    .category-expense-summary-v33{
+      grid-template-columns:1fr!important;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -4441,7 +4521,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '32';
+    const APP_VERSION = '33';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Renda, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -4791,6 +4871,7 @@
         produto: '',
         comprador: 'Claudinei',
         pagamento: 'Santander',
+        category: 'outros',
         data: new Date().toISOString().split('T')[0],
         vencimento: new Date().toISOString().split('T')[0],
         valorTotal: '',
@@ -6077,8 +6158,8 @@
 
       const handleSavePmExpense = async (e) => {
         e.preventDefault();
-        if (!pmFormData.local || !pmFormData.produto || !pmFormData.valorTotal || !pmFormData.valorParcela) {
-          showToast("Preencha todos os campos obrigatórios.", "error");
+        if (!pmFormData.local || !pmFormData.produto || !pmFormData.valorTotal || !pmFormData.valorParcela || !pmFormData.category) {
+          showToast("Preencha todos os campos obrigatórios, incluindo a categoria.", "error");
           return;
         }
 
@@ -6117,6 +6198,7 @@
           produto: pmFormData.produto,
           comprador: pmFormData.comprador,
           pagamento: pmFormData.pagamento,
+          category: pmFormData.category || 'outros',
           data: pmFormData.data,
           vencimento: pmFormData.vencimento,
           valorTotal: valorTot,
@@ -6190,6 +6272,7 @@
           produto: expense.produto,
           comprador: expense.comprador || 'Claudinei',
           pagamento: expense.pagamento,
+          category: expense.category || 'outros',
           data: expense.data || new Date().toISOString().split('T')[0],
           vencimento: expense.vencimento || expense.data || new Date().toISOString().split('T')[0],
           valorTotal: String(expense.valorTotal),
@@ -6207,6 +6290,7 @@
           produto: expense.produto + ' (Cópia)',
           comprador: expense.comprador || 'Claudinei',
           pagamento: expense.pagamento,
+          category: expense.category || 'outros',
           data: expense.data || new Date().toISOString().split('T')[0],
           vencimento: expense.vencimento || expense.data || new Date().toISOString().split('T')[0],
           valorTotal: String(expense.valorTotal),
@@ -6225,6 +6309,7 @@
           produto: '',
           comprador: 'Claudinei',
           pagamento: defaultPaymentBank,
+          category: categories.find(c => c.type !== 'receita')?.id || 'outros',
           data: new Date().toISOString().split('T')[0],
           vencimento: new Date().toISOString().split('T')[0],
           valorTotal: '',
@@ -6624,6 +6709,7 @@
           produto: '',
           comprador,
           pagamento: card.name,
+          category: categories.find(c => c.type !== 'receita')?.id || 'outros',
           data: todayIso,
           vencimento: invoiceDueDate,
           valorTotal: '',
@@ -7254,6 +7340,7 @@
           produto: '',
           comprador: 'Claudinei',
           pagamento: row.cardName,
+          category: categories.find(c => c.type !== 'receita')?.id || 'outros',
           data: (() => { const d = new Date(year, month - 2, 15); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-15`; })(),
           vencimento: dueDate,
           valorTotal: missing.toFixed(2),
@@ -7416,6 +7503,7 @@
           produto: '',
           comprador: 'Claudinei',
           pagamento: row.cardName,
+          category: categories.find(c => c.type !== 'receita')?.id || 'outros',
           data: `${row.monthKey}-01`,
           vencimento: dueDate,
           valorTotal: missing.toFixed(2),
@@ -9269,7 +9357,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 {historyItems.map(item => (
                                   <tr key={`fullhist-${item.id}`}>
                                     <td>{formatDateBRFull(item.data)}</td>
-                                    <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'}</div></td>
+                                    <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'} • {categories.find(c=>c.id===(item.category || 'outros'))?.name || 'Outros lançamentos'}</div></td>
                                     <td>{item.comprador || '-'}</td>
                                     <td><span className={`px-2 py-1 rounded-full text-[8px] font-black ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>{item.tipoLancamento === 'prazo' ? 'A prazo' : 'Cartão'}</span></td>
                                     <td className="font-black text-slate-800">R$ {(parseFloat(item.valorTotal)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
@@ -9325,7 +9413,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 {historyItems.map(item => (
                                   <tr key={`hist-${item.id}`}>
                                     <td>{formatDateBRFull(item.data)}</td>
-                                    <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'}</div></td>
+                                    <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'} • {categories.find(c=>c.id===(item.category || 'outros'))?.name || 'Outros lançamentos'}</div></td>
                                     <td>{item.comprador || '-'}</td>
                                     <td><span className={`px-2 py-1 rounded-full text-[8px] font-black ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>{item.tipoLancamento === 'prazo' ? 'A prazo' : 'Cartão'}</span></td>
                                     <td className="font-black text-slate-800">R$ {(parseFloat(item.valorTotal)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
@@ -10199,6 +10287,16 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     .reduce((s,t) => s + (parseFloat(t.amount) || 0), 0);
                 };
 
+                const valorCartaoCategoriaMes = (categoryId, year, month) => {
+                  const key = `${year}-${String(month).padStart(2,'0')}`;
+                  return pmExpenses
+                    .filter(item => (item.category || 'outros') === categoryId)
+                    .reduce((sum, item) => {
+                      const info = getInstallmentInfo(item, key, myCards);
+                      return sum + (info ? (parseFloat(info.value) || 0) : 0);
+                    }, 0);
+                };
+
                 const valorFuturoCategoriaMes = (categoryId, year, month) => {
                   const key = `${year}-${String(month).padStart(2,'0')}`;
                   return futureExpenses
@@ -10213,7 +10311,8 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                   let total = 0;
                   for (let back = 0; back < 3; back++) {
                     const d = new Date(year, month - 1 - back, 1);
-                    total += valorRealizadoCategoriaMes(categoryId, d.getFullYear(), d.getMonth()+1);
+                    total += valorRealizadoCategoriaMes(categoryId, d.getFullYear(), d.getMonth()+1)
+                      + valorCartaoCategoriaMes(categoryId, d.getFullYear(), d.getMonth()+1);
                   }
                   return total / 3;
                 };
@@ -10245,20 +10344,24 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 const linhasCategorias = categoriasDespesa.map(cat => {
                   const mesesCategoria = mesesAno.map(m => {
                     const realizado = valorRealizadoCategoriaMes(cat.id, m.ano, m.numero);
+                    const cartao = valorCartaoCategoriaMes(cat.id, m.ano, m.numero);
+                    const totalCategoria = realizado + cartao;
                     const futuro = valorFuturoCategoriaMes(cat.id, m.ano, m.numero);
                     const meta = parseFloat(monthlyGoals[goalKey(cat.id, m.numero, m.ano)] || 0) || 0;
 
                     return {
                       ...m,
                       realizado,
+                      cartao,
+                      totalCategoria,
                       futuro,
                       meta,
-                      previsto: realizado + futuro,
-                      restante: meta - realizado - futuro
+                      previsto: totalCategoria + futuro,
+                      restante: meta - totalCategoria - futuro
                     };
                   });
 
-                  const temGastoAno = mesesCategoria.some(v => v.realizado > 0 || v.futuro > 0);
+                  const temGastoAno = mesesCategoria.some(v => v.totalCategoria > 0 || v.futuro > 0);
                   return {cat, meses: mesesCategoria, temGastoAno};
                 });
 
@@ -10269,7 +10372,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
 
                 const categoriasVisiveisMes = categoriasDespesa.filter(cat => {
                   const dado = categoriaMesSelecionado(cat.id);
-                  return showGoalEditors || (dado && (dado.realizado > 0 || dado.futuro > 0));
+                  return showGoalEditors || (dado && (dado.totalCategoria > 0 || dado.futuro > 0));
                 });
 
                 const lancamentosMes = transactions
@@ -10318,10 +10421,12 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 const linhasVisao = linhasCategorias
                   .map(row => {
                     const valores = mesesVisao.map(m => {
-                      const realizado = valorRealizadoCategoriaMes(row.cat.id, m.ano, m.numero);
+                      const realizadoDireto = valorRealizadoCategoriaMes(row.cat.id, m.ano, m.numero);
+                      const cartao = valorCartaoCategoriaMes(row.cat.id, m.ano, m.numero);
+                      const realizado = realizadoDireto + cartao;
                       const futuro = valorFuturoCategoriaMes(row.cat.id, m.ano, m.numero);
                       const meta = parseFloat(monthlyGoals[goalKey(row.cat.id, m.numero, m.ano)] || 0) || 0;
-                      return {...m, realizado, futuro, meta};
+                      return {...m, realizado, realizadoDireto, cartao, futuro, meta};
                     });
                     return {
                       cat: row.cat,
@@ -10489,7 +10594,8 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                             meta:parseFloat(monthlyGoals[goalKey(cat.id,mesSelecionado,anoSelecionado)]||0)||0
                           };
 
-                          const previsto = (dados.realizado || 0) + (dados.futuro || 0);
+                          const totalCategoria = (dados.totalCategoria ?? ((dados.realizado || 0) + (dados.cartao || 0)));
+                          const previsto = totalCategoria + (dados.futuro || 0);
                           const restante = (dados.meta || 0) - previsto;
                           const pct = dados.meta > 0 ? (previsto / dados.meta) * 100 : 0;
                           const media3 = mediaUltimos3Meses(cat.id, anoSelecionado, mesSelecionado);
@@ -10521,12 +10627,20 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 </div>
                               </div>
 
-                              <div className="monthgoals-category-realized-v29">
-                                <strong>R$ {moeda(dados.realizado)}</strong>
-                                <small>Gasto realizado</small>
+                              <div className="monthgoals-category-realized-v29 category-total-v33">
+                                <strong>R$ {moeda(totalCategoria)}</strong>
+                                <small>Total da categoria</small>
                               </div>
 
-                              <div className="monthgoals-category-rows-v29">
+                              <div className="monthgoals-category-rows-v29 category-breakdown-v33">
+                                <div>
+                                  <span>Gastos fora do cartão</span>
+                                  <b>R$ {moeda(dados.realizado)}</b>
+                                </div>
+                                <div className="card-spend">
+                                  <span>Gasto com cartão</span>
+                                  <b>R$ {moeda(dados.cartao || 0)}</b>
+                                </div>
                                 <div>
                                   <span>Gasto futuro</span>
                                   <b>R$ {moeda(dados.futuro)}</b>
@@ -10813,6 +10927,12 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         )
                         .sort((a,b) => referenciaTransacao(b).localeCompare(referenciaTransacao(a)));
 
+                      const comprasCartaoCategoria = pmExpenses
+                        .filter(item => (item.category || 'outros') === categoriaId)
+                        .map(item => ({ item, info: getInstallmentInfo(item, mesKey, myCards) }))
+                        .filter(entry => !!entry.info)
+                        .sort((a,b) => String(b.item.data || '').localeCompare(String(a.item.data || '')));
+
                       const gastosFuturosCategoria = futureExpenses
                         .filter(item =>
                           item.category === categoriaId &&
@@ -10823,6 +10943,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                       const totalRealizadoCategoria = gastosRealizadosCategoria.reduce(
                         (sum,item) => sum + (parseFloat(item.amount) || 0), 0
                       );
+                      const totalCartaoCategoria = comprasCartaoCategoria.reduce(
+                        (sum,entry) => sum + (parseFloat(entry.info?.value) || 0), 0
+                      );
+                      const totalCategoriaAtual = totalRealizadoCategoria + totalCartaoCategoria;
                       const totalFuturoCategoria = gastosFuturosCategoria.reduce(
                         (sum,item) => sum + (parseFloat(item.amount) || 0), 0
                       );
@@ -10843,21 +10967,26 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               </button>
                             </div>
 
-                            <div className="category-expense-summary">
+                            <div className="category-expense-summary category-expense-summary-v33">
                               <div>
-                                <span>Gastos realizados</span>
+                                <span>Fora do cartão</span>
                                 <strong className="realized">R$ {moeda(totalRealizadoCategoria)}</strong>
                                 <small>{gastosRealizadosCategoria.length} lançamento(s)</small>
+                              </div>
+                              <div>
+                                <span>Compras no cartão</span>
+                                <strong className="card">R$ {moeda(totalCartaoCategoria)}</strong>
+                                <small>{comprasCartaoCategoria.length} compra(s)</small>
                               </div>
                               <div>
                                 <span>Gastos futuros</span>
                                 <strong className="future">R$ {moeda(totalFuturoCategoria)}</strong>
                                 <small>{gastosFuturosCategoria.length} registro(s)</small>
                               </div>
-                              <div>
-                                <span>Total</span>
-                                <strong>R$ {moeda(totalRealizadoCategoria + totalFuturoCategoria)}</strong>
-                                <small>Realizados + futuros</small>
+                              <div className="total">
+                                <span>Total da categoria</span>
+                                <strong>R$ {moeda(totalCategoriaAtual)}</strong>
+                                <small>Fora do cartão + compras no cartão</small>
                               </div>
                             </div>
 
@@ -10885,6 +11014,32 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                   </div>
                                 ))}
                               </div>
+
+                              {comprasCartaoCategoria.length > 0 && (
+                                <div className="category-expense-group card">
+                                  <h4>Compras no cartão</h4>
+                                  {comprasCartaoCategoria.map(({item, info}) => (
+                                    <div key={`cat-card-${item.id}`} className="category-expense-row">
+                                      <div>
+                                        <b>{item.local || 'Compra no cartão'}{item.produto ? ` • ${item.produto}` : ''}</b>
+                                        <small>
+                                          {formatDateBRFull(item.data)} • {item.pagamento || 'Cartão'} • {info?.currentInstallment || 1}/{info?.totalInstallments || item.parcelas || 1}
+                                        </small>
+                                      </div>
+                                      <strong>R$ {moeda(info?.value || 0)}</strong>
+                                      <button
+                                        type="button"
+                                        onClick={()=>{
+                                          setCategoryExpenseDetail(null);
+                                          handleEditPmClick(item);
+                                        }}
+                                      >
+                                        <Edit3 className="w-4 h-4"/> Editar
+                                      </button>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
 
                               {gastosFuturosCategoria.length > 0 && (
                                 <div className="category-expense-group future">
@@ -11945,7 +12100,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 </div>
                 <form onSubmit={handleSavePmExpense} className="p-6 overflow-y-auto space-y-5 text-sm">
                   
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
                       <label className="block font-bold text-slate-700 mb-1.5">Comprador</label>
                       <select value={pmFormData.comprador} onChange={(e) => setPmFormData(p => ({ ...p, comprador: e.target.value }))} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
@@ -11961,6 +12116,26 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         ])).map(b => <option key={b} value={b}>{b}</option>)}
                       </select>
                     </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1.5">Categoria</label>
+                      <select
+                        required
+                        value={pmFormData.category || 'outros'}
+                        onChange={(e) => setPmFormData(p => ({ ...p, category: e.target.value }))}
+                        className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+                      >
+                        {categories.filter(c => c.type !== 'receita').map(c => (
+                          <option key={c.id} value={c.id}>{c.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="card-category-info">
+                    <Target className="w-4 h-4"/>
+                    <span>
+                      A categoria serve para analisar seus gastos por categoria. Ela <b>não altera</b> o valor da fatura, o limite ou o controle do cartão.
+                    </span>
                   </div>
 
                   <div>
