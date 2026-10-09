@@ -7224,6 +7224,1019 @@
   }
 </style>
 
+
+<style id="financas-pro-v69-4-cartoes-por-linha">
+  /* Meus Cartões: exatamente 4 por linha em telas grandes */
+  .cards-bank-style-grid-v54{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:12px!important;
+    align-items:stretch!important;
+  }
+
+  .card-bank-style-v54{
+    min-width:0!important;
+    padding:14px!important;
+    border-radius:17px!important;
+  }
+
+  .card-bank-logo-v54{
+    width:46px!important;
+    height:46px!important;
+    border-radius:13px!important;
+    font-size:15px!important;
+  }
+
+  .card-bank-title-v54 h3{
+    font-size:15px!important;
+  }
+
+  .card-bank-title-v54 p{
+    max-width:170px!important;
+    font-size:9px!important;
+  }
+
+  .card-bank-month-v54{
+    padding:3px 6px!important;
+    font-size:7px!important;
+  }
+
+  .card-bank-mini-action-v54{
+    width:31px!important;
+    height:31px!important;
+  }
+
+  .card-bank-holder-v54{
+    margin-top:11px!important;
+  }
+
+  .card-bank-holder-v54 span{
+    font-size:8.5px!important;
+  }
+
+  .card-bank-holder-v54 strong{
+    font-size:12px!important;
+  }
+
+  .card-bank-stats-v54{
+    margin-top:11px!important;
+  }
+
+  .card-bank-stats-v54>div{
+    padding:0 8px!important;
+  }
+
+  .card-bank-stats-v54 span{
+    font-size:8px!important;
+  }
+
+  .card-bank-stats-v54 strong{
+    font-size:13px!important;
+  }
+
+  .card-bank-progress-wrap-v54{
+    margin-top:10px!important;
+    grid-template-columns:1fr 32px!important;
+    gap:7px!important;
+  }
+
+  .card-bank-progress-v54{
+    height:8px!important;
+  }
+
+  .card-bank-progress-wrap-v54>b{
+    font-size:10px!important;
+  }
+
+  .card-bank-info-row-v54{
+    margin-top:12px!important;
+    padding-top:11px!important;
+  }
+
+  .card-bank-info-row-v54>div{
+    gap:6px!important;
+    padding:0 7px!important;
+  }
+
+  .card-bank-info-row-v54 .ico{
+    width:29px!important;
+    height:29px!important;
+    border-radius:8px!important;
+  }
+
+  .card-bank-info-row-v54 small{
+    font-size:7.5px!important;
+  }
+
+  .card-bank-info-row-v54 strong{
+    font-size:9.5px!important;
+  }
+
+  .card-bank-purchases-v54{
+    margin-top:9px!important;
+    font-size:8px!important;
+  }
+
+  .card-bank-actions-v54{
+    gap:6px!important;
+    margin-top:10px!important;
+  }
+
+  .card-bank-actions-v54 button{
+    min-height:36px!important;
+    border-radius:10px!important;
+    font-size:9px!important;
+    gap:5px!important;
+  }
+
+  .card-bank-add-v54{
+    min-height:255px!important;
+  }
+
+  /* 3 cartões em telas intermediárias */
+  @media(max-width:1400px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    }
+  }
+
+  /* 2 cartões em tablet */
+  @media(max-width:1050px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+
+  /* 1 cartão em celular */
+  @media(max-width:650px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:1fr!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v70-cartoes-layout">
+  /* Layout mais limpo para Meus Cartões */
+  .cards-bank-style-grid-v54{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:10px!important;
+    align-items:stretch!important;
+  }
+
+  .card-bank-style-v54{
+    height:100%!important;
+    min-width:0!important;
+    padding:13px!important;
+    border-radius:16px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    box-shadow:0 5px 16px rgba(15,23,42,.055)!important;
+  }
+
+  .card-bank-head-v54{
+    min-height:45px!important;
+  }
+
+  .card-bank-brand-v54{
+    min-width:0!important;
+  }
+
+  .card-bank-logo-v54{
+    width:43px!important;
+    height:43px!important;
+    flex:0 0 43px!important;
+    border-radius:12px!important;
+  }
+
+  .card-bank-title-v54{
+    min-width:0!important;
+  }
+
+  .card-bank-title-line-v54{
+    min-width:0!important;
+    gap:5px!important;
+  }
+
+  .card-bank-title-v54 h3{
+    max-width:118px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    font-size:13.5px!important;
+  }
+
+  .card-bank-title-v54 p{
+    max-width:170px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    font-size:8.5px!important;
+  }
+
+  .card-bank-month-v54{
+    flex:0 0 auto!important;
+    font-size:6.8px!important;
+    padding:3px 5px!important;
+  }
+
+  .card-bank-mini-action-v54{
+    width:29px!important;
+    height:29px!important;
+  }
+
+  .card-bank-holder-v54{
+    margin-top:9px!important;
+  }
+
+  .card-bank-holder-v54 span{
+    font-size:7.8px!important;
+  }
+
+  .card-bank-holder-v54 strong{
+    font-size:11.5px!important;
+  }
+
+  .card-bank-stats-v54{
+    margin-top:9px!important;
+    min-height:47px!important;
+  }
+
+  .card-bank-stats-v54>div{
+    padding:0 7px!important;
+  }
+
+  .card-bank-stats-v54 span{
+    font-size:7.2px!important;
+    line-height:1.1!important;
+  }
+
+  .card-bank-stats-v54 strong{
+    margin-top:3px!important;
+    font-size:12.2px!important;
+  }
+
+  .card-bank-progress-wrap-v54{
+    margin-top:8px!important;
+  }
+
+  .card-bank-progress-v54{
+    height:7px!important;
+  }
+
+  .card-bank-info-row-v54{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    margin-top:10px!important;
+    padding-top:10px!important;
+    min-height:49px!important;
+  }
+
+  .card-bank-info-row-v54.no-current-v70{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .card-bank-info-row-v54.no-current-v70>div{
+    justify-content:center!important;
+  }
+
+  .card-bank-info-row-v54>div{
+    gap:5px!important;
+    padding:0 6px!important;
+  }
+
+  .card-bank-info-row-v54 .ico{
+    width:27px!important;
+    height:27px!important;
+    border-radius:8px!important;
+  }
+
+  .card-bank-info-row-v54 small{
+    font-size:7px!important;
+    line-height:1.1!important;
+  }
+
+  .card-bank-info-row-v54 strong{
+    font-size:9px!important;
+  }
+
+  .card-bank-purchases-v54{
+    margin-top:7px!important;
+    min-height:16px!important;
+    font-size:7.6px!important;
+  }
+
+  .card-bank-actions-v54{
+    margin-top:auto!important;
+    padding-top:9px!important;
+    gap:6px!important;
+  }
+
+  .card-bank-actions-v54 button{
+    min-height:34px!important;
+    font-size:8.7px!important;
+  }
+
+  /* Adicionar cartão acompanha o tamanho visual dos demais */
+  .card-bank-add-v54{
+    min-height:275px!important;
+  }
+
+  /* Desktop: 4 por linha */
+  @media(min-width:1101px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    }
+  }
+
+  /* Tablet: 2 por linha para não esmagar os dados */
+  @media(max-width:1100px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+
+    .card-bank-title-v54 h3{
+      max-width:180px!important;
+    }
+  }
+
+  /* Celular: 1 por linha */
+  @media(max-width:650px){
+    .cards-bank-style-grid-v54{
+      grid-template-columns:1fr!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v72-ajustes-fatura">
+  .invoice-adjustments-v72{
+    margin:0 0 16px;
+    overflow:hidden;
+    border:1px solid #a7f3d0;
+    border-radius:16px;
+    background:#f0fdf4;
+  }
+
+  .invoice-adjustments-head-v72{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:11px 13px;
+  }
+
+  .invoice-adjustments-head-v72 h4{
+    margin:0;
+    color:#065f46;
+    font-size:12px;
+    font-weight:950;
+  }
+
+  .invoice-adjustments-head-v72 p{
+    margin:2px 0 0;
+    color:#4b7667;
+    font-size:8px;
+    font-weight:650;
+  }
+
+  .invoice-adjustments-head-v72 button{
+    border:1px solid #6ee7b7;
+    border-radius:9px;
+    background:#fff;
+    color:#047857;
+    padding:7px 10px;
+    font-size:8.5px;
+    font-weight:950;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+
+  .invoice-adjustments-list-v72{
+    border-top:1px solid #bbf7d0;
+    background:#fff;
+  }
+
+  .invoice-adjustment-row-v72{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 115px 30px;
+    align-items:center;
+    gap:8px;
+    padding:8px 11px;
+    border-bottom:1px solid #ecfdf5;
+  }
+
+  .invoice-adjustment-row-v72 strong{
+    display:block;
+    color:#334155;
+    font-size:9px;
+    font-weight:950;
+  }
+
+  .invoice-adjustment-row-v72 span,
+  .invoice-adjustment-row-v72 small{
+    display:block;
+    margin-top:2px;
+    color:#718096;
+    font-size:7.5px;
+    font-weight:650;
+  }
+
+  .invoice-adjustment-row-v72>b{
+    color:#059669;
+    font-size:10px;
+    text-align:right;
+  }
+
+  .invoice-adjustment-row-v72>button{
+    width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    border:1px solid #fecdd3;
+    border-radius:8px;
+    background:#fff1f2;
+    color:#e11d48;
+    cursor:pointer;
+  }
+
+  .invoice-adjustment-total-v72{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:8px 11px;
+    background:#ecfdf5;
+    color:#065f46;
+    font-size:9px;
+    font-weight:900;
+  }
+
+  .invoice-adjustment-modal-v72{
+    width:min(650px,100%);
+    overflow:hidden;
+    border-radius:22px;
+    background:#fff;
+    box-shadow:0 24px 70px rgba(15,23,42,.30);
+  }
+
+  .invoice-adjustment-modal-head-v72{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:16px 18px;
+    background:linear-gradient(135deg,#047857,#10b981);
+    color:#fff;
+  }
+
+  .invoice-adjustment-modal-head-v72 h3{
+    margin:0;
+    font-size:18px;
+    font-weight:950;
+  }
+
+  .invoice-adjustment-modal-head-v72 p{
+    margin:3px 0 0;
+    font-size:9px;
+    opacity:.9;
+  }
+
+  .invoice-adjustment-modal-head-v72 button{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    color:#fff;
+    cursor:pointer;
+  }
+
+  .invoice-adjustment-modal-body-v72{
+    display:grid;
+    gap:13px;
+    padding:17px 18px;
+  }
+
+  .invoice-adjustment-modal-body-v72 label{
+    display:block;
+    margin-bottom:5px;
+    color:#475569;
+    font-size:9px;
+    font-weight:900;
+  }
+
+  .invoice-adjustment-modal-body-v72 input,
+  .invoice-adjustment-modal-body-v72 select{
+    width:100%;
+    min-height:39px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:#fff;
+    padding:8px 10px;
+    color:#1e293b;
+    font-size:10px;
+    font-weight:750;
+    outline:none;
+  }
+
+  .invoice-adjustment-explain-v72{
+    padding:8px 10px;
+    border:1px solid #bbf7d0;
+    border-radius:10px;
+    background:#f0fdf4;
+    color:#166534;
+    font-size:8.5px;
+    font-weight:750;
+    line-height:1.35;
+  }
+
+  .invoice-adjustment-preview-v72{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:7px;
+  }
+
+  .invoice-adjustment-preview-v72>div{
+    padding:9px;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    background:#f8fafc;
+  }
+
+  .invoice-adjustment-preview-v72 span{
+    display:block;
+    color:#7c8d9b;
+    font-size:7.5px;
+    font-weight:850;
+    text-transform:uppercase;
+  }
+
+  .invoice-adjustment-preview-v72 b,
+  .invoice-adjustment-preview-v72 strong{
+    display:block;
+    margin-top:3px;
+    color:#334155;
+    font-size:11px;
+    font-weight:950;
+  }
+
+  .invoice-adjustment-preview-v72 .final{
+    border-color:#86efac;
+    background:#ecfdf5;
+  }
+
+  .invoice-adjustment-preview-v72 .final strong{
+    color:#047857;
+    font-size:13px;
+  }
+
+  .invoice-adjustment-modal-actions-v72{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    padding:12px 18px;
+    border-top:1px solid #e2e8f0;
+    background:#f8fafc;
+  }
+
+  .invoice-adjustment-modal-actions-v72 button{
+    border-radius:10px;
+    padding:9px 14px;
+    font-size:9px;
+    font-weight:950;
+    cursor:pointer;
+  }
+
+  .invoice-adjustment-modal-actions-v72 button:first-child{
+    border:1px solid #cbd5e1;
+    background:#fff;
+    color:#475569;
+  }
+
+  .invoice-adjustment-modal-actions-v72 button:last-child{
+    border:1px solid #059669;
+    background:#059669;
+    color:#fff;
+  }
+
+  @media(max-width:650px){
+    .invoice-adjustment-preview-v72{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .invoice-adjustments-head-v72{
+      align-items:flex-start;
+      flex-direction:column;
+    }
+
+    .invoice-adjustments-head-v72 button{
+      width:100%;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v73-status-fatura">
+  .card-invoice-status-v73{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-top:8px;
+    padding:6px 8px;
+    border:1px solid;
+    border-radius:10px;
+    line-height:1.1;
+  }
+
+  .card-invoice-status-v73 .status-dot{
+    width:8px;
+    height:8px;
+    flex:0 0 8px;
+    border-radius:50%;
+    background:currentColor;
+  }
+
+  .card-invoice-status-v73 strong{
+    display:block;
+    font-size:8.5px;
+    font-weight:950;
+  }
+
+  .card-invoice-status-v73 small{
+    display:block;
+    margin-top:2px;
+    font-size:7px;
+    font-weight:700;
+    opacity:.78;
+  }
+
+  .card-invoice-status-v73.paid{
+    color:#047857;
+    background:#ecfdf5;
+    border-color:#a7f3d0;
+  }
+
+  .card-invoice-status-v73.overdue{
+    color:#be123c;
+    background:#fff1f2;
+    border-color:#fecdd3;
+  }
+
+  .card-invoice-status-v73.today,
+  .card-invoice-status-v73.soon{
+    color:#b45309;
+    background:#fffbeb;
+    border-color:#fde68a;
+  }
+
+  .card-invoice-status-v73.open,
+  .card-invoice-status-v73.pending{
+    color:#1d4ed8;
+    background:#eff6ff;
+    border-color:#bfdbfe;
+  }
+
+  .card-invoice-status-v73.empty{
+    color:#64748b;
+    background:#f8fafc;
+    border-color:#e2e8f0;
+  }
+
+  @media(max-width:650px){
+    .card-invoice-status-v73 strong{
+      font-size:9px;
+    }
+
+    .card-invoice-status-v73 small{
+      font-size:7.5px;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v74-projecoes-uniformes">
+  /* Projeções e Faturas — mais legível, uniforme e ainda compacto */
+  @media (min-width: 900px){
+    .cards-premium-page .cards-projection-modern{
+      display:block!important;
+      padding:14px 16px!important;
+      border-radius:16px!important;
+      background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)!important;
+      border:1px solid #cfe0f5!important;
+      box-shadow:0 8px 22px rgba(10,62,125,.10)!important;
+      overflow:hidden!important;
+    }
+
+    /* Cabeçalho */
+    .cards-premium-page .cards-projection-modern>div:first-child{
+      display:grid!important;
+      grid-template-columns:220px minmax(0,1fr)!important;
+      align-items:center!important;
+      gap:14px!important;
+      margin:0!important;
+      padding:0 0 12px!important;
+      border-bottom:1px solid #dce8f5!important;
+    }
+
+    .cards-premium-page .fp-proj-title{
+      display:flex!important;
+      align-items:center!important;
+      gap:9px!important;
+      min-width:0!important;
+    }
+
+    .cards-premium-page .fp-proj-title-icon{
+      width:36px!important;
+      height:36px!important;
+      flex:0 0 36px!important;
+      border-radius:10px!important;
+    }
+
+    .cards-premium-page .fp-proj-title-icon svg{
+      width:18px!important;
+      height:18px!important;
+    }
+
+    .cards-premium-page .fp-proj-title h2{
+      margin:0!important;
+      font-size:17px!important;
+      line-height:1.05!important;
+      font-weight:950!important;
+      letter-spacing:-.02em!important;
+    }
+
+    .cards-premium-page .fp-proj-title p{
+      display:block!important;
+      margin-top:3px!important;
+      max-width:180px!important;
+      font-size:8.5px!important;
+      line-height:1.25!important;
+      color:#7187a0!important;
+    }
+
+    /* Busca e filtros */
+    .cards-premium-page .cards-projection-modern>div:first-child>.flex{
+      display:grid!important;
+      grid-template-columns:minmax(190px,1.5fr) auto auto auto auto!important;
+      gap:8px!important;
+      align-items:center!important;
+      width:100%!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child .relative{
+      min-width:0!important;
+      width:100%!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child .flex.items-center.gap-2{
+      gap:5px!important;
+      white-space:nowrap!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child .text-xs{
+      font-size:8.5px!important;
+      font-weight:800!important;
+      color:#526b83!important;
+    }
+
+    .cards-premium-page .cards-projection-modern input,
+    .cards-premium-page .cards-projection-modern select{
+      height:34px!important;
+      min-height:34px!important;
+      font-size:9.5px!important;
+      font-weight:800!important;
+      border-radius:9px!important;
+      padding-top:4px!important;
+      padding-bottom:4px!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child .ml-auto{
+      margin:0!important;
+      justify-self:end!important;
+      min-height:34px!important;
+      display:flex!important;
+      align-items:center!important;
+      padding:0 10px!important;
+      border-radius:9px!important;
+      font-size:8.5px!important;
+      font-weight:950!important;
+    }
+
+    /* Indicadores: todos iguais */
+    .cards-premium-page .fp-proj-kpi-grid,
+    .cards-premium-page .cards-projection-modern>.grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4{
+      display:grid!important;
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+      gap:9px!important;
+      margin:10px 0 12px!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi{
+      min-height:66px!important;
+      height:66px!important;
+      padding:10px 12px!important;
+      border-radius:12px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+      overflow:hidden!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi p.text-\[10px\]{
+      margin:0 0 4px!important;
+      font-size:9px!important;
+      line-height:1.1!important;
+      font-weight:900!important;
+      letter-spacing:.04em!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi p.text-xl{
+      margin:0!important;
+      font-size:15px!important;
+      line-height:1.05!important;
+      font-weight:950!important;
+      white-space:nowrap!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi>div:last-child{
+      width:34px!important;
+      height:34px!important;
+      display:grid!important;
+      place-items:center!important;
+      padding:0!important;
+      border-radius:10px!important;
+      flex:0 0 34px!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi svg{
+      width:17px!important;
+      height:17px!important;
+    }
+
+    /* Título da projeção mensal */
+    .cards-premium-page .cards-projection-modern>div:last-child>.mb-4{
+      margin:0 0 7px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.mb-4 h3{
+      font-size:11px!important;
+      line-height:1.1!important;
+      font-weight:950!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.mb-4 p{
+      display:block!important;
+      margin:0!important;
+      font-size:8px!important;
+      color:#7a8da0!important;
+    }
+
+    /* Meses: cartões iguais e letras maiores */
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4{
+      display:grid!important;
+      grid-template-columns:repeat(7,minmax(0,1fr))!important;
+      gap:8px!important;
+      padding-bottom:0!important;
+      overflow-x:visible!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div{
+      width:auto!important;
+      min-width:0!important;
+      height:118px!important;
+      padding:9px!important;
+      border-radius:12px!important;
+      justify-content:flex-start!important;
+      align-items:stretch!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div>span:first-child{
+      margin-bottom:3px!important;
+      font-size:9px!important;
+      line-height:1.05!important;
+      font-weight:950!important;
+      text-align:left!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div>div[style]{
+      height:31px!important;
+      margin-top:4px!important;
+      border-radius:7px!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div>span.text-sm{
+      margin-top:7px!important;
+      font-size:12px!important;
+      line-height:1.05!important;
+      font-weight:950!important;
+      text-align:left!important;
+      white-space:nowrap!important;
+    }
+
+    .cards-premium-page .fp-month-count{
+      margin-top:auto!important;
+      font-size:8px!important;
+      line-height:1!important;
+      gap:3px!important;
+      white-space:nowrap!important;
+      justify-content:flex-start!important;
+    }
+
+    .cards-premium-page .fp-month-count svg{
+      width:10px!important;
+      height:10px!important;
+    }
+  }
+
+  /* Notebook/tablet: ainda uniforme */
+  @media (min-width: 900px) and (max-width: 1250px){
+    .cards-premium-page .cards-projection-modern>div:first-child{
+      grid-template-columns:190px minmax(0,1fr)!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child>.flex{
+      grid-template-columns:minmax(160px,1.3fr) repeat(3,auto)!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:first-child>.flex>div:last-child{
+      grid-column:1 / -1!important;
+      justify-self:end!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4{
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div{
+      height:112px!important;
+    }
+  }
+
+  /* Celular */
+  @media (max-width: 899px){
+    .cards-premium-page .cards-projection-modern{
+      padding:12px!important;
+    }
+
+    .cards-premium-page .fp-proj-title h2{
+      font-size:18px!important;
+    }
+
+    .cards-premium-page .fp-proj-title p{
+      font-size:10px!important;
+    }
+
+    .cards-premium-page .fp-proj-kpi p.text-xl{
+      font-size:17px!important;
+    }
+
+    .cards-premium-page .cards-projection-modern>div:last-child>.flex.gap-4>div{
+      min-width:145px!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v75-fatura-paga-sem-disponivel">
+  .card-bank-stats-v54.paid-v75{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .card-bank-stats-v54.paid-v75>div:nth-child(2){
+    border-left:1px solid #e2eaf4!important;
+  }
+
+  .card-bank-stats-v54 .paid-value-v75{
+    color:#059669!important;
+  }
+
+  @media(max-width:650px){
+    .card-bank-stats-v54.paid-v75{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v76-disponivel-apos-pagamento">
+  .card-bank-stats-v54,
+  .card-bank-stats-v54.paid-v75{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+
+  .card-bank-stats-v54.paid-v75>div:nth-child(2){
+    border-left:1px solid #e2eaf4!important;
+  }
+
+  .card-bank-stats-v54 .paid-value-v75{
+    color:#059669!important;
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -7302,7 +8315,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '68';
+    const APP_VERSION = '77';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Aluguel, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -7639,6 +8652,16 @@
       const [futureEditsModal, setFutureEditsModal] = useState({ isOpen: false, pendingFormData: null, futureTxs: [], selectedIds: [] });
       const [extratoModal, setExtratoModal] = useState({ isOpen: false, bankName: null });
       const [differenceLaunchModal, setDifferenceLaunchModal] = useState({ isOpen: false, rows: [] });
+      const [invoiceAdjustmentModal, setInvoiceAdjustmentModal] = useState({
+        isOpen: false,
+        cardName: '',
+        monthKey: '',
+        monthLabel: '',
+        type: 'desconto',
+        amount: '',
+        description: '',
+        linkedExpenseId: ''
+      });
       const [showPendingDetails, setShowPendingDetails] = useState(false);
       const [dashboardDetailModal, setDashboardDetailModal] = useState(null);
 
@@ -7694,6 +8717,23 @@
         
         return parsed;
       });
+
+      const getInvoiceAdjustments = (cardName, monthKey) => {
+        if (!cardName || !monthKey) return [];
+        const card = myCards.find(c => normalizeCardName(c.name) === normalizeCardName(cardName));
+        const list = card?.faturasAjustes?.[monthKey];
+        return Array.isArray(list) ? list : [];
+      };
+
+      const getInvoiceAdjustmentTotal = (cardName, monthKey) => {
+        return getInvoiceAdjustments(cardName, monthKey)
+          .reduce((sum, a) => sum + (parseFloat(a.value) || 0), 0);
+      };
+
+      const getAdjustedInvoiceValue = (cardName, monthKey, grossValue) => {
+        const gross = parseFloat(grossValue) || 0;
+        return Math.max(0, gross + getInvoiceAdjustmentTotal(cardName, monthKey));
+      };
 
       const [activeTab, setActiveTab] = useState('dashboard');
       const [advancedPeriodMonths, setAdvancedPeriodMonths] = useState(12);
@@ -9710,6 +10750,8 @@
           const cardDef = myCards.find(c => normalizeCardText(c.name) === normalizeCardText(cardName));
           const cardNorm = normalizeCardText(cardName);
           const registeredTotal = parseFloat(pmGrouped[cardName]) || 0;
+          const invoiceAdjustmentTotal = getInvoiceAdjustmentTotal(cardName, targetMonthKey);
+          const adjustedRegisteredTotal = Math.max(0, registeredTotal + invoiceAdjustmentTotal);
 
           // Pagamento da fatura: SOMENTE lançamentos confirmados na categoria
           // "Cartão de Crédito" e com o campo "Cartão associado" igual a este cartão.
@@ -9743,7 +10785,7 @@
           const storedPaidValue = cardDef?.faturasPagasValores?.[targetMonthKey];
           const invoiceTarget = storedInvoice !== undefined && storedInvoice !== null && storedInvoice !== ''
             ? (parseFloat(storedInvoice) || 0)
-            : registeredTotal;
+            : adjustedRegisteredTotal;
           // Compatibilidade com faturas antigas marcadas como pagas manualmente.
           const effectivePaidAmount = paidAmount > 0
             ? paidAmount
@@ -9757,7 +10799,9 @@
 
           return {
             cardName,
-            totalValue: registeredTotal,
+            totalValue: adjustedRegisteredTotal,
+            grossTotalValue: registeredTotal,
+            invoiceAdjustmentTotal,
             invoiceTarget,
             vencimentoDia: cardDef ? cardDef.vencimento : null,
             isPaid,
@@ -10495,6 +11539,8 @@
               return sum + (info ? (parseFloat(info.value) || 0) : 0);
             }, 0);
             const card = myCards.find(c => normalizeCardName(c.name) === cardNormForRow);
+            const adjustments = Array.isArray(card?.faturasAjustes?.[month.key]) ? card.faturasAjustes[month.key] : [];
+            const adjustmentTotal = adjustments.reduce((sum, a) => sum + (parseFloat(a.value) || 0), 0);
             const isPaid = !!card?.faturasPagas?.[month.key];
             const storedInvoice = card?.faturasValoresInformados?.[month.key];
 
@@ -10523,9 +11569,9 @@
               const explicitCard = normalizeText(t.associatedCard || '');
               return Boolean(explicitCard) && explicitCard === cardNorm;
             });
-            // A FATURA é automática e vem diretamente dos detalhes/compras do cartão.
-            // Assim, ao lançar uma diferença nos detalhes, o valor da fatura é recalculado imediatamente.
-            const invoiceAmount = projected;
+            // O valor bruto vem das compras. Descontos/créditos são aplicados
+            // separadamente e NÃO alteram os lançamentos originais.
+            const invoiceAmount = Math.max(0, projected + adjustmentTotal);
 
             // Estes são os pagamentos efetivos desta fatura, já filtrados por categoria,
             // Cartão associado e mês de vencimento.
@@ -10554,7 +11600,22 @@
             const invoiceDueDate = `${month.key}-${String(dueDay).padStart(2, '0')}`;
 
             // Mantém todos os cartões disponíveis para conferência, mesmo sem lançamentos na fatura.
-            rows.push({ cardName, monthKey: month.key, monthLabel: month.label, projected, isPaid: hasInvoicePayment, paidAmount, paidTransactions: invoicePaymentTransactions, invoiceAmount, paymentDate, difference, invoiceDueDate });
+            rows.push({
+              cardName,
+              monthKey: month.key,
+              monthLabel: month.label,
+              projected,
+              grossInvoiceAmount: projected,
+              adjustmentTotal,
+              adjustments,
+              isPaid: hasInvoicePayment,
+              paidAmount,
+              paidTransactions: invoicePaymentTransactions,
+              invoiceAmount,
+              paymentDate,
+              difference,
+              invoiceDueDate
+            });
           });
         });
         return rows.sort((a, b) => b.monthKey.localeCompare(a.monthKey) || a.cardName.localeCompare(b.cardName));
@@ -10566,6 +11627,94 @@
         const normalized = raw.includes(',') ? raw.replace(/\./g, '').replace(',', '.') : raw;
         const parsed = parseFloat(normalized);
         return Number.isFinite(parsed) ? parsed : NaN;
+      };
+
+      const openInvoiceAdjustment = (row, suggestedAmount = 0) => {
+        if (!row?.cardName || !row?.monthKey) return;
+        setInvoiceAdjustmentModal({
+          isOpen: true,
+          cardName: row.cardName,
+          monthKey: row.monthKey,
+          monthLabel: row.monthLabel || row.monthKey,
+          type: 'desconto',
+          amount: suggestedAmount > 0 ? suggestedAmount.toFixed(2) : '',
+          description: suggestedAmount > 0 ? 'Desconto/crédito identificado na fatura' : '',
+          linkedExpenseId: ''
+        });
+      };
+
+      const handleSaveInvoiceAdjustment = async (e) => {
+        e.preventDefault();
+        const amount = parseMoneyInput(invoiceAdjustmentModal.amount);
+        if (!Number.isFinite(amount) || amount <= 0) {
+          showToast('Informe um valor válido para o desconto/crédito.', 'error');
+          return;
+        }
+
+        const newAdjustment = {
+          id: `adj_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
+          type: invoiceAdjustmentModal.type || 'desconto',
+          value: -Math.abs(parseFloat(amount.toFixed(2))),
+          description: String(invoiceAdjustmentModal.description || '').trim() || 'Desconto/crédito da fatura',
+          linkedExpenseId: invoiceAdjustmentModal.linkedExpenseId || '',
+          createdAt: new Date().toISOString()
+        };
+
+        const updatedCards = myCards.map(card => {
+          if (normalizeCardName(card.name) !== normalizeCardName(invoiceAdjustmentModal.cardName)) return card;
+
+          const current = Array.isArray(card?.faturasAjustes?.[invoiceAdjustmentModal.monthKey])
+            ? card.faturasAjustes[invoiceAdjustmentModal.monthKey]
+            : [];
+
+          return {
+            ...card,
+            faturasAjustes: {
+              ...(card.faturasAjustes || {}),
+              [invoiceAdjustmentModal.monthKey]: [...current, newAdjustment]
+            }
+          };
+        });
+
+        setMyCards(updatedCards);
+        localStorage.setItem('local_my_cards', JSON.stringify(updatedCards));
+        await saveSettingsToCloud(banks, categories, budgets, updatedCards, monthlyGoals);
+
+        setInvoiceAdjustmentModal({
+          isOpen: false,
+          cardName: '',
+          monthKey: '',
+          monthLabel: '',
+          type: 'desconto',
+          amount: '',
+          description: '',
+          linkedExpenseId: ''
+        });
+
+        showToast('Desconto/crédito registrado na fatura sem alterar a compra original.');
+      };
+
+      const handleDeleteInvoiceAdjustment = async (cardName, monthKey, adjustmentId) => {
+        const updatedCards = myCards.map(card => {
+          if (normalizeCardName(card.name) !== normalizeCardName(cardName)) return card;
+
+          const current = Array.isArray(card?.faturasAjustes?.[monthKey])
+            ? card.faturasAjustes[monthKey]
+            : [];
+
+          return {
+            ...card,
+            faturasAjustes: {
+              ...(card.faturasAjustes || {}),
+              [monthKey]: current.filter(a => a.id !== adjustmentId)
+            }
+          };
+        });
+
+        setMyCards(updatedCards);
+        localStorage.setItem('local_my_cards', JSON.stringify(updatedCards));
+        await saveSettingsToCloud(banks, categories, budgets, updatedCards, monthlyGoals);
+        showToast('Ajuste removido da fatura.');
       };
 
       const handleSaveConferenceValues = async (row) => {
@@ -11601,6 +12750,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
               .print-group.fisico { border-left:3px solid #0284c7; }
               .print-group.virtual { border-left:3px solid #7e22ce; }
               .print-note { font-size:8px; color:#6b7280; margin:-3px 0 8px; }
+              .invoice-adjustments-print { margin:7px 0 9px; padding:7px 9px; border:1px solid #a7f3d0; border-left:3px solid #10b981; border-radius:5px; background:#ecfdf5; color:#065f46; font-size:9px; }
+              .invoice-adjustments-print > b { display:block; margin-bottom:4px; text-transform:uppercase; }
+              .invoice-adjustments-print > div { padding:2px 0; }
             </style>
           
 
@@ -11670,10 +12822,16 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 const printFisicos = printItems.filter(item => item.tipoCartao === 'fisico');
                 const printVirtuais = printItems.filter(item => item.tipoCartao === 'virtual');
                 const printNaoInformados = printItems.filter(item => !item.tipoCartao);
+                const printAdjustments = pmSelectedMonth !== 'all' ? getInvoiceAdjustments(bankName, pmSelectedMonth) : [];
+                const printAdjustmentTotal = printAdjustments.reduce((sum,a)=>sum+(parseFloat(a.value)||0),0);
+                const printNetTotal = Math.max(0, (parseFloat(cardInfo.total)||0) + printAdjustmentTotal);
 
                 htmlContent += `
                 <div class="card-section">
-                  <div class="card-header">${bankName} - Total: R$ ${cardInfo.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                  <div class="card-header">
+                    ${bankName} — Compras: R$ ${cardInfo.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    ${printAdjustments.length ? ` | Ajustes: - R$ ${Math.abs(printAdjustmentTotal).toLocaleString('pt-BR',{minimumFractionDigits:2})} | Fatura ajustada: R$ ${printNetTotal.toLocaleString('pt-BR',{minimumFractionDigits:2})}` : ''}
+                  </div>
                   <div class="print-sort-info">
                     Ordenado por: <b>${sortLabel}</b> • ${sortConfigFatura.direction === 'asc' ? 'Crescente' : 'Decrescente'}
                   </div>
@@ -11684,6 +12842,15 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div class="print-group virtual"><span>Cartão virtual</span><b>${printVirtuais.length} • R$ ${printSum(printVirtuais).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div>
                   </div>
                   ${printNaoInformados.length ? `<div class="print-note">Há ${printNaoInformados.length} lançamento(s) antigo(s) sem indicação de cartão físico/virtual. Edite esses lançamentos para classificá-los.</div>` : ''}
+                  ${printAdjustments.length ? `
+                    <div class="invoice-adjustments-print">
+                      <b>Ajustes da fatura</b>
+                      ${printAdjustments.map(a => {
+                        const linked = pmExpenses.find(e => e.id === a.linkedExpenseId);
+                        return `<div>${a.type === 'credito' ? 'Crédito/Estorno' : 'Desconto'} — ${a.description}${linked ? ` — ${linked.local}/${linked.produto}` : ''}: <strong>- R$ ${Math.abs(parseFloat(a.value)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong></div>`;
+                      }).join('')}
+                    </div>
+                  ` : ''}
                   <table>
                     <thead>
                       <tr>
@@ -12248,7 +13415,15 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div className="neo-white-panel">
                       <div className="neo-white-title"><span><AlertCircle className="w-4 h-4"/> Alertas e Notificações</span><button onClick={()=>setActiveTab('future')}>Ver futuras</button></div>
                       <div className="divide-y divide-slate-100">
-                        {resumoData.pmList.filter(f=>!f.isPaid || Math.abs((f.paidAmount||0)-(f.invoiceTarget||f.totalValue||0))>0.01).slice(0,3).map((f,i)=><div key={`invoice-alert-${i}`} className="py-2.5 flex gap-2"><div className="w-7 h-7 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center shrink-0"><AlertCircle className="w-4 h-4"/></div><div><div className="font-bold text-xs text-slate-800">Fatura {f.cardName}</div><div className="text-[9px] text-slate-500">{!f.isPaid?'Pagamento pendente':`Diferença de R$ ${Math.abs((f.paidAmount||0)-(f.invoiceTarget||f.totalValue||0)).toLocaleString('pt-BR',{minimumFractionDigits:2})}`}</div></div></div>)}
+                        {resumoData.pmList
+                          .filter(f => {
+                            const invoiceValue = Number(f.invoiceTarget || f.totalValue || 0);
+                            if (invoiceValue <= 0.009) return false;
+                            const difference = Math.abs((f.paidAmount || 0) - invoiceValue);
+                            return !f.isPaid || difference > 0.01;
+                          })
+                          .slice(0,3)
+                          .map((f,i)=><div key={`invoice-alert-${i}`} className="py-2.5 flex gap-2"><div className="w-7 h-7 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center shrink-0"><AlertCircle className="w-4 h-4"/></div><div><div className="font-bold text-xs text-slate-800">Fatura {f.cardName}</div><div className="text-[9px] text-slate-500">{!f.isPaid?'Pagamento pendente':`Diferença de R$ ${Math.abs((f.paidAmount||0)-(f.invoiceTarget||f.totalValue||0)).toLocaleString('pt-BR',{minimumFractionDigits:2})}`}</div></div></div>)}
                         {futureAlertsThisMonth.map((item,i)=><div key={`future-alert-${item.id||i}`} className="py-2.5 flex gap-2"><div className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><Clock className="w-4 h-4"/></div><div className="min-w-0"><div className="font-bold text-xs text-slate-800 truncate">Despesa futura: {item.description}</div><div className="text-[9px] text-slate-500">Data prevista: {formatToDDMMAAAA(item.date)} • Valor: R$ {Number(item.amount||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</div></div></div>)}
                         <div className="py-2.5 flex gap-2"><div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><HardDrive className="w-4 h-4"/></div><div><div className="font-bold text-xs text-slate-800">Backup</div><div className="text-[9px] text-slate-500">{lastBackupAt?`Último backup: ${new Date(lastBackupAt).toLocaleDateString('pt-BR')}`:'Nenhum backup realizado'}</div></div></div>
                       </div>
@@ -12849,7 +14024,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                       <div>
                         <div className="flex items-center gap-2"><h2 className="text-2xl font-extrabold text-[#1e1b4b] tracking-tight">Meus Cartões</h2><span className="text-[10px] font-black px-2 py-1 rounded-full bg-white/90 text-blue-700 shadow-sm">{myCards.length}</span></div>
-                        <p className="text-sm text-slate-500 font-medium mt-1">Gerencie limites, faturas e gastos de todos os seus cartões em um só lugar.</p>
+                        <p className="text-sm text-slate-500 font-medium mt-1">Mostrando apenas cartões com valor na fatura atual ou na próxima fatura.</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <button onClick={() => { resetCardForm(); setIsCardModalOpen(true); }} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center gap-2">
@@ -12878,11 +14053,15 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                           timeRangeInfo.find(m => m.key === selectedCardMonth)?.label ||
                           (selectedCardMonth || 'Mês atual');
 
-                        const getProjectedCardValue = (monthKey) => pmExpenses.reduce((sum, exp) => {
-                          if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return sum;
-                          const info = getInstallmentInfo(exp, monthKey, myCards);
-                          return sum + (parseFloat(info?.value) || 0);
-                        }, 0);
+                        const getProjectedCardValue = (monthKey) => {
+                          const gross = pmExpenses.reduce((sum, exp) => {
+                            if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return sum;
+                            const info = getInstallmentInfo(exp, monthKey, myCards);
+                            return sum + (parseFloat(info?.value) || 0);
+                          }, 0);
+
+                          return getAdjustedInvoiceValue(card.name, monthKey, gross);
+                        };
 
                         const selectedInvoiceItems = pmExpenses.filter(exp => {
                           if (normalizeCardName(exp.pagamento) !== normalizeCardName(card.name)) return false;
@@ -12893,9 +14072,81 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         const selectedInvoiceDueDate = getInvoiceDueDate(selectedCardMonth, card.vencimento);
                         const selectedInvoiceDueLabel = selectedInvoiceDueDate ? formatDateBRFull(selectedInvoiceDueDate) : '-';
 
+                        const selectedConferenceRow = cardAnalysisData.find(r =>
+                          normalizeCardName(r.cardName) === normalizeCardName(card.name) &&
+                          r.monthKey === selectedCardMonth
+                        );
+
+                        const selectedInvoicePaid =
+                          !!selectedConferenceRow?.isPaid ||
+                          !!card?.faturasPagas?.[selectedCardMonth];
+
+                        const selectedInvoicePaymentDate =
+                          selectedConferenceRow?.paymentDate ||
+                          card?.faturasPagasDatas?.[selectedCardMonth] ||
+                          '';
+
+                        const getInvoiceStatusInfo = () => {
+                          if (selectedInvoiceValue <= 0.009) {
+                            return {
+                              key: 'empty',
+                              label: 'Sem fatura atual',
+                              detail: nextInvoiceValue > 0.009 ? 'Há valor na próxima fatura' : 'Sem cobrança neste mês'
+                            };
+                          }
+
+                          if (selectedInvoicePaid) {
+                            return {
+                              key: 'paid',
+                              label: 'Fatura paga',
+                              detail: selectedInvoicePaymentDate
+                                ? `Pago em ${formatDateBRFull(selectedInvoicePaymentDate)}`
+                                : 'Pagamento confirmado'
+                            };
+                          }
+
+                          if (!selectedInvoiceDueDate) {
+                            return {
+                              key: 'pending',
+                              label: 'Pendente',
+                              detail: 'Vencimento não informado'
+                            };
+                          }
+
+                          const [y,m,d] = String(selectedInvoiceDueDate).split('-').map(Number);
+                          const due = new Date(y, (m || 1) - 1, d || 1);
+                          due.setHours(0,0,0,0);
+
+                          const today = new Date();
+                          today.setHours(0,0,0,0);
+
+                          const diffDays = Math.round((due.getTime() - today.getTime()) / 86400000);
+
+                          if (diffDays === 0) {
+                            return {
+                              key: 'today',
+                              label: 'Vence hoje',
+                              detail: selectedInvoiceDueLabel
+                            };
+                          }
+
+                          if (diffDays > 0) {
+                            return {
+                              key: diffDays <= 5 ? 'soon' : 'open',
+                              label: `Vence em ${diffDays} dia${diffDays === 1 ? '' : 's'}`,
+                              detail: selectedInvoiceDueLabel
+                            };
+                          }
+
+                          const overdueDays = Math.abs(diffDays);
+                          return {
+                            key: 'overdue',
+                            label: `Vencida há ${overdueDays} dia${overdueDays === 1 ? '' : 's'}`,
+                            detail: `Venceu em ${selectedInvoiceDueLabel}`
+                          };
+                        };
+
                         const limiteUsado = selectedInvoiceValue;
-                        const limiteDisponivel = limiteTotal - limiteUsado;
-                        const pctUsado = limiteTotal > 0 ? (limiteUsado / limiteTotal) * 100 : 0;
 
                         const addMonthsToKey = (monthKey, offset) => {
                           const [year, month] = String(monthKey || '').split('-').map(Number);
@@ -12906,6 +14157,25 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
 
                         const nextInvoiceMonth = addMonthsToKey(selectedCardMonth, 1);
                         const nextInvoiceValue = nextInvoiceMonth ? getProjectedCardValue(nextInvoiceMonth) : 0;
+
+                        // O limite disponível não é liberado apenas por a fatura existir.
+                        // Antes do pagamento, a fatura atual + a próxima continuam comprometendo o limite.
+                        // Depois do pagamento, somente a fatura atual é liberada; a próxima continua comprometendo.
+                        const currentInvoiceCommitment = selectedInvoicePaid ? 0 : selectedInvoiceValue;
+                        const totalCardCommitment = Math.max(0, currentInvoiceCommitment + nextInvoiceValue);
+                        const limiteDisponivel = Math.max(0, limiteTotal - totalCardCommitment);
+                        const pctUsado = limiteTotal > 0 ? (totalCardCommitment / limiteTotal) * 100 : 0;
+
+                        const invoiceStatusInfo = getInvoiceStatusInfo();
+
+                        // Não mostra cartões sem uso na fatura atual e também sem valor na próxima fatura.
+                        // O cartão continua cadastrado e pode ser acessado/reativado ao receber um novo lançamento.
+                        const cardHasUsage =
+                          Math.abs(selectedInvoiceValue) > 0.009 ||
+                          Math.abs(nextInvoiceValue) > 0.009;
+
+                        if (!cardHasUsage) return null;
+
                         const bankVisual = getBankVisualMeta(card.name);
 
                         return (
@@ -12959,8 +14229,10 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 <strong>R$ {limiteTotal.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
                               </div>
                               <div>
-                                <span>Utilizado</span>
-                                <strong>R$ {limiteUsado.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                                <span>{selectedInvoicePaid ? 'Fatura paga' : 'Utilizado'}</span>
+                                <strong className={selectedInvoicePaid ? 'paid-value-v75' : ''}>
+                                  R$ {limiteUsado.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+                                </strong>
                               </div>
                               <div>
                                 <span>Disponível</span>
@@ -12975,25 +14247,43 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               <b>{Math.round(pctUsado)}%</b>
                             </div>
 
-                            <div className="card-bank-info-row-v54">
+                            <div className={`card-invoice-status-v73 ${invoiceStatusInfo.key}`}>
+                              <span className="status-dot"></span>
+                              <div>
+                                <strong>{invoiceStatusInfo.label}</strong>
+                                <small>
+                                  {selectedInvoicePaid
+                                    ? `${invoiceStatusInfo.detail} • limite desta fatura liberado`
+                                    : invoiceStatusInfo.detail}
+                                </small>
+                              </div>
+                            </div>
+
+                            <div className={`card-bank-info-row-v54 ${selectedInvoiceValue <= 0.009 ? 'no-current-v70' : ''}`}>
                               <div>
                                 <span className="ico"><Calendar className="w-4 h-4"/></span>
                                 <p><small>Vencimento</small><strong>{selectedInvoiceDueLabel}</strong></p>
                               </div>
-                              <div>
-                                <span className="ico"><FileText className="w-4 h-4"/></span>
-                                <p><small>Fatura atual</small><strong>R$ {selectedInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></p>
-                              </div>
+
+                              {selectedInvoiceValue > 0.009 && (
+                                <div>
+                                  <span className="ico"><FileText className="w-4 h-4"/></span>
+                                  <p><small>Fatura atual</small><strong>R$ {selectedInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></p>
+                                </div>
+                              )}
+
                               <div>
                                 <span className="ico"><Clock className="w-4 h-4"/></span>
                                 <p><small>Próxima fatura</small><strong>R$ {nextInvoiceValue.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></p>
                               </div>
                             </div>
 
-                            <div className="card-bank-purchases-v54">
-                              <ShoppingBag className="w-3.5 h-3.5"/>
-                              <span>{selectedInvoiceItems.length} compra(s) nesta fatura</span>
-                            </div>
+                            {selectedInvoiceValue > 0.009 && selectedInvoiceItems.length > 0 && (
+                              <div className="card-bank-purchases-v54">
+                                <ShoppingBag className="w-3.5 h-3.5"/>
+                                <span>{selectedInvoiceItems.length} compra(s) nesta fatura</span>
+                              </div>
+                            )}
 
                             <div className="card-bank-actions-v54">
                               <button type="button" onClick={()=>{
@@ -13535,6 +14825,83 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                       </div>
                                     );
                                   })()}
+                                  {pmSelectedMonth !== 'all' && (() => {
+                                    const conferenceRow = cardAnalysisData.find(r =>
+                                      r.cardName === bankName && r.monthKey === pmSelectedMonth
+                                    );
+
+                                    const possibleCredit = conferenceRow?.isPaid && (parseFloat(conferenceRow.difference) || 0) < -0.009
+                                      ? Math.abs(parseFloat(conferenceRow.difference) || 0)
+                                      : 0;
+
+                                    if (possibleCredit <= 0.009) return null;
+
+                                    return (
+                                      <div className="mb-4 rounded-2xl border-2 border-emerald-200 bg-emerald-50 overflow-hidden">
+                                        <div className="px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
+                                          <div>
+                                            <p className="text-xs font-black text-emerald-900 uppercase tracking-wide">Possível desconto ou crédito na fatura</p>
+                                            <p className="text-[11px] text-emerald-800 mt-0.5">
+                                              O pagamento foi R$ {possibleCredit.toLocaleString('pt-BR',{minimumFractionDigits:2})} menor que a soma atual da fatura.
+                                            </p>
+                                          </div>
+                                          <button
+                                            type="button"
+                                            onClick={() => openInvoiceAdjustment(conferenceRow, possibleCredit)}
+                                            className="px-3 py-2 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 font-black text-xs"
+                                          >
+                                            + Registrar desconto
+                                          </button>
+                                        </div>
+                                      </div>
+                                    );
+                                  })()}
+
+                                  {pmSelectedMonth !== 'all' && (() => {
+                                    const adjustments = getInvoiceAdjustments(bankName, pmSelectedMonth);
+                                    const total = adjustments.reduce((sum,a)=>sum+(parseFloat(a.value)||0),0);
+                                    const row = cardAnalysisData.find(r => r.cardName === bankName && r.monthKey === pmSelectedMonth);
+
+                                    return (
+                                      <div className="invoice-adjustments-v72">
+                                        <div className="invoice-adjustments-head-v72">
+                                          <div>
+                                            <h4>Ajustes da fatura</h4>
+                                            <p>Descontos e créditos reduzem somente a fatura; as compras originais não são alteradas.</p>
+                                          </div>
+                                          <button type="button" onClick={() => openInvoiceAdjustment(row || {cardName:bankName,monthKey:pmSelectedMonth,monthLabel:pmSelectedMonth})}>
+                                            + Ajuste da fatura
+                                          </button>
+                                        </div>
+
+                                        {adjustments.length > 0 && (
+                                          <div className="invoice-adjustments-list-v72">
+                                            {adjustments.map(adj => {
+                                              const linked = pmExpenses.find(e => e.id === adj.linkedExpenseId);
+                                              return (
+                                                <div key={adj.id} className="invoice-adjustment-row-v72">
+                                                  <div>
+                                                    <strong>{adj.type === 'credito' ? 'Crédito/Estorno' : 'Desconto'}</strong>
+                                                    <span>{adj.description}</span>
+                                                    {linked && <small>Vinculado a: {linked.local} — {linked.produto}</small>}
+                                                  </div>
+                                                  <b>- R$ {Math.abs(parseFloat(adj.value)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                                                  <button type="button" onClick={() => handleDeleteInvoiceAdjustment(bankName, pmSelectedMonth, adj.id)} title="Excluir ajuste">
+                                                    <Trash2 className="w-4 h-4"/>
+                                                  </button>
+                                                </div>
+                                              );
+                                            })}
+                                            <div className="invoice-adjustment-total-v72">
+                                              <span>Total de descontos/créditos</span>
+                                              <b>- R$ {Math.abs(total).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                                            </div>
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  })()}
+
                                   <h4 className="font-bold text-sm text-slate-600 uppercase tracking-wider mb-4 flex items-center gap-2">
                                     <ShoppingBag className="w-4 h-4" /> {pmSelectedMonth === 'all' ? 'Registro Completo de Lançamentos' : `Detalhes da Fatura (${timeRangeInfo.find(m => m.key === pmSelectedMonth)?.label})`}
                                   </h4>
@@ -13796,6 +15163,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                 const totalInvoices = baseRows.reduce((s,r)=>s+(parseFloat(r.invoiceAmount)||0),0);
                 const totalPaid = baseRows.reduce((s,r)=>s+(parseFloat(r.paidAmount)||0),0);
                 const totalDifference = baseRows.reduce((s,r)=>s+Math.max(0, parseFloat(r.difference)||0),0);
+                const totalCredits = baseRows.reduce((s,r)=>s+Math.abs(Math.min(0, parseFloat(r.adjustmentTotal)||0)),0);
                 const openCards = baseRows.filter(r => !r.isPaid || Math.abs(parseFloat(r.difference)||0) > 0.009).length;
                 const selectedMonthLabel = conferenceMonthOptions.find(m => m.key === pmSelectedMonth)?.label || pmSelectedMonth;
 
@@ -13827,6 +15195,20 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                           >
                             <Plus className="w-4 h-4" /> Lançar diferença
                           </button>
+                          <button
+                            onClick={() => {
+                              const first = baseRows.find(r => (parseFloat(r.difference)||0) < -0.009);
+                              if (first) openInvoiceAdjustment(first, Math.abs(parseFloat(first.difference)||0));
+                              else {
+                                const any = baseRows.find(r => (parseFloat(r.invoiceAmount)||0) > 0);
+                                if (any) openInvoiceAdjustment(any);
+                                else showToast('Nenhuma fatura disponível para ajuste neste mês.');
+                              }
+                            }}
+                            className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-black rounded-xl px-4 py-3 shadow-lg transition"
+                          >
+                            <Plus className="w-4 h-4" /> Desconto/Crédito
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -13849,9 +15231,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                           <div className="text-xs text-orange-100/80 mt-2">Valores ainda não detalhados</div>
                         </div>
                         <div className="rounded-2xl p-4 border border-violet-400/30 bg-gradient-to-br from-[#5d2bb9] to-[#39227a] shadow-lg">
-                          <div className="text-xs font-bold text-violet-100">Cartões em Aberto</div>
-                          <div className="text-2xl font-black mt-1">{openCards} cartão(ões)</div>
-                          <div className="text-xs text-violet-100/80 mt-2">Necessitam de atenção</div>
+                          <div className="text-xs font-bold text-violet-100">Descontos/Créditos</div>
+                          <div className="text-2xl font-black mt-1">R$ {totalCredits.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+                          <div className="text-xs text-violet-100/80 mt-2">{openCards} cartão(ões) precisam de atenção</div>
                         </div>
                       </div>
 
@@ -13914,9 +15296,19 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                     <td className={`px-4 py-4 font-black ${ok ? 'text-slate-600' : diff > 0 ? 'text-rose-600' : 'text-amber-600'}`}>{ok ? 'R$ 0,00' : `${diff < 0 ? '- ' : ''}R$ ${absDiff.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`}</td>
                                     <td className="px-4 py-4"><span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-black border ${statusClass}`}>{r.isPaid ? <CheckCircle className="w-3.5 h-3.5"/> : <AlertCircle className="w-3.5 h-3.5"/>}{statusLabel}</span></td>
                                     <td className="px-4 py-4">
-                                      <button disabled={diff <= 0.009} onClick={() => openDifferenceLaunchModal([{...r, difference: diff}])} className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black border transition ${diff > 0.009 ? 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100' : 'bg-slate-50 text-slate-300 border-slate-200 cursor-not-allowed'}`}>
-                                        <Plus className="w-3.5 h-3.5" /> Lançar diferença
-                                      </button>
+                                      {diff > 0.009 ? (
+                                        <button onClick={() => openDifferenceLaunchModal([{...r, difference: diff}])} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black border bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 transition">
+                                          <Plus className="w-3.5 h-3.5" /> Lançar diferença
+                                        </button>
+                                      ) : diff < -0.009 ? (
+                                        <button onClick={() => openInvoiceAdjustment(r, Math.abs(diff))} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black border bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100 transition">
+                                          <Plus className="w-3.5 h-3.5" /> Registrar desconto
+                                        </button>
+                                      ) : (
+                                        <button onClick={() => openInvoiceAdjustment(r)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black border bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100 transition">
+                                          <Plus className="w-3.5 h-3.5" /> Ajuste
+                                        </button>
+                                      )}
                                     </td>
                                   </tr>
                                 );
@@ -16488,6 +17880,122 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
           )}
 
           {/* MODAL LANÇAR UMA OU VÁRIAS DIFERENÇAS DA FATURA */}
+          {invoiceAdjustmentModal.isOpen && (() => {
+            const linkedOptions = pmExpenses.filter(item => {
+              if (normalizeCardName(item.pagamento) !== normalizeCardName(invoiceAdjustmentModal.cardName)) return false;
+              return !!getInstallmentInfo(item, invoiceAdjustmentModal.monthKey, myCards);
+            });
+
+            const gross = linkedOptions.reduce((sum,item) => {
+              const info = getInstallmentInfo(item, invoiceAdjustmentModal.monthKey, myCards);
+              return sum + (parseFloat(info?.value)||0);
+            }, 0);
+
+            const existing = getInvoiceAdjustments(invoiceAdjustmentModal.cardName, invoiceAdjustmentModal.monthKey);
+            const existingTotal = existing.reduce((sum,a)=>sum+(parseFloat(a.value)||0),0);
+            const typed = parseMoneyInput(invoiceAdjustmentModal.amount);
+            const preview = Math.max(0, gross + existingTotal - (Number.isFinite(typed) ? typed : 0));
+
+            return (
+              <div className="fixed inset-0 bg-black/50 z-[85] flex items-center justify-center p-4 backdrop-blur-sm">
+                <form onSubmit={handleSaveInvoiceAdjustment} className="invoice-adjustment-modal-v72">
+                  <div className="invoice-adjustment-modal-head-v72">
+                    <div>
+                      <h3>Ajuste da Fatura</h3>
+                      <p>{invoiceAdjustmentModal.cardName} • {invoiceAdjustmentModal.monthLabel}</p>
+                    </div>
+                    <button type="button" onClick={() => setInvoiceAdjustmentModal(prev=>({...prev,isOpen:false}))}>
+                      <X className="w-5 h-5"/>
+                    </button>
+                  </div>
+
+                  <div className="invoice-adjustment-modal-body-v72">
+                    <div className="invoice-adjustment-explain-v72">
+                      O valor da compra original continuará igual. Este ajuste altera somente o total da fatura.
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label>Tipo do ajuste</label>
+                        <select
+                          value={invoiceAdjustmentModal.type}
+                          onChange={(e)=>setInvoiceAdjustmentModal(p=>({...p,type:e.target.value}))}
+                        >
+                          <option value="desconto">Desconto</option>
+                          <option value="credito">Crédito / Estorno</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label>Valor do desconto/crédito (R$)</label>
+                        <input
+                          autoFocus
+                          type="text"
+                          inputMode="decimal"
+                          placeholder="0,00"
+                          value={invoiceAdjustmentModal.amount}
+                          onChange={(e)=>setInvoiceAdjustmentModal(p=>({...p,amount:e.target.value}))}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label>Descrição</label>
+                      <input
+                        type="text"
+                        placeholder="Ex.: desconto promocional, estorno parcial..."
+                        value={invoiceAdjustmentModal.description}
+                        onChange={(e)=>setInvoiceAdjustmentModal(p=>({...p,description:e.target.value}))}
+                      />
+                    </div>
+
+                    <div>
+                      <label>Vincular a uma compra (opcional)</label>
+                      <select
+                        value={invoiceAdjustmentModal.linkedExpenseId}
+                        onChange={(e)=>setInvoiceAdjustmentModal(p=>({...p,linkedExpenseId:e.target.value}))}
+                      >
+                        <option value="">Desconto geral da fatura</option>
+                        {linkedOptions.map(item => {
+                          const info = getInstallmentInfo(item, invoiceAdjustmentModal.monthKey, myCards);
+                          return (
+                            <option key={item.id} value={item.id}>
+                              {item.local} — {item.produto} — R$ {(parseFloat(info?.value)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+
+                    <div className="invoice-adjustment-preview-v72">
+                      <div>
+                        <span>Compras da fatura</span>
+                        <b>R$ {gross.toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                      </div>
+                      <div>
+                        <span>Ajustes já registrados</span>
+                        <b>- R$ {Math.abs(existingTotal).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                      </div>
+                      <div>
+                        <span>Este novo ajuste</span>
+                        <b>- R$ {(Number.isFinite(typed) ? typed : 0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                      </div>
+                      <div className="final">
+                        <span>Fatura após o ajuste</span>
+                        <strong>R$ {preview.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="invoice-adjustment-modal-actions-v72">
+                    <button type="button" onClick={() => setInvoiceAdjustmentModal(prev=>({...prev,isOpen:false}))}>Cancelar</button>
+                    <button type="submit">Gravar ajuste</button>
+                  </div>
+                </form>
+              </div>
+            );
+          })()}
+
           {differenceLaunchModal.isOpen && (
             <div className="fixed inset-0 z-[90] bg-slate-950/55 backdrop-blur-sm flex items-center justify-center p-4">
               <form onSubmit={confirmDifferenceLaunchModal} className="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
