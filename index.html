@@ -6427,6 +6427,803 @@
   }
 </style>
 
+
+<style id="financas-pro-v60-pagas-pendentes">
+  .accounts-decision-panel-v60{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    max-width:900px;
+    margin:4px auto 12px;
+  }
+
+  .accounts-decision-card-v60{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    min-width:0;
+    padding:11px 13px;
+    border-radius:14px;
+    border:1px solid #dbe4ec;
+    background:#fff;
+    text-align:left;
+    cursor:pointer;
+    transition:.18s ease;
+    box-shadow:0 3px 10px rgba(15,23,42,.04);
+  }
+
+  .accounts-decision-card-v60:hover,
+  .accounts-decision-card-v60.active{
+    transform:translateY(-1px);
+    box-shadow:0 7px 18px rgba(15,23,42,.08);
+  }
+
+  .accounts-decision-card-v60.paid.active{
+    border-color:#6ee7b7;
+    background:#f0fdf7;
+  }
+
+  .accounts-decision-card-v60.pending.active{
+    border-color:#fbbf24;
+    background:#fffaf0;
+  }
+
+  .accounts-decision-icon-v60{
+    width:38px;
+    height:38px;
+    flex:0 0 38px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+  }
+
+  .accounts-decision-card-v60.paid .accounts-decision-icon-v60{
+    background:#dcfce7;
+    color:#059669;
+  }
+
+  .accounts-decision-card-v60.pending .accounts-decision-icon-v60{
+    background:#fff3d6;
+    color:#d97706;
+  }
+
+  .accounts-decision-card-v60 span{
+    display:block;
+    color:#64748b;
+    font-size:9px;
+    font-weight:850;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  .accounts-decision-card-v60 strong{
+    display:block;
+    margin-top:2px;
+    color:#0f172a;
+    font-size:18px;
+    line-height:1.05;
+    font-weight:950;
+  }
+
+  .accounts-decision-card-v60.paid strong{color:#047857}
+  .accounts-decision-card-v60.pending strong{color:#b45309}
+
+  .accounts-decision-card-v60 small{
+    display:block;
+    margin-top:3px;
+    color:#8a9aaa;
+    font-size:8px;
+    font-weight:700;
+  }
+
+  .accounts-payment-details-v60{
+    max-width:1100px;
+    margin:0 auto 12px;
+    overflow:hidden;
+    border:1px solid #dce6ee;
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 6px 18px rgba(15,23,42,.05);
+  }
+
+  .accounts-payment-details-v60.paid{border-color:#bdebd5}
+  .accounts-payment-details-v60.pending{border-color:#f2d39a}
+
+  .accounts-payment-details-head-v60{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 12px;
+    background:#f8fafc;
+    border-bottom:1px solid #e8eef3;
+  }
+
+  .accounts-payment-details-head-v60 h4{
+    margin:0;
+    color:#1e3a55;
+    font-size:12px;
+    font-weight:950;
+  }
+
+  .accounts-payment-details-head-v60 p{
+    margin:2px 0 0;
+    color:#7a8da0;
+    font-size:8px;
+    font-weight:650;
+  }
+
+  .accounts-payment-details-head-v60 button{
+    width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    border:1px solid #dbe5ed;
+    border-radius:8px;
+    background:#fff;
+    color:#64748b;
+    cursor:pointer;
+  }
+
+  .accounts-payment-list-v60{
+    max-height:280px;
+    overflow:auto;
+  }
+
+  .accounts-payment-row-v60{
+    display:grid;
+    grid-template-columns:30px minmax(0,1fr) 135px auto;
+    align-items:center;
+    gap:9px;
+    padding:8px 11px;
+    border-bottom:1px solid #edf2f6;
+  }
+
+  .accounts-payment-row-v60:last-child{border-bottom:0}
+
+  .accounts-payment-status-v60{
+    width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+  }
+
+  .accounts-payment-status-v60.paid{
+    color:#059669;
+    background:#dcfce7;
+  }
+
+  .accounts-payment-status-v60.pending{
+    color:#d97706;
+    background:#fff3d6;
+  }
+
+  .accounts-payment-main-v60{
+    min-width:0;
+  }
+
+  .accounts-payment-main-v60 strong{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#263d52;
+    font-size:10px;
+    font-weight:900;
+  }
+
+  .accounts-payment-main-v60 span{
+    display:block;
+    margin-top:2px;
+    color:#8394a3;
+    font-size:8px;
+    font-weight:650;
+  }
+
+  .accounts-payment-value-v60{
+    text-align:right;
+  }
+
+  .accounts-payment-value-v60 strong{
+    display:block;
+    color:#243d54;
+    font-size:10px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+
+  .accounts-payment-value-v60 span{
+    display:block;
+    margin-top:2px;
+    color:#8a99a7;
+    font-size:7.5px;
+    font-weight:800;
+  }
+
+  .accounts-payment-pay-v60{
+    border:1px solid #f1c66f;
+    border-radius:8px;
+    background:#fff7e6;
+    color:#a85b00;
+    padding:6px 9px;
+    font-size:8px;
+    font-weight:950;
+    cursor:pointer;
+  }
+
+  .accounts-payment-pay-v60:hover{
+    background:#ffedc5;
+  }
+
+  .accounts-payment-empty-v60{
+    padding:24px 12px;
+    text-align:center;
+    color:#8a99a7;
+    font-size:9px;
+    font-weight:700;
+  }
+
+  @media(max-width:700px){
+    .accounts-decision-panel-v60{
+      grid-template-columns:1fr;
+    }
+
+    .accounts-payment-row-v60{
+      grid-template-columns:28px minmax(0,1fr) auto;
+    }
+
+    .accounts-payment-value-v60{
+      grid-column:2;
+      text-align:left;
+    }
+
+    .accounts-payment-pay-v60{
+      grid-column:3;
+      grid-row:1/3;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v61-decisao-dinheiro">
+  .money-decision-v61{
+    max-width:1180px;
+    margin:2px auto 12px;
+    padding:12px;
+    border:1px solid #dbe7f0;
+    border-radius:15px;
+    background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+    box-shadow:0 5px 16px rgba(15,23,42,.05);
+  }
+
+  .money-decision-head-v61{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:10px;
+  }
+
+  .money-decision-head-v61 h3{
+    margin:0;
+    color:#123a61;
+    font-size:14px;
+    font-weight:950;
+  }
+
+  .money-decision-head-v61 p{
+    margin:2px 0 0;
+    color:#7c8fa1;
+    font-size:8.5px;
+    font-weight:650;
+  }
+
+  .money-decision-status-v61{
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:8px;
+    font-weight:950;
+    white-space:nowrap;
+  }
+
+  .money-decision-status-v61.green{background:#dcfce7;color:#047857}
+  .money-decision-status-v61.yellow{background:#fff3cd;color:#9a6700}
+  .money-decision-status-v61.red{background:#ffe4e6;color:#be123c}
+
+  .money-decision-grid-v61{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .money-decision-item-v61{
+    min-width:0;
+    padding:10px 11px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:#fff;
+    text-align:left;
+  }
+
+  button.money-decision-item-v61{
+    cursor:pointer;
+    transition:.15s ease;
+  }
+
+  button.money-decision-item-v61:hover{
+    transform:translateY(-1px);
+    box-shadow:0 5px 12px rgba(15,23,42,.07);
+  }
+
+  .money-decision-item-v61 span{
+    display:block;
+    color:#6b7f91;
+    font-size:8px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  .money-decision-item-v61 strong{
+    display:block;
+    margin-top:4px;
+    color:#0f2740;
+    font-size:18px;
+    line-height:1.05;
+    font-weight:950;
+    letter-spacing:-.02em;
+    white-space:nowrap;
+  }
+
+  .money-decision-item-v61 small{
+    display:block;
+    margin-top:4px;
+    color:#8999a7;
+    font-size:7.3px;
+    line-height:1.2;
+    font-weight:700;
+  }
+
+  .money-decision-item-v61.balance{background:#f5f9ff;border-color:#dbeafe}
+  .money-decision-item-v61.debt{background:#fff6f7;border-color:#ffdce2}
+  .money-decision-item-v61.debt strong{color:#d91e45}
+  .money-decision-item-v61.income{background:#f2fcf7;border-color:#cceede}
+  .money-decision-item-v61.income strong{color:#07875a}
+  .money-decision-item-v61.free{background:#eef7ff;border-color:#cfe4fa}
+  .money-decision-item-v61.free strong{color:#1262ad}
+  .money-decision-item-v61.free.negative{background:#fff1f3;border-color:#fecdd3}
+  .money-decision-item-v61.free.negative strong{color:#e11d48}
+
+  .money-decision-message-v61{
+    margin-top:8px;
+    padding:7px 9px;
+    border-radius:9px;
+    font-size:8px;
+    font-weight:650;
+  }
+
+  .money-decision-message-v61.green{background:#f0fdf4;color:#166534}
+  .money-decision-message-v61.yellow{background:#fffbeb;color:#92400e}
+  .money-decision-message-v61.red{background:#fff1f2;color:#9f1239}
+
+  @media(max-width:900px){
+    .money-decision-grid-v61{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+  }
+
+  @media(max-width:540px){
+    .money-decision-head-v61{
+      align-items:flex-start;
+      flex-direction:column;
+    }
+
+    .money-decision-grid-v61{
+      grid-template-columns:1fr;
+    }
+
+    .money-decision-item-v61 strong{
+      font-size:20px;
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v63-tipo-cartao">
+  .card-usage-badge-v63{
+    display:inline-flex;
+    align-items:center;
+    padding:2px 7px;
+    border-radius:999px;
+    border:1px solid;
+    font-size:8px;
+    line-height:1.3;
+    font-weight:900;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .card-usage-badge-v63.fisico{
+    color:#0369a1;
+    background:#e0f2fe;
+    border-color:#bae6fd;
+  }
+  .card-usage-badge-v63.virtual{
+    color:#7e22ce;
+    background:#f3e8ff;
+    border-color:#e9d5ff;
+  }
+  .card-usage-badge-v63.unknown{
+    color:#64748b;
+    background:#f1f5f9;
+    border-color:#e2e8f0;
+  }
+</style>
+
+
+<style id="financas-pro-v64-classificacao-cartao">
+  .card-usage-filter-v64{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:8px;
+    margin:0 0 10px;
+  }
+
+  .card-usage-filter-v64 button{
+    min-width:0;
+    border:1px solid #dce5ed;
+    border-radius:11px;
+    background:#fff;
+    padding:8px 10px;
+    text-align:left;
+    cursor:pointer;
+    transition:.15s ease;
+  }
+
+  .card-usage-filter-v64 button:hover,
+  .card-usage-filter-v64 button.active{
+    transform:translateY(-1px);
+    box-shadow:0 4px 12px rgba(15,23,42,.06);
+  }
+
+  .card-usage-filter-v64 button span{
+    display:block;
+    color:#64748b;
+    font-size:8px;
+    font-weight:900;
+    text-transform:uppercase;
+  }
+
+  .card-usage-filter-v64 button b{
+    display:inline-block;
+    margin-top:3px;
+    color:#0f172a;
+    font-size:15px;
+    font-weight:950;
+  }
+
+  .card-usage-filter-v64 button small{
+    display:block;
+    margin-top:2px;
+    color:#8796a5;
+    font-size:7.5px;
+    font-weight:700;
+  }
+
+  .card-usage-filter-v64 button.fisico.active{
+    border-color:#7dd3fc;
+    background:#f0f9ff;
+  }
+
+  .card-usage-filter-v64 button.virtual.active{
+    border-color:#d8b4fe;
+    background:#faf5ff;
+  }
+
+  .card-usage-filter-v64 button.unknown.active{
+    border-color:#cbd5e1;
+    background:#f8fafc;
+  }
+
+  .card-usage-filter-v64 button.all.active{
+    border-color:#a5b4fc;
+    background:#eef2ff;
+  }
+
+  .card-usage-quick-v64,
+  .card-usage-history-quick-v64{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+
+  .card-usage-quick-v64 button,
+  .card-usage-history-quick-v64 button{
+    border:1px solid #cbd5e1;
+    border-radius:999px;
+    background:#fff;
+    padding:2px 6px;
+    font-size:7.5px;
+    line-height:1.3;
+    font-weight:900;
+    cursor:pointer;
+    transition:.12s ease;
+  }
+
+  .card-usage-quick-v64 button:first-of-type,
+  .card-usage-history-quick-v64 button:first-of-type{
+    color:#0369a1;
+    border-color:#bae6fd;
+    background:#f0f9ff;
+  }
+
+  .card-usage-quick-v64 button:last-of-type,
+  .card-usage-history-quick-v64 button:last-of-type{
+    color:#7e22ce;
+    border-color:#e9d5ff;
+    background:#faf5ff;
+  }
+
+  .card-usage-quick-v64 button:hover,
+  .card-usage-history-quick-v64 button:hover{
+    transform:translateY(-1px);
+  }
+
+  @media(max-width:760px){
+    .card-usage-filter-v64{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+  }
+</style>
+
+
+<style id="financas-pro-v66-selecao-em-massa">
+  .bulk-check-v66{display:inline-flex;align-items:center;margin-right:7px;vertical-align:middle;cursor:pointer}
+  .bulk-check-v66 input{position:absolute;opacity:0;pointer-events:none}
+  .bulk-check-v66 span{width:15px;height:15px;display:inline-grid;place-items:center;border:1.5px solid #94a3b8;border-radius:4px;background:#fff}
+  .bulk-check-v66 input:checked + span{border-color:#2563eb;background:#2563eb}
+  .bulk-check-v66 input:checked + span::after{content:'✓';color:#fff;font-size:10px;font-weight:950;line-height:1}
+  .bulk-toolbar-v66{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:9px 12px;border-bottom:1px solid #e5e7eb;background:#f8fafc}
+  .bulk-toolbar-v66>span{color:#64748b;font-size:9px;font-weight:850}
+  .bulk-toolbar-v66 button{border-radius:9px;padding:6px 10px;font-size:8.5px;font-weight:950;cursor:pointer;transition:.14s ease}
+  .bulk-toolbar-v66 button:disabled{opacity:.42;cursor:not-allowed}
+  .bulk-toolbar-v66 .select-all{border:1px solid #cbd5e1;background:#fff;color:#334155}
+  .bulk-toolbar-actions-v66{display:flex;gap:6px;margin-left:auto}
+  .bulk-toolbar-v66 .mark-physical{border:1px solid #7dd3fc;background:#f0f9ff;color:#0369a1}
+  .bulk-toolbar-v66 .mark-virtual{border:1px solid #d8b4fe;background:#faf5ff;color:#7e22ce}
+  .bulk-toolbar-v66 button:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(15,23,42,.07)}
+  @media(max-width:650px){.bulk-toolbar-actions-v66{width:100%;margin-left:0}.bulk-toolbar-actions-v66 button{flex:1}}
+</style>
+
+
+<style id="financas-pro-v67-seta-data">
+  .sort-arrow-v67{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:#2563eb;
+    flex:0 0 auto;
+  }
+</style>
+
+
+<style id="financas-pro-v68-rateio">
+  .rateio-box-v68{
+    border:1px solid #dbe5ef;
+    border-radius:16px;
+    background:#f8fafc;
+    overflow:hidden;
+  }
+
+  .rateio-box-v68.active{
+    border-color:#a7d8f5;
+    background:#f5fbff;
+  }
+
+  .rateio-head-v68{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:13px 14px;
+  }
+
+  .rateio-head-v68 h4{
+    margin:0;
+    color:#173b5d;
+    font-size:13px;
+    font-weight:950;
+  }
+
+  .rateio-head-v68 p{
+    margin:3px 0 0;
+    color:#7a8ea1;
+    font-size:9px;
+    font-weight:650;
+  }
+
+  .rateio-toggle-v68{
+    border:1px solid #bfdbfe;
+    border-radius:10px;
+    background:#fff;
+    color:#2563eb;
+    padding:8px 11px;
+    font-size:9px;
+    font-weight:950;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+
+  .rateio-toggle-v68.active{
+    border-color:#60a5fa;
+    background:#eff6ff;
+  }
+
+  .rateio-body-v68{
+    padding:0 14px 14px;
+  }
+
+  .rateio-fields-v68{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 180px 90px;
+    gap:8px;
+    align-items:end;
+    padding-top:12px;
+    border-top:1px solid #dbeafe;
+  }
+
+  .rateio-fields-v68 label{
+    display:block;
+    margin-bottom:5px;
+    color:#536b80;
+    font-size:8.5px;
+    font-weight:900;
+  }
+
+  .rateio-fields-v68 input{
+    width:100%;
+    border:1px solid #cbd5e1;
+    border-radius:9px;
+    background:#fff;
+    padding:8px 9px;
+    color:#1e293b;
+    font-size:10px;
+    font-weight:750;
+    outline:none;
+  }
+
+  .rateio-half-v68{
+    min-height:35px;
+    border:1px solid #93c5fd;
+    border-radius:9px;
+    background:#eff6ff;
+    color:#1d4ed8;
+    font-size:9px;
+    font-weight:950;
+    cursor:pointer;
+  }
+
+  .rateio-half-v68:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+  }
+
+  .rateio-summary-v68{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    margin-top:10px;
+  }
+
+  .rateio-summary-v68>div{
+    border:1px solid #e2e8f0;
+    border-radius:11px;
+    background:#fff;
+    padding:9px 10px;
+  }
+
+  .rateio-summary-v68 span{
+    display:block;
+    color:#7a8b99;
+    font-size:8px;
+    font-weight:850;
+    text-transform:uppercase;
+  }
+
+  .rateio-summary-v68 strong{
+    display:block;
+    margin-top:3px;
+    color:#1e3a5f;
+    font-size:14px;
+    font-weight:950;
+  }
+
+  .rateio-summary-v68 strong.receive{
+    color:#047857;
+  }
+
+  .rateio-summary-v68 small{
+    display:block;
+    margin-top:3px;
+    color:#94a3b8;
+    font-size:7.5px;
+    font-weight:700;
+  }
+
+  .rateio-note-v68{
+    margin-top:9px;
+    padding:7px 9px;
+    border-radius:9px;
+    background:#eef7ff;
+    color:#45677f;
+    font-size:8px;
+    line-height:1.35;
+    font-weight:700;
+  }
+
+  .rateio-row-v68{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:4px;
+    padding:5px 7px;
+    border-radius:8px;
+    background:#ecfdf5;
+    color:#166534;
+    font-size:8px;
+    font-weight:750;
+  }
+
+  .rateio-row-v68 button{
+    border-radius:999px;
+    padding:3px 7px;
+    font-size:7.5px;
+    font-weight:950;
+    cursor:pointer;
+  }
+
+  .rateio-row-v68 button.pending{
+    border:1px solid #fbbf24;
+    background:#fff7ed;
+    color:#b45309;
+  }
+
+  .rateio-row-v68 button.received{
+    border:1px solid #86efac;
+    background:#dcfce7;
+    color:#166534;
+  }
+
+  .history-rateio-v68{
+    display:block;
+    margin-top:3px;
+    color:#047857;
+    font-size:8px;
+    font-weight:800;
+  }
+
+  @media(max-width:700px){
+    .rateio-head-v68{
+      align-items:flex-start;
+      flex-direction:column;
+    }
+
+    .rateio-toggle-v68{
+      width:100%;
+    }
+
+    .rateio-fields-v68{
+      grid-template-columns:1fr;
+    }
+
+    .rateio-summary-v68{
+      grid-template-columns:1fr;
+    }
+  }
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
   
@@ -6505,7 +7302,7 @@
     }
 
     // --- CONSTANTS & INITIAL DATA ---
-    const APP_VERSION = '58';
+    const APP_VERSION = '68';
     const DEFAULT_CATEGORIES = [
       { id: 'moradia', name: 'Moradia (Aluguel, Luz, Água)', type: 'necessidade', color: '#3B82F6' },
       { id: 'alimentacao', name: 'Alimentação & Supermercado', type: 'necessidade', color: '#10B981' },
@@ -6687,6 +7484,29 @@
       const lastDay = new Date(targetYear, targetMonth, 0).getDate();
       const safeDay = Math.min(day, lastDay);
       return `${targetYear}-${String(targetMonth).padStart(2, '0')}-${String(safeDay).padStart(2, '0')}`;
+    };
+
+    const getCardUsageLabel = (tipoCartao) => {
+      if (tipoCartao === 'virtual') return 'Cartão virtual';
+      if (tipoCartao === 'fisico') return 'Cartão físico';
+      return 'Não informado';
+    };
+
+    const getCardUsageClass = (tipoCartao) => {
+      if (tipoCartao === 'virtual') return 'virtual';
+      if (tipoCartao === 'fisico') return 'fisico';
+      return 'unknown';
+    };
+
+    const getRateioInstallmentAmount = (item, installmentNumber = 1) => {
+      if (!item?.rateio?.ativo) return 0;
+      const totalRateio = Math.max(0, Math.round((parseFloat(item.rateio.valor) || 0) * 100));
+      const totalInstallments = Math.max(1, parseInt(item.parcelas) || 1);
+      const n = Math.min(Math.max(1, parseInt(installmentNumber) || 1), totalInstallments);
+      const base = Math.floor(totalRateio / totalInstallments);
+      const remainder = totalRateio - (base * totalInstallments);
+      const cents = n === totalInstallments ? base + remainder : base;
+      return cents / 100;
     };
 
     const calculateFirstPaymentDate = (item, myCards) => {
@@ -6928,7 +7748,11 @@
       const [editingCard, setEditingCard] = useState(null);
       
       const [showAllBanks, setShowAllBanks] = useState(false);
+      const [showOnlyForecastBanks, setShowOnlyForecastBanks] = useState(false);
+      const [accountsPaymentView, setAccountsPaymentView] = useState(null);
       const [sortConfigFatura, setSortConfigFatura] = useState({ key: 'data', direction: 'desc' });
+      const [faturaCardUsageFilter, setFaturaCardUsageFilter] = useState('all');
+      const [selectedUsageIds, setSelectedUsageIds] = useState([]);
       const [pmPeriodFilter, setPmPeriodFilter] = useState('next6');
       
       // FILTERS
@@ -6993,7 +7817,12 @@
         valorTotal: '',
         parcelas: '1',
         valorParcela: '',
-        tipoLancamento: 'cartao'
+        tipoLancamento: 'cartao',
+        tipoCartao: 'fisico',
+        rateioAtivo: false,
+        rateioPessoa: '',
+        rateioValor: '',
+        rateioRecebimentos: {}
       });
 
       // CARD FORM
@@ -8283,6 +9112,21 @@
         const valorParc = parseFloat(pmFormData.valorParcela);
         const numParc = parseInt(pmFormData.parcelas) || 1;
 
+        const rateioAtivo = !!pmFormData.rateioAtivo;
+        const rateioValor = rateioAtivo ? (parseFloat(pmFormData.rateioValor) || 0) : 0;
+        const rateioPessoa = String(pmFormData.rateioPessoa || '').trim();
+
+        if (rateioAtivo) {
+          if (!rateioPessoa) {
+            showToast("Informe a pessoa que vai pagar a outra parte da compra.", "error");
+            return;
+          }
+          if (rateioValor <= 0 || rateioValor > valorTot) {
+            showToast("O valor do rateio deve ser maior que zero e não pode ultrapassar o valor total da compra.", "error");
+            return;
+          }
+        }
+
         // Lógica corrigida: Determinar o mês de ciclo inicial com base na data da compra e fechamento
         const cardObj = myCards.find(c => c.name === pmFormData.pagamento);
         const [dYear, dMonth, dDay] = pmFormData.data.split('-').map(Number);
@@ -8326,6 +9170,20 @@
           parcelas: String(numParc),
           valorParcela: valorParc,
           tipoLancamento: pmFormData.tipoLancamento || 'cartao',
+          tipoCartao: pmFormData.tipoCartao || 'fisico',
+          rateio: rateioAtivo ? {
+            ativo: true,
+            pessoa: rateioPessoa,
+            valor: parseFloat(rateioValor.toFixed(2)),
+            percentual: valorTot > 0 ? parseFloat(((rateioValor / valorTot) * 100).toFixed(2)) : 0,
+            recebimentos: pmFormData.rateioRecebimentos || {}
+          } : {
+            ativo: false,
+            pessoa: '',
+            valor: 0,
+            percentual: 0,
+            recebimentos: {}
+          },
           meses: {} // Otimizado! Já não é necessário salvar meses individualmente
         };
 
@@ -8350,6 +9208,148 @@
             console.error("Erro ao salvar na nuvem:", err);
           }
         }
+      };
+
+      const toggleUsageSelection = (id) => {
+        setSelectedUsageIds(prev =>
+          prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+        );
+      };
+
+      const selectAllUsageItems = (items) => {
+        const ids = items.map(i => i.id);
+        setSelectedUsageIds(prev => {
+          const allSelected = ids.every(id => prev.includes(id));
+          if (allSelected) return prev.filter(id => !ids.includes(id));
+          return Array.from(new Set([...prev, ...ids]));
+        });
+      };
+
+      const handleBulkSetCardUsageType = async (items, tipoCartao) => {
+        const selectedSet = new Set(selectedUsageIds);
+        const targetItems = items.filter(i => selectedSet.has(i.id));
+        if (!targetItems.length) {
+          showToast('Selecione pelo menos um lançamento.');
+          return;
+        }
+
+        const targetIds = new Set(targetItems.map(i => i.id));
+        const updatedPm = pmExpenses.map(e =>
+          targetIds.has(e.id) ? { ...e, tipoCartao } : e
+        );
+
+        setPmExpenses(updatedPm);
+        localStorage.setItem('local_pm_expenses', JSON.stringify(updatedPm));
+
+        if (db && user && syncKey) {
+          try {
+            await Promise.all(
+              targetItems.map(item => {
+                const updatedItem = updatedPm.find(e => e.id === item.id);
+                if (!updatedItem) return Promise.resolve();
+                const docRef = doc(
+                  db,
+                  'artifacts',
+                  appId,
+                  'public',
+                  'data',
+                  `pm_${syncKey}_expenses`,
+                  item.id
+                );
+                return setDoc(docRef, updatedItem, { merge: true });
+              })
+            );
+          } catch (err) {
+            console.error('Erro ao salvar classificação em massa:', err);
+            showToast('A classificação foi alterada neste aparelho, mas houve erro ao sincronizar.');
+          }
+        }
+
+        setSelectedUsageIds(prev => prev.filter(id => !targetIds.has(id)));
+
+        showToast(`${targetItems.length} lançamento(s) marcado(s) como ${tipoCartao === 'virtual' ? 'Cartão virtual' : 'Cartão físico'}.`);
+      };
+
+      const handleToggleRateioReceived = async (item, monthKey) => {
+        if (!item?.id || !item?.rateio?.ativo || !monthKey) return;
+
+        const current = !!item.rateio?.recebimentos?.[monthKey];
+
+        const updatedPm = pmExpenses.map(e => {
+          if (e.id !== item.id) return e;
+          return {
+            ...e,
+            rateio: {
+              ...(e.rateio || {}),
+              recebimentos: {
+                ...(e.rateio?.recebimentos || {}),
+                [monthKey]: !current
+              }
+            }
+          };
+        });
+
+        setPmExpenses(updatedPm);
+        localStorage.setItem('local_pm_expenses', JSON.stringify(updatedPm));
+
+        const updatedItem = updatedPm.find(e => e.id === item.id);
+
+        if (db && user && syncKey && updatedItem) {
+          try {
+            const docRef = doc(
+              db,
+              'artifacts',
+              appId,
+              'public',
+              'data',
+              `pm_${syncKey}_expenses`,
+              item.id
+            );
+            await setDoc(docRef, updatedItem, { merge: true });
+          } catch (err) {
+            console.error('Erro ao salvar recebimento do rateio:', err);
+          }
+        }
+
+        showToast(!current ? 'Rateio marcado como recebido.' : 'Rateio voltou para pendente.');
+      };
+
+      const handleSetCardUsageType = async (item, tipoCartao) => {
+        if (!item?.id || !['fisico', 'virtual'].includes(tipoCartao)) return;
+
+        const updatedPm = pmExpenses.map(e =>
+          e.id === item.id ? { ...e, tipoCartao } : e
+        );
+
+        setPmExpenses(updatedPm);
+        localStorage.setItem('local_pm_expenses', JSON.stringify(updatedPm));
+
+        const updatedItem = updatedPm.find(e => e.id === item.id);
+
+        if (db && user && syncKey && updatedItem) {
+          try {
+            const docRef = doc(
+              db,
+              'artifacts',
+              appId,
+              'public',
+              'data',
+              `pm_${syncKey}_expenses`,
+              item.id
+            );
+            await setDoc(docRef, updatedItem, { merge: true });
+          } catch (err) {
+            console.error('Erro ao salvar tipo do cartão:', err);
+            showToast('A classificação foi alterada neste aparelho, mas houve erro ao sincronizar.');
+            return;
+          }
+        }
+
+        setSelectedUsageIds(prev => prev.filter(id => id !== item.id));
+
+        showToast(tipoCartao === 'virtual'
+          ? 'Lançamento marcado como Cartão virtual.'
+          : 'Lançamento marcado como Cartão físico.');
       };
 
       const handlePmClosingValueChange = async (item, monthKey, rawValue) => {
@@ -8401,7 +9401,12 @@
           valorTotal: String(expense.valorTotal),
           parcelas: String(expense.parcelas).split(' ')[0],
           valorParcela: String(expense.valorParcela),
-          tipoLancamento: expense.tipoLancamento || 'cartao'
+          tipoLancamento: expense.tipoLancamento || 'cartao',
+          tipoCartao: expense.tipoCartao || '',
+          rateioAtivo: !!expense.rateio?.ativo,
+          rateioPessoa: expense.rateio?.pessoa || '',
+          rateioValor: expense.rateio?.ativo ? String(expense.rateio?.valor || '') : '',
+          rateioRecebimentos: expense.rateio?.recebimentos || {}
         });
         setIsPmModalOpen(true);
       };
@@ -8421,7 +9426,12 @@
           valorTotal: String(expense.valorTotal),
           parcelas: String(expense.parcelas).split(' ')[0],
           valorParcela: String(expense.valorParcela),
-          tipoLancamento: expense.tipoLancamento || 'cartao'
+          tipoLancamento: expense.tipoLancamento || 'cartao',
+          tipoCartao: expense.tipoCartao || '',
+          rateioAtivo: !!expense.rateio?.ativo,
+          rateioPessoa: expense.rateio?.pessoa || '',
+          rateioValor: expense.rateio?.ativo ? String(expense.rateio?.valor || '') : '',
+          rateioRecebimentos: {}
         });
         setIsPmModalOpen(true);
       };
@@ -8444,7 +9454,12 @@
           valorTotal: '',
           parcelas: '1',
           valorParcela: '',
-          tipoLancamento: 'cartao'
+          tipoLancamento: 'cartao',
+          tipoCartao: 'fisico',
+          rateioAtivo: false,
+          rateioPessoa: '',
+          rateioValor: '',
+          rateioRecebimentos: {}
         });
       };
 
@@ -8608,6 +9623,13 @@
         : 'Previsto para o mês';
 
       const bancosSaldos = useMemo(() => {
+        if (showOnlyForecastBanks) {
+          return banks.filter(b => {
+            const projectedVal = projectedBalances.bankBalances?.[b] || 0;
+            return Math.abs(projectedVal) >= 0.01;
+          });
+        }
+
         if (showAllBanks) return banks;
         
         // Filtra para mostrar APENAS os bancos com saldo real diferente de zero (positivo ou negativo)
@@ -8615,7 +9637,7 @@
           const val = balances.bankBalances[b] || 0;
           return Math.abs(val) >= 0.01; // Remove os que têm R$ 0,00
         });
-      }, [banks, balances, showAllBanks]);
+      }, [banks, balances, projectedBalances, showAllBanks, showOnlyForecastBanks]);
 
       // --- LÓGICA EXTRATO (Agora obedece ao filtro de Período) ---
       const extratoTransactions = useMemo(() => {
@@ -8876,7 +9898,12 @@
           valorTotal: '',
           parcelas: '1',
           valorParcela: '',
-          tipoLancamento: 'cartao'
+          tipoLancamento: 'cartao',
+          tipoCartao: 'fisico',
+          rateioAtivo: false,
+          rateioPessoa: '',
+          rateioValor: '',
+          rateioRecebimentos: {}
         });
         setIsPmModalOpen(true);
       };
@@ -9098,6 +10125,54 @@
           .slice(0, 5);
       }, [transactions, filterMonth, customStartDate, customEndDate]);
 
+      const rateioPeriodItems = useMemo(() => {
+        const rows = [];
+
+        pmExpenses.forEach(item => {
+          if (!item?.rateio?.ativo || !(parseFloat(item.rateio?.valor) > 0)) return;
+
+          const numParc = Math.max(1, parseInt(item.parcelas) || 1);
+          const firstDue = calculateFirstPaymentDate(item, myCards);
+          if (!firstDue) return;
+
+          for (let i = 0; i < numParc; i++) {
+            const dueDate = addMonthsClampedIso(firstDue, i);
+            const monthKey = String(dueDate || '').slice(0, 7);
+
+            const inPeriod =
+              filterMonth === 'all'
+                ? true
+                : filterMonth === 'custom'
+                  ? (
+                      (!customStartDate || dueDate >= customStartDate) &&
+                      (!customEndDate || dueDate <= customEndDate)
+                    )
+                  : monthKey === filterMonth;
+
+            if (!inPeriod) continue;
+
+            rows.push({
+              kind: 'rateio',
+              type: 'income',
+              id: `rateio_${item.id}_${monthKey}`,
+              sourceId: item.id,
+              description: `Rateio • ${item.local || item.produto || 'Compra no cartão'}`,
+              date: dueDate,
+              amount: getRateioInstallmentAmount(item, i + 1),
+              pessoa: item.rateio?.pessoa || 'Outra pessoa',
+              cardName: item.pagamento || '',
+              monthKey,
+              paid: !!item.rateio?.recebimentos?.[monthKey],
+              pmItem: item,
+              installment: i + 1,
+              totalInstallments: numParc
+            });
+          }
+        });
+
+        return rows.sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
+      }, [pmExpenses, myCards, filterMonth, customStartDate, customEndDate]);
+
       const dashboardCardDetails = useMemo(() => {
         const periodTransactions = transactions.filter(t => isTransactionInPeriod(t));
 
@@ -9196,6 +10271,10 @@
           .filter(i => !i.paid)
           .reduce((sum,i) => sum + i.amount, 0);
 
+        const pendingRateioItems = rateioPeriodItems.filter(i => !i.paid);
+        const pendingRateio = pendingRateioItems.reduce((sum,i) => sum + i.amount, 0);
+        const totalReceberComRateio = pendingIncome + pendingRateio;
+
         return {
           saldo: {
             title: 'Saldo Atual',
@@ -9236,20 +10315,23 @@
           },
           receber: {
             title: 'A Receber',
-            subtitle: 'Receitas que ainda estão pendentes no período',
-            total: pendingIncome,
+            subtitle: 'Receitas pendentes e reembolsos de compras divididas',
+            total: totalReceberComRateio,
             tone: 'blue',
             summaries: [
               { label: 'Receitas pendentes', value: pendingIncome },
-              { label: 'Quantidade', value: incomeItems.filter(i => !i.paid).length, isCount: true },
-              { label: 'Total a receber', value: pendingIncome }
+              { label: 'Rateios a receber', value: pendingRateio },
+              { label: 'Total a receber', value: totalReceberComRateio }
             ],
-            items: incomeItems.filter(i => !i.paid)
+            items: [
+              ...incomeItems.filter(i => !i.paid),
+              ...pendingRateioItems
+            ].sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')))
           }
         };
       }, [
         transactions, categories, filterMonth, customStartDate, customEndDate,
-        resumoData, balances.currentRealBalance
+        resumoData, balances.currentRealBalance, rateioPeriodItems
       ]);
 
       const dashboardPendingDetails = useMemo(() => {
@@ -9281,6 +10363,40 @@
           .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
       }, [resumoData]);
 
+      const accountsPaidDetails = useMemo(() => {
+        const contas = (resumoData.dashMonthExpenses || [])
+          .filter(t => isPaidTransaction(t))
+          .map(t => ({
+            kind: 'conta',
+            id: t.id,
+            description: t.description || 'Despesa',
+            date: t.paymentDate || t.dueDate || '',
+            amount: parseFloat(t.amount) || 0,
+            bank: t.bank || '',
+            transaction: t
+          }));
+
+        const faturas = (resumoData.pmList || [])
+          .filter(f => f.isPaid && Number(f.invoiceTarget || f.totalValue || f.paidAmount || 0) > 0)
+          .map(f => ({
+            kind: 'fatura',
+            id: `fatura_paga_${f.cardName}_${f.monthKey}`,
+            description: `Fatura ${f.cardName}`,
+            date: f.paymentDate || getInvoiceDueDate(f.monthKey, f.vencimentoDia) || '',
+            amount: parseFloat(f.paidAmount || f.invoiceTarget || f.totalValue || 0) || 0,
+            cardName: f.cardName,
+            monthKey: f.monthKey
+          }));
+
+        return [...contas, ...faturas]
+          .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+      }, [resumoData]);
+
+      const accountsPaidTotal = useMemo(
+        () => accountsPaidDetails.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0),
+        [accountsPaidDetails]
+      );
+
       const dashboardPendingTotals = useMemo(() => {
         const pendingAccounts = dashboardPendingDetails
           .filter(item => item.kind === 'conta')
@@ -9296,6 +10412,25 @@
           grandTotal: pendingAccounts + pendingInvoices
         };
       }, [dashboardPendingDetails]);
+
+      const decisionPendingIncome = Number(dashboardCardDetails?.receber?.total || 0);
+      const decisionStillOwe = Number(dashboardPendingTotals?.grandTotal || 0);
+      const decisionCurrentBalance = Number(balances?.currentRealBalance || 0);
+
+      // Livre para usar = saldo atual + receitas pendentes - contas/faturas pendentes.
+      const decisionFreeToUse = decisionCurrentBalance + decisionPendingIncome - decisionStillOwe;
+
+      const decisionPeriodLabel = filterMonth === 'all'
+        ? 'Todo o período'
+        : filterMonth === 'custom'
+          ? 'Período selecionado'
+          : getMonthNameDisplay(filterMonth);
+
+      const decisionStatus = decisionFreeToUse < 0
+        ? { label: 'Comprometido', tone: 'red', note: 'Os compromissos são maiores que o valor disponível.' }
+        : decisionStillOwe > 0 && decisionFreeToUse < (decisionStillOwe * 0.20)
+          ? { label: 'Atenção', tone: 'yellow', note: 'A sobra é pequena em relação ao que ainda está comprometido.' }
+          : { label: 'Confortável', tone: 'green', note: 'Há saldo previsto depois dos compromissos do período.' };
 
       const faturasPorCartao = useMemo(() => {
         const grouped = {};
@@ -9507,7 +10642,12 @@
           valorTotal: missing.toFixed(2),
           parcelas: '1',
           valorParcela: missing.toFixed(2),
-          tipoLancamento: 'cartao'
+          tipoLancamento: 'cartao',
+          tipoCartao: 'fisico',
+          rateioAtivo: false,
+          rateioPessoa: '',
+          rateioValor: '',
+          rateioRecebimentos: {}
         });
         setIsPmModalOpen(true);
         showToast(`Falta lançar R$ ${missing.toLocaleString('pt-BR', {minimumFractionDigits: 2})} para atingir o valor da fatura. Informe o lançamento que está faltando; você pode lançar uma parte e repetir até conferir.`);
@@ -9550,6 +10690,7 @@
               selected: true,
               comprador: 'Claudinei',
               tipoLancamento: 'cartao',
+              tipoCartao: 'fisico',
               category: categories.find(c => c.type !== 'receita')?.id || 'outros',
               local: '',
               produto: '',
@@ -9658,6 +10799,7 @@
             parcelas: String(parcelas),
             valorParcela: parcela,
             tipoLancamento,
+            tipoCartao: r.tipoCartao || 'fisico',
             meses: {}
           };
         });
@@ -10443,6 +11585,22 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
               .text-right { text-align: right; }
               .font-bold { font-weight: bold; }
               .summary-box { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 4px; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 20px;}
+              .print-sort-info { padding: 6px 10px; background:#eef4ff; color:#334155; border-left:3px solid #4f46e5; font-size:10px; margin-bottom:7px; }
+              .type-badge { display:inline-block; margin-top:3px; padding:2px 5px; border-radius:999px; background:#eef2ff; color:#4338ca; font-size:8px; font-weight:bold; text-transform:uppercase; }
+              .payment-badge { display:inline-block; padding:3px 5px; border-radius:4px; background:#eef2ff; color:#4338ca; font-size:9px; font-weight:bold; text-transform:uppercase; }
+              .usage-badge { display:inline-block; padding:3px 5px; border-radius:999px; font-size:8px; font-weight:bold; text-transform:uppercase; white-space:nowrap; }
+              .usage-fisico { background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd; }
+              .usage-virtual { background:#f3e8ff; color:#7e22ce; border:1px solid #e9d5ff; }
+              .usage-unknown { background:#f1f5f9; color:#64748b; border:1px solid #e2e8f0; }
+              .print-groups { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:7px 0 10px; }
+              .print-group { border:1px solid #e5e7eb; border-radius:5px; padding:6px 7px; background:#fff; }
+              .print-group span { display:block; color:#6b7280; font-size:8px; text-transform:uppercase; font-weight:bold; }
+              .print-group b { display:block; margin-top:2px; font-size:10px; color:#111827; }
+              .print-group.parcelamento { border-left:3px solid #4f46e5; }
+              .print-group.despesa { border-left:3px solid #d97706; }
+              .print-group.fisico { border-left:3px solid #0284c7; }
+              .print-group.virtual { border-left:3px solid #7e22ce; }
+              .print-note { font-size:8px; color:#6b7280; margin:-3px 0 8px; }
             </style>
           
 
@@ -10470,9 +11628,62 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
             htmlContent += `<p style="text-align: center; color: #666;">Nenhuma fatura encontrada para os filtros atuais.</p>`;
         } else {
             Object.entries(faturasPorCartao).forEach(([bankName, cardInfo]) => {
+                // A impressão deve obedecer exatamente ao mesmo critério de
+                // ordenação escolhido na tabela exibida na tela.
+                const printItems = [...cardInfo.items].sort((a, b) => {
+                  const modifier = sortConfigFatura.direction === 'asc' ? 1 : -1;
+
+                  if (sortConfigFatura.key === 'data') {
+                    return String(a.data || '').localeCompare(String(b.data || '')) * modifier;
+                  }
+
+                  if (sortConfigFatura.key === 'local') {
+                    return String(a.local || '').localeCompare(String(b.local || '')) * modifier;
+                  }
+
+                  if (sortConfigFatura.key === 'valorFatura') {
+                    return (
+                      (parseFloat(a.currentInstallmentValue) || 0)
+                      - (parseFloat(b.currentInstallmentValue) || 0)
+                    ) * modifier;
+                  }
+
+                  if (sortConfigFatura.key === 'ultimoPagto') {
+                    const valA = calculateLastPaymentDate(a, myCards).split('/').reverse().join('');
+                    const valB = calculateLastPaymentDate(b, myCards).split('/').reverse().join('');
+                    return valA.localeCompare(valB) * modifier;
+                  }
+
+                  return 0;
+                });
+
+                const sortLabel =
+                  sortConfigFatura.key === 'data' ? 'Data do Lançamento' :
+                  sortConfigFatura.key === 'ultimoPagto' ? 'Último Pagamento' :
+                  sortConfigFatura.key === 'local' ? 'Local / Produto' :
+                  sortConfigFatura.key === 'valorFatura' ? 'Valor da Fatura' :
+                  'Padrão';
+
+                const printSum = list => list.reduce((sum, item) => sum + (parseFloat(item.currentInstallmentValue) || 0), 0);
+                const printParcelamentos = printItems.filter(item => item.tipoLancamento !== 'prazo');
+                const printDespesas = printItems.filter(item => item.tipoLancamento === 'prazo');
+                const printFisicos = printItems.filter(item => item.tipoCartao === 'fisico');
+                const printVirtuais = printItems.filter(item => item.tipoCartao === 'virtual');
+                const printNaoInformados = printItems.filter(item => !item.tipoCartao);
+
                 htmlContent += `
                 <div class="card-section">
                   <div class="card-header">${bankName} - Total: R$ ${cardInfo.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                  <div class="print-sort-info">
+                    Ordenado por: <b>${sortLabel}</b> • ${sortConfigFatura.direction === 'asc' ? 'Crescente' : 'Decrescente'}
+                  </div>
+                  <div class="print-groups">
+                    <div class="print-group parcelamento"><span>Parcelamentos</span><b>${printParcelamentos.length} • R$ ${printSum(printParcelamentos).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div>
+                    <div class="print-group despesa"><span>Despesas</span><b>${printDespesas.length} • R$ ${printSum(printDespesas).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div>
+                    <div class="print-group fisico"><span>Cartão físico</span><b>${printFisicos.length} • R$ ${printSum(printFisicos).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div>
+                    <div class="print-group virtual"><span>Cartão virtual</span><b>${printVirtuais.length} • R$ ${printSum(printVirtuais).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div>
+                  </div>
+                  ${printNaoInformados.length ? `<div class="print-note">Há ${printNaoInformados.length} lançamento(s) antigo(s) sem indicação de cartão físico/virtual. Edite esses lançamentos para classificá-los.</div>` : ''}
                   <table>
                     <thead>
                       <tr>
@@ -10480,6 +11691,9 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         <th>Último Pagto.</th>
                         <th>Local / Produto</th>
                         <th>Comprador</th>
+                        <th>Pagamento</th>
+                        <th>Forma</th>
+                        <th>Rateio</th>
                         <th class="text-right">Parcela</th>
                         <th class="text-right">${pmSelectedMonth === 'all' ? 'Valor Parcela' : 'Valor Fatura'}</th>
                         <th class="text-right">Valor Total</th>
@@ -10488,16 +11702,30 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     <tbody>
                 `;
 
-                cardInfo.items.forEach(item => {
+                printItems.forEach(item => {
+                    const tipoTexto = item.tipoLancamento === 'prazo' ? 'Despesa' : 'Parcelamento';
+                    const usoTexto = getCardUsageLabel(item.tipoCartao);
+                    const usoClasse = item.tipoCartao === 'virtual' ? 'usage-virtual' : item.tipoCartao === 'fisico' ? 'usage-fisico' : 'usage-unknown';
                     htmlContent += `
                       <tr>
                         <td>${formatToDDMMAAAA(item.data)}</td>
                         <td>${calculateLastPaymentDate(item, myCards)}</td>
-                        <td><b>${item.local}</b><br><span style="color:#666;">${item.produto}</span></td>
-                        <td>${item.comprador}</td>
+                        <td>
+                          <b>${item.local || '-'}</b>
+                          <br>
+                          <span style="color:#666;">${item.produto || '-'}</span>
+                          <br>
+                          <span class="type-badge">${tipoTexto}</span>
+                        </td>
+                        <td>${item.comprador || '-'}</td>
+                        <td><span class="payment-badge">${item.pagamento || '-'}</span></td>
+                        <td><span class="usage-badge ${usoClasse}">${usoTexto}</span></td>
+                        <td>${item.rateio?.ativo
+                          ? `${item.rateio.pessoa}: R$ ${Number(item.rateio.valor || 0).toLocaleString('pt-BR',{minimumFractionDigits:2})}`
+                          : '-'}</td>
                         <td class="text-right">${item.displayParcela || item.parcelas + 'x'}</td>
-                        <td class="text-right">R$ ${item.currentInstallmentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                        <td class="text-right">R$ ${parseFloat(item.valorTotal).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td class="text-right font-bold">R$ ${(parseFloat(item.currentInstallmentValue) || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td class="text-right">R$ ${(parseFloat(item.valorTotal) || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                       </tr>
                     `;
                 });
@@ -11047,13 +12275,25 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         <h3 className="font-extrabold flex items-center gap-2 text-slate-800">
                           <Wallet className="h-4 w-4 text-indigo-500" /> Saldo atual nos bancos
                         </h3>
-                        <div className="flex items-center gap-3 mt-1">
+                        <div className="flex flex-wrap items-center gap-2 mt-1">
                           <p className="text-xs text-slate-500">Saldos calculados pelo extrato no período selecionado.</p>
                           <button 
-                            onClick={() => setShowAllBanks(!showAllBanks)}
-                            className="text-[10px] text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200 font-bold hover:bg-indigo-100 transition whitespace-nowrap"
+                            onClick={() => { setShowAllBanks(false); setShowOnlyForecastBanks(false); }}
+                            className={`text-[10px] px-2 py-0.5 rounded border font-bold transition whitespace-nowrap ${!showAllBanks && !showOnlyForecastBanks ? 'text-white bg-indigo-600 border-indigo-600' : 'text-indigo-600 bg-indigo-50 border-indigo-200 hover:bg-indigo-100'}`}
                           >
-                            {showAllBanks ? "Mostrar apenas com saldo" : "Mostrar todos os bancos"}
+                            Apenas com saldo
+                          </button>
+                          <button 
+                            onClick={() => { setShowAllBanks(true); setShowOnlyForecastBanks(false); }}
+                            className={`text-[10px] px-2 py-0.5 rounded border font-bold transition whitespace-nowrap ${showAllBanks && !showOnlyForecastBanks ? 'text-white bg-indigo-600 border-indigo-600' : 'text-indigo-600 bg-indigo-50 border-indigo-200 hover:bg-indigo-100'}`}
+                          >
+                            Mostrar todos os bancos
+                          </button>
+                          <button 
+                            onClick={() => { setShowOnlyForecastBanks(true); setShowAllBanks(false); }}
+                            className={`text-[10px] px-2 py-0.5 rounded border font-bold transition whitespace-nowrap ${showOnlyForecastBanks ? 'text-white bg-emerald-600 border-emerald-600' : 'text-emerald-700 bg-emerald-50 border-emerald-200 hover:bg-emerald-100'}`}
+                          >
+                            Somente previsão
                           </button>
                         </div>
                       </div>
@@ -11067,10 +12307,165 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                       </div>
                     </div>
 
+                    <section className="money-decision-v61">
+                      <div className="money-decision-head-v61">
+                        <div>
+                          <h3>Quanto ainda devo e quanto posso usar</h3>
+                          <p>{decisionPeriodLabel} • visão para ajudar na tomada de decisão</p>
+                        </div>
+                        <span className={`money-decision-status-v61 ${decisionStatus.tone}`}>
+                          {decisionStatus.label}
+                        </span>
+                      </div>
+
+                      <div className="money-decision-grid-v61">
+                        <button
+                          type="button"
+                          className="money-decision-item-v61 balance"
+                          onClick={()=>setDashboardDetailModal('saldo')}
+                          title="Clique para ver o que forma o saldo atual"
+                        >
+                          <span>Saldo atual</span>
+                          <strong>R$ {decisionCurrentBalance.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>Somente valores confirmados • clique para ver</small>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="money-decision-item-v61 debt"
+                          onClick={()=>setAccountsPaymentView(v => v === 'pending' ? null : 'pending')}
+                          title="Clique para ver as contas e faturas que faltam pagar"
+                        >
+                          <span>Ainda devo</span>
+                          <strong>R$ {decisionStillOwe.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>{dashboardPendingDetails.length} conta(s)/fatura(s) pendente(s) • clique para ver</small>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="money-decision-item-v61 income"
+                          onClick={()=>setDashboardDetailModal('receber')}
+                          title="Clique para ver as receitas que ainda vão entrar"
+                        >
+                          <span>Ainda vou receber</span>
+                          <strong>R$ {decisionPendingIncome.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>Receitas pendentes do período • clique para ver</small>
+                        </button>
+
+                        <div className={`money-decision-item-v61 free ${decisionFreeToUse < 0 ? 'negative' : ''}`}>
+                          <span>Posso usar com segurança</span>
+                          <strong>R$ {decisionFreeToUse.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>Saldo atual + a receber − ainda devo</small>
+                        </div>
+                      </div>
+
+                      <div className={`money-decision-message-v61 ${decisionStatus.tone}`}>
+                        <b>{decisionStatus.label}:</b> {decisionStatus.note}
+                      </div>
+                    </section>
+
+                    <div className="accounts-decision-panel-v60">
+                      <button
+                        type="button"
+                        className={`accounts-decision-card-v60 paid ${accountsPaymentView === 'paid' ? 'active' : ''}`}
+                        onClick={() => setAccountsPaymentView(v => v === 'paid' ? null : 'paid')}
+                      >
+                        <div className="accounts-decision-icon-v60"><CheckCircle className="w-5 h-5"/></div>
+                        <div>
+                          <span>Pagas no período</span>
+                          <strong>R$ {accountsPaidTotal.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>{accountsPaidDetails.length} item(ns) • clique para ver</small>
+                        </div>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`accounts-decision-card-v60 pending ${accountsPaymentView === 'pending' ? 'active' : ''}`}
+                        onClick={() => setAccountsPaymentView(v => v === 'pending' ? null : 'pending')}
+                      >
+                        <div className="accounts-decision-icon-v60"><Clock className="w-5 h-5"/></div>
+                        <div>
+                          <span>Falta pagar no período</span>
+                          <strong>R$ {dashboardPendingTotals.grandTotal.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                          <small>{dashboardPendingDetails.length} item(ns) • clique para ver</small>
+                        </div>
+                      </button>
+                    </div>
+
+                    {accountsPaymentView && (
+                      <div className={`accounts-payment-details-v60 ${accountsPaymentView}`}>
+                        <div className="accounts-payment-details-head-v60">
+                          <div>
+                            <h4>{accountsPaymentView === 'paid' ? 'Contas e faturas pagas' : 'Contas e faturas que faltam pagar'}</h4>
+                            <p>
+                              {accountsPaymentView === 'paid'
+                                ? 'Valores já confirmados como pagos no período selecionado.'
+                                : 'Valores ainda pendentes no período selecionado.'}
+                            </p>
+                          </div>
+                          <button type="button" onClick={() => setAccountsPaymentView(null)} title="Fechar">
+                            <X className="w-4 h-4"/>
+                          </button>
+                        </div>
+
+                        <div className="accounts-payment-list-v60">
+                          {(accountsPaymentView === 'paid' ? accountsPaidDetails : dashboardPendingDetails).length === 0 ? (
+                            <div className="accounts-payment-empty-v60">
+                              {accountsPaymentView === 'paid'
+                                ? 'Nenhum pagamento confirmado neste período.'
+                                : 'Nenhuma conta ou fatura pendente neste período.'}
+                            </div>
+                          ) : (
+                            (accountsPaymentView === 'paid' ? accountsPaidDetails : dashboardPendingDetails).map((item) => (
+                              <div key={`${accountsPaymentView}_${item.id}`} className="accounts-payment-row-v60">
+                                <div className={`accounts-payment-status-v60 ${accountsPaymentView}`}>
+                                  {accountsPaymentView === 'paid'
+                                    ? <CheckCircle className="w-4 h-4"/>
+                                    : <Clock className="w-4 h-4"/>}
+                                </div>
+
+                                <div className="accounts-payment-main-v60">
+                                  <strong>{item.description}</strong>
+                                  <span>
+                                    {item.date ? formatToDDMMAAAA(item.date) : 'Sem data'}
+                                    {' • '}
+                                    {item.kind === 'fatura'
+                                      ? `Cartão ${item.cardName || ''}`
+                                      : (item.bank || 'Sem banco')}
+                                  </span>
+                                </div>
+
+                                <div className="accounts-payment-value-v60">
+                                  <strong>R$ {Number(item.amount || 0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+                                  <span>{accountsPaymentView === 'paid' ? 'Pago' : 'Pendente'}</span>
+                                </div>
+
+                                {accountsPaymentView === 'pending' && (
+                                  <button
+                                    type="button"
+                                    className="accounts-payment-pay-v60"
+                                    onClick={() => {
+                                      if (item.kind === 'conta' && item.transaction) {
+                                        handleTogglePaid(item.transaction);
+                                      } else if (item.kind === 'fatura') {
+                                        handleToggleFaturaPaid(item.cardName, item.monthKey, false);
+                                      }
+                                    }}
+                                  >
+                                    Pagar
+                                  </button>
+                                )}
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mt-3">
                       {bancosSaldos.length === 0 ? (
                         <div className="bg-slate-50 border border-dashed border-slate-200 rounded-2xl px-4 py-8 text-center text-slate-400 text-sm font-medium">
-                          Nenhuma conta com saldo positivo ou negativo neste período.
+                          {showOnlyForecastBanks ? 'Nenhuma conta com previsão neste período.' : 'Nenhuma conta com saldo positivo ou negativo neste período.'}
                         </div>
                       ) : (
                         <div className="bank-cards-grid-v52">
@@ -11667,7 +13062,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         ) : (
                           <div className="card-history-table-wrap">
                             <table className="card-history-table">
-                              <thead><tr><th>Data</th><th>Local / Produto</th><th>Comprador</th><th>Tipo</th><th>Valor total</th><th>Parcelas</th><th>Vencimento</th><th>Ações</th></tr></thead>
+                              <thead><tr><th>Data</th><th>Local / Produto</th><th>Comprador</th><th>Tipo</th><th>Cartão</th><th>Valor total</th><th>Parcelas</th><th>Vencimento</th><th>Ações</th></tr></thead>
                               <tbody>
                                 {historyItems.map(item => (
                                   <tr key={`fullhist-${item.id}`}>
@@ -11675,6 +13070,17 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                     <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'} • {categories.find(c=>c.id===(item.category || 'outros'))?.name || 'Outros lançamentos'}</div></td>
                                     <td>{item.comprador || '-'}</td>
                                     <td><span className={`px-2 py-1 rounded-full text-[8px] font-black ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>{item.tipoLancamento === 'prazo' ? 'Despesa' : 'Parcelamento'}</span></td>
+                                    <td>
+                                      {item.tipoCartao ? (
+                                        <span className={`card-usage-badge-v63 ${getCardUsageClass(item.tipoCartao)}`}>{getCardUsageLabel(item.tipoCartao)}</span>
+                                      ) : (
+                                        <span className="card-usage-history-quick-v64">
+                                          <span className="card-usage-badge-v63 unknown">Não informado</span>
+                                          <button type="button" onClick={() => handleSetCardUsageType(item, 'fisico')}>Físico</button>
+                                          <button type="button" onClick={() => handleSetCardUsageType(item, 'virtual')}>Virtual</button>
+                                        </span>
+                                      )}
+                                    </td>
                                     <td className="font-black text-slate-800">R$ {(parseFloat(item.valorTotal)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
                                     <td>{item.parcelas || 1}x de R$ {(parseFloat(item.valorParcela)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
                                     <td>{calculateLastPaymentDate(item,myCards)}</td>
@@ -11723,7 +13129,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         ) : (
                           <div className="card-history-table-wrap">
                             <table className="card-history-table">
-                              <thead><tr><th>Data</th><th>Local / Produto</th><th>Comprador</th><th>Tipo</th><th>Valor total</th><th>Parcelas</th><th>Vencimento</th><th>Ações</th></tr></thead>
+                              <thead><tr><th>Data</th><th>Local / Produto</th><th>Comprador</th><th>Tipo</th><th>Cartão</th><th>Valor total</th><th>Parcelas</th><th>Vencimento</th><th>Ações</th></tr></thead>
                               <tbody>
                                 {historyItems.map(item => (
                                   <tr key={`hist-${item.id}`}>
@@ -11731,6 +13137,17 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                     <td><b className="text-slate-800">{item.local || '-'}</b><div className="text-[8px] text-slate-400 mt-0.5">{item.produto || '-'} • {categories.find(c=>c.id===(item.category || 'outros'))?.name || 'Outros lançamentos'}</div></td>
                                     <td>{item.comprador || '-'}</td>
                                     <td><span className={`px-2 py-1 rounded-full text-[8px] font-black ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700' : 'bg-indigo-50 text-indigo-700'}`}>{item.tipoLancamento === 'prazo' ? 'Despesa' : 'Parcelamento'}</span></td>
+                                    <td>
+                                      {item.tipoCartao ? (
+                                        <span className={`card-usage-badge-v63 ${getCardUsageClass(item.tipoCartao)}`}>{getCardUsageLabel(item.tipoCartao)}</span>
+                                      ) : (
+                                        <span className="card-usage-history-quick-v64">
+                                          <span className="card-usage-badge-v63 unknown">Não informado</span>
+                                          <button type="button" onClick={() => handleSetCardUsageType(item, 'fisico')}>Físico</button>
+                                          <button type="button" onClick={() => handleSetCardUsageType(item, 'virtual')}>Virtual</button>
+                                        </span>
+                                      )}
+                                    </td>
                                     <td className="font-black text-slate-800">R$ {(parseFloat(item.valorTotal)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
                                     <td>{item.parcelas || 1}x de R$ {(parseFloat(item.valorParcela)||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
                                     <td>{calculateLastPaymentDate(item,myCards)}</td>
@@ -11968,6 +13385,17 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               return 0;
                             });
 
+                            const physicalFaturaItems = sortedFaturaItems.filter(i => i.tipoCartao === 'fisico');
+                            const virtualFaturaItems = sortedFaturaItems.filter(i => i.tipoCartao === 'virtual');
+                            const unknownFaturaItems = sortedFaturaItems.filter(i => !i.tipoCartao);
+                            const usageSum = arr => arr.reduce((sum, i) => sum + (parseFloat(i.currentInstallmentValue) || 0), 0);
+
+                            const filteredFaturaItems =
+                              faturaCardUsageFilter === 'fisico' ? physicalFaturaItems :
+                              faturaCardUsageFilter === 'virtual' ? virtualFaturaItems :
+                              faturaCardUsageFilter === 'unknown' ? unknownFaturaItems :
+                              sortedFaturaItems;
+
                             return (
                               <div key={`detalhe-${bankName}`} id={pmSelectedCard===bankName ? 'selected-invoice-panel' : undefined} className="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
                                 
@@ -11979,7 +13407,7 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                   </div>
                                   <div className="flex items-center gap-2 flex-wrap justify-end">
                                     <span className="font-bold text-sm bg-black/20 px-4 py-1.5 rounded-full">
-                                      {cardInfo.items.filter(i => i.tipoLancamento !== 'prazo').length} parcelamentos • {cardInfo.items.filter(i => i.tipoLancamento === 'prazo').length} despesas
+                                      {cardInfo.items.filter(i => i.tipoLancamento !== 'prazo').length} parcelamentos • {cardInfo.items.filter(i => i.tipoLancamento === 'prazo').length} despesas • {cardInfo.items.filter(i => i.tipoCartao === 'fisico').length} físico • {cardInfo.items.filter(i => i.tipoCartao === 'virtual').length} virtual
                                     </span>
                                     <button type="button" onClick={() => handleNewPurchaseForCard(bankName, pmSelectedMonth)} className="invoice-direct-purchase">
                                       <Plus className="w-4 h-4" /> Novo lançamento
@@ -12125,102 +13553,222 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                       </div>
                                     </div>;
                                   })()}
-                                  <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-                                    <table className="w-full text-left text-xs">
-                                      <thead>
-                                        <tr className="bg-slate-100 text-slate-500 uppercase font-bold border-b border-slate-200">
-                                          <th 
-                                            className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors group select-none"
-                                            onClick={() => setSortConfigFatura(prev => ({ key: 'data', direction: prev.key === 'data' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                                          >
-                                            <div className="flex items-center gap-1.5">
-                                              Data do Lançamento
-                                              <span className={`text-slate-400 group-hover:text-slate-700 ${sortConfigFatura.key !== 'data' ? 'opacity-0 group-hover:opacity-100' : ''}`}>
-                                                {sortConfigFatura.key === 'data' && sortConfigFatura.direction === 'desc' ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
+                                  {(() => {
+                                    const fisicoParcelamentos = sortedFaturaItems.filter(i => i.tipoCartao === 'fisico' && i.tipoLancamento !== 'prazo');
+                                    const fisicoDespesas = sortedFaturaItems.filter(i => i.tipoCartao === 'fisico' && i.tipoLancamento === 'prazo');
+                                    const virtualParcelamentos = sortedFaturaItems.filter(i => i.tipoCartao === 'virtual' && i.tipoLancamento !== 'prazo');
+                                    const virtualDespesas = sortedFaturaItems.filter(i => i.tipoCartao === 'virtual' && i.tipoLancamento === 'prazo');
+                                    const naoInfoParcelamentos = sortedFaturaItems.filter(i => !i.tipoCartao && i.tipoLancamento !== 'prazo');
+                                    const naoInfoDespesas = sortedFaturaItems.filter(i => !i.tipoCartao && i.tipoLancamento === 'prazo');
+                                    const soma = arr => arr.reduce((sum, item) => sum + (parseFloat(item.currentInstallmentValue) || 0), 0);
+
+                                    const renderRows = items => items.map(item => (
+                                      <tr key={item.id} className={`${item.isManualAdjustment ? 'bg-amber-50/70' : ''} hover:bg-slate-50 transition-colors`}>
+                                        <td className="px-4 py-3 text-slate-500 font-mono font-medium">
+                                          {!item.tipoCartao && (
+                                            <label className="bulk-check-v66" title="Selecionar lançamento">
+                                              <input type="checkbox" checked={selectedUsageIds.includes(item.id)} onChange={() => toggleUsageSelection(item.id)} />
+                                              <span></span>
+                                            </label>
+                                          )}
+                                          {formatToDDMMAAAA(item.data)}
+                                        </td>
+                                        <td className="px-4 py-3 text-emerald-600 font-mono font-medium">{calculateLastPaymentDate(item, myCards)}</td>
+                                        <td className="px-4 py-3">
+                                          <span className="font-black text-slate-900 block flex items-center gap-2 flex-wrap">
+                                            {item.local}
+                                            <span className={`text-[9px] uppercase px-2 py-0.5 rounded-full border ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-indigo-50 text-indigo-700 border-indigo-100'}`}>{item.tipoLancamento === 'prazo' ? 'Despesa' : 'Parcelamento'}</span>
+                                            {item.tipoCartao ? (
+                                              <span className={`card-usage-badge-v63 ${getCardUsageClass(item.tipoCartao)}`}>{getCardUsageLabel(item.tipoCartao)}</span>
+                                            ) : (
+                                              <span className="card-usage-quick-v64">
+                                                <span className="card-usage-badge-v63 unknown">Não informado</span>
+                                                <button type="button" onClick={() => handleSetCardUsageType(item, 'fisico')}>Físico</button>
+                                                <button type="button" onClick={() => handleSetCardUsageType(item, 'virtual')}>Virtual</button>
                                               </span>
-                                            </div>
-                                          </th>
-                                          <th 
-                                            className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors group select-none"
-                                            onClick={() => setSortConfigFatura(prev => ({ key: 'ultimoPagto', direction: prev.key === 'ultimoPagto' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                                          >
-                                            <div className="flex items-center gap-1.5">
-                                              Último Pagto.
-                                              <span className={`text-slate-400 group-hover:text-slate-700 ${sortConfigFatura.key !== 'ultimoPagto' ? 'opacity-0 group-hover:opacity-100' : ''}`}>
-                                                {sortConfigFatura.key === 'ultimoPagto' && sortConfigFatura.direction === 'desc' ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
-                                              </span>
-                                            </div>
-                                          </th>
-                                          <th 
-                                            className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors group select-none"
-                                            onClick={() => setSortConfigFatura(prev => ({ key: 'local', direction: prev.key === 'local' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                                          >
-                                            <div className="flex items-center gap-1.5">
-                                              Local / Produto
-                                              <span className={`text-slate-400 group-hover:text-slate-700 ${sortConfigFatura.key !== 'local' ? 'opacity-0 group-hover:opacity-100' : ''}`}>
-                                                {sortConfigFatura.key === 'local' && sortConfigFatura.direction === 'desc' ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
-                                              </span>
-                                            </div>
-                                          </th>
-                                          <th className="px-4 py-3">Comprador</th>
-                                          <th className="px-4 py-3">Pagamento</th>
-                                          <th className="px-4 py-3 text-right">Parcela</th>
-                                          <th 
-                                            className="px-4 py-3 text-right cursor-pointer hover:bg-slate-200 transition-colors group select-none"
-                                            onClick={() => setSortConfigFatura(prev => ({ key: 'valorFatura', direction: prev.key === 'valorFatura' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                                          >
-                                            <div className="flex items-center justify-end gap-1.5">
-                                              {pmSelectedMonth === 'all' ? 'Valor da Parcela' : 'Valor Fatura'}
-                                              <span className={`text-slate-400 group-hover:text-slate-700 ${sortConfigFatura.key !== 'valorFatura' ? 'opacity-0 group-hover:opacity-100' : ''}`}>
-                                                {sortConfigFatura.key === 'valorFatura' && sortConfigFatura.direction === 'desc' ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
-                                              </span>
-                                            </div>
-                                          </th>
-                                          <th className="px-4 py-3 text-right">Valor Total</th>
-                                          <th className="px-4 py-3 text-center">Ações</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody className="divide-y divide-slate-100">
-                                        {sortedFaturaItems.map(item => (
-                                          <tr key={item.id} className={`${item.isManualAdjustment ? 'bg-amber-50/70' : ''} hover:bg-slate-50 transition-colors`}>
-                                            <td className="px-4 py-3 text-slate-500 font-mono font-medium">{formatToDDMMAAAA(item.data)}</td>
-                                            <td className="px-4 py-3 text-emerald-600 font-mono font-medium">{calculateLastPaymentDate(item, myCards)}</td>
-                                            <td className="px-4 py-3">
-                                              <span className="font-black text-slate-900 block flex items-center gap-2">
-                                                {item.local}
-                                                <span className={`text-[9px] uppercase px-2 py-0.5 rounded-full border ${item.tipoLancamento === 'prazo' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-indigo-50 text-indigo-700 border-indigo-100'}`}>{item.tipoLancamento === 'prazo' ? 'Despesa' : 'Parcelamento'}</span>
-                                                {item.isManualAdjustment && <span className="text-[9px] uppercase px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 border border-amber-300">Valor acrescentado</span>}
-                                              </span>
-                                              <span className="text-slate-500 font-medium">{item.produto}</span>
-                                            </td>
-                                            <td className="px-4 py-3 font-bold text-slate-700">{item.comprador}</td>
-                                            <td className="px-4 py-3">
-                                              <span className="px-2 py-1 rounded-md text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 uppercase">{item.pagamento}</span>
-                                            </td>
-                                            <td className="px-4 py-3 text-right font-semibold text-slate-600">{item.displayParcela || item.parcelas + 'x'}</td>
-                                            <td className="px-4 py-3 text-right font-black text-indigo-600">R$ {item.currentInstallmentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                                            <td className="px-4 py-3 text-right font-bold text-slate-500">R$ {parseFloat(item.valorTotal).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                                            <td className="px-4 py-3">
-                                              <div className="flex gap-1.5 justify-center">
-                                                <button onClick={() => handleDuplicatePmClick(item)} className="p-1.5 hover:bg-slate-200 rounded-lg text-slate-500 hover:text-indigo-600 transition" title="Duplicar"><Copy className="w-3.5 h-3.5" /></button>
-                                                <button onClick={() => handleEditPmClick(item)} className="p-1.5 hover:bg-slate-200 rounded-lg text-slate-500 hover:text-slate-800 transition" title="Editar"><Edit3 className="w-3.5 h-3.5" /></button>
-                                                <button onClick={() => setDeleteConfirmation({ isOpen: true, transactionId: item.id, isPaymanager: true })} className="p-1.5 hover:bg-rose-100 rounded-lg text-rose-500 hover:text-rose-700 transition" title="Remover"><Trash2 className="w-3.5 h-3.5" /></button>
+                                            )}
+                                            {item.isManualAdjustment && <span className="text-[9px] uppercase px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 border border-amber-300">Valor acrescentado</span>}
+                                          </span>
+                                          <span className="text-slate-500 font-medium">{item.produto}</span>
+
+                                          {item.rateio?.ativo && (() => {
+                                            const parcelaAtual = parseInt(String(item.displayParcela || '1').split('/')[0]) || 1;
+                                            const rateioParcela = getRateioInstallmentAmount(item, parcelaAtual);
+                                            const rateioMonthKey = pmSelectedMonth !== 'all' ? pmSelectedMonth : String(item.vencimento || '').slice(0,7);
+                                            const recebido = !!item.rateio?.recebimentos?.[rateioMonthKey];
+
+                                            return (
+                                              <div className="rateio-row-v68">
+                                                <span>
+                                                  Rateio: <b>{item.rateio.pessoa}</b> •
+                                                  A receber nesta parcela: <b>R$ {rateioParcela.toLocaleString('pt-BR',{minimumFractionDigits:2})}</b>
+                                                </span>
+
+                                                {pmSelectedMonth !== 'all' && (
+                                                  <button
+                                                    type="button"
+                                                    className={recebido ? 'received' : 'pending'}
+                                                    onClick={() => handleToggleRateioReceived(item, pmSelectedMonth)}
+                                                  >
+                                                    {recebido ? 'Recebido' : 'Marcar recebido'}
+                                                  </button>
+                                                )}
                                               </div>
-                                            </td>
-                                          </tr>
-                                        ))}
-                                        {pmSelectedMonth !== 'all' && (() => {
-                                          const invoiceTotal = sortedFaturaItems.reduce((sum,item)=>sum+(parseFloat(item.currentInstallmentValue)||0),0);
-                                          return <tr className="bg-slate-50 border-t-2 border-slate-200 font-black">
-                                            <td colSpan="6" className="px-4 py-3 text-slate-700">TOTAL DA FATURA</td>
-                                            <td className="px-4 py-3 text-right text-indigo-700">R$ {invoiceTotal.toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
-                                            <td className="px-4 py-3 text-right text-slate-600">—</td>
-                                            <td></td>
-                                          </tr>;
-                                        })()}
-                                      </tbody>
-                                    </table>
-                                  </div>
+                                            );
+                                          })()}
+                                        </td>
+                                        <td className="px-4 py-3 font-bold text-slate-700">{item.comprador}</td>
+                                        <td className="px-4 py-3">
+                                          <span className="px-2 py-1 rounded-md text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 uppercase">{item.pagamento}</span>
+                                        </td>
+                                        <td className="px-4 py-3 text-right font-semibold text-slate-600">{item.displayParcela || item.parcelas + 'x'}</td>
+                                        <td className="px-4 py-3 text-right font-black text-indigo-600">R$ {item.currentInstallmentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                        <td className="px-4 py-3 text-right font-bold text-slate-500">R$ {parseFloat(item.valorTotal).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                        <td className="px-4 py-3">
+                                          <div className="flex gap-1.5 justify-center">
+                                            <button onClick={() => handleDuplicatePmClick(item)} className="p-1.5 hover:bg-slate-200 rounded-lg text-slate-500 hover:text-indigo-600 transition" title="Duplicar"><Copy className="w-3.5 h-3.5" /></button>
+                                            <button onClick={() => handleEditPmClick(item)} className="p-1.5 hover:bg-slate-200 rounded-lg text-slate-500 hover:text-slate-800 transition" title="Editar"><Edit3 className="w-3.5 h-3.5" /></button>
+                                            <button onClick={() => setDeleteConfirmation({ isOpen: true, transactionId: item.id, isPaymanager: true })} className="p-1.5 hover:bg-rose-100 rounded-lg text-rose-500 hover:text-rose-700 transition" title="Remover"><Trash2 className="w-3.5 h-3.5" /></button>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    ));
+
+                                    const renderSection = (title, subtitle, items, tone) => {
+                                      if (!items.length) return null;
+
+                                      const toneClasses = {
+                                        blue: {
+                                          box: 'border-sky-200 bg-sky-50/60',
+                                          head: 'text-sky-800',
+                                          chip: 'bg-sky-100 text-sky-700 border-sky-200'
+                                        },
+                                        purple: {
+                                          box: 'border-violet-200 bg-violet-50/60',
+                                          head: 'text-violet-800',
+                                          chip: 'bg-violet-100 text-violet-700 border-violet-200'
+                                        },
+                                        amber: {
+                                          box: 'border-amber-200 bg-amber-50/60',
+                                          head: 'text-amber-800',
+                                          chip: 'bg-amber-100 text-amber-700 border-amber-200'
+                                        },
+                                        slate: {
+                                          box: 'border-slate-200 bg-slate-50/60',
+                                          head: 'text-slate-800',
+                                          chip: 'bg-slate-100 text-slate-700 border-slate-200'
+                                        }
+                                      }[tone] || {
+                                        box: 'border-slate-200 bg-white',
+                                        head: 'text-slate-800',
+                                        chip: 'bg-slate-100 text-slate-700 border-slate-200'
+                                      };
+
+                                      const isUnknownSection = items.length > 0 && items.every(i => !i.tipoCartao);
+                                      const selectedInSection = items.filter(i => selectedUsageIds.includes(i.id));
+                                      const allSelected = isUnknownSection && items.every(i => selectedUsageIds.includes(i.id));
+
+                                      return (
+                                        <div className={`rounded-2xl border overflow-hidden ${toneClasses.box}`}>
+                                          <div className="px-4 py-3 border-b border-slate-200/70 flex items-center justify-between gap-3 flex-wrap">
+                                            <div>
+                                              <p className={`text-sm font-black uppercase tracking-wide ${toneClasses.head}`}>{title}</p>
+                                              <p className="text-xs text-slate-500 mt-0.5">{subtitle} • {items.length} lançamento(s)</p>
+                                            </div>
+                                            <div className={`px-3 py-1.5 rounded-xl border text-sm font-black ${toneClasses.chip}`}>
+                                              Total: R$ {soma(items).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                                            </div>
+                                          </div>
+
+                                          {isUnknownSection && (
+                                            <div className="bulk-toolbar-v66">
+                                              <button type="button" className="select-all" onClick={() => selectAllUsageItems(items)}>
+                                                {allSelected ? 'Desmarcar todos' : '✓ Assinalar todos'}
+                                              </button>
+                                              <span>{selectedInSection.length} selecionado(s)</span>
+                                              <div className="bulk-toolbar-actions-v66">
+                                                <button type="button" className="mark-physical" disabled={selectedInSection.length === 0} onClick={() => handleBulkSetCardUsageType(items, 'fisico')}>Marcar como físico</button>
+                                                <button type="button" className="mark-virtual" disabled={selectedInSection.length === 0} onClick={() => handleBulkSetCardUsageType(items, 'virtual')}>Marcar como virtual</button>
+                                              </div>
+                                            </div>
+                                          )}
+
+                                          <div className="overflow-x-auto bg-white">
+                                            <table className="w-full text-left text-xs">
+                                              <thead>
+                                                <tr className="bg-slate-100 text-slate-500 uppercase font-bold border-b border-slate-200">
+                                                  <th
+                                                    className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors select-none"
+                                                    onClick={() => setSortConfigFatura(prev => ({
+                                                      key: 'data',
+                                                      direction: prev.key === 'data' && prev.direction === 'asc' ? 'desc' : 'asc'
+                                                    }))}
+                                                    title="Ordenar por data do lançamento"
+                                                  >
+                                                    <div className="flex items-center gap-1.5">
+                                                      Data do Lançamento
+                                                      <span className="sort-arrow-v67">
+                                                        {sortConfigFatura.key === 'data' && sortConfigFatura.direction === 'desc'
+                                                          ? <ChevronDown className="w-3.5 h-3.5" />
+                                                          : <ChevronUp className="w-3.5 h-3.5" />}
+                                                      </span>
+                                                    </div>
+                                                  </th>
+                                                  <th className="px-4 py-3">Último Pagto.</th>
+                                                  <th className="px-4 py-3">Local / Produto</th>
+                                                  <th className="px-4 py-3">Comprador</th>
+                                                  <th className="px-4 py-3">Pagamento</th>
+                                                  <th className="px-4 py-3 text-right">Parcela</th>
+                                                  <th className="px-4 py-3 text-right">{pmSelectedMonth === 'all' ? 'Valor da Parcela' : 'Valor Fatura'}</th>
+                                                  <th className="px-4 py-3 text-right">Valor Total</th>
+                                                  <th className="px-4 py-3 text-center">Ações</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody className="divide-y divide-slate-100">
+                                                {renderRows(items)}
+                                                <tr className="bg-slate-50 border-t-2 border-slate-200 font-black">
+                                                  <td colSpan="6" className="px-4 py-3 text-slate-700">TOTAL DESTA SEÇÃO</td>
+                                                  <td className="px-4 py-3 text-right text-indigo-700">R$ {soma(items).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                                  <td className="px-4 py-3 text-right text-slate-600">—</td>
+                                                  <td></td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      );
+                                    };
+
+                                    return (
+                                      <div className="space-y-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                          <div className="rounded-2xl border border-sky-200 bg-sky-50/70 p-4">
+                                            <p className="text-[11px] font-black uppercase tracking-wide text-sky-700">Cartão físico</p>
+                                            <p className="text-xl font-black text-sky-800 mt-1">R$ {soma([...fisicoParcelamentos, ...fisicoDespesas]).toLocaleString('pt-BR',{minimumFractionDigits:2})}</p>
+                                            <p className="text-xs text-slate-500 mt-1">{fisicoParcelamentos.length + fisicoDespesas.length} lançamento(s)</p>
+                                          </div>
+                                          <div className="rounded-2xl border border-violet-200 bg-violet-50/70 p-4">
+                                            <p className="text-[11px] font-black uppercase tracking-wide text-violet-700">Cartão virtual</p>
+                                            <p className="text-xl font-black text-violet-800 mt-1">R$ {soma([...virtualParcelamentos, ...virtualDespesas]).toLocaleString('pt-BR',{minimumFractionDigits:2})}</p>
+                                            <p className="text-xs text-slate-500 mt-1">{virtualParcelamentos.length + virtualDespesas.length} lançamento(s)</p>
+                                          </div>
+                                          <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+                                            <p className="text-[11px] font-black uppercase tracking-wide text-slate-700">Não informado</p>
+                                            <p className="text-xl font-black text-slate-800 mt-1">R$ {soma([...naoInfoParcelamentos, ...naoInfoDespesas]).toLocaleString('pt-BR',{minimumFractionDigits:2})}</p>
+                                            <p className="text-xs text-slate-500 mt-1">{naoInfoParcelamentos.length + naoInfoDespesas.length} lançamento(s)</p>
+                                          </div>
+                                        </div>
+
+                                        {renderSection('Cartão físico — Parcelamentos', 'Mostra somente os parcelamentos feitos no cartão físico', fisicoParcelamentos, 'blue')}
+                                        {renderSection('Cartão físico — Despesas', 'Mostra somente as despesas feitas no cartão físico', fisicoDespesas, 'blue')}
+                                        {renderSection('Cartão virtual — Parcelamentos', 'Mostra somente os parcelamentos feitos no cartão virtual', virtualParcelamentos, 'purple')}
+                                        {renderSection('Cartão virtual — Despesas', 'Mostra somente as despesas feitas no cartão virtual', virtualDespesas, 'purple')}
+                                        {renderSection('Não informado — Parcelamentos', 'Lançamentos sem classificação do tipo de cartão', naoInfoParcelamentos, 'slate')}
+                                        {renderSection('Não informado — Despesas', 'Lançamentos sem classificação do tipo de cartão', naoInfoDespesas, 'amber')}
+                                      </div>
+                                    );
+                                  })()}
+
                                     </div>
                                   )}
                                 </div>
@@ -14734,13 +16282,24 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                     </span>
                   </div>
 
-                  <div>
-                    <label className="block font-bold text-slate-700 mb-1.5">Tipo de Lançamento</label>
-                    <div className="grid grid-cols-2 gap-3">
-                      <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoLancamento: 'cartao' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoLancamento !== 'prazo' ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200' : 'border-slate-200 bg-white text-slate-500'}`}>Parcelamento</button>
-                      <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoLancamento: 'prazo' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoLancamento === 'prazo' ? 'border-amber-500 bg-amber-50 text-amber-800 ring-1 ring-amber-200' : 'border-slate-200 bg-white text-slate-500'}`}>Despesa</button>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1.5">Tipo de Lançamento</label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoLancamento: 'cartao' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoLancamento !== 'prazo' ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200' : 'border-slate-200 bg-white text-slate-500'}`}>Parcelamento</button>
+                        <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoLancamento: 'prazo' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoLancamento === 'prazo' ? 'border-amber-500 bg-amber-50 text-amber-800 ring-1 ring-amber-200' : 'border-slate-200 bg-white text-slate-500'}`}>Despesa</button>
+                      </div>
+                      <p className="mt-1.5 text-[10px] text-slate-400 font-medium">Parcelamento e Despesa continuam controlando a forma do vencimento.</p>
                     </div>
-                    <p className="mt-1.5 text-[10px] text-slate-400 font-medium">Em “Parcelamento”, o vencimento é calculado automaticamente pelas datas do cartão. Em “Despesa”, você informa o 1º vencimento.</p>
+
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1.5">Forma do Cartão</label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoCartao: 'fisico' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoCartao === 'fisico' ? 'border-sky-500 bg-sky-50 text-sky-700 ring-1 ring-sky-200' : 'border-slate-200 bg-white text-slate-500'}`}>Cartão físico</button>
+                        <button type="button" onClick={() => setPmFormData(p => ({ ...p, tipoCartao: 'virtual' }))} className={`rounded-xl border px-4 py-3 text-sm font-black transition ${pmFormData.tipoCartao === 'virtual' ? 'border-violet-500 bg-violet-50 text-violet-700 ring-1 ring-violet-200' : 'border-slate-200 bg-white text-slate-500'}`}>Cartão virtual</button>
+                      </div>
+                      <p className="mt-1.5 text-[10px] text-slate-400 font-medium">Esta opção serve para diferenciar compras feitas com o cartão físico e com o cartão virtual.</p>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -14771,6 +16330,106 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                       <label className="block font-bold text-indigo-600 mb-1.5 text-xs">Valor Parcela</label>
                       <input type="number" step="0.01" required value={pmFormData.valorParcela} onChange={(e) => setPmFormData(p => ({ ...p, valorParcela: e.target.value }))} className="w-full bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-indigo-700 font-black focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
                     </div>
+                  </div>
+
+
+                  <div className={`rateio-box-v68 ${pmFormData.rateioAtivo ? 'active' : ''}`}>
+                    <div className="rateio-head-v68">
+                      <div>
+                        <h4>Rateio da Compra</h4>
+                        <p>Mantenha o valor total na fatura e informe quanto será pago por outra pessoa.</p>
+                      </div>
+
+                      <button
+                        type="button"
+                        className={`rateio-toggle-v68 ${pmFormData.rateioAtivo ? 'active' : ''}`}
+                        onClick={() => setPmFormData(p => ({
+                          ...p,
+                          rateioAtivo: !p.rateioAtivo,
+                          rateioPessoa: !p.rateioAtivo ? (p.rateioPessoa || '') : '',
+                          rateioValor: !p.rateioAtivo ? (p.rateioValor || '') : ''
+                        }))}
+                      >
+                        {pmFormData.rateioAtivo ? 'Divisão ativada' : 'Dividir esta compra'}
+                      </button>
+                    </div>
+
+                    {pmFormData.rateioAtivo && (() => {
+                      const total = parseFloat(pmFormData.valorTotal) || 0;
+                      const outro = Math.max(0, parseFloat(pmFormData.rateioValor) || 0);
+                      const suaParte = Math.max(0, total - outro);
+                      const parcelas = Math.max(1, parseInt(pmFormData.parcelas) || 1);
+                      const parteParcela = outro / parcelas;
+                      const suaParcela = suaParte / parcelas;
+
+                      return (
+                        <div className="rateio-body-v68">
+                          <div className="rateio-fields-v68">
+                            <div>
+                              <label>Pessoa que vai reembolsar</label>
+                              <input
+                                list="rateio-pessoas-v68"
+                                type="text"
+                                placeholder="Ex.: Mara"
+                                value={pmFormData.rateioPessoa || ''}
+                                onChange={(e) => setPmFormData(p => ({ ...p, rateioPessoa: e.target.value }))}
+                              />
+                              <datalist id="rateio-pessoas-v68">
+                                {compradoresList.filter(c => c !== 'Todos' && c !== pmFormData.comprador).map(c => (
+                                  <option key={c} value={c}/>
+                                ))}
+                              </datalist>
+                            </div>
+
+                            <div>
+                              <label>Parte da outra pessoa (R$)</label>
+                              <input
+                                type="number"
+                                step="0.01"
+                                min="0"
+                                max={total || undefined}
+                                placeholder="0,00"
+                                value={pmFormData.rateioValor || ''}
+                                onChange={(e) => setPmFormData(p => ({ ...p, rateioValor: e.target.value }))}
+                              />
+                            </div>
+
+                            <button
+                              type="button"
+                              className="rateio-half-v68"
+                              disabled={!total}
+                              onClick={() => setPmFormData(p => ({
+                                ...p,
+                                rateioValor: total ? (total / 2).toFixed(2) : ''
+                              }))}
+                            >
+                              50 / 50
+                            </button>
+                          </div>
+
+                          <div className="rateio-summary-v68">
+                            <div>
+                              <span>Valor total no cartão</span>
+                              <strong>R$ {total.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                            </div>
+                            <div>
+                              <span>Sua parte</span>
+                              <strong>R$ {suaParte.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                              <small>≈ R$ {suaParcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} por parcela</small>
+                            </div>
+                            <div>
+                              <span>A receber de {pmFormData.rateioPessoa || 'outra pessoa'}</span>
+                              <strong className="receive">R$ {outro.toLocaleString('pt-BR',{minimumFractionDigits:2})}</strong>
+                              <small>≈ R$ {parteParcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} por parcela</small>
+                            </div>
+                          </div>
+
+                          <div className="rateio-note-v68">
+                            O cartão continua com o valor integral da compra. O rateio é controlado separadamente como reembolso a receber.
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -14927,11 +16586,20 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                         </div>
                       </div>
 
-                      <div className="mt-3">
-                        <label className="block font-bold text-slate-700 mb-1.5 text-xs">Tipo de Lançamento</label>
-                        <div className="grid grid-cols-2 gap-3">
-                          <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoLancamento:'cartao'}:item)}))} className={`rounded-xl border px-4 py-2.5 text-xs font-black ${r.tipoLancamento !== 'prazo' ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500'}`}>Parcelamento</button>
-                          <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoLancamento:'prazo'}:item)}))} className={`rounded-xl border px-4 py-2.5 text-xs font-black ${r.tipoLancamento === 'prazo' ? 'border-amber-500 bg-amber-50 text-amber-800' : 'border-slate-200 bg-white text-slate-500'}`}>Despesa</button>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1.5 text-xs">Tipo de Lançamento</label>
+                          <div className="grid grid-cols-2 gap-2">
+                            <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoLancamento:'cartao'}:item)}))} className={`rounded-xl border px-3 py-2.5 text-xs font-black ${r.tipoLancamento !== 'prazo' ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-500'}`}>Parcelamento</button>
+                            <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoLancamento:'prazo'}:item)}))} className={`rounded-xl border px-3 py-2.5 text-xs font-black ${r.tipoLancamento === 'prazo' ? 'border-amber-500 bg-amber-50 text-amber-800' : 'border-slate-200 bg-white text-slate-500'}`}>Despesa</button>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1.5 text-xs">Forma do Cartão</label>
+                          <div className="grid grid-cols-2 gap-2">
+                            <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoCartao:'fisico'}:item)}))} className={`rounded-xl border px-3 py-2.5 text-xs font-black ${r.tipoCartao === 'fisico' ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white text-slate-500'}`}>Cartão físico</button>
+                            <button disabled={!r.selected} type="button" onClick={()=>setDifferenceLaunchModal(prev=>({...prev,rows:prev.rows.map((item,i)=>i===idx?{...item,tipoCartao:'virtual'}:item)}))} className={`rounded-xl border px-3 py-2.5 text-xs font-black ${r.tipoCartao === 'virtual' ? 'border-violet-500 bg-violet-50 text-violet-700' : 'border-slate-200 bg-white text-slate-500'}`}>Cartão virtual</button>
+                          </div>
                         </div>
                       </div>
 
@@ -15139,13 +16807,17 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                             <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                               item.kind === 'fatura'
                                 ? 'bg-indigo-100 text-indigo-600'
-                                : isIncome
+                                : item.kind === 'rateio'
+                                  ? 'bg-sky-100 text-sky-600'
+                                  : isIncome
                                   ? 'bg-emerald-100 text-emerald-600'
                                   : 'bg-rose-100 text-rose-600'
                             }`}>
                               {item.kind === 'fatura'
                                 ? <CreditCard className="w-5 h-5"/>
-                                : isIncome
+                                : item.kind === 'rateio'
+                                  ? <Wallet className="w-5 h-5"/>
+                                  : isIncome
                                   ? <TrendingUp className="w-5 h-5"/>
                                   : <TrendingDown className="w-5 h-5"/>}
                             </div>
@@ -15155,17 +16827,23 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                                 <span className={`text-[9px] font-black uppercase px-2 py-1 rounded-full ${
                                   item.kind === 'fatura'
                                     ? 'bg-indigo-50 text-indigo-700'
-                                    : isIncome
+                                    : item.kind === 'rateio'
+                                      ? 'bg-sky-50 text-sky-700'
+                                      : isIncome
                                       ? 'bg-emerald-50 text-emerald-700'
                                       : 'bg-rose-50 text-rose-700'
                                 }`}>
-                                  {item.kind === 'fatura' ? 'Fatura' : isIncome ? 'Receita' : 'Despesa'}
+                                  {item.kind === 'fatura' ? 'Fatura' : item.kind === 'rateio' ? 'Rateio' : isIncome ? 'Receita' : 'Despesa'}
                                 </span>
                                 <span className="text-[10px] text-slate-400">{item.date ? formatToDDMMAAAA(item.date) : 'Sem data'}</span>
                               </div>
                               <div className="font-black text-sm text-slate-800 mt-1 truncate">{item.description}</div>
                               <div className="text-[10px] text-slate-500 mt-0.5">
-                                {item.kind === 'fatura' ? `Cartão ${item.cardName}` : (item.bank || 'Sem banco informado')}
+                                {item.kind === 'fatura'
+                                  ? `Cartão ${item.cardName}`
+                                  : item.kind === 'rateio'
+                                    ? `${item.pessoa} • Cartão ${item.cardName} • ${item.installment}/${item.totalInstallments}`
+                                    : (item.bank || 'Sem banco informado')}
                               </div>
                             </div>
                           </div>
@@ -15177,7 +16855,16 @@ ${getEmbeddedStyleForPrint('financas-pro-projecoes-compactas-correcao-final')}
                               </div>
                             </div>
 
-                            {item.kind === 'fatura' ? (
+                            {item.kind === 'rateio' ? (
+                              <button
+                                type="button"
+                                onClick={() => handleToggleRateioReceived(item.pmItem, item.monthKey)}
+                                className={`neo-status ${item.paid ? 'neo-paid' : 'neo-pending'} dashboard-pending-click`}
+                                title={item.paid ? 'Clique para voltar para pendente' : 'Clique para registrar o recebimento'}
+                              >
+                                {item.paid ? 'Recebido' : 'Pendente'}
+                              </button>
+                            ) : item.kind === 'fatura' ? (
                               item.paid
                                 ? <span className="neo-status neo-paid">Pago</span>
                                 : <button
